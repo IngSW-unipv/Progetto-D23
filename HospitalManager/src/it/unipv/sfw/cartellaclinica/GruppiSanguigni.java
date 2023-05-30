@@ -8,5 +8,5 @@ public enum GruppiSanguigni {
 	ABPOSITIVO,
 	ABNEGATIVO,
 	ZEROPOSITIVO,
-	ZERONEGATIVO,
+	ZERONEGATIVO
 }
