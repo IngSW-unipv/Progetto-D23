@@ -1,4 +1,4 @@
-package it.unipv.sfw.hospitalmanager;
+package it.unipv.sfw.strutturasanitaria;
 
 public class Account {
 	TipoAccount tipoAccount;

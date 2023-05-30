@@ -1,4 +1,4 @@
-package it.unipv.sfw.hospitalmanager;
+package it.unipv.sfw.strutturasanitaria;
 
 import java.util.ArrayList;
 import java.util.HashMap;

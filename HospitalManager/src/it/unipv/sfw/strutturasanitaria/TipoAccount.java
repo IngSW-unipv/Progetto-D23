@@ -1,4 +1,4 @@
-package it.unipv.sfw.hospitalmanager;
+package it.unipv.sfw.strutturasanitaria;
 
 public enum TipoAccount {
 	MEDICO,
