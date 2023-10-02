@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import it.unipv.sfw.persona.*;
 import it.unipv.sfw.prestazionisantarie.*;
 
-public class StrutturaSanitaria implements HospitalManager {
-	String struttura, indirizzo, cap, paese;
+public class StrutturaSanitaria {
+	String nome, indirizzo, cap, paese, id;
+	
 	private ArrayList<Medico> medici;
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<Paziente> pazienti;
-	private ArrayList<Esame> esami;
-	private ArrayList<Operazione> operazioni;
-	private ArrayList<Terapia> terapie;
-	private ArrayList<Visita> visite;
+	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Account> accounts;
 	
 	private static StrutturaSanitaria struttura1;
@@ -24,10 +22,7 @@ public class StrutturaSanitaria implements HospitalManager {
 		this.operatoriSanitari = new ArrayList<OperatoreSanitario>();
 		this.operatoriUfficio = new ArrayList<OperatoreUfficio>();
 		this.pazienti = new ArrayList<Paziente>();
-		this.esami = new ArrayList<Esame>();
-		this.operazioni = new ArrayList<Operazione>();
-		this.terapie = new ArrayList<Terapia>();
-		this.visite = new ArrayList<Visita>();
+		this.prestazioni = new ArrayList<PrestazioneSanitaria>();
 		this.accounts = new ArrayList<Account>();
 
 	}
@@ -60,21 +55,10 @@ public class StrutturaSanitaria implements HospitalManager {
 		this.pazienti = pazienti;
 	}
 	
-	public void populateEsami (ArrayList<Esame> esami) {
-		this.esami = esami;
+	public void populateEsami (ArrayList<PrestazioneSanitaria> prestazioni) {
+		this.prestazioni = prestazioni;
 	}
 	
-	public void populateOperazioni (ArrayList<Operazione> operazioni) {
-		this.operazioni = operazioni;
-	}
-	
-	public void populateTerapie (ArrayList<Terapia> terapie) {
-		this.terapie = terapie;
-	}
-	
-	public void populateVisite (ArrayList<Visita> visite) {
-		this.visite = visite;
-	}
 	
 	public void populateAccounts (ArrayList<Account> accounts) {
 		this.accounts = accounts;
@@ -98,20 +82,8 @@ public class StrutturaSanitaria implements HospitalManager {
 		return pazienti;
 	}
 	
-	public ArrayList<Esame> getEsamiArray() {
-		return esami;
-	}
-	
-	public ArrayList<Operazione> getOperazioniArray() {
-		return operazioni;
-	}
-	
-	public ArrayList<Terapia> getTerapieArray() {
-		return terapie;
-	}
-	
-	public ArrayList<Visita> getVisiteArray() {
-		return visite;
+	public ArrayList<PrestazioneSanitaria> getEsamiArray() {
+		return prestazioni;
 	}
 	
 	public ArrayList<Account> getAccountsArray() {
