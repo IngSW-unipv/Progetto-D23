@@ -9,9 +9,5 @@ public class CartellaClinica {
 	GruppiSanguigni gruppoSanguigno;
 	ArrayList <String> terapiePregresse;
 	ArrayList <String> terapieCorrenti;
-	ArrayList <Esame> esami;
-	ArrayList <Visita> visite;
-	ArrayList <Operazione> operazioni;
-	ArrayList <Terapia> terapie;
-
+	ArrayList <String> esiti;
 }
