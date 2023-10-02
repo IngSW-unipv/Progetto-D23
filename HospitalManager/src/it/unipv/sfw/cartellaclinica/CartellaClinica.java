@@ -8,6 +8,6 @@ public class CartellaClinica {
 	Sesso sesso;
 	GruppiSanguigni gruppoSanguigno;
 	ArrayList <String> terapiePregresse;
-	ArrayList <String> terapieCorrenti;
 	ArrayList <String> esiti;
+	ArrayList <String> terapieCorrenti;
 }
