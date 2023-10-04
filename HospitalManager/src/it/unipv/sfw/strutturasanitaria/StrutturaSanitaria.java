@@ -11,8 +11,8 @@ public class StrutturaSanitaria {
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<Account> accounts;
-	private ArrayList<Paziente> pazienti;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
+	private ArrayList<Paziente> pazienti;
 	
 	private static StrutturaSanitaria struttura1;
 	
