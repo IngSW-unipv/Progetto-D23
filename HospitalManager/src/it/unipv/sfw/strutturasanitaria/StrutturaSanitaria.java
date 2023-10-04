@@ -10,8 +10,8 @@ public class StrutturaSanitaria {
 	private ArrayList<Medico> medici;
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
-	private ArrayList<Paziente> pazienti;
 	private ArrayList<Account> accounts;
+	private ArrayList<Paziente> pazienti;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	
 	private static StrutturaSanitaria struttura1;
