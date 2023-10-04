@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 
 /**
- * Serve per connettersi a database.
+ * Serve per connettersi al database.
  */
 
 public class ConnectionSQL {
