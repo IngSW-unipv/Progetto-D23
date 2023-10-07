@@ -1,10 +1,10 @@
 package it.unipv.sfw.persona;
 
-import java.text.DateFormat;
+import java.sql.Date;
 
 public abstract class Persona {
 	private String nome, cognome, cf, sesso, eMail, cellulare, luogoNascita, indirizzo, cap, paese;
-	DateFormat dataNascita;	
+	Date dataNascita;	
 
 
 
@@ -48,13 +48,13 @@ public abstract class Persona {
 		return paese;
 	}
 	
-	public DateFormat getDataNascita() {
+	public Date getDataNascita() {
 		return dataNascita;
 	}
 	
 	
 	public Persona(String nome, String cognome, String CF, String sesso, String email, String cellulare, String luogoNascita, String indirizzo, String cap, String paese,
-			DateFormat dataNascita) {
+			Date dataNascita) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
@@ -114,7 +114,7 @@ public abstract class Persona {
 	public void setPaese(String paese) {
 		this.paese = paese;
 	}
-	public void setDataNascita(DateFormat dataNascita) {
+	public void setDataNascita(Date dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 }

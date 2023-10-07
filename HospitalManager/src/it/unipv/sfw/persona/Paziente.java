@@ -1,9 +1,7 @@
 package it.unipv.sfw.persona;
 
-import java.text.DateFormat;
-
+import java.sql.Date;
 import it.unipv.sfw.cartellaclinica.CartellaClinica;
-
 public class Paziente extends Persona{
 
 	private int ID;
@@ -27,7 +25,7 @@ public class Paziente extends Persona{
 	
 	
 	public Paziente(String nome, String cognome, String CF, String sesso, String email, String cellulare,
-			String luogoNascita, String indirizzo, String cap, String paese, DateFormat dataNascita,
+			String luogoNascita, String indirizzo, String cap, String paese, Date dataNascita,
 			CartellaClinica cartellaClinica, int ID) {
 		super(nome, cognome, CF, sesso, email, cellulare, luogoNascita, indirizzo, cap, paese, dataNascita);
 		this.cartellaClinica = cartellaClinica;
