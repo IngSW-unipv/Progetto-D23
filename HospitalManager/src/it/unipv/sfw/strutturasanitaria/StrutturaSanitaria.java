@@ -13,6 +13,7 @@ public class StrutturaSanitaria {
 	private ArrayList<Account> accounts;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Paziente> pazienti;
+	private ArrayList<Prenotazione> prenotazioni;
 	
 	private static StrutturaSanitaria struttura1;
 	
@@ -24,6 +25,7 @@ public class StrutturaSanitaria {
 		this.pazienti = new ArrayList<Paziente>();
 		this.prestazioni = new ArrayList<PrestazioneSanitaria>();
 		this.accounts = new ArrayList<Account>();
+		this.prenotazioni = new ArrayList<Prenotazione>();
 
 	}
 	
@@ -62,6 +64,11 @@ public class StrutturaSanitaria {
 	
 	public void populateAccounts (ArrayList<Account> accounts) {
 		this.accounts = accounts;
+		
+	}
+	
+	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
 	}
 	
 	//metodi get
@@ -88,6 +95,10 @@ public class StrutturaSanitaria {
 	
 	public ArrayList<Account> getAccountsArray() {
 		return accounts;
+	}
+
+	public ArrayList<Prenotazione> getPrenotazioni() {
+		return prenotazioni;
 	}
 
 }
