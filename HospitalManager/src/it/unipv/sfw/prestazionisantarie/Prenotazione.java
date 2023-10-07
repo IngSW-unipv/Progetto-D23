@@ -68,12 +68,12 @@ public class Prenotazione {
 		this.medico = med;
 	}
 	
-	public void setOpSanitario(OperatoreSanitario opSan) {
-		this.opSanitario = opSan;
-	}
-	
 	public void setOrario(Time orario) {
 		this.orario = orario;
+	}
+	
+	public void setOpSanitario(OperatoreSanitario opSan) {
+		this.opSanitario = opSan;
 	}
 	
 	
