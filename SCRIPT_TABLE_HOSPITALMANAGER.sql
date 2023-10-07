@@ -1,6 +1,10 @@
--- CREATE SCHEMA hospitalmanager;
+-- DATABASE HOSPITALMANAGER 07-10-2023
+-- ______________________________________________________________
 
+-- CREATE SCHEMA hospitalmanager;
 -- USE hospitalmanager;
+
+-- CREAZIONE TABLE 
 
 DROP TABLE IF EXISTS STRUTTURE_SANITARIE;
 DROP TABLE IF EXISTS PROFILI;
@@ -15,6 +19,7 @@ DROP TABLE IF EXISTS PRESTAZIONI_SANITARIE;
 DROP TABLE IF EXISTS EROGAZIONI;
 DROP TABLE IF EXISTS ESITI;
 DROP TABLE IF EXISTS CALENDARI;
+DROP TABLE IF EXISTS AGENDE;
 
 CREATE TABLE STRUTTURE_SANITARIE (
 ID_STR SMALLINT PRIMARY KEY,
@@ -143,39 +148,34 @@ CREATE TABLE CALENDARI (
 	ANNO VARCHAR(10),
 	NOME_GIORNO VARCHAR(10),
 	NOME_MESE VARCHAR(10),
-    ORARIO TIME,
 	NOME_VACANZE VARCHAR(50),
-	FLAG_VACANZE VARCHAR(10),
-    ID_PREN SMALLINT,
-    FOREIGN KEY(ID_PREN) REFERENCES PRENOTAZIONE(ID_PREST)
-)
+	FLAG_VACANZE VARCHAR(10)
+);
 
--- GO
+CREATE TABLE AGENDE (
+	SLOT TIMESTAMP PRIMARY KEY,
+	CALENDARIO_DATA DATETIME,
+    ID_PREN SMALLINT,
+    FOREIGN KEY(ID_PREN) REFERENCES PRENOTAZIONE(ID_PREST),
+	FOREIGN KEY(CALENDARIO_DATA) REFERENCES CALENDARI(CALENDARIO_DATA)
+);
+
+GO -- DA SISTEMARE
 
 DECLARE @StartDate DATETIME
 DECLARE @EndDate DATETIME
 SET @StartDate = GETDATE()
-SET @EndDate = ADD(d, 365, @StartDate)
-
-DECLARE @StartSchedule TIME
-DECLARE @EndSchedule TIME
-SET @StartSchedule = 7
-SET @EndSchedule = ADD(t, 0.5, @StartDate)
-
+SET @EndDate = DATEADD(d, 365, @StartDate)
 
 WHILE @StartDate <= @EndDate
-BEGIN
-	  WHILE @StartSchedule <= @EndSchedule
-      BEGIN
-             INSERT INTO CALENDARI
-             (
+	BEGIN
+             INSERT INTO CALENDARI (
 				  CALENDARIO_DATA DATETIME,
 				  GIORNO  VARCHAR(10),
 				  MESE VARCHAR(10),
 				  ANNO VARCHAR(10),
 				  NOME_GIORNO VARCHAR(10),
 				  NOME_MESE VARCHAR(10),
-                  ORARIO TIME 
 				  NOME_VACANZE VARCHAR(50),
 				  FLAG_VACANZE VARCHAR(10)
              )
@@ -186,13 +186,39 @@ BEGIN
 				   YEAR(@StartDate),
    				   DATENAME(WEEKDAY, (@StartDate)),
 				   DATENAME(MONTH, (@StartDate)),
-                   ORARIO(@StartSchedule),
 				   NULL,
 				   'N'
-				
-			SET @StartSchedule = ADD(0.5, @StartSchedule)
-			END
-			SET @StartDate = DATEADD(dd, 1, @StartDate)
+                   
+			DECLARE @StartSchedule DATETIME
+			DECLARE @EndSchedule DATETIME
+			SET @StartSchedule = HOUR(7)
+			SET @EndSchedule = DATEADD(h, 12, @StartSchedule)
 
+			WHILE @StartSchedule <= @EndSchedule
+				  BEGIN
+						 INSERT INTO AGENDE (
+							  CALENDARIO_DATA DATETIME,
+							  SLOT TIMESTAMP,
+							  ORARIO DATETIME,
+							  ID_PREN SMALLINT,
+						 )
+						 SELECT
+							   @StartDate,
+							   TIMESTAMP,
+							   HOUR(@StartSchedule)
+							   NULL,
+							
+						SET @StartSchedule = ADD(h, 1, @StartSchedule)
+			END
+                   
+			SET @StartDate = DATEADD(d, 1, @StartDate)
 END
+
+
+
+
+
+
+
+
 
