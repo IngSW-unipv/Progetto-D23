@@ -1,4 +1,4 @@
--- DATABASE HOSPITALMANAGER 07-10-2023
+-- DATABASE HOSPITALMANAGER
 -- ______________________________________________________________
 DROP SCHEMA hospitalmanager;
 CREATE SCHEMA hospitalmanager;
@@ -132,21 +132,16 @@ FOREIGN KEY(ID_PREN) REFERENCES EROGAZIONI(ID_PREN)
 );
 
 CREATE TABLE CALENDARI (
-    CALENDARIO_DATA DATE PRIMARY KEY,
-	GIORNO  VARCHAR(10),
-	MESE VARCHAR(10),
-	ANNO VARCHAR(10),
+    CALENDARIO_DATA DATE DEFAULT '2000-01-01',
+	GIORNO  SMALLINT,
+	MESE SMALLINT,
+	ANNO SMALLINT,
 	NOME_VACANZE VARCHAR(50),
-	FLAG_VACANZE VARCHAR(10)
-);
-
-CREATE TABLE AGENDE (
-	-- SLOT TIMESTAMP PRIMARY KEY,
-	CALENDARIO_DATA DATE,
-    ORARIO TIME PRIMARY KEY,
+	FLAG_VACANZE BOOLEAN,
+    ORARIO TIME DEFAULT '00:00:00.000000',
     ID_PREN SMALLINT,
-    FOREIGN KEY(ID_PREN) REFERENCES PRENOTAZIONI(ID_PREN),
-	FOREIGN KEY(CALENDARIO_DATA) REFERENCES CALENDARI(CALENDARIO_DATA)
+    PRIMARY KEY(CALENDARIO_DATA, ORARIO),
+    FOREIGN KEY(ID_PREN) REFERENCES PRENOTAZIONI(ID_PREN)
 );
 
 mysql> delimiter //
@@ -158,15 +153,18 @@ DECLARE StartSchedule TIME;
 DECLARE EndSchedule TIME;
 SET StartDate = DATE(NOW());
 SET EndDate = DATE_ADD(StartDate, INTERVAL 12 MONTH);
-SET StartSchedule = '07:00:00.000000';
-SET EndSchedule = ADDTIME(StartSchedule, '12:00:00.000000');
 
 WHILE StartDate <= EndDate DO
+	SET StartSchedule = '07:00:00.000000';
+	SET EndSchedule = ADDTIME(StartSchedule, '12:00:00.000000');
+	WHILE StartSchedule <= EndSchedule DO
              INSERT INTO CALENDARI (
 				  CALENDARIO_DATA,
 				  GIORNO,
 				  MESE,
 				  ANNO,
+                  ORARIO,
+                  ID_PREN,
 				  NOME_VACANZE,
 				  FLAG_VACANZE
              )
@@ -175,19 +173,10 @@ WHILE StartDate <= EndDate DO
 				   DAY(StartDate),
 				   MONTH(StartDate),
 				   YEAR(StartDate),
+                   StartSchedule,
 				   NULL,
-				   'N';
-                   
-			WHILE StartSchedule <= EndSchedule DO
-						 INSERT INTO AGENDE (
-							  CALENDARIO_DATA,
-							  ORARIO,
-							  ID_PREN
-						 )
-						 SELECT
-							   DATE(StartDate),
-							   TIME(StartSchedule),
-							   NULL;
+				   NULL,
+				   FALSE;
 							
 						SET StartSchedule = ADDTIME(StartSchedule, '00:30:00.000000');
 			END WHILE;
@@ -199,8 +188,8 @@ mysql> delimiter ;
 
 call POPOLA_CALENDARIO();
 
-SELECT * FROM CALENDARI;
-SELECT * FROM AGENDE;
+-- SELECT * FROM CALENDARI;
+
 
 
 
