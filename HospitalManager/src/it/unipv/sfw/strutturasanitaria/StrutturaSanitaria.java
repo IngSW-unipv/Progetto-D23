@@ -67,8 +67,12 @@ public class StrutturaSanitaria {
 		
 	}
 	
-	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
+	public void populatePrenotazioni(ArrayList<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
+	}
+	
+	public void populatePrestazioneSanitaria(ArrayList<PrestazioneSanitaria> prestazioni) {
+		this.prestazioni = prestazioni;
 	}
 	
 	//metodi get
