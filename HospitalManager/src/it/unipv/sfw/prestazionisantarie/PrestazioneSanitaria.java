@@ -8,7 +8,6 @@ import it.unipv.sfw.persona.Paziente;
 
 public class PrestazioneSanitaria {
 	private TipoPrestazione type;
-	private CatPrestazione categoria;
 	private DurataPrestazione durata;
 	private int id;
 	private Date data;
@@ -17,14 +16,13 @@ public class PrestazioneSanitaria {
 	private Time orario;
 
 	public PrestazioneSanitaria(int id, Date data, Paziente paziente, Medico medico,
-			DurataPrestazione durata,TipoPrestazione type, CatPrestazione categoria, Time orario) {
+			DurataPrestazione durata,TipoPrestazione type, Time orario) {
 		this.id = id;
 		this.data = data;
 		this.paziente = paziente;
 		this.medico = medico;
 		this.durata = durata;
 		this.type = type;
-		this.categoria = categoria;
 		this.orario = orario;
 	}
 	
@@ -55,11 +53,7 @@ public class PrestazioneSanitaria {
 	public Time getOrario() {
 		return orario;
 	}
-	
-	public CatPrestazione getCat() {
-		return categoria;
-	}
-	
+		
 	
 	//METODI SET
 	
@@ -91,7 +85,4 @@ public class PrestazioneSanitaria {
 		this.durata = durata;
 	}
 	
-	public void setCatPrestazione(CatPrestazione categoria) {
-		this.categoria = categoria;
-	}
 }
