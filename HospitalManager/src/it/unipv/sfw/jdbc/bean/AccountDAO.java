@@ -1,5 +1,4 @@
 package it.unipv.sfw.jdbc.bean;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -11,9 +10,8 @@ public class AccountDAO implements IAccountDAO {
 	
 	
 
-	public AccountDAO(Connection conn, ArrayList<AccountDB> accounts) {
+	public AccountDAO() {
 		super();
-		this.conn = conn;
 		this.accounts = new ArrayList<>();
 	}
 
