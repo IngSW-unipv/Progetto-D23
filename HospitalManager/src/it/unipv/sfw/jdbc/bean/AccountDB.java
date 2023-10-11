@@ -1,0 +1,36 @@
+package it.unipv.sfw.jdbc.bean;
+
+import it.unipv.sfw.strutturasanitaria.TipoAccount;
+
+public class AccountDB {
+	private int idAcc;
+	private TipoAccount tipoAcc;
+	private String cf;
+	private String pw;
+	
+	public AccountDB(int idAcc, String tipoAcc, String cf, String pw) {
+		super();
+		this.idAcc = idAcc;
+		this.tipoAcc = TipoAccount.valueOf(tipoAcc);	//string to enum
+		this.cf = cf;
+		this.pw = pw;
+	}
+
+	public int getIdAcc() {
+		return idAcc;
+	}
+
+	public TipoAccount getTipoAcc() {
+		return tipoAcc;
+	}
+
+	public String getCf() {
+		return cf;
+	}
+
+	public String getPw() {
+		return pw;
+	}
+	
+	
+}
