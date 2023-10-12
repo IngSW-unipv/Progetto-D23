@@ -7,13 +7,15 @@ public class AccountDB {
 	private TipoAccount tipoAcc;
 	private String cf;
 	private String pw;
+	private String specializzazione;
 	
-	public AccountDB(int idAcc, String tipoAcc, String cf, String pw) {
+	public AccountDB(int idAcc, String tipoAcc, String cf, String pw, String specializzazione) {
 		super();
 		this.idAcc = idAcc;
 		this.tipoAcc = TipoAccount.valueOf(tipoAcc);	//string to enum
 		this.cf = cf;
 		this.pw = pw;
+		this.specializzazione = specializzazione;
 	}
 
 	public int getIdAcc() {
@@ -32,5 +34,8 @@ public class AccountDB {
 		return pw;
 	}
 	
+	public String getSpecializzazione() {
+		return specializzazione;
+	}
 	
 }
