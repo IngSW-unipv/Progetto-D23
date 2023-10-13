@@ -7,12 +7,21 @@ import it.unipv.sfw.jdbc.ConnessioneDB;
 public class AccountDAO implements IAccountDAO {
 	private Connection conn;
 	ArrayList<AccountDB> accounts;
+	ArrayList<AccountDB> medici;
+	ArrayList<AccountDB> operatoriSanitari;
+	ArrayList<AccountDB> operatoriUfficio;
+	ArrayList<AccountDB> pazienti;
+
 	
-	
+
 
 	public AccountDAO() {
 		super();
 		this.accounts = new ArrayList<>();
+		this.medici = new ArrayList<>();
+		this.operatoriSanitari = new ArrayList<>();
+		this.operatoriUfficio = new ArrayList<>();
+		this.pazienti = new ArrayList<>();
 	}
 
 
@@ -42,31 +51,31 @@ public class AccountDAO implements IAccountDAO {
 		return accounts;
 	}
 
-
+	// seleziono gli account per tipo passando l'array in cui memorizzare i dati e la stringa che definisce il tipo di account
 	@Override
-	public ArrayList<AccountDB> selectAllMedici() {
-		return null;
+	public ArrayList<AccountDB> selectAllType(ArrayList<AccountDB> arraylist, String tipo) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		ResultSet rs1;
+		
+		try {
+			String query = "SELECT * FROM hospitalmanager.profili WHERE tipo = ?";
+			ps1 = conn.prepareStatement(query);
+			ps1.setString(1, tipo);
+			rs1 = ps1.executeQuery(query);
+			
+			while(rs1.next()) {
+				AccountDB a = new AccountDB(rs1.getInt("ID_ACC"), rs1.getString("TIPO"), rs1.getString("CF"), 
+						rs1.getString("PW"), rs1.getString("SPECIALIZZAZIONE"));
+				arraylist.add(a);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		
+		return arraylist;
 	}
-
-
-
-	@Override
-	public ArrayList<AccountDB> selectAllOperatoriSanitari() {
-		return null;
-	}
-
-
-
-	@Override
-	public ArrayList<AccountDB> selectAllOperatoriUfficio() {
-		return null;
-	}
-
-
-
-	@Override
-	public ArrayList<AccountDB> selectAllPazienti() {
-		return null;
-	}
-
 }
