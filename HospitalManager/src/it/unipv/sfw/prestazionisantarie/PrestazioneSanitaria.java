@@ -9,15 +9,15 @@ import it.unipv.sfw.persona.Paziente;
 public class PrestazioneSanitaria {
 	private TipoPrestazione type;
 	private DurataPrestazione durata;
-	private int id;
+	private int idPrest;
 	private Date data;
 	private Paziente paziente;
 	private Medico medico;
 	private Time orario;
 
-	public PrestazioneSanitaria(int id, Date data, Paziente paziente, Medico medico,
+	public PrestazioneSanitaria(int idPrest, Date data, Paziente paziente, Medico medico,
 			DurataPrestazione durata,TipoPrestazione type, Time orario) {
-		this.id = id;
+		this.idPrest = idPrest;
 		this.data = data;
 		this.paziente = paziente;
 		this.medico = medico;
@@ -26,8 +26,8 @@ public class PrestazioneSanitaria {
 		this.orario = orario;
 	}
 	
-	public int getId() {
-		return id;
+	public int getIdPrest() {
+		return idPrest;
 	}
 
 	public TipoPrestazione getTipo() {
@@ -77,8 +77,8 @@ public class PrestazioneSanitaria {
 		this.medico = med;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setIdPrest(int idPrest) {
+		this.idPrest = idPrest;
 	}
 	
 	public void setDurata(DurataPrestazione durata) {

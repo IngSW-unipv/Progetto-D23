@@ -12,9 +12,6 @@ public class AccountDAO implements IAccountDAO {
 	ArrayList<AccountDB> operatoriUfficio;
 	ArrayList<AccountDB> pazienti;
 
-	
-
-
 	public AccountDAO() {
 		super();
 		this.accounts = new ArrayList<>();
@@ -77,5 +74,34 @@ public class AccountDAO implements IAccountDAO {
 		ConnessioneDB.closeConnection(conn);
 		
 		return arraylist;
+	}
+	
+	//inserimento account passando i relativi parametri
+	@Override
+	public boolean insertAccount(int idAcc, String tipoAcc, String cf, String pw, String specializzazione) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		
+		boolean check = true;
+		
+		try {
+			String query = "INSERT INTO hospitalmanager.PROFILI VALUES (?,?,?,?,?)";
+			ps1 = conn.prepareStatement(query);
+			ps1.setInt(1, idAcc);
+			ps1.setString(2, tipoAcc);
+			ps1.setString(3, cf);
+			ps1.setString(4, pw);
+			ps1.setString(5, specializzazione);
+			ps1.executeUpdate(query);
+			//ps1.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			check = false;
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		return check;
+	
 	}
 }
