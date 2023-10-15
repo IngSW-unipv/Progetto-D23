@@ -2,6 +2,9 @@ package it.unipv.sfw.jdbc.bean;
 
 import java.util.ArrayList;
 
+import it.unipv.sfw.persona.Persona;
+
 public interface IAnagraficaDAO {
-	public ArrayList<AnagraficaDB> selectAllAnagrafica();
+	ArrayList<AnagraficaDB> selectAllAnagrafica();
+	boolean insertAnagrafica(Persona p);
 }

@@ -14,11 +14,12 @@ public class AnagraficaDB {
 	private String provinciaRes;
 	private String cittaRes;
 	private String indirizzo;
+	private String cap;
 	private String eMail;
 	private String cellulare;
 	
 	public AnagraficaDB(String cf, String nome, String cognome, String genere, String dataNascita, String luogoNascita,
-			String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes, String indirizzo,
+			String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap,
 			String eMail, String cellulare) {
 		super();
 		this.cf = cf;
@@ -32,6 +33,7 @@ public class AnagraficaDB {
 		this.provinciaRes = provinciaRes;
 		this.cittaRes = cittaRes;
 		this.indirizzo = indirizzo;
+		this.cap = cap;
 		this.eMail = eMail;
 		this.cellulare = cellulare;
 	}
@@ -78,6 +80,10 @@ public class AnagraficaDB {
 
 	public String getIndirizzo() {
 		return indirizzo;
+	}
+	
+	public String getCap() {
+		return cap;
 	}
 
 	public String geteMail() {
