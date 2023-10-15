@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean;
+package it.unipv.sfw.jdbc.bean.calendario;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

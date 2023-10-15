@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean;
+package it.unipv.sfw.jdbc.bean.prestazioneSanitaria;
 
 import java.util.ArrayList;
 

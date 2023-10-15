@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean;
+package it.unipv.sfw.jdbc.bean.calendario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.prestazionisantarie.Prenotazione;
-import it.unipv.sfw.prestazionisantarie.PrestazioneSanitaria;
 
 public class CalendarioDAO implements ICalendarioDAO {
 	private Connection conn;

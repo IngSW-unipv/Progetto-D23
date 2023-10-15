@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean;
+package it.unipv.sfw.jdbc.bean.account;
 
 import java.util.ArrayList;
 

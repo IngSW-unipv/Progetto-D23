@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean;
+package it.unipv.sfw.jdbc.bean.anagrafica;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

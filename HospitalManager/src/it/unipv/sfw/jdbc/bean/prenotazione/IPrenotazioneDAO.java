@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean;
+package it.unipv.sfw.jdbc.bean.prenotazione;
 
 import java.util.ArrayList;
 import it.unipv.sfw.prestazionisantarie.Prenotazione;

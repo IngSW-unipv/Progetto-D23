@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean;
+package it.unipv.sfw.jdbc.bean.prenotazione;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
