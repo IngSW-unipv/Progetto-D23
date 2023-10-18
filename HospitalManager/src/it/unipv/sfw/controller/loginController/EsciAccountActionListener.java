@@ -3,9 +3,9 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import it.unipv.sfw.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
-import it.unipv.sfw.jdbc.bean.DbSingleton; 
+import it.unipv.sfw.jdbc.bean.DbSingleton;
+import it.unipv.sfw.model.StrutturaSanitaria; 
 
 
 

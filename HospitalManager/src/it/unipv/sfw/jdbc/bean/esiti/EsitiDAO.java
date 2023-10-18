@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
+import it.unipv.sfw.model.Esito;
 
 public class EsitiDAO implements IEsitiDAO {
 	private Connection conn;
@@ -40,6 +41,12 @@ public class EsitiDAO implements IEsitiDAO {
 		
 		ConnessioneDB.closeConnection(conn);
 		return esiti;
+	}
+
+	@Override
+	public boolean insertEsito(Esito e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

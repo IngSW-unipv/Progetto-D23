@@ -2,8 +2,8 @@ package it.unipv.sfw.jdbc.bean.account;
 import java.sql.*;
 import java.util.ArrayList;
 
-import it.unipv.sfw.account.Account;
 import it.unipv.sfw.jdbc.ConnessioneDB;
+import it.unipv.sfw.model.Account;
 
 public class AccountDAO implements IAccountDAO {
 	private Connection conn;

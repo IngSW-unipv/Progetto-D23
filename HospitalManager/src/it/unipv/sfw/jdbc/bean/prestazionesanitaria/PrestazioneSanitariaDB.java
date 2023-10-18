@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean.prestazioneSanitaria;
+package it.unipv.sfw.jdbc.bean.prestazionesanitaria;
 import java.time.LocalTime;
 
 public class PrestazioneSanitariaDB {

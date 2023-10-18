@@ -1,4 +1,4 @@
-package it.unipv.sfw.prestazionisantarie;
+package it.unipv.sfw.model;
 
 public enum DurataPrestazione { 
 	min30, 

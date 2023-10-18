@@ -1,9 +1,6 @@
-package it.unipv.sfw.strutturasanitaria;
+package it.unipv.sfw.model;
 
 import java.util.ArrayList;
-
-import it.unipv.sfw.account.*;
-import it.unipv.sfw.prestazionisantarie.*;
 
 public class StrutturaSanitaria {
 	String nome, indirizzo, cap, paese, id;

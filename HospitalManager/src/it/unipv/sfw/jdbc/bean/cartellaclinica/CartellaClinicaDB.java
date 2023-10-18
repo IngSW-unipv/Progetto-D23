@@ -1,6 +1,6 @@
 package it.unipv.sfw.jdbc.bean.cartellaclinica;
 
-import it.unipv.sfw.cartellaclinica.GruppiSanguigni;
+import it.unipv.sfw.model.GruppiSanguigni;
 
 public class CartellaClinicaDB {
 	private int idAcc;

@@ -2,7 +2,7 @@ package it.unipv.sfw.jdbc.bean.calendario;
 
 import java.util.ArrayList;
 
-import it.unipv.sfw.prestazionisantarie.Prenotazione;
+import it.unipv.sfw.model.Prenotazione;
 
 public interface ICalendarioDAO {
 	ArrayList<SlotCalendarioDB> SelectCalendario();

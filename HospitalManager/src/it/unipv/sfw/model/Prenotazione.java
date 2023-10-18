@@ -1,11 +1,7 @@
-package it.unipv.sfw.prestazionisantarie;
+package it.unipv.sfw.model;
 
 import java.sql.Date;
 import java.sql.Time;
-
-import it.unipv.sfw.account.Medico;
-import it.unipv.sfw.account.OperatoreSanitario;
-import it.unipv.sfw.account.Paziente;
 
 public class Prenotazione {
 	private int idPren;

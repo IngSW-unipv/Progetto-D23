@@ -1,4 +1,4 @@
-package it.unipv.sfw.cartellaclinica;
+package it.unipv.sfw.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

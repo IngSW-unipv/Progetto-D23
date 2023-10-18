@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.bean.prestazioneSanitaria;
+package it.unipv.sfw.jdbc.bean.prestazionesanitaria;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -38,6 +38,12 @@ public class PrestazioneSanitariaDAO implements IPrestazioneSanitariaDAO {
 		
 		return prestazioni;
 			
+	}
+
+	@Override
+	public PrestazioneSanitariaDB selectPrestazioneByIdPrest(int idPrest) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

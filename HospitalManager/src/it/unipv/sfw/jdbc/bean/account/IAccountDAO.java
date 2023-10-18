@@ -2,10 +2,10 @@ package it.unipv.sfw.jdbc.bean.account;
 
 import java.util.ArrayList;
 
-import it.unipv.sfw.account.Account;
+import it.unipv.sfw.model.Account;
 
 public interface IAccountDAO {
-	public ArrayList<AccountDB> selectAllAccounts();
-	public ArrayList<AccountDB> selectAllType(ArrayList<AccountDB> arraylist, String tipo);
-	public boolean insertAccount(Account a);
+	ArrayList<AccountDB> selectAllAccounts();
+	ArrayList<AccountDB> selectAllType(ArrayList<AccountDB> arraylist, String tipo);
+	boolean insertAccount(Account a);
 }

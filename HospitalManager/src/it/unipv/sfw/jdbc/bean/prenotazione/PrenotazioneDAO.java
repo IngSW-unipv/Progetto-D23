@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
-import it.unipv.sfw.prestazionisantarie.Prenotazione;
+import it.unipv.sfw.model.Prenotazione;
 
 public class PrenotazioneDAO implements IPrenotazioneDAO {
 	private Connection conn;
@@ -48,6 +48,30 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	@Override
 	public boolean insertPrenotazione(Prenotazione p) {
 		return false;
+	}
+
+	@Override
+	public ArrayList<PrenotazioneDB> selectPrenotazioniByIdPaziente(int idPaziente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<PrenotazioneDB> selectPrenotazioniByIdMedico(int idMedico) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<PrenotazioneDB> selectPrenotazioniByIdOperatore(int idOperatoreSanitario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PrenotazioneDB selectPrenotazioneByIdPren(int idPren) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
-import it.unipv.sfw.prestazionisantarie.Prenotazione;
+import it.unipv.sfw.model.Prenotazione;
 
 public class CalendarioDAO implements ICalendarioDAO {
 	private Connection conn;

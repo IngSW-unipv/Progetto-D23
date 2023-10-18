@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
+import it.unipv.sfw.model.Erogazione;
 
 public class ErogazioniDAO implements IErogazioniDAO {
 	private Connection conn;
@@ -40,6 +41,12 @@ public class ErogazioniDAO implements IErogazioniDAO {
 		ConnessioneDB.closeConnection(conn);
 		
 		return erogazioni;
+	}
+
+	@Override
+	public boolean insertErogazione(Erogazione e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

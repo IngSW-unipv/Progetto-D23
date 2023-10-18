@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import it.unipv.sfw.account.Persona;
 import it.unipv.sfw.jdbc.ConnessioneDB;
+import it.unipv.sfw.model.Persona;
 
 public class AnagraficaDAO implements IAnagraficaDAO {
 	private Connection conn;
@@ -83,5 +83,11 @@ public class AnagraficaDAO implements IAnagraficaDAO {
 			ConnessioneDB.closeConnection(conn);
 			return check;
 
+		}
+
+		@Override
+		public AnagraficaDB selectAnagraficaByCf(String cf) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 }

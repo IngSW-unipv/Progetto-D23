@@ -61,4 +61,10 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 		return check;
 	}
 
+	@Override
+	public CartellaClinicaDB selectCartellaByCf(String cf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

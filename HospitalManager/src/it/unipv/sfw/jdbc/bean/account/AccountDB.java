@@ -1,6 +1,6 @@
 package it.unipv.sfw.jdbc.bean.account;
 
-import it.unipv.sfw.account.TipoAccount;
+import it.unipv.sfw.model.TipoAccount;
 
 public class AccountDB {
 	private int idAcc;
