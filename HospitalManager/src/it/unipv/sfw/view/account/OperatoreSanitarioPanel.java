@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 public class OperatoreSanitarioPanel extends JPanel{
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JList visite;
-	private JButton prenota, cancella, logout;
+	private JButton logout;
 	private DefaultListModel modelloLista;
 	
 	public OperatoreSanitarioPanel() {
@@ -30,8 +30,6 @@ public class OperatoreSanitarioPanel extends JPanel{
 		cognome = new JLabel("Cognome");
 		cf = new JLabel("Cf");
 		tipoAccount = new JLabel("Operatore Sanitario");
-		prenota = new JButton("PRENOTA");
-		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
 		
 		visite = new JList();
@@ -49,8 +47,6 @@ public class OperatoreSanitarioPanel extends JPanel{
 		
 		add(new JScrollPane(visite), BorderLayout.CENTER);
 		
-		barSud.add(cancella);
-		barSud.add(prenota);
 		barSud.add(logout);
 		add(barSud, BorderLayout.SOUTH);
 		
