@@ -1,6 +1,6 @@
 package it.unipv.sfw.view;
 
-import javax.swing.*;
+import javax.swing.*; 
 
 import it.unipv.sfw.view.account.MedicoPanel;
 import it.unipv.sfw.view.account.OperatoreSanitarioPanel;
@@ -46,5 +46,25 @@ public class ViewController {
 	
 	public static void main(String[] args) {
 		ViewController main = new ViewController();
+	}
+
+	public LoginPanel getLoginPanel() {
+		return loginP;
+	}
+
+	public MedicoPanel getMedicoPanel() {
+		return medicoP;
+	}
+
+	public PazientePanel getPazientePanel() {
+		return pazienteP;
+	}
+
+	public OperatoreSanitarioPanel getOperatoreSanitarioPanel() {
+		return operatoreSanitarioP;
+	}
+
+	public OperatoreUfficioPanel getOperatoreUfficioPanel() {
+		return operatoreUfficioP;
 	}
 }

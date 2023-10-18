@@ -55,5 +55,9 @@ public class PazientePanel extends JPanel{
 		modelloLista.addElement(s);
 	}
 
+	public JButton getLogoutBtn() {
+		return logout;
+	}
+
 }
 

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -57,6 +58,10 @@ public class OperatoreSanitarioPanel extends JPanel{
 	
 	public void addElementoLista(String s) {
 		modelloLista.addElement(s);
+	}
+
+	public JButton getLogoutBtn() {
+		return logout;
 	}
 
 }

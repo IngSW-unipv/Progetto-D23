@@ -60,4 +60,8 @@ public class MedicoPanel extends JPanel{
 		modelloLista.addElement(s);
 	}
 
+	public JButton getLogoutBtn() {
+		return logout;
+	}
+
 }
