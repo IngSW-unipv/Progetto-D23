@@ -3,6 +3,10 @@ package it.unipv.sfw.model;
 import java.sql.Date;
 import java.sql.Time;
 
+import it.unipv.sfw.model.persona.Medico;
+import it.unipv.sfw.model.persona.OperatoreSanitario;
+import it.unipv.sfw.model.persona.Paziente;
+
 public class Prenotazione {
 	private int idPren;
 	private Paziente paziente;

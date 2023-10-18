@@ -3,6 +3,9 @@ package it.unipv.sfw.model;
 import java.sql.Date;
 import java.sql.Time;
 
+import it.unipv.sfw.model.persona.Medico;
+import it.unipv.sfw.model.persona.Paziente;
+
 public class PrestazioneSanitaria {
 	private TipoPrestazione type;
 	private DurataPrestazione durata;

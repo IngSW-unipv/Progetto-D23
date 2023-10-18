@@ -1,8 +1,8 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.persona;
 
-public class Paziente extends Persona {
+public class Medico extends Persona {
 
-	public Paziente(String cf, String nome, String cognome, String sesso, String dataNascita, String luogoNascita,
+	public Medico(String cf, String nome, String cognome, String sesso, String dataNascita, String luogoNascita,
 			String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes, String indirizzo,
 			String cap, String eMail, String cellulare) {
 		super(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes, provinciaRes, cittaRes,

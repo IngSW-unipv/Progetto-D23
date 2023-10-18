@@ -2,105 +2,82 @@ package it.unipv.sfw.model;
 
 import java.util.ArrayList;
 
-public class StrutturaSanitaria {
-	String nome, indirizzo, cap, paese, id;
-	
+import it.unipv.sfw.model.persona.*;
+
+
+public class StrutturaSanitaria implements IStrutturaSanitaria {
+	private int idStr;
+	private String nome;
+	private String regione;
+	private String provincia;
+	private String citta;
+	private String indirizzo;
+
+	private ArrayList<Paziente> pazienti;
 	private ArrayList<Medico> medici;
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<Account> accounts;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
-	private ArrayList<Paziente> pazienti;
 	private ArrayList<Prenotazione> prenotazioni;
-	
+	private ArrayList<Erogazione> erogazioni;
+	private ArrayList<CartellaClinica> cartelleCliniche; //contiene esiti
+
 	private static StrutturaSanitaria struttura1;
-	
-	
-	private StrutturaSanitaria() {
-		this.medici = new ArrayList<Medico>();
-		this.operatoriSanitari = new ArrayList<OperatoreSanitario>();
-		this.operatoriUfficio = new ArrayList<OperatoreUfficio>();
-		this.pazienti = new ArrayList<Paziente>();
-		this.prestazioni = new ArrayList<PrestazioneSanitaria>();
-		this.accounts = new ArrayList<Account>();
-		this.prenotazioni = new ArrayList<Prenotazione>();
 
-	}
-	
-	//istanza del modello
-	public static StrutturaSanitaria getInstance() {
-
-		if (struttura1 == null) {
-			struttura1 = new StrutturaSanitaria();
-		}
-		return struttura1;
-	}
-	
-	//metodi set
-	
-	public void populateMedici(ArrayList<Medico> medici) {
-
-		this.medici = medici;
-	}
-	
-	public void populateOperatoriSanitari (ArrayList<OperatoreSanitario> operatoriSanitari) {
-		this.operatoriSanitari = operatoriSanitari;
-	}
-	
-	public void populateOperatoriUfficio (ArrayList<OperatoreUfficio> operatoriUfficio) {
-		this.operatoriUfficio = operatoriUfficio;
-	}
-	
-	public void populatePazienti (ArrayList<Paziente> pazienti) {
+	public StrutturaSanitaria(int idStr, String nome, String regione, String provincia, String citta, String indirizzo,
+			ArrayList<Paziente> pazienti, ArrayList<Medico> medici, ArrayList<OperatoreSanitario> operatoriSanitari,
+			ArrayList<OperatoreUfficio> operatoriUfficio, ArrayList<Account> accounts,
+			ArrayList<PrestazioneSanitaria> prestazioni, ArrayList<Prenotazione> prenotazioni,
+			ArrayList<Erogazione> erogazioni, ArrayList<CartellaClinica> cartelleCliniche) {
+		super();
+		this.idStr = idStr;
+		this.nome = nome;
+		this.regione = regione;
+		this.provincia = provincia;
+		this.citta = citta;
+		this.indirizzo = indirizzo;
 		this.pazienti = pazienti;
-	}
-	
-	public void populateEsami (ArrayList<PrestazioneSanitaria> prestazioni) {
-		this.prestazioni = prestazioni;
-	}
-	
-	
-	public void populateAccounts (ArrayList<Account> accounts) {
+		this.medici = medici;
+		this.operatoriSanitari = operatoriSanitari;
+		this.operatoriUfficio = operatoriUfficio;
 		this.accounts = accounts;
-		
-	}
-	
-	public void populatePrenotazioni(ArrayList<Prenotazione> prenotazioni) {
-		this.prenotazioni = prenotazioni;
-	}
-	
-	public void populatePrestazioneSanitaria(ArrayList<PrestazioneSanitaria> prestazioni) {
 		this.prestazioni = prestazioni;
-	}
-	
-	//metodi get
-	
-	public ArrayList<Medico> getMediciArray() {
-		return medici;
+		this.prenotazioni = prenotazioni;
+		this.erogazioni = erogazioni;
+		this.cartelleCliniche = cartelleCliniche;
 	}
 
-	public ArrayList<OperatoreSanitario> getOpSanArray() {
-		return operatoriSanitari;
-	}
-	
-	public ArrayList<OperatoreUfficio> getOpUffArray() {
-		return operatoriUfficio;
-	}
-	
-	public ArrayList<Paziente> getPazientiArray() {
-		return pazienti;
-	}
-	
-	public ArrayList<PrestazioneSanitaria> getEsamiArray() {
-		return prestazioni;
-	}
-	
-	public ArrayList<Account> getAccountsArray() {
-		return accounts;
+	@Override
+	public boolean registrazionePaziente(String pw, String specializzazione, String cf, String nome, String cognome,
+			String sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
+			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public ArrayList<Prenotazione> getPrenotazioni() {
-		return prenotazioni;
+	@Override
+	public boolean registrazioneDipendente(TipoAccount tipoAcc, String pw, String specializzazione, String cf,
+			String nome, String cognome, String sesso, String dataNascita, String luogoNascita, String provinciaNascita,
+			String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail,
+			String cellulare) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
+	@Override
+	public boolean login(int idAcc, String pw) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int generaIdAcc() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+	
+	
 }

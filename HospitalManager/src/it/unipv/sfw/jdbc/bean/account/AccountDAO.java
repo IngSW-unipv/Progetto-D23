@@ -90,7 +90,7 @@ public class AccountDAO implements IAccountDAO {
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, a.getIdAcc());
 			ps1.setString(2, a.getTipoAcc().name());
-			ps1.setString(3, a.getCf());
+			ps1.setString(3, a.getP().getCf());
 			ps1.setString(4, a.getPw());
 			ps1.setString(5, a.getSpecializzazione());
 			ps1.executeUpdate(query);

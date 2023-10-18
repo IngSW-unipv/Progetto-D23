@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
-import it.unipv.sfw.model.Persona;
+import it.unipv.sfw.model.persona.Persona;
 
 public class AnagraficaDAO implements IAnagraficaDAO {
 	private Connection conn;

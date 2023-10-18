@@ -1,4 +1,8 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.persona;
+
+import java.util.ArrayList;
+
+import it.unipv.sfw.model.Prenotazione;
 
 public abstract class Persona {
 	private String cf;
@@ -149,6 +153,7 @@ public abstract class Persona {
 	}
 	
 	
+		
 	
 	
 }

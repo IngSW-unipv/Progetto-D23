@@ -1,31 +1,29 @@
 package it.unipv.sfw.model;
 
+import it.unipv.sfw.model.persona.*;
+
 public class Account {
+	private Persona p;
 	private int idAcc;
-	private TipoAccount tipoAcc;
-	private String cf;
 	private String pw;
 	private String specializzazione;
+	private TipoAccount tipoAcc;
 	
-	public Account(int idAcc, String tipoAcc, String cf, String pw, String specializzazione) {
+	public Account(Persona p, int idAcc, String pw, String specializzazione, TipoAccount tipoAcc) {
 		super();
+		this.p = p;
 		this.idAcc = idAcc;
-		this.tipoAcc = TipoAccount.valueOf(tipoAcc);
-		this.cf = cf;
 		this.pw = pw;
 		this.specializzazione = specializzazione;
+		this.tipoAcc = tipoAcc;
+	}
+
+	public Persona getP() {
+		return p;
 	}
 
 	public int getIdAcc() {
 		return idAcc;
-	}
-
-	public TipoAccount getTipoAcc() {
-		return tipoAcc;
-	}
-
-	public String getCf() {
-		return cf;
 	}
 
 	public String getPw() {
@@ -36,16 +34,16 @@ public class Account {
 		return specializzazione;
 	}
 
+	public TipoAccount getTipoAcc() {
+		return tipoAcc;
+	}
+
+	public void setP(Persona p) {
+		this.p = p;
+	}
+
 	public void setIdAcc(int idAcc) {
 		this.idAcc = idAcc;
-	}
-
-	public void setTipoAcc(TipoAccount tipoAcc) {
-		this.tipoAcc = tipoAcc;
-	}
-
-	public void setCf(String cf) {
-		this.cf = cf;
 	}
 
 	public void setPw(String pw) {
@@ -55,6 +53,11 @@ public class Account {
 	public void setSpecializzazione(String specializzazione) {
 		this.specializzazione = specializzazione;
 	}
+
+	public void setTipoAcc(TipoAccount tipoAcc) {
+		this.tipoAcc = tipoAcc;
+	}
+	
 	
 	
 	
