@@ -1,4 +1,4 @@
-package it.unipv.sfw.jdbc.cartellaclinica;
+package it.unipv.sfw.jdbc.bean.cartellaclinica;
 
 import java.util.ArrayList;
 
