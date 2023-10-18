@@ -1,7 +1,8 @@
 package it.unipv.sfw.strutturasanitaria;
 
 import java.util.ArrayList;
-import it.unipv.sfw.persona.*;
+
+import it.unipv.sfw.account.*;
 import it.unipv.sfw.prestazionisantarie.*;
 
 public class StrutturaSanitaria {

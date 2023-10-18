@@ -2,6 +2,7 @@ package it.unipv.sfw.jdbc.bean.account;
 import java.sql.*;
 import java.util.ArrayList;
 
+import it.unipv.sfw.account.Account;
 import it.unipv.sfw.jdbc.ConnessioneDB;
 
 public class AccountDAO implements IAccountDAO {
@@ -78,7 +79,7 @@ public class AccountDAO implements IAccountDAO {
 	
 	//inserimento account passando i relativi parametri
 	@Override
-	public boolean insertAccount(int idAcc, String tipoAcc, String cf, String pw, String specializzazione) {
+	public boolean insertAccount(Account a) {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		
@@ -87,11 +88,11 @@ public class AccountDAO implements IAccountDAO {
 		try {
 			String query = "INSERT INTO hospitalmanager.PROFILI VALUES (?,?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
-			ps1.setInt(1, idAcc);
-			ps1.setString(2, tipoAcc);
-			ps1.setString(3, cf);
-			ps1.setString(4, pw);
-			ps1.setString(5, specializzazione);
+			ps1.setInt(1, a.getIdAcc());
+			ps1.setString(2, a.getTipoAcc().name());
+			ps1.setString(3, a.getCf());
+			ps1.setString(4, a.getPw());
+			ps1.setString(5, a.getSpecializzazione());
 			ps1.executeUpdate(query);
 			//ps1.executeUpdate();
 		}

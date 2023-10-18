@@ -3,8 +3,8 @@ package it.unipv.sfw.prestazionisantarie;
 import java.sql.Date;
 import java.sql.Time;
 
-import it.unipv.sfw.persona.Medico;
-import it.unipv.sfw.persona.Paziente;
+import it.unipv.sfw.account.Medico;
+import it.unipv.sfw.account.Paziente;
 
 public class PrestazioneSanitaria {
 	private TipoPrestazione type;

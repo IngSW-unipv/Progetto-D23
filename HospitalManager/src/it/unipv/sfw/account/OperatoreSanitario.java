@@ -1,4 +1,4 @@
-package it.unipv.sfw.persona;
+package it.unipv.sfw.account;
 
 public class OperatoreSanitario extends Persona {
 

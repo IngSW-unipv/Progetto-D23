@@ -1,6 +1,6 @@
 package it.unipv.sfw.jdbc.bean.account;
 
-import it.unipv.sfw.strutturasanitaria.TipoAccount;
+import it.unipv.sfw.account.TipoAccount;
 
 public class AccountDB {
 	private int idAcc;

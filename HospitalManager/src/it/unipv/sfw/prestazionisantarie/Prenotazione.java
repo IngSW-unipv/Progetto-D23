@@ -3,9 +3,9 @@ package it.unipv.sfw.prestazionisantarie;
 import java.sql.Date;
 import java.sql.Time;
 
-import it.unipv.sfw.persona.Medico;
-import it.unipv.sfw.persona.OperatoreSanitario;
-import it.unipv.sfw.persona.Paziente;
+import it.unipv.sfw.account.Medico;
+import it.unipv.sfw.account.OperatoreSanitario;
+import it.unipv.sfw.account.Paziente;
 
 public class Prenotazione {
 	private int idPren;
