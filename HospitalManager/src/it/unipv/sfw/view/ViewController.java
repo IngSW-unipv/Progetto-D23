@@ -7,6 +7,7 @@ import it.unipv.sfw.view.account.OperatoreSanitarioPanel;
 import it.unipv.sfw.view.account.OperatoreUfficioPanel;
 import it.unipv.sfw.view.account.PazientePanel;
 import it.unipv.sfw.view.login.LoginPanel;
+import it.unipv.sfw.view.login.RegistratiPanel;
 
 public class ViewController {
 	
@@ -17,6 +18,7 @@ public class ViewController {
 	private MedicoPanel medicoP;
 	private OperatoreSanitarioPanel operatoreSanitarioP;
 	private OperatoreUfficioPanel operatoreUfficioP;
+	private RegistratiPanel registratiP;
 
 	
 	public ViewController() {
@@ -34,11 +36,15 @@ public class ViewController {
 		
 		//Login
 		loginP = new LoginPanel();
-		panel.add(loginP);
+		//panel.add(loginP);
 		
 		//Paziente
 		pazienteP = new PazientePanel();
 		//panel.add(pazienteP);
+		
+		//Registrati
+		registratiP = new RegistratiPanel();
+		panel.add(registratiP);
 		
 		
 		frame.setVisible(true);

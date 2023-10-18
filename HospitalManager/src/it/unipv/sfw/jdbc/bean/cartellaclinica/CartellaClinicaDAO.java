@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import it.unipv.sfw.jdbc.ConnessioneDB;
+import it.unipv.sfw.jdbc.bean.anagrafica.AnagraficaDB;
 
 public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 	private Connection conn;
 	private ArrayList<CartellaClinicaDB> cartelleCliniche;
+	private CartellaClinicaDB cc;
 
 	@Override
 	public ArrayList<CartellaClinicaDB> selectAllCartelle() {
@@ -62,9 +64,28 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 	}
 
 	@Override
-	public CartellaClinicaDB selectCartellaByCf(String cf) {
-		// TODO Auto-generated method stub
-		return null;
+	public CartellaClinicaDB selectCartellaByIdAcc(String idAcc) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		ResultSet rs1;
+
+		
+		try {
+			String query= "SELECT * from hospitalmanager.CARTELLA_CLINICA WHERE ID_ACC = ? ";
+			ps1 = conn.prepareStatement(query);
+			ps1.setString(1, idAcc);
+			rs1 = ps1.executeQuery();
+			
+			while (rs1.next()) {
+				CartellaClinicaDB cc = new CartellaClinicaDB(rs1.getInt("ID_ACC"), rs1.getInt("ALTEZZA"), rs1.getInt("PESO"), rs1.getString("GRUPPO_SANGUIGNO"));
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		return cc;
 	}
 
 }
