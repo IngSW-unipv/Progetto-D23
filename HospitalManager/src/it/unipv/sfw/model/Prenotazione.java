@@ -1,7 +1,6 @@
 package it.unipv.sfw.model;
-
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.persona.OperatoreSanitario;
@@ -10,37 +9,28 @@ import it.unipv.sfw.model.persona.Paziente;
 public class Prenotazione {
 	private int idPren;
 	private Paziente paziente;
+	private PrestazioneSanitaria prestazione;
 	private Medico medico;
 	private OperatoreSanitario opSanitario;
-	private String idPrest;
-	private Date data;
-	private Time orario;
-	private String note;
+	private LocalDate data;
+	private LocalTime orario;
 	
-	
-	
-	
-	public Prenotazione(int idPren, Paziente paziente, Medico medico, OperatoreSanitario opSanitario, String idPrest,
-			Date data, Time orario, String note) {
+	public Prenotazione(int idPren, Paziente paziente, PrestazioneSanitaria prestazione, Medico medico, OperatoreSanitario opSanitario,
+			LocalDate data, LocalTime orario) {
 		super();
 		this.idPren = idPren;
 		this.paziente = paziente;
+		this.prestazione= prestazione;
 		this.medico = medico;
 		this.opSanitario = opSanitario;
-		this.idPrest = idPrest;
 		this.data = data;
 		this.orario = orario;
-		this.note = note;
 	}
-
-
 
 
 	public int getIdPren() {
 		return idPren;
 	}
-
-
 
 
 	public Paziente getPaziente() {
@@ -64,29 +54,15 @@ public class Prenotazione {
 
 
 
-	public String getIdPrest() {
-		return idPrest;
-	}
-
-
-
-
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
 
 
 
-	public Time getOrario() {
+	public LocalTime getOrario() {
 		return orario;
-	}
-
-
-
-
-	public String getNote() {
-		return note;
 	}
 
 
@@ -120,32 +96,29 @@ public class Prenotazione {
 
 
 
-	public void setIdPrest(String idPrest) {
-		this.idPrest = idPrest;
-	}
-
-
-
-
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
 
 
 
-	public void setOrario(Time orario) {
+	public void setOrario(LocalTime orario) {
 		this.orario = orario;
 	}
 
 
 
 
-	public void setNote(String note) {
-		this.note = note;
+	public PrestazioneSanitaria getPrestazione() {
+		return prestazione;
+	}
+
+
+
+
+	public void setPrestazione(PrestazioneSanitaria prestazione) {
+		this.prestazione = prestazione;
 	}
 	
-	
-	
 }
-	

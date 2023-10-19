@@ -3,41 +3,42 @@ package it.unipv.sfw.model;
 import java.util.ArrayList;
 
 public class CartellaClinica {
-	private int idAcc;
-	private int altezza;
-	private int peso;
+	private double altezza;
+	private double peso;
 	private GruppiSanguigni gruppoSanguigno;
-	ArrayList <String> esiti;
+	private ArrayList <Erogazione> erogazioni;
 	
-	public int getIdAcc() {
-		return idAcc;
+	
+	public CartellaClinica(double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
+		super();
+		this.altezza = altezza;
+		this.peso = peso;
+		this.gruppoSanguigno = gruppoSanguigno;
+		this.erogazioni = new ArrayList<>();
 	}
-	public int getAltezza() {
+	public double getAltezza() {
 		return altezza;
 	}
-	public int getPeso() {
+	public double getPeso() {
 		return peso;
 	}
 	public GruppiSanguigni getGruppoSanguigno() {
 		return gruppoSanguigno;
 	}
-	public ArrayList<String> getEsiti() {
-		return esiti;
+	public ArrayList<Erogazione> getErogazioni() {
+		return erogazioni;
 	}
-	public void setIdAcc(int idAcc) {
-		this.idAcc = idAcc;
-	}
-	public void setAltezza(int altezza) {
+	public void setAltezza(double altezza) {
 		this.altezza = altezza;
 	}
-	public void setPeso(int peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 	public void setGruppoSanguigno(GruppiSanguigni gruppoSanguigno) {
 		this.gruppoSanguigno = gruppoSanguigno;
 	}
-	public void setEsiti(ArrayList<String> esiti) {
-		this.esiti = esiti;
+	public void setErogazioni(ArrayList<Erogazione> erogazioni) {
+		this.erogazioni = erogazioni;
 	}
 	
 	

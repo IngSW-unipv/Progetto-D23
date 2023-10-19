@@ -1,56 +1,39 @@
 package it.unipv.sfw.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class Erogazione {
-	private int idPren;
-	private LocalDate dataErog;
-	private LocalTime oraErog;
+	private Prenotazione prenotazione;
 	private boolean accreditamento;
+	private Esito esito;
 	
-	public Erogazione(int idPren, String dataErog, String oraErog, boolean accreditamento) {
+	public Erogazione(Prenotazione prenotazione, boolean accreditamento, Esito esito) {
 		super();
-		this.idPren = idPren;
-		this.dataErog = LocalDate.parse(dataErog);
-		this.oraErog = LocalTime.parse(oraErog);
+		this.prenotazione = prenotazione;
 		this.accreditamento = accreditamento;
+		this.esito = esito;
 	}
 
-	public int getIdPren() {
-		return idPren;
+	public Prenotazione getPrenotazione() {
+		return prenotazione;
 	}
 
-	public LocalDate getDataErog() {
-		return dataErog;
-	}
-
-	public LocalTime getOraErog() {
-		return oraErog;
+	public void setPrenotazione(Prenotazione prenotazione) {
+		this.prenotazione = prenotazione;
 	}
 
 	public boolean isAccreditamento() {
 		return accreditamento;
 	}
 
-	public void setIdPren(int idPren) {
-		this.idPren = idPren;
-	}
-
-	public void setDataErog(LocalDate dataErog) {
-		this.dataErog = dataErog;
-	}
-
-	public void setOraErog(LocalTime oraErog) {
-		this.oraErog = oraErog;
-	}
-
 	public void setAccreditamento(boolean accreditamento) {
 		this.accreditamento = accreditamento;
 	}
-	
-	
-	
-	
+
+	public Esito getEsito() {
+		return esito;
+	}
+
+	public void setEsito(Esito esito) {
+		this.esito = esito;
+	}
 	
 }

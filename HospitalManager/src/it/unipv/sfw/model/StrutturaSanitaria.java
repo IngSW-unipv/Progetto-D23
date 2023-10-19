@@ -1,17 +1,14 @@
 package it.unipv.sfw.model;
-
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.persona.*;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
-	private int idStr;
 	private String nome;
-	private String regione;
-	private String provincia;
-	private String citta;
 	private String indirizzo;
+	private String telefono;
+	private String email;
 
 	private ArrayList<Paziente> pazienti;
 	private ArrayList<Medico> medici;
@@ -21,22 +18,17 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Prenotazione> prenotazioni;
 	private ArrayList<Erogazione> erogazioni;
-	private ArrayList<CartellaClinica> cartelleCliniche; //contiene esiti
-
-	private static StrutturaSanitaria struttura1;
-
-	public StrutturaSanitaria(int idStr, String nome, String regione, String provincia, String citta, String indirizzo,
+	
+	public StrutturaSanitaria(String nome, String indirizzo, String telefono, String email,
 			ArrayList<Paziente> pazienti, ArrayList<Medico> medici, ArrayList<OperatoreSanitario> operatoriSanitari,
 			ArrayList<OperatoreUfficio> operatoriUfficio, ArrayList<Account> accounts,
 			ArrayList<PrestazioneSanitaria> prestazioni, ArrayList<Prenotazione> prenotazioni,
-			ArrayList<Erogazione> erogazioni, ArrayList<CartellaClinica> cartelleCliniche) {
+			ArrayList<Erogazione> erogazioni) {
 		super();
-		this.idStr = idStr;
 		this.nome = nome;
-		this.regione = regione;
-		this.provincia = provincia;
-		this.citta = citta;
 		this.indirizzo = indirizzo;
+		this.telefono = telefono;
+		this.email = email;
 		this.pazienti = pazienti;
 		this.medici = medici;
 		this.operatoriSanitari = operatoriSanitari;
@@ -45,7 +37,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.prestazioni = prestazioni;
 		this.prenotazioni = prenotazioni;
 		this.erogazioni = erogazioni;
-		this.cartelleCliniche = cartelleCliniche;
 	}
 
 	@Override
