@@ -17,13 +17,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<Account> accounts;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Prenotazione> prenotazioni;
-	private ArrayList<Erogazione> erogazioni;
+	//private ArrayList<Erogazione> erogazioni;
 	
 	public StrutturaSanitaria(String nome, String indirizzo, String telefono, String email,
 			ArrayList<Paziente> pazienti, ArrayList<Medico> medici, ArrayList<OperatoreSanitario> operatoriSanitari,
 			ArrayList<OperatoreUfficio> operatoriUfficio, ArrayList<Account> accounts,
-			ArrayList<PrestazioneSanitaria> prestazioni, ArrayList<Prenotazione> prenotazioni,
-			ArrayList<Erogazione> erogazioni) {
+			ArrayList<PrestazioneSanitaria> prestazioni, ArrayList<Prenotazione> prenotazioni
+			/*ArrayList<Erogazione> erogazioni*/) {
 		super();
 		this.nome = nome;
 		this.indirizzo = indirizzo;
@@ -36,7 +36,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.accounts = accounts;
 		this.prestazioni = prestazioni;
 		this.prenotazioni = prenotazioni;
-		this.erogazioni = erogazioni;
+		//this.erogazioni = erogazioni;
 	}
 
 	@Override
@@ -64,6 +64,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 
 	@Override
 	public int generaIdAcc() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int generaIdPren() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

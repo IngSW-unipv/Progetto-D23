@@ -2,12 +2,12 @@ package it.unipv.sfw.model;
 
 
 public class PrestazioneSanitaria {
-	private int idPrest;
+	private String idPrest;
 	private TipoPrestazione tipo;
 	private DurataPrestazione durata;
 	private double costo;
 	
-	public PrestazioneSanitaria(int idPrest, TipoPrestazione tipo, DurataPrestazione durata, double costo) {
+	public PrestazioneSanitaria(String idPrest, TipoPrestazione tipo, DurataPrestazione durata, double costo) {
 		super();
 		this.idPrest = idPrest;
 		this.tipo = tipo;
@@ -15,11 +15,11 @@ public class PrestazioneSanitaria {
 		this.costo = costo;
 	}
 
-	public int getIdPrest() {
+	public String getIdPrest() {
 		return idPrest;
 	}
 
-	public void setIdPrest(int idPrest) {
+	public void setIdPrest(String idPrest) {
 		this.idPrest = idPrest;
 	}
 

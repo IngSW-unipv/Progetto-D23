@@ -49,4 +49,10 @@ public class EsitiDAO implements IEsitiDAO {
 		return false;
 	}
 
+	@Override
+	public ArrayList<EsitiDB> SelectEsitiByidAcc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

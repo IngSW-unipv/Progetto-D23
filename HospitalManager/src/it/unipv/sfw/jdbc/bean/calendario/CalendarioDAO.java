@@ -1,9 +1,11 @@
 package it.unipv.sfw.jdbc.bean.calendario;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
@@ -55,13 +57,14 @@ public class CalendarioDAO implements ICalendarioDAO {
 	@Override
 	public ArrayList<SlotCalendarioDB> SelectVoidSlot(String idPrest){
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
-		Statement st1;
+		PreparedStatement ps1;
 		ResultSet rs1;
 		
 		try {
-			st1 = conn.createStatement();
 			String query = "SELECT * FROM hospitalmanager.CALENDARI WHERE ? IS NULL";
-			rs1 = st1.executeQuery(query);
+			ps1 = conn.prepareStatement(query);
+			ps1.setString(1, idPrest);
+			rs1 = ps1.executeQuery(query);
 			
 			while(rs1.next()) {
 				SlotCalendarioDB sc = new SlotCalendarioDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
@@ -92,12 +95,13 @@ public class CalendarioDAO implements ICalendarioDAO {
 		try {
 			String query = "UPDATE hospitalmanager.CALENDARI SET ? = ? WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, p.getIdPrest());	//identifica la colonna della table CALENDARI
+			ps1.setString(1, p.getPrestazione().getIdPrest());	//identifica la colonna della table CALENDARI
 			ps1.setInt(2, p.getIdPren());		//identificatore prenotazione da inserire a calendario
-			ps1.setDate(3, p.getData());
-			ps1.setTime(4, p.getOrario());
+			ps1.setDate(3, Date.valueOf(p.getData()));
+			ps1.setTime(4, Time.valueOf(p.getOrario()));
 			ps1.executeUpdate(query);
 			//ps1.executeUpdate();
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();

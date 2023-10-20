@@ -7,5 +7,5 @@ import it.unipv.sfw.model.Esito;
 public interface IEsitiDAO {
 	ArrayList<EsitiDB> SelectAllEsiti();
 	boolean insertEsito(Esito e);
-
+	ArrayList<EsitiDB> SelectEsitiByidAcc();
 }

@@ -14,6 +14,8 @@ public class Prenotazione {
 	private OperatoreSanitario opSanitario;
 	private LocalDate data;
 	private LocalTime orario;
+	private boolean accreditamento;
+	private Esito esiti;
 	
 	public Prenotazione(int idPren, Paziente paziente, PrestazioneSanitaria prestazione, Medico medico, OperatoreSanitario opSanitario,
 			LocalDate data, LocalTime orario) {
@@ -25,100 +27,82 @@ public class Prenotazione {
 		this.opSanitario = opSanitario;
 		this.data = data;
 		this.orario = orario;
+		this.accreditamento = false;
+		this.esiti = new Esito(null, null);
 	}
-
 
 	public int getIdPren() {
 		return idPren;
 	}
 
+	public void setIdPren(int idPren) {
+		this.idPren = idPren;
+	}
 
 	public Paziente getPaziente() {
 		return paziente;
 	}
 
-
-
-
-	public Medico getMedico() {
-		return medico;
-	}
-
-
-
-
-	public OperatoreSanitario getOpSanitario() {
-		return opSanitario;
-	}
-
-
-
-
-	public LocalDate getData() {
-		return data;
-	}
-
-
-
-
-	public LocalTime getOrario() {
-		return orario;
-	}
-
-
-
-
-	public void setIdPren(int idPren) {
-		this.idPren = idPren;
-	}
-
-
-
-
 	public void setPaziente(Paziente paziente) {
 		this.paziente = paziente;
 	}
-
-
-
-
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
-
-
-
-
-	public void setOpSanitario(OperatoreSanitario opSanitario) {
-		this.opSanitario = opSanitario;
-	}
-
-
-
-
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
-
-
-
-
-	public void setOrario(LocalTime orario) {
-		this.orario = orario;
-	}
-
-
-
 
 	public PrestazioneSanitaria getPrestazione() {
 		return prestazione;
 	}
 
-
-
-
 	public void setPrestazione(PrestazioneSanitaria prestazione) {
 		this.prestazione = prestazione;
 	}
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	public OperatoreSanitario getOpSanitario() {
+		return opSanitario;
+	}
+
+	public void setOpSanitario(OperatoreSanitario opSanitario) {
+		this.opSanitario = opSanitario;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public LocalTime getOrario() {
+		return orario;
+	}
+
+	public void setOrario(LocalTime orario) {
+		this.orario = orario;
+	}
+
+	public boolean isAccreditamento() {
+		return accreditamento;
+	}
+
+	public void setAccreditamento(boolean accreditamento) {
+		this.accreditamento = accreditamento;
+	}
+
+	public Esito getEsiti() {
+		return esiti;
+	}
+
+	public void setEsiti(Esito esiti) {
+		this.esiti = esiti;
+	}
+
+
 	
 }

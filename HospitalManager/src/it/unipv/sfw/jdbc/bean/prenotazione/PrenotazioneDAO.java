@@ -1,8 +1,11 @@
 package it.unipv.sfw.jdbc.bean.prenotazione;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
@@ -72,6 +75,31 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	public PrenotazioneDB selectPrenotazioneByIdPren(int idPren) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean updateAccreditamento(Prenotazione p, boolean pagamento) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		
+		boolean check = true;
+		
+		try {
+			String query = "UPDATE hospitalmanager.PRENOTAZIONI SET ACCREDITAMENTO = ? WHERE ID_PREN = ?";
+			ps1 = conn.prepareStatement(query);
+			ps1.setBoolean(1, pagamento);
+			ps1.setInt(2, p.getIdPren());
+			ps1.executeUpdate(query);
+			//ps1.executeUpdate();
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			check = false;
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		return check;
 	}
 
 }

@@ -11,5 +11,6 @@ public interface IStrutturaSanitaria {
 			String cap, String eMail, String cellulare);
 	boolean login(int idAcc, String pw);
 	int generaIdAcc();
+	int generaIdPren();
 	
 }

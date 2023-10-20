@@ -64,7 +64,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 	}
 
 	@Override
-	public CartellaClinicaDB selectCartellaByIdAcc(String idAcc) {
+	public CartellaClinicaDB selectCartellaByIdAcc(int idAcc) {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;
@@ -73,7 +73,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 		try {
 			String query= "SELECT * from hospitalmanager.CARTELLA_CLINICA WHERE ID_ACC = ? ";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, idAcc);
+			ps1.setInt(1, idAcc);
 			rs1 = ps1.executeQuery();
 			
 			while (rs1.next()) {
