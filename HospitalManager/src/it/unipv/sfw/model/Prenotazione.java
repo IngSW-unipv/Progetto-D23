@@ -2,22 +2,19 @@ package it.unipv.sfw.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import it.unipv.sfw.model.persona.Medico;
-import it.unipv.sfw.model.persona.OperatoreSanitario;
-import it.unipv.sfw.model.persona.Paziente;
 
 public class Prenotazione {
 	private int idPren;
-	private Paziente paziente;
+	private Account paziente;
 	private PrestazioneSanitaria prestazione;
-	private Medico medico;
-	private OperatoreSanitario opSanitario;
+	private Account medico;
+	private Account opSanitario;
 	private LocalDate data;
 	private LocalTime orario;
 	private boolean accreditamento;
 	private Esito esiti;
 	
-	public Prenotazione(int idPren, Paziente paziente, PrestazioneSanitaria prestazione, Medico medico, OperatoreSanitario opSanitario,
+	public Prenotazione(int idPren, Account paziente, PrestazioneSanitaria prestazione, Account medico, Account opSanitario,
 			LocalDate data, LocalTime orario) {
 		super();
 		this.idPren = idPren;
@@ -39,11 +36,11 @@ public class Prenotazione {
 		this.idPren = idPren;
 	}
 
-	public Paziente getPaziente() {
+	public Account getPaziente() {
 		return paziente;
 	}
 
-	public void setPaziente(Paziente paziente) {
+	public void setPaziente(Account paziente) {
 		this.paziente = paziente;
 	}
 
@@ -55,19 +52,19 @@ public class Prenotazione {
 		this.prestazione = prestazione;
 	}
 
-	public Medico getMedico() {
+	public Account getMedico() {
 		return medico;
 	}
 
-	public void setMedico(Medico medico) {
+	public void setMedico(Account medico) {
 		this.medico = medico;
 	}
 
-	public OperatoreSanitario getOpSanitario() {
+	public Account getOpSanitario() {
 		return opSanitario;
 	}
 
-	public void setOpSanitario(OperatoreSanitario opSanitario) {
+	public void setOpSanitario(Account opSanitario) {
 		this.opSanitario = opSanitario;
 	}
 
