@@ -14,13 +14,11 @@ import it.unipv.sfw.model.Prenotazione;
 public class CalendarioDAO implements ICalendarioDAO {
 	private Connection conn;
 	ArrayList<SlotCalendarioDB> calendario;
-	ArrayList<SlotCalendarioDB> slotLiberi;
+	
 	
 	public CalendarioDAO() {
 		super();
 		this.calendario = new ArrayList<>();
-		this.slotLiberi = new ArrayList<>();
-
 	}
 
 
@@ -56,6 +54,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	// ricerca slot liberi per prestazione
 	@Override
 	public ArrayList<SlotCalendarioDB> SelectVoidSlot(String idPrest){
+		ArrayList<SlotCalendarioDB> slotLiberi = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;

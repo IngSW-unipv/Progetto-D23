@@ -12,7 +12,6 @@ import it.unipv.sfw.model.persona.Persona;
 public class AnagraficaDAO implements IAnagraficaDAO {
 	private Connection conn;
 	ArrayList<AnagraficaDB> persone;
-	AnagraficaDB af;
 	
 	
 	public AnagraficaDAO() {
@@ -87,6 +86,8 @@ public class AnagraficaDAO implements IAnagraficaDAO {
 
 		@Override
 		public AnagraficaDB selectAnagraficaByCf(String cf) {
+			AnagraficaDB af = null;
+
 			conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 			PreparedStatement ps1;
 			ResultSet rs1;
@@ -99,7 +100,7 @@ public class AnagraficaDAO implements IAnagraficaDAO {
 				rs1 = ps1.executeQuery();
 				
 				while (rs1.next()) {
-					AnagraficaDB af = new AnagraficaDB(rs1.getString("CF"), rs1.getString("NOME"), rs1.getString("COGNOME"),
+					 af = new AnagraficaDB(rs1.getString("CF"), rs1.getString("NOME"), rs1.getString("COGNOME"),
 							rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
 							rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
 							rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));

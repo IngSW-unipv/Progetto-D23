@@ -42,8 +42,25 @@ public class PrestazioneSanitariaDAO implements IPrestazioneSanitariaDAO {
 
 	@Override
 	public PrestazioneSanitariaDB selectPrestazioneByIdPrest(int idPrest) {
-		// TODO Auto-generated method stub
-		return null;
+		PrestazioneSanitariaDB ps = null;
+		conn= ConnessioneDB.startConnection(conn,"hospitalmanager");
+		PreparedStatement ps1;
+		ResultSet rs1;
+		
+		try {
+			String query= "SELECT * from hospitalmanager.PRESTAZIONI_SANITARIE WHERE ID_PREST = ?";
+			ps1 = conn.prepareStatement(query);
+			ps1.setInt(1, idPrest);
+			rs1= ps1.executeQuery(query);
+			ps = new PrestazioneSanitariaDB(rs1.getInt("ID_PREST"), rs1.getString("TIPO"), rs1.getString("DURATA"), rs1.getDouble("COSTO"));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		
+		return ps;
 	}
 
 }

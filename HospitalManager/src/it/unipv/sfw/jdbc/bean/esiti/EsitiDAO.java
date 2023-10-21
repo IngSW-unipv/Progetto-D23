@@ -1,12 +1,13 @@
 package it.unipv.sfw.jdbc.bean.esiti;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
-import it.unipv.sfw.model.Esito;
+import it.unipv.sfw.model.Prenotazione;
 
 public class EsitiDAO implements IEsitiDAO {
 	private Connection conn;
@@ -31,7 +32,7 @@ public class EsitiDAO implements IEsitiDAO {
 			rs1= st1.executeQuery(query);
 			
 			while (rs1.next()) {
-				EsitiDB e = new EsitiDB(rs1.getInt("ID_PRESN"), rs1.getString("REFERTO"), rs1.getString("TERAPIA"));
+				EsitiDB e = new EsitiDB(rs1.getInt("ID_PREN"), rs1.getString("REFERTO"), rs1.getString("TERAPIA"));
 				esiti.add(e);
 			}
 		}
@@ -44,15 +45,57 @@ public class EsitiDAO implements IEsitiDAO {
 	}
 
 	@Override
-	public boolean insertEsito(Esito e) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insertEsito(Prenotazione p) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		
+		boolean check = true;
+		
+		try {
+			String query = "INSERT INTO hospitalmanager.ESITI VALUES (?,?,?)";
+			ps1 = conn.prepareStatement(query);
+			ps1.setInt(1, p.getIdPren());
+			ps1.setString(0, p.getEsiti().getReferto());
+			ps1.setString(0, p.getEsiti().getTerapia());		
+			ps1.executeUpdate(query);
+			//ps1.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			check = false;
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		return check;
 	}
 
+		// selezione degli esiti passando l'idAccount del paziente
 	@Override
-	public ArrayList<EsitiDB> SelectEsitiByidAcc() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<EsitiDB> SelectEsitiByAccount(int idAcc) {
+		ArrayList<EsitiDB> esitiPaziente = new ArrayList<>();
+		
+		conn= ConnessioneDB.startConnection(conn,"hospitalmanager");
+		PreparedStatement ps1;
+		ResultSet rs1;
+
+		
+		try {
+			String query= "SELECT hospitalmanager.ESITI.* from hospitalmanager.PRENOTAZIONI JOIN hospitalmanager.ESITI ON PRENOTAZIONI.ID_PREN = ESITI.ID_PREN WHERE ID_PAZIENTE = ?";
+			ps1 = conn.prepareStatement(query);
+			ps1.setInt(1, idAcc);
+			rs1 = ps1.executeQuery(query);
+			
+			while (rs1.next()) {
+				EsitiDB e = new EsitiDB(rs1.getInt("ID_PREN"), rs1.getString("REFERTO"), rs1.getString("TERAPIA"));
+				esitiPaziente.add(e);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		return esitiPaziente;
 	}
 
 }

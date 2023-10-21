@@ -11,7 +11,13 @@ import it.unipv.sfw.jdbc.bean.anagrafica.AnagraficaDB;
 public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 	private Connection conn;
 	private ArrayList<CartellaClinicaDB> cartelleCliniche;
-	private CartellaClinicaDB cc;
+
+	
+	
+	public CartellaClinicaDAO(Connection conn, ArrayList<CartellaClinicaDB> cartelleCliniche) {
+		super();
+		this.cartelleCliniche = new ArrayList<>();
+	}
 
 	@Override
 	public ArrayList<CartellaClinicaDB> selectAllCartelle() {
@@ -65,6 +71,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 
 	@Override
 	public CartellaClinicaDB selectCartellaByIdAcc(int idAcc) {
+		CartellaClinicaDB cc = null;
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;
@@ -77,7 +84,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 			rs1 = ps1.executeQuery();
 			
 			while (rs1.next()) {
-				CartellaClinicaDB cc = new CartellaClinicaDB(rs1.getInt("ID_ACC"), rs1.getInt("ALTEZZA"), rs1.getInt("PESO"), rs1.getString("GRUPPO_SANGUIGNO"));
+				cc = new CartellaClinicaDB(rs1.getInt("ID_ACC"), rs1.getInt("ALTEZZA"), rs1.getInt("PESO"), rs1.getString("GRUPPO_SANGUIGNO"));
 			}
 		}
 		catch(Exception e){
