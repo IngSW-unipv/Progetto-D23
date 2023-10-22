@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.bean.account.AccountDAO;
 import it.unipv.sfw.jdbc.bean.anagrafica.AnagraficaDAO;
+import it.unipv.sfw.model.exception.LoginException;
 import it.unipv.sfw.model.persona.*;
 
 
@@ -150,15 +151,35 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 
 	@Override
-	public boolean cambioPw(String vecchiaPw, String nuovaPw) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean cambioPw(int idAcc, String vecchiaPw, String nuovaPw) {
+		Account a = accounts.get(idAcc);
+		boolean check1 = false;
+		boolean check2 = false;
+		try {
+			check1 = accountDAO.updatePw(idAcc, nuovaPw);
+			check2 = a.setPw(vecchiaPw, nuovaPw);
+		}
+		catch(LoginException e) {
+			check2 = false;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			check1 = false;
+		}
+		return check1 && check2;
 	}
 	
 	@Override
 	public boolean login(int idAcc, String pw) {
-		// TODO Auto-generated method stub
-		return false;
+		Account a = accounts.get(idAcc);
+		boolean check = false;
+		try {
+			check = a.controllaPw(pw);
+		}
+		catch(LoginException e) {
+			check = false;
+		}
+		return check;
 	}
 
 	

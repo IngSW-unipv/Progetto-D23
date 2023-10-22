@@ -1,5 +1,6 @@
 package it.unipv.sfw.model;
 
+import it.unipv.sfw.model.exception.LoginException;
 import it.unipv.sfw.model.persona.*;
 
 public class Account {
@@ -46,8 +47,19 @@ public class Account {
 		this.idAcc = idAcc;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public boolean setPw(String vecchiaPw, String nuovaPw) throws LoginException {
+		boolean check = false;
+		if(controllaPw(vecchiaPw)) {
+			if(vecchiaPw == nuovaPw) {
+				throw new LoginException("La nuova password non può essere uguale a quella corrente");
+			}
+			else {
+				this.pw = nuovaPw;
+				check = true;
+			}
+		}
+		
+		return check;
 	}
 
 	public void setSpecializzazione(String specializzazione) {
@@ -58,6 +70,17 @@ public class Account {
 		this.tipoAcc = tipoAcc;
 	}
 	
+	public boolean controllaPw(String pw) throws LoginException{
+		boolean check = false;
+		if(this.pw != pw) {
+			throw new LoginException("La password inserita non è corretta");
+		}
+		else {
+			check = true;
+		}
+		return check;
+		
+	}
 	
 	
 	

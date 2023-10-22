@@ -105,4 +105,30 @@ public class AccountDAO implements IAccountDAO {
 		return check;
 	
 	}
+
+
+	@Override
+	public boolean updatePw(int idAcc, String pw) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		
+		boolean check = true;
+		
+		try {
+			String query = "UPDATE hospitalmanager.PROFILI SET PW = ? WHERE ID_ACC = ?";
+			ps1 = conn.prepareStatement(query);
+			ps1.setString(1, pw);	
+			ps1.setInt(2, idAcc);
+			ps1.executeUpdate(query);
+			//ps1.executeUpdate();
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			check = false;
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		return check;
+	}
 }

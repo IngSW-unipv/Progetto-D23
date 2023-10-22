@@ -8,4 +8,5 @@ public interface IAccountDAO {
 	ArrayList<AccountDB> selectAllAccounts();
 	ArrayList<AccountDB> selectAllType(ArrayList<AccountDB> arraylist, String tipo);
 	boolean insertAccount(Account a);
+	boolean updatePw(int idAcc, String pw);
 }

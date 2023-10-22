@@ -12,6 +12,6 @@ public interface IStrutturaSanitaria {
 	boolean login(int idAcc, String pw);
 	int generaIdAcc();
 	int generaIdPren();
-	public boolean cambioPw(String vecchiaPw, String nuovaPw);
 	public String generaPwTemp();
+	boolean cambioPw(int idAcc, String vecchiaPw, String nuovaPw);
 }
