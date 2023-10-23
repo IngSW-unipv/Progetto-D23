@@ -1,5 +1,6 @@
 package it.unipv.sfw.model;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import it.unipv.sfw.jdbc.bean.account.AccountDAO;
 import it.unipv.sfw.jdbc.bean.anagrafica.AnagraficaDAO;
@@ -13,7 +14,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private String telefono;
 	private String email;
 	
-	private ArrayList<Persona> anagrafica;
+	private ArrayList<Persona> persone;
 	private ArrayList<Paziente> pazienti;
 	private ArrayList<Medico> medici;
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
@@ -22,6 +23,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Prenotazione> prenotazioni;
 	//private ArrayList<Erogazione> erogazioni;
+	
+	HashMap<String,Persona> cfPersone;
+
 	
 	private int accountAttivi;
 	private int numeroPrenotazioni;
@@ -36,6 +40,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		
 		this.anagraficaDAO = new AnagraficaDAO();
 		this.accountDAO = new AccountDAO();
+		this.cfPersone = new HashMap<>();
 	}
 
 	@Override
@@ -303,18 +308,20 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.accountDAO = accountDAO;
 	}
 
-	public ArrayList<Persona> getAnagrafica() {
-		return anagrafica;
+	public ArrayList<Persona> getPersone() {
+		return persone;
 	}
 
-	public void setAnagrafica(ArrayList<Persona> anagrafica) {
-		this.anagrafica = anagrafica;
+	public void setPersone(ArrayList<Persona> persone) {
+		this.persone = persone;
 	}
 
-	
-	
-	
-	
-	
+	public HashMap<String, Persona> getCfPersone() {
+		return cfPersone;
+	}
+
+	public void setCfPersone(HashMap<String, Persona> cfPersone) {
+		this.cfPersone = cfPersone;
+	}	
 	
 }

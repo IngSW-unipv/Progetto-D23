@@ -9,6 +9,7 @@ import it.unipv.sfw.jdbc.bean.cartellaclinica.*;
 import it.unipv.sfw.jdbc.bean.esiti.*;
 import it.unipv.sfw.jdbc.bean.prenotazione.*;
 import it.unipv.sfw.jdbc.bean.prestazionesanitaria.*;
+import it.unipv.sfw.model.Account;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.persona.Persona;
 
@@ -28,17 +29,33 @@ public class FacadeSingletonDB {
 	//costruttore
 	//...
 	
-	public void popolaAnagrafica() {
-		ArrayList<AnagraficaDB> tmp = new ArrayList<>();
+	public void popolaPersona() {
+		ArrayList<AnagraficaDB> anagrafiche = new ArrayList<>();
 		
-		tmp = anagrafica.selectAllAnagrafica();
 		
-		for (AnagraficaDB a: tmp) {
+		anagrafiche = anagrafica.selectAllAnagrafica();
+		
+		for (AnagraficaDB a: anagrafiche) {
 			
-			struttura1.getAnagrafica().add(new Persona(a.getCf(), a.getNome(), a.getCognome(), a.getSesso(), 
+			Persona p = new Persona(a.getCf(), a.getNome(), a.getCognome(), a.getSesso(), 
 					a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(), 
-					a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare()));
+					a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
+			
+			struttura1.getPersone().add(p);
+			
+			struttura1.getCfPersone().put(a.getCf(), p);
 		}
+	}
+		
+		public void popolaAccount() {
+			ArrayList<AccountDB> accounts = new ArrayList<>();
+			
+			accounts = account.selectAllAccounts();
+			
+			for (AccountDB a: accounts) {
+				struttura1.getAccounts().add(new Account(struttura1.getCfPersone().get(a.getCf()), a.getIdAcc(), a.getPw(), 
+						a.getSpecializzazione(), a.getTipoAcc()));
+			}
 	}
 	
 	
