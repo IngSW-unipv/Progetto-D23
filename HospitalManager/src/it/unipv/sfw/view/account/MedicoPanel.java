@@ -60,4 +60,7 @@ public class MedicoPanel extends JPanel{
 		return logout;
 	}
 
+	public void setListaVisite(JList visite) {
+		this.visite = visite;
+	}
 }

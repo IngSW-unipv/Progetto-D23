@@ -1,13 +1,13 @@
 package it.unipv.sfw.controller.loginController;
 
-import it.unipv.sfw.jdbc.bean.DbControllerSingleton;  // controller del db
+//import it.unipv.sfw.jdbc.bean.DbControllerSingleton;  // controller del db
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController; // MainView
 
 public class LoginController {
 	private ViewController view;
 	private StrutturaSanitaria model;
-	private DbControllerSingleton dbControl;
+	//private DbControllerSingleton dbControl;
 	private GoBtnActionListener go;
 	
 	public LoginController(ViewController view, StrutturaSanitaria model) {
@@ -15,7 +15,7 @@ public class LoginController {
 		this.view = view; 
 		this.model = model;
 		
-		dbControl = DbControllerSingleton.getInstance();
+		//dbControl = DbControllerSingleton.getInstance();
 
 		go = new GoBtnActionListener(view, model);
 		view.getLoginPanel().getBtnLogin().addActionListener(go);

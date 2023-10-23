@@ -11,7 +11,7 @@ import it.unipv.sfw.model.StrutturaSanitaria;
 
 public class EsciAccountActionListener implements ActionListener {
 	
-	private DbSingleton db;
+	//private DbSingleton db;
 	private ViewController view;
 	private StrutturaSanitaria model;
 

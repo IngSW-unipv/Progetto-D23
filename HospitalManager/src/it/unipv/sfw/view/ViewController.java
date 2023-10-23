@@ -1,5 +1,6 @@
 package it.unipv.sfw.view;
 
+import java.awt.*;  
 import javax.swing.*; 
 
 import it.unipv.sfw.view.account.MedicoPanel;
@@ -9,8 +10,9 @@ import it.unipv.sfw.view.account.PazientePanel;
 import it.unipv.sfw.view.login.LoginPanel;
 import it.unipv.sfw.view.login.RegistratiPanel;
 
-public class ViewController {
+public class ViewController extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JPanel panel;
 	private LoginPanel loginP;
