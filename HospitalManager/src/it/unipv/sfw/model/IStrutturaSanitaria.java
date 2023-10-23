@@ -4,7 +4,7 @@ public interface IStrutturaSanitaria {
 	boolean registrazionePaziente(String specializzazione, 
 			String cf, String nome, String cognome, String sesso, String dataNascita, String luogoNascita,
 			String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes, String indirizzo,
-			String cap, String eMail, String cellulare);
+			String cap, String eMail, String cellulare, String pw);
 	boolean registrazioneDipendente(TipoAccount tipoAcc, String pw, String specializzazione, 
 			String cf, String nome, String cognome, String sesso, String dataNascita, String luogoNascita,
 			String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes, String indirizzo,

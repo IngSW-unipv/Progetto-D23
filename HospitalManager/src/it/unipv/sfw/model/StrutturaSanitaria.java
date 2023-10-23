@@ -40,12 +40,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	@Override
 	public boolean registrazionePaziente(String specializzazione, String cf, String nome, String cognome,
 			String sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
-			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
+			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, String pw) {
 		boolean check = false;
 		try {
 			Paziente p = new Paziente(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
 					provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-			Account a = new Account(p, this.generaIdAcc(), this.generaPwTemp(), null, TipoAccount.PA);
+			Account a = new Account(p, this.generaIdAcc(), pw, null, TipoAccount.PA);
 			//CartellaClinica cc = new CartellaClinica();
 			
 			anagraficaDAO.insertAnagrafica(p);
