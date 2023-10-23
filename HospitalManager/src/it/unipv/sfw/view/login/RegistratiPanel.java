@@ -11,14 +11,19 @@ public class RegistratiPanel extends JPanel{
 	private JLabel dataNascita, luogoNascita, provinciaNascita; 
 	private JLabel regioneResidenza, provinciaResidenza, cittaResidenza, indirizzo;
 	private JLabel email, cellulare;
-	private JLabel idAccount, tipo, idAccountAssegnato, tipoAssegnato;
+	private JLabel idAccount, tipo, idAccountAssegnato;
 	private JLabel password;
+	private JLabel generaPassword;
 	
 	private JTextField nomeField, cognomeField, cfField, sessoField;
 	private JTextField dataNascitaField, luogoNascitaField, provinciaNascitaField;
 	private JTextField regioneResidenzaField, provinciaResidenzaField, cittaResidenzaField, indirizzoField;
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
+	private JButton btnGeneraPass;
+	private String[] tipoAccount = {"Paziente", "Medico", "OperatoreUfficio", "OperatoreSanitario"};
+	private JComboBox<String> scegliTipo;
+	
 	
 	public RegistratiPanel() {
 		
@@ -58,17 +63,20 @@ public class RegistratiPanel extends JPanel{
 		
 		idAccount = new JLabel("Id Account");
 		tipo = new JLabel("Tipo Account");
+		scegliTipo = new JComboBox<>(tipoAccount);
 		idAccountAssegnato = new JLabel("Da Assegnare");
-		tipoAssegnato = new JLabel("Da Assegnare");
 		
 		password = new JLabel("Password");
+		
+		generaPassword = new JLabel("Genera Password Casuale");
+		btnGeneraPass = new JButton("GENERA");
 		
 		add(registrazione);
 		add(nuoviDati);
 		add(idAccount);
 		add(idAccountAssegnato);
 		add(tipo);
-		add(tipoAssegnato);
+		add(scegliTipo);
 		add(nome);
 		add(nomeField);
 		add(cognome);
@@ -97,265 +105,379 @@ public class RegistratiPanel extends JPanel{
 		add(cellulareField);
 		add(password);
 		add(passwordField);
+		add(generaPassword);
+		add(btnGeneraPass);
 	}
+
+
+	public JLabel getRegistrazione() {
+		return registrazione;
+	}
+
+
+	public void setRegistrazione(JLabel registrazione) {
+		this.registrazione = registrazione;
+	}
+
+
+	public JLabel getNuoviDati() {
+		return nuoviDati;
+	}
+
+
+	public void setNuoviDati(JLabel nuoviDati) {
+		this.nuoviDati = nuoviDati;
+	}
+
 
 	public JLabel getNome() {
 		return nome;
 	}
 
+
 	public void setNome(JLabel nome) {
 		this.nome = nome;
 	}
+
 
 	public JLabel getCognome() {
 		return cognome;
 	}
 
+
 	public void setCognome(JLabel cognome) {
 		this.cognome = cognome;
 	}
+
 
 	public JLabel getCf() {
 		return cf;
 	}
 
+
 	public void setCf(JLabel cf) {
 		this.cf = cf;
 	}
+
 
 	public JLabel getSesso() {
 		return sesso;
 	}
 
+
 	public void setSesso(JLabel sesso) {
 		this.sesso = sesso;
 	}
+
 
 	public JLabel getDataNascita() {
 		return dataNascita;
 	}
 
+
 	public void setDataNascita(JLabel dataNascita) {
 		this.dataNascita = dataNascita;
 	}
+
 
 	public JLabel getLuogoNascita() {
 		return luogoNascita;
 	}
 
+
 	public void setLuogoNascita(JLabel luogoNascita) {
 		this.luogoNascita = luogoNascita;
 	}
+
 
 	public JLabel getProvinciaNascita() {
 		return provinciaNascita;
 	}
 
+
 	public void setProvinciaNascita(JLabel provinciaNascita) {
 		this.provinciaNascita = provinciaNascita;
 	}
+
 
 	public JLabel getRegioneResidenza() {
 		return regioneResidenza;
 	}
 
+
 	public void setRegioneResidenza(JLabel regioneResidenza) {
 		this.regioneResidenza = regioneResidenza;
 	}
+
 
 	public JLabel getProvinciaResidenza() {
 		return provinciaResidenza;
 	}
 
+
 	public void setProvinciaResidenza(JLabel provinciaResidenza) {
 		this.provinciaResidenza = provinciaResidenza;
 	}
+
 
 	public JLabel getCittaResidenza() {
 		return cittaResidenza;
 	}
 
+
 	public void setCittaResidenza(JLabel cittaResidenza) {
 		this.cittaResidenza = cittaResidenza;
 	}
+
 
 	public JLabel getIndirizzo() {
 		return indirizzo;
 	}
 
+
 	public void setIndirizzo(JLabel indirizzo) {
 		this.indirizzo = indirizzo;
 	}
+
 
 	public JLabel getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(JLabel email) {
 		this.email = email;
 	}
+
 
 	public JLabel getCellulare() {
 		return cellulare;
 	}
 
+
 	public void setCellulare(JLabel cellulare) {
 		this.cellulare = cellulare;
 	}
+
 
 	public JLabel getIdAccount() {
 		return idAccount;
 	}
 
+
 	public void setIdAccount(JLabel idAccount) {
 		this.idAccount = idAccount;
 	}
+
 
 	public JLabel getTipo() {
 		return tipo;
 	}
 
+
 	public void setTipo(JLabel tipo) {
 		this.tipo = tipo;
 	}
+
 
 	public JLabel getIdAccountAssegnato() {
 		return idAccountAssegnato;
 	}
 
+
 	public void setIdAccountAssegnato(JLabel idAccountAssegnato) {
 		this.idAccountAssegnato = idAccountAssegnato;
 	}
 
-	public JLabel getTipoAssegnato() {
-		return tipoAssegnato;
-	}
-
-	public void setTipoAssegnato(JLabel tipoAssegnato) {
-		this.tipoAssegnato = tipoAssegnato;
-	}
 
 	public JLabel getPassword() {
 		return password;
 	}
 
+
 	public void setPassword(JLabel password) {
 		this.password = password;
 	}
+
+
+	public JLabel getGeneraPassword() {
+		return generaPassword;
+	}
+
+
+	public void setGeneraPassword(JLabel generaPassword) {
+		this.generaPassword = generaPassword;
+	}
+
 
 	public JTextField getNomeField() {
 		return nomeField;
 	}
 
+
 	public void setNomeField(JTextField nomeField) {
 		this.nomeField = nomeField;
 	}
+
 
 	public JTextField getCognomeField() {
 		return cognomeField;
 	}
 
+
 	public void setCognomeField(JTextField cognomeField) {
 		this.cognomeField = cognomeField;
 	}
+
 
 	public JTextField getCfField() {
 		return cfField;
 	}
 
+
 	public void setCfField(JTextField cfField) {
 		this.cfField = cfField;
 	}
+
 
 	public JTextField getSessoField() {
 		return sessoField;
 	}
 
+
 	public void setSessoField(JTextField sessoField) {
 		this.sessoField = sessoField;
 	}
+
 
 	public JTextField getDataNascitaField() {
 		return dataNascitaField;
 	}
 
+
 	public void setDataNascitaField(JTextField dataNascitaField) {
 		this.dataNascitaField = dataNascitaField;
 	}
+
 
 	public JTextField getLuogoNascitaField() {
 		return luogoNascitaField;
 	}
 
+
 	public void setLuogoNascitaField(JTextField luogoNascitaField) {
 		this.luogoNascitaField = luogoNascitaField;
 	}
+
 
 	public JTextField getProvinciaNascitaField() {
 		return provinciaNascitaField;
 	}
 
+
 	public void setProvinciaNascitaField(JTextField provinciaNascitaField) {
 		this.provinciaNascitaField = provinciaNascitaField;
 	}
+
 
 	public JTextField getRegioneResidenzaField() {
 		return regioneResidenzaField;
 	}
 
+
 	public void setRegioneResidenzaField(JTextField regioneResidenzaField) {
 		this.regioneResidenzaField = regioneResidenzaField;
 	}
+
 
 	public JTextField getProvinciaResidenzaField() {
 		return provinciaResidenzaField;
 	}
 
+
 	public void setProvinciaResidenzaField(JTextField provinciaResidenzaField) {
 		this.provinciaResidenzaField = provinciaResidenzaField;
 	}
+
 
 	public JTextField getCittaResidenzaField() {
 		return cittaResidenzaField;
 	}
 
+
 	public void setCittaResidenzaField(JTextField cittaResidenzaField) {
 		this.cittaResidenzaField = cittaResidenzaField;
 	}
+
 
 	public JTextField getIndirizzoField() {
 		return indirizzoField;
 	}
 
+
 	public void setIndirizzoField(JTextField indirizzoField) {
 		this.indirizzoField = indirizzoField;
 	}
+
 
 	public JTextField getEmailField() {
 		return emailField;
 	}
 
+
 	public void setEmailField(JTextField emailField) {
 		this.emailField = emailField;
 	}
+
 
 	public JTextField getCellulareField() {
 		return cellulareField;
 	}
 
+
 	public void setCellulareField(JTextField cellulareField) {
 		this.cellulareField = cellulareField;
 	}
+
 
 	public JPasswordField getPasswordField() {
 		return passwordField;
 	}
 
+
 	public void setPasswordField(JPasswordField passwordField) {
 		this.passwordField = passwordField;
 	}
-	
-	
+
+
+	public JButton getBtnGeneraPass() {
+		return btnGeneraPass;
+	}
+
+
+	public void setBtnGeneraPass(JButton btnGeneraPass) {
+		this.btnGeneraPass = btnGeneraPass;
+	}
+
+
+	public String[] getTipoAccount() {
+		return tipoAccount;
+	}
+
+
+	public void setTipoAccount(String[] tipoAccount) {
+		this.tipoAccount = tipoAccount;
+	}
+
+
+	public JComboBox<String> getScegliTipo() {
+		return scegliTipo;
+	}
+
+
+	public void setScegliTipo(JComboBox<String> scegliTipo) {
+		this.scegliTipo = scegliTipo;
+	}
 
 }
 

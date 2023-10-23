@@ -11,27 +11,35 @@ public class LoginPanel extends JPanel{
 	private JPasswordField passwordField;
 	private JTextField idAccountText;
 	private JLabel lblIdAccount,lblPassword;
-	private JButton btnLogin, btnRegistrati;
+	private JLabel lblDomanda1, lblDomanda2, lblDomanda3;
+	private JButton btnLogin, btnRegistraPaziente, btnRegistraDipendente;
 	
 	
 	public LoginPanel() {
 		setVisible(true);
-		setLayout(new GridLayout(3,2));
+		setLayout(new GridLayout(5,2));
 		
 		passwordField = new JPasswordField();
 		idAccountText = new JTextField();
 		lblIdAccount = new JLabel("Id Account\n");
 		lblPassword = new JLabel("Password\n");
-		btnLogin = new JButton("LOGIN");
-		btnRegistrati = new JButton("REGISTRATI");
+		lblDomanda1 = new JLabel("Hai già un account?");
+		btnLogin = new JButton("ACCEDI");
+		lblDomanda2 = new JLabel("Sei un paziente?");
+		btnRegistraPaziente = new JButton("REGISTRAZIONE PAZIENTE");
+		lblDomanda3 = new JLabel("Sei un dipendente?");
+		btnRegistraDipendente = new JButton("REGISTRAZIONE DIPENDENTE");
 		
 		add(lblIdAccount);
 		add(idAccountText);
 		add(lblPassword);
 		add(passwordField);
-		add(btnRegistrati);
+		add(lblDomanda1);
 		add(btnLogin);
-		
+		add(lblDomanda2);
+		add(btnRegistraPaziente);
+		add(lblDomanda3);
+		add(btnRegistraDipendente);
 	}
 	
 	public void changeLabelColor() {
@@ -71,6 +79,30 @@ public class LoginPanel extends JPanel{
 		this.lblPassword = lblPassword;
 	}
 
+	public JLabel getLblDomanda1() {
+		return lblDomanda1;
+	}
+
+	public void setLblDomanda1(JLabel lblDomanda1) {
+		this.lblDomanda1 = lblDomanda1;
+	}
+
+	public JLabel getLblDomanda2() {
+		return lblDomanda2;
+	}
+
+	public void setLblDomanda2(JLabel lblDomanda2) {
+		this.lblDomanda2 = lblDomanda2;
+	}
+
+	public JLabel getLblDomanda3() {
+		return lblDomanda3;
+	}
+
+	public void setLblDomanda3(JLabel lblDomanda3) {
+		this.lblDomanda3 = lblDomanda3;
+	}
+
 	public JButton getBtnLogin() {
 		return btnLogin;
 	}
@@ -79,15 +111,22 @@ public class LoginPanel extends JPanel{
 		this.btnLogin = btnLogin;
 	}
 
-	public JButton getBtnRegistrati() {
-		return btnRegistrati;
+	public JButton getBtnRegistraPaziente() {
+		return btnRegistraPaziente;
 	}
 
-	public void setBtnRegistrati(JButton btnRegistrati) {
-		this.btnRegistrati = btnRegistrati;
+	public void setBtnRegistraPaziente(JButton btnRegistraPaziente) {
+		this.btnRegistraPaziente = btnRegistraPaziente;
 	}
-	
-	
+
+	public JButton getBtnRegistraDipendente() {
+		return btnRegistraDipendente;
+	}
+
+	public void setBtnRegistraDipendente(JButton btnRegistraDipendente) {
+		this.btnRegistraDipendente = btnRegistraDipendente;
+	}
+
 	
 }
 
