@@ -1,25 +1,26 @@
 package it.unipv.sfw.jdbc.bean.prestazionesanitaria;
 import java.time.LocalTime;
+import it.unipv.sfw.model.TipoPrestazione;
 
 public class PrestazioneSanitariaDB {
-	private int id_prest;
-	private String tipo;
+	private String idPrest;
+	private TipoPrestazione tipo;
 	private LocalTime durata;
 	private double costo;
 	
-	public PrestazioneSanitariaDB(int id_prest, String tipo, String durata, double costo) {
+	public PrestazioneSanitariaDB(String idPrest, TipoPrestazione tipo, String durata, double costo) {
 		super();
-		this.id_prest = id_prest;
+		this.idPrest = idPrest;
 		this.tipo = tipo;
 	    this.durata = LocalTime.parse(durata);
 		this.costo = costo;
 	}
 
-	public int getId_prest() {
-		return id_prest;
+	public String getIdPrest() {
+		return idPrest;
 	}
 
-	public String getTipo() {
+	public TipoPrestazione getTipo() {
 		return tipo;
 	}
 

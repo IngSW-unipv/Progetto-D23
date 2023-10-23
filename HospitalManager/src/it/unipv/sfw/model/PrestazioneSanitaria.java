@@ -1,13 +1,14 @@
 package it.unipv.sfw.model;
 
+import java.time.LocalTime;
 
 public class PrestazioneSanitaria {
 	private String idPrest;
 	private TipoPrestazione tipo;
-	private DurataPrestazione durata;
+	private LocalTime durata;
 	private double costo;
 	
-	public PrestazioneSanitaria(String idPrest, TipoPrestazione tipo, DurataPrestazione durata, double costo) {
+	public PrestazioneSanitaria(String idPrest, TipoPrestazione tipo, LocalTime durata, double costo) {
 		super();
 		this.idPrest = idPrest;
 		this.tipo = tipo;
@@ -31,11 +32,11 @@ public class PrestazioneSanitaria {
 		this.tipo = tipo;
 	}
 
-	public DurataPrestazione getDurata() {
+	public LocalTime getDurata() {
 		return durata;
 	}
 
-	public void setDurata(DurataPrestazione durata) {
+	public void setDurata(LocalTime durata) {
 		this.durata = durata;
 	}
 

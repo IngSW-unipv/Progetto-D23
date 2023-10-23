@@ -10,6 +10,7 @@ import it.unipv.sfw.jdbc.bean.esiti.*;
 import it.unipv.sfw.jdbc.bean.prenotazione.*;
 import it.unipv.sfw.jdbc.bean.prestazionesanitaria.*;
 import it.unipv.sfw.model.Account;
+import it.unipv.sfw.model.PrestazioneSanitaria;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.persona.Persona;
 
@@ -58,6 +59,16 @@ public class FacadeSingletonDB {
 			}
 	}
 	
+	public void popolaPrestazione() {
+		ArrayList<PrestazioneSanitariaDB> prestazioni = new ArrayList<>();
+		
+		prestazioni = prestazione.selectAllPrestazioniSanitarie();
+		
+		for (PrestazioneSanitariaDB ps: prestazioni) {
+			struttura1.getPrestazioni().add(new PrestazioneSanitaria(ps.getIdPrest(),ps.getTipo(), ps.getDurata(), ps.getCosto()));
+		}
+		
+	}
 	
 	
 }
