@@ -11,8 +11,8 @@ public class LoginPanel extends JPanel{
 	private JPasswordField passwordField;
 	private JTextField idAccountText;
 	private JLabel lblIdAccount,lblPassword;
-	private JLabel lblDomanda1, lblDomanda2, lblDomanda3;
-	private JButton btnLogin, btnRegistraPaziente, btnRegistraDipendente;
+	private JLabel lblDomanda1, lblDomanda2;
+	private JButton btnLogin, btnRegistraPaziente;
 	
 	
 	public LoginPanel() {
@@ -27,8 +27,6 @@ public class LoginPanel extends JPanel{
 		btnLogin = new JButton("ACCEDI");
 		lblDomanda2 = new JLabel("Sei un paziente?");
 		btnRegistraPaziente = new JButton("REGISTRAZIONE PAZIENTE");
-		lblDomanda3 = new JLabel("Sei un dipendente?");
-		btnRegistraDipendente = new JButton("REGISTRAZIONE DIPENDENTE");
 		
 		add(lblIdAccount);
 		add(idAccountText);
@@ -38,8 +36,7 @@ public class LoginPanel extends JPanel{
 		add(btnLogin);
 		add(lblDomanda2);
 		add(btnRegistraPaziente);
-		add(lblDomanda3);
-		add(btnRegistraDipendente);
+		
 	}
 	
 	public void changeLabelColor() {
@@ -95,14 +92,7 @@ public class LoginPanel extends JPanel{
 		this.lblDomanda2 = lblDomanda2;
 	}
 
-	public JLabel getLblDomanda3() {
-		return lblDomanda3;
-	}
-
-	public void setLblDomanda3(JLabel lblDomanda3) {
-		this.lblDomanda3 = lblDomanda3;
-	}
-
+	
 	public JButton getBtnLogin() {
 		return btnLogin;
 	}
@@ -118,15 +108,7 @@ public class LoginPanel extends JPanel{
 	public void setBtnRegistraPaziente(JButton btnRegistraPaziente) {
 		this.btnRegistraPaziente = btnRegistraPaziente;
 	}
-
-	public JButton getBtnRegistraDipendente() {
-		return btnRegistraDipendente;
-	}
-
-	public void setBtnRegistraDipendente(JButton btnRegistraDipendente) {
-		this.btnRegistraDipendente = btnRegistraDipendente;
-	}
-
+	
 	
 }
 

@@ -16,7 +16,7 @@ public class OperatoreUfficioPanel extends JPanel{
 	
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JList visite;
-	private JButton prenota, cancella, logout;
+	private JButton prenota, cancella, logout, aggiungiUtente;
 	private DefaultListModel modelloLista;
 	
 	public OperatoreUfficioPanel() {
@@ -34,6 +34,7 @@ public class OperatoreUfficioPanel extends JPanel{
 		prenota = new JButton("PRENOTA");
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
+		aggiungiUtente = new JButton("AGGIUNGI UTENTE");
 		
 		visite = new JList();
 		visite.setPreferredSize(new Dimension(700, 500));
@@ -52,6 +53,7 @@ public class OperatoreUfficioPanel extends JPanel{
 		
 		barSud.add(cancella);
 		barSud.add(prenota);
+		barSud.add(aggiungiUtente);
 		barSud.add(logout);
 		add(barSud, BorderLayout.SOUTH);
 		
@@ -61,9 +63,86 @@ public class OperatoreUfficioPanel extends JPanel{
 		modelloLista.addElement(s);
 	}
 
-	public JButton getLogoutBtn() {
+	public JLabel getNome() {
+		return nome;
+	}
+
+	public void setNome(JLabel nome) {
+		this.nome = nome;
+	}
+
+	public JLabel getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(JLabel cognome) {
+		this.cognome = cognome;
+	}
+
+	public JLabel getCf() {
+		return cf;
+	}
+
+	public void setCf(JLabel cf) {
+		this.cf = cf;
+	}
+
+	public JLabel getTipoAccount() {
+		return tipoAccount;
+	}
+
+	public void setTipoAccount(JLabel tipoAccount) {
+		this.tipoAccount = tipoAccount;
+	}
+
+	public JList getVisite() {
+		return visite;
+	}
+
+	public void setVisite(JList visite) {
+		this.visite = visite;
+	}
+
+	public JButton getPrenota() {
+		return prenota;
+	}
+
+	public void setPrenota(JButton prenota) {
+		this.prenota = prenota;
+	}
+
+	public JButton getCancella() {
+		return cancella;
+	}
+
+	public void setCancella(JButton cancella) {
+		this.cancella = cancella;
+	}
+
+	public JButton getLogout() {
 		return logout;
 	}
 
+	public void setLogout(JButton logout) {
+		this.logout = logout;
+	}
+
+	public JButton getAggiungiUtente() {
+		return aggiungiUtente;
+	}
+
+	public void setAggiungiUtente(JButton aggiungiUtente) {
+		this.aggiungiUtente = aggiungiUtente;
+	}
+
+	public DefaultListModel getModelloLista() {
+		return modelloLista;
+	}
+
+	public void setModelloLista(DefaultListModel modelloLista) {
+		this.modelloLista = modelloLista;
+	}
+	
+	
 }
 

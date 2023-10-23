@@ -4,14 +4,14 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
-public class RegistratiPanel extends JPanel{
+public class RegistratiPanelPaziente extends JPanel{
 	
 	private JLabel registrazione, nuoviDati;
 	private JLabel nome, cognome, cf, sesso;
 	private JLabel dataNascita, luogoNascita, provinciaNascita; 
 	private JLabel regioneResidenza, provinciaResidenza, cittaResidenza, indirizzo;
 	private JLabel email, cellulare;
-	private JLabel idAccount, tipo, idAccountAssegnato;
+	private JLabel idAccount, tipo, tipoFisso, idAccountAssegnato;
 	private JLabel password;
 	private JLabel generaPassword;
 	private JLabel conferma;
@@ -22,20 +22,16 @@ public class RegistratiPanel extends JPanel{
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
 	private JButton btnGeneraPass, btnConfermaReg;
-	private String[] tipoAccount = {"Paziente", "Medico", "OperatoreUfficio", "OperatoreSanitario"};
-	private JComboBox<String> scegliTipo;
 	private String[] sessoString = {"Maschio", "Femmina"};
 	private JComboBox<String> scegliSesso;
 	
-	
-	public RegistratiPanel() {
+	public RegistratiPanelPaziente() {
 		
 		setLayout(new GridLayout(19,2));
 		
 		nomeField = new JTextField();
 		cognomeField = new JTextField();
 		cfField = new JTextField();
-		//sessoField = new JTextField();
 		dataNascitaField = new JTextField();
 		luogoNascitaField = new JTextField();
 		provinciaNascitaField = new JTextField();
@@ -66,12 +62,13 @@ public class RegistratiPanel extends JPanel{
 		
 		idAccount = new JLabel("Id Account");
 		tipo = new JLabel("Tipo Account");
-		scegliTipo = new JComboBox<>(tipoAccount);
+		tipoFisso = new JLabel("Paziente");
 		idAccountAssegnato = new JLabel("Da Assegnare");
 		
 		scegliSesso = new JComboBox<>(sessoString);
 		
 		password = new JLabel("Password");
+		
 		generaPassword = new JLabel("Genera password casuale");
 		btnGeneraPass = new JButton("GENERA");
 		
@@ -83,7 +80,7 @@ public class RegistratiPanel extends JPanel{
 		add(idAccount);
 		add(idAccountAssegnato);
 		add(tipo);
-		add(scegliTipo);
+		add(tipoFisso);
 		add(nome);
 		add(nomeField);
 		add(cognome);
@@ -289,6 +286,16 @@ public class RegistratiPanel extends JPanel{
 	}
 
 
+	public JLabel getTipoFisso() {
+		return tipoFisso;
+	}
+
+
+	public void setTipoFisso(JLabel tipoFisso) {
+		this.tipoFisso = tipoFisso;
+	}
+
+
 	public JLabel getIdAccountAssegnato() {
 		return idAccountAssegnato;
 	}
@@ -316,6 +323,16 @@ public class RegistratiPanel extends JPanel{
 
 	public void setGeneraPassword(JLabel generaPassword) {
 		this.generaPassword = generaPassword;
+	}
+
+
+	public JLabel getConferma() {
+		return conferma;
+	}
+
+
+	public void setConferma(JLabel conferma) {
+		this.conferma = conferma;
 	}
 
 
@@ -459,36 +476,6 @@ public class RegistratiPanel extends JPanel{
 	}
 
 
-	public String[] getTipoAccount() {
-		return tipoAccount;
-	}
-
-
-	public void setTipoAccount(String[] tipoAccount) {
-		this.tipoAccount = tipoAccount;
-	}
-
-
-	public JComboBox<String> getScegliTipo() {
-		return scegliTipo;
-	}
-
-
-	public void setScegliTipo(JComboBox<String> scegliTipo) {
-		this.scegliTipo = scegliTipo;
-	}
-
-
-	public JLabel getConferma() {
-		return conferma;
-	}
-
-
-	public void setConferma(JLabel conferma) {
-		this.conferma = conferma;
-	}
-
-
 	public JButton getBtnConfermaReg() {
 		return btnConfermaReg;
 	}
@@ -520,4 +507,3 @@ public class RegistratiPanel extends JPanel{
 	
 
 }
-
