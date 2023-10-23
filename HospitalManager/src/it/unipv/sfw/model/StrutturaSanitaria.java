@@ -12,7 +12,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private String indirizzo;
 	private String telefono;
 	private String email;
-
+	
+	private ArrayList<Persona> anagrafica;
 	private ArrayList<Paziente> pazienti;
 	private ArrayList<Medico> medici;
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
@@ -180,6 +181,134 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			check = false;
 		}
 		return check;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public ArrayList<Paziente> getPazienti() {
+		return pazienti;
+	}
+
+	public void setPazienti(ArrayList<Paziente> pazienti) {
+		this.pazienti = pazienti;
+	}
+
+	public ArrayList<Medico> getMedici() {
+		return medici;
+	}
+
+	public void setMedici(ArrayList<Medico> medici) {
+		this.medici = medici;
+	}
+
+	public ArrayList<OperatoreSanitario> getOperatoriSanitari() {
+		return operatoriSanitari;
+	}
+
+	public void setOperatoriSanitari(ArrayList<OperatoreSanitario> operatoriSanitari) {
+		this.operatoriSanitari = operatoriSanitari;
+	}
+
+	public ArrayList<OperatoreUfficio> getOperatoriUfficio() {
+		return operatoriUfficio;
+	}
+
+	public void setOperatoriUfficio(ArrayList<OperatoreUfficio> operatoriUfficio) {
+		this.operatoriUfficio = operatoriUfficio;
+	}
+
+	public ArrayList<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(ArrayList<Account> accounts) {
+		this.accounts = accounts;
+	}
+
+	public ArrayList<PrestazioneSanitaria> getPrestazioni() {
+		return prestazioni;
+	}
+
+	public void setPrestazioni(ArrayList<PrestazioneSanitaria> prestazioni) {
+		this.prestazioni = prestazioni;
+	}
+
+	public ArrayList<Prenotazione> getPrenotazioni() {
+		return prenotazioni;
+	}
+
+	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
+	}
+
+	public int getAccountAttivi() {
+		return accountAttivi;
+	}
+
+	public void setAccountAttivi(int accountAttivi) {
+		this.accountAttivi = accountAttivi;
+	}
+
+	public int getNumeroPrenotazioni() {
+		return numeroPrenotazioni;
+	}
+
+	public void setNumeroPrenotazioni(int numeroPrenotazioni) {
+		this.numeroPrenotazioni = numeroPrenotazioni;
+	}
+
+	public AnagraficaDAO getAnagraficaDAO() {
+		return anagraficaDAO;
+	}
+
+	public void setAnagraficaDAO(AnagraficaDAO anagraficaDAO) {
+		this.anagraficaDAO = anagraficaDAO;
+	}
+
+	public AccountDAO getAccountDAO() {
+		return accountDAO;
+	}
+
+	public void setAccountDAO(AccountDAO accountDAO) {
+		this.accountDAO = accountDAO;
+	}
+
+	public ArrayList<Persona> getAnagrafica() {
+		return anagrafica;
+	}
+
+	public void setAnagrafica(ArrayList<Persona> anagrafica) {
+		this.anagrafica = anagrafica;
 	}
 
 	

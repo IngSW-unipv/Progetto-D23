@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import it.unipv.sfw.model.Prenotazione;
 
-public abstract class Persona {
+public class Persona {
 	private String cf;
 	private String nome;
 	private String cognome;

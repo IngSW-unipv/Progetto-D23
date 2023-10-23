@@ -1,13 +1,12 @@
 package it.unipv.sfw.jdbc.bean.anagrafica;
 
-import java.time.LocalDate;
 
 public class AnagraficaDB {
 	private String cf;
 	private String nome;
 	private String cognome;
-	private String genere;
-	private LocalDate dataNascita;
+	private String sesso;
+	private String dataNascita;
 	private String luogoNascita;
 	private String provinciaNascita;
 	private String regioneRes;
@@ -18,15 +17,15 @@ public class AnagraficaDB {
 	private String eMail;
 	private String cellulare;
 	
-	public AnagraficaDB(String cf, String nome, String cognome, String genere, String dataNascita, String luogoNascita,
+	public AnagraficaDB(String cf, String nome, String cognome, String sesso, String dataNascita, String luogoNascita,
 			String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap,
 			String eMail, String cellulare) {
 		super();
 		this.cf = cf;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.genere = genere;
-		this.dataNascita = LocalDate.parse(dataNascita);
+		this.sesso = sesso;
+		this.dataNascita = dataNascita;
 		this.luogoNascita = luogoNascita;
 		this.provinciaNascita = provinciaNascita;
 		this.regioneRes = regioneRes;
@@ -50,11 +49,11 @@ public class AnagraficaDB {
 		return cognome;
 	}
 
-	public String getGenere() {
-		return genere;
+	public String getSesso() {
+		return sesso;
 	}
 
-	public LocalDate getDataNascita() {
+	public String getDataNascita() {
 		return dataNascita;
 	}
 
