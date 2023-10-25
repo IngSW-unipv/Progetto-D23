@@ -3,6 +3,7 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
@@ -11,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import it.unipv.sfw.model.Prenotazione;
 
 public class OperatoreUfficioPanel extends JPanel{
 	
@@ -99,8 +102,9 @@ public class OperatoreUfficioPanel extends JPanel{
 		return visite;
 	}
 
-	public void setVisite(JList visite) {
-		this.visite = visite;
+	public void setListaVisite(ArrayList<Prenotazione> prenotazioni) {
+		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
+		this.visite = list;
 	}
 
 	public JButton getPrenotaBtn() {

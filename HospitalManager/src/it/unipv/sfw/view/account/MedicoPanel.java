@@ -3,6 +3,7 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import it.unipv.sfw.model.Prenotazione;
 
 public class MedicoPanel extends JPanel{
 	
@@ -55,13 +58,14 @@ public class MedicoPanel extends JPanel{
 	public void addElementoLista(String s) {
 		modelloLista.addElement(s);
 	}
-
+	
 	public JButton getLogoutBtn() {
 		return logout;
 	}
 
-	public void setListaVisite(JList visite) {
-		this.visite = visite;
+	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
+		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
+		this.visite = list;
 	}
 	
 	public void setNome(JLabel nome) {
