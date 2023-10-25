@@ -32,7 +32,7 @@ public class GoBtnActionListener implements ActionListener {
 		int Id = Integer.parseInt(view.getLoginPanel().getIdAccountText().getText());
 		String pw = view.getLoginPanel().getPasswordField().toString();
 		
-		boolean isMatching = model.login(Id, pw);  //bisogna fare metodo "IsMatching" in DbControl
+		boolean isMatching = model.login(Id, pw);  
 
 		if(isMatching) {
 			view.getLoginPanel().setVisible(false);
@@ -56,7 +56,6 @@ public class GoBtnActionListener implements ActionListener {
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);
 			}
-			
 		}
 		
 	}

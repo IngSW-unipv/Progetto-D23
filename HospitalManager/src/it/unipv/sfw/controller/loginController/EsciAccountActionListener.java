@@ -23,7 +23,7 @@ public class EsciAccountActionListener implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {s
 		db.getInstance().closeConnection();
 		System.exit(0);
 	}
