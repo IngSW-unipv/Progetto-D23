@@ -63,4 +63,16 @@ public class MedicoPanel extends JPanel{
 	public void setListaVisite(JList visite) {
 		this.visite = visite;
 	}
+	
+	public void setNome(JLabel nome) {
+		this.nome = nome;
+	}
+
+	public void setCognome(JLabel cognome) {
+		this.cognome = cognome;
+	}
+
+	public void setCf(JLabel Cf) {
+		this.cf = Cf;
+	}
 }

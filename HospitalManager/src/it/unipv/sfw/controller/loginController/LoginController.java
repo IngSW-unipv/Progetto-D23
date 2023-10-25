@@ -39,9 +39,7 @@ public class LoginController {
 	private void addEsciActionListener() {
 
 		EsciAccountActionListener esci = new EsciAccountActionListener(view, model);
-		view.getMedicoPanel().getLogoutBtn().addActionListener(esci);
 		view.getPazientePanel().getLogoutBtn().addActionListener(esci);
 		view.getOperatoreSanitarioPanel().getLogoutBtn().addActionListener(esci);
-		view.getOperatoreUfficioPanel().getLogoutBtn().addActionListener(esci);
 	}
 }

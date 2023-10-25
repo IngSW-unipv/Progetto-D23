@@ -50,14 +50,61 @@ public class GoBtnActionListener implements ActionListener {
 			
 			switch(tipoAcc) {
 			case ME: 
-			view.setVisible(true);
-			view.getMedicoPanel().setListaVisite(model.selectAllAppuntamentiDueToMed(Id));
-			view.getMedicoPanel().setVisible(true);
-			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			view.getContentPane().setLayout(null);
+				view.setVisible(true);
+				view.getMedicoPanel().setListaVisite(model.selectAllAppuntamentiDueToMed(Id));
+				view.getMedicoPanel().setVisible(true);
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.getContentPane().setLayout(null);
+				view.getMedicoPanel().setNome(model.getNomeById(Id));
+				view.getMedicoPanel().setCognome(model.getCognomeById(Id));
+				view.getMedicoPanel().setCf(model.getCfById(Id));
+			
+			case OS:
+				view.setVisible(true);
+				view.getOperatoreSanitarioPanel().setListaVisite(model.selectAllAppuntamenti());
+				view.getOperatoreSanitarioPanel().setVisible(true);
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.getContentPane().setLayout(null);
+				view.getOperatoreSanitarioPanel().setNome(model.getNomeById(Id));
+				view.getOperatoreSanitarioPanel().setCognome(model.getCognomeById(Id));
+				view.getOperatoreSanitarioPanel().setCf(model.getCfById(Id));
+
+
+			case OU:
+				view.setVisible(true);
+				view.getOperatoreUfficioPanel().setListaVisite(model.selectAllAppuntamenti());
+				view.getOperatoreUfficioPanel().setVisible(true);
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.getContentPane().setLayout(null);
+				view.getOperatoreUfficioPanel().setNome(model.getNomeById(Id));
+				view.getOperatoreUfficioPanel().setCognome(model.getCognomeById(Id));
+				view.getOperatoreUfficioPanel().setCf(model.getCfById(Id));
+
+			case PA:
+				view.setVisible(true);
+				view.getPazientePanel().setListaVisite(model.selectPrenotazioniPaziente(Id));
+				view.getPazientePanel().setVisible(true);
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.getContentPane().setLayout(null);
+				view.getPazientePanel().setNome(model.getNomeById(Id));
+				view.getPazientePanel().setCognome(model.getCognomeById(Id));
+				view.getPazientePanel().setCf(model.getCfById(Id));
+
+
+			default:
+
+				PopupError err = new PopupError();
+
+				err.infoBox("Errore", "Username o password incorretti");
+				pulisciTextField();
 			}
 		}
 		
+	}
+
+	private void pulisciTextField() {
+		view.getLoginPanel().getIdAccountText().setText(null);
+		view.getLoginPanel().getPasswordField().setText(null);
 	}
 
 }

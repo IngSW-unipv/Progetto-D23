@@ -103,7 +103,7 @@ public class OperatoreUfficioPanel extends JPanel{
 		this.visite = visite;
 	}
 
-	public JButton getPrenota() {
+	public JButton getPrenotaBtn() {
 		return prenota;
 	}
 
@@ -111,7 +111,7 @@ public class OperatoreUfficioPanel extends JPanel{
 		this.prenota = prenota;
 	}
 
-	public JButton getCancella() {
+	public JButton getCancellaBtn() {
 		return cancella;
 	}
 
@@ -119,15 +119,15 @@ public class OperatoreUfficioPanel extends JPanel{
 		this.cancella = cancella;
 	}
 
-	public JButton getLogout() {
+	public JButton getLogoutBtn() {
 		return logout;
 	}
 
-	public void setLogout(JButton logout) {
+	public void setLogoutBtn(JButton logout) {
 		this.logout = logout;
 	}
 
-	public JButton getAggiungiUtente() {
+	public JButton getAggiungiUtenteBtn() {
 		return aggiungiUtente;
 	}
 
