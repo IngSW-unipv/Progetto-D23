@@ -7,11 +7,11 @@ import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.persona.Persona;
 import it.unipv.sfw.view.ViewController;
 
-public class RegistraPazienteActionListener implements ActionListener{
+public class RegistraUtenteActionListener implements ActionListener {
 	private StrutturaSanitaria model;
 	private ViewController view;
 
-	public RegistraPazienteActionListener(StrutturaSanitaria model, ViewController view) {
+	public RegistraUtenteActionListener(StrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}
@@ -19,26 +19,27 @@ public class RegistraPazienteActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		String nome = view.getRegistratiPanelPaziente().getNomeField().getText();
-		String cognome = view.getRegistratiPanelPaziente().getCognomeField().getText();
-		String CF = view.getRegistratiPanelPaziente().getCfField().getText();
-		String dataNascita = view.getRegistratiPanelPaziente().getDataNascitaField().getText();
-		String luogoNascita = view.getRegistratiPanelPaziente().getLuogoNascitaField().getText();
-		String provinciaNascita = view.getRegistratiPanelPaziente().getProvinciaNascitaField().getText();
-		String regResidenza = view.getRegistratiPanelPaziente().getRegioneResidenzaField().getText();
-		String provResidenza = view.getRegistratiPanelPaziente().getProvinciaResidenzaField().getText();
-		String cittaRes = view.getRegistratiPanelPaziente().getCittaResidenzaField().getText();
-		String indirizzo = view.getRegistratiPanelPaziente().getIndirizzoField().getText();
-		String email = view.getRegistratiPanelPaziente().getEmailField().getText();
-		String cellulare = view.getRegistratiPanelPaziente().getCellulareField().getText();
-		String pw = view.getRegistratiPanelPaziente().getPasswordField().toString();
-		String cap = view.getRegistratiPanelPaziente().getCapField().getText();
-		String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
+		String nome = view.getRegistratiPanel().getNomeField().getText();
+		String cognome = view.getRegistratiPanel().getCognomeField().getText();
+		String CF = view.getRegistratiPanel().getCfField().getText();
+		String dataNascita = view.getRegistratiPanel().getDataNascitaField().getText();
+		String luogoNascita = view.getRegistratiPanel().getLuogoNascitaField().getText();
+		String provinciaNascita = view.getRegistratiPanel().getProvinciaNascitaField().getText();
+		String regResidenza = view.getRegistratiPanel().getRegioneResidenzaField().getText();
+		String provResidenza = view.getRegistratiPanel().getProvinciaResidenzaField().getText();
+		String cittaRes = view.getRegistratiPanel().getCittaResidenzaField().getText();
+		String indirizzo = view.getRegistratiPanel().getIndirizzoField().getText();
+		String email = view.getRegistratiPanel().getEmailField().getText();
+		String cellulare = view.getRegistratiPanel().getCellulareField().getText();
+		String pw = view.getRegistratiPanel().getPasswordField().toString();
+		String cap = view.getRegistratiPanel().getCapField().getText();
+		String sesso = view.getRegistratiPanel().getSessoScelto();
+		String tipoAccount = view.getRegistratiPanel().getTipoAccountScelto();
 		
 		Persona newPersona = new Persona(CF, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
 				indirizzo, cap, email, cellulare);
 		
-		model.aggiungiPaziente(newPersona, pw);
+		model.aggiungiUtente(newPersona, pw);
 		
 		pulisciTextField();
 		//PopUpOk ok = new PopUpOk();
@@ -67,6 +68,8 @@ public class RegistraPazienteActionListener implements ActionListener{
 		view.getRegistratiPanelPaziente().getCellulare().setText(null);
 		view.getRegistratiPanelPaziente().getPasswordField().setText(null);
 		view.getRegistratiPanelPaziente().getCapField().setText(null);
+		
+	}
 		
 	}
 

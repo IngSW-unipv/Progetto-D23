@@ -502,6 +502,14 @@ public class RegistratiPanel extends JPanel{
 	public String[] getSessoString() {
 		return sessoString;
 	}
+	
+	public String getSessoScelto() {
+		return (String) scegliSesso.getSelectedItem();
+	}
+	
+	public String getTipoAccountScelto() {
+		return (String) scegliTipo.getSelectedItem();
+	}
 
 
 	public void setSessoString(String[] sessoString) {

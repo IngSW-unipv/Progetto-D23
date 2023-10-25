@@ -18,7 +18,13 @@ public class RegistrazioneController {
 
 		addActionListenerBottoneRegistraPaziente();
 		addActionListenerConfermaRegistrazione();
-		
+		addActionListenerRegistraUtente();
+	}
+
+
+	private void addActionListenerRegistraUtente() {
+		RegistraUtenteActionListener regUtente = new RegistraUtenteActionListener(model, view);
+		view.getRegistratiPanel().getBtnConfermaReg().addActionListener(regUtente);
 	}
 
 
