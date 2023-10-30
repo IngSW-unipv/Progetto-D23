@@ -16,7 +16,7 @@ public class EsciAccountActionListener implements ActionListener {
 	private StrutturaSanitaria model;
 
 	
-	public EsciAccountActionListener(ViewController view, StrutturaSanitaria model) {
+	public EsciAccountActionListener(StrutturaSanitaria model, ViewController view) {
 		super();
 		this.view = view;
 		this.model = model;

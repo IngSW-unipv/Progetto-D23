@@ -12,7 +12,7 @@ public class BtnRegistraPazienteActionListener implements ActionListener {
 	private ViewController view;
 	private StrutturaSanitaria model;
 	
-	public BtnRegistraPazienteActionListener (ViewController view, StrutturaSanitaria model) {
+	public BtnRegistraPazienteActionListener (StrutturaSanitaria model, ViewController view) {
 		super();
 		this.view = view;
 		this.model = model;

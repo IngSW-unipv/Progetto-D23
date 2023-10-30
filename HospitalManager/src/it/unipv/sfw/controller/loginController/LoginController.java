@@ -9,16 +9,20 @@ public class LoginController {
 	private StrutturaSanitaria model;
 	//private DbControllerSingleton dbControl;
 	private GoBtnActionListener go;
+	private BtnRegistraPazienteActionListener regPaz;
 	
-	public LoginController(ViewController view, StrutturaSanitaria model) {
+	public LoginController(StrutturaSanitaria model, ViewController view) {
 
 		this.view = view; 
 		this.model = model;
 		
 		//dbControl = DbControllerSingleton.getInstance();
 
-		go = new GoBtnActionListener(view, model);
+		go = new GoBtnActionListener(model, view);
 		view.getLoginPanel().getBtnLogin().addActionListener(go);
+		
+		regPaz = new BtnRegistraPazienteActionListener(model, view);
+		view.getLoginPanel().getBtnRegistraPaziente().addActionListener(regPaz);
 
 		addEsciActionListener();
 	}
@@ -38,7 +42,7 @@ public class LoginController {
 	 */
 	private void addEsciActionListener() {
 
-		EsciAccountActionListener esci = new EsciAccountActionListener(view, model);
+		EsciAccountActionListener esci = new EsciAccountActionListener(model, view);
 		view.getMedicoPanel().getLogoutBtn().addActionListener(esci);
 		view.getPazientePanel().getLogoutBtn().addActionListener(esci);
 		view.getOperatoreSanitarioPanel().getLogoutBtn().addActionListener(esci);

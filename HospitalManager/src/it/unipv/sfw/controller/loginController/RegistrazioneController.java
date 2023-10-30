@@ -11,14 +11,21 @@ public class RegistrazioneController {
 	private StrutturaSanitaria model;
 
 	
-	public RegistrazioneController(ViewController view, StrutturaSanitaria model) {
+	public RegistrazioneController(StrutturaSanitaria model, ViewController view) {
 
 		this.view = view;
 		this.model = model;
 
 		addActionListenerBottoneRegistraPaziente();
 		addActionListenerConfermaRegistrazione();
+		addActionListenerGeneraPassword();
 		addActionListenerRegistraUtente();
+	}
+
+
+	private void addActionListenerGeneraPassword() {
+		BtnGeneraPassActionListener generaPass = new BtnGeneraPassActionListener (model, view);
+		view.getRegistratiPanelPaziente().getBtnGeneraPass().addActionListener(generaPass);
 	}
 
 
@@ -36,7 +43,7 @@ public class RegistrazioneController {
 
 
 	private void addActionListenerBottoneRegistraPaziente() {
-		BtnRegistraPazienteActionListener addPaz = new BtnRegistraPazienteActionListener(view, model);
+		BtnRegistraPazienteActionListener addPaz = new BtnRegistraPazienteActionListener(model, view);
 		view.getLoginPanel().getBtnRegistraPaziente().addActionListener(addPaz);
 		
 	}

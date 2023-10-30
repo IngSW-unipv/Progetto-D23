@@ -20,7 +20,7 @@ public class GoBtnActionListener implements ActionListener {
 	//private DbControllerSingleton dbControl;
 	private String CF;
 
-	public GoBtnActionListener (ViewController view, StrutturaSanitaria model) {
+	public GoBtnActionListener (StrutturaSanitaria model, ViewController view) {
 		super();
 		this.view = view;
 		this.model = model;
