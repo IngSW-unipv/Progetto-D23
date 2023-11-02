@@ -1,24 +1,28 @@
 package it.unipv.sfw.controller.loginController;
 
-import java.awt.event.ActionEvent; 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.persona.Persona;
 import it.unipv.sfw.view.ViewController;
 
 public class RegistraUtenteActionListener implements ActionListener {
+
 	private StrutturaSanitaria model;
 	private ViewController view;
-
+	private TipoAccount tipoAcc;
+	
 	public RegistraUtenteActionListener(StrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		try {
 		String nome = view.getRegistratiPanel().getNomeField().getText();
 		String cognome = view.getRegistratiPanel().getCognomeField().getText();
 		String CF = view.getRegistratiPanel().getCfField().getText();
@@ -36,41 +40,62 @@ public class RegistraUtenteActionListener implements ActionListener {
 		String sesso = view.getRegistratiPanel().getSessoScelto();
 		String tipoAccount = view.getRegistratiPanel().getTipoAccountScelto();
 		
-		Persona newPersona = new Persona(CF, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-				indirizzo, cap, email, cellulare);
+		if (tipoAccount == "paziente") {
+			TipoAccount tipoAcc = TipoAccount.PA;
+		}
+		else if(tipoAccount == "medico"){
+			TipoAccount tipoAcc = TipoAccount.ME;
+		}
+		else if(tipoAccount == "OperatoreUfficio"){
+			TipoAccount tipoAcc = TipoAccount.OU;
+		}
+		else {
+			TipoAccount tipoAcc = TipoAccount.OS;
+		}
 		
-		model.aggiungiUtente(newPersona, pw);
+		model.registrazioneDipendente(tipoAcc, pw, specializzazione, CF, nome, cognome,
+				sesso, dataNascita, luogoNascita, provinciaNascita, tipoAccount,
+				provinciaNascita,cittaRes, indirizzo, cap, email, cellulare);
+		//ANCHE QUI DA RIVEDERE SPECIALIZZAZIONE
 		
 		pulisciTextField();
-		//PopUpOk ok = new PopUpOk();
-		//ok.infoBox("Nuovo account creato", "OK");
-		view.getRegistratiPanelPaziente().setVisible(false);
-		
-		//catch {
-		//	PopupError err = new PopupError();
-			//err.infoBox("le due password non coincidono", "Errore");
-		//	pulisciTextField();
-		//}
+		PopUpOk ok = new PopUpOk();
+		ok.infoBox("Nuovo account creato", "OK");
+		view.getRegistratiPanel().setVisible(false);
+		view.getOperatoreUfficioPanel().setVisible(true);
+		}
+		catch {
+			PopupError err = new PopupError();
+			err.infoBox("Registrazione non riuscita", "Errore");
+			pulisciTextField();
+		}
 	}
 
 	private void pulisciTextField() {
-		view.getRegistratiPanelPaziente().getNomeField().setText(null);
-		view.getRegistratiPanelPaziente().getCognomeField().setText(null);
-		view.getRegistratiPanelPaziente().getCfField().setText(null);
-		view.getRegistratiPanelPaziente().getDataNascitaField().setText(null);
-		view.getRegistratiPanelPaziente().getLuogoNascitaField().setText(null);
-		view.getRegistratiPanelPaziente().getProvinciaNascita().setText(null);
-		view.getRegistratiPanelPaziente().getRegioneResidenza().setText(null);
-		view.getRegistratiPanelPaziente().getProvinciaResidenza().setText(null);
-		view.getRegistratiPanelPaziente().getCittaResidenza().setText(null);
-		view.getRegistratiPanelPaziente().getIndirizzo().setText(null);
-		view.getRegistratiPanelPaziente().getEmail().setText(null);
-		view.getRegistratiPanelPaziente().getCellulare().setText(null);
-		view.getRegistratiPanelPaziente().getPasswordField().setText(null);
-		view.getRegistratiPanelPaziente().getCapField().setText(null);
+		view.getRegistratiPanel().getNomeField().setText(null);
+		view.getRegistratiPanel().getCognomeField().setText(null);
+		view.getRegistratiPanel().getCfField().setText(null);
+		view.getRegistratiPanel().getDataNascitaField().setText(null);
+		view.getRegistratiPanel().getLuogoNascitaField().setText(null);
+		view.getRegistratiPanel().getProvinciaNascita().setText(null);
+		view.getRegistratiPanel().getRegioneResidenza().setText(null);
+		view.getRegistratiPanel().getProvinciaResidenza().setText(null);
+		view.getRegistratiPanel().getCittaResidenza().setText(null);
+		view.getRegistratiPanel().getIndirizzo().setText(null);
+		view.getRegistratiPanel().getEmail().setText(null);
+		view.getRegistratiPanel().getCellulare().setText(null);
+		view.getRegistratiPanel().getPasswordField().setText(null);
+		view.getRegistratiPanel().getCapField().setText(null);
 		
 	}
-		
-	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -9,7 +9,6 @@ public class LoginController {
 	private StrutturaSanitaria model;
 	//private DbControllerSingleton dbControl;
 	private GoBtnActionListener go;
-	private BtnRegistraPazienteActionListener regPaz;
 	
 	public LoginController(StrutturaSanitaria model, ViewController view) {
 
@@ -20,9 +19,6 @@ public class LoginController {
 
 		go = new GoBtnActionListener(model, view);
 		view.getLoginPanel().getBtnLogin().addActionListener(go);
-		
-		regPaz = new BtnRegistraPazienteActionListener(model, view);
-		view.getLoginPanel().getBtnRegistraPaziente().addActionListener(regPaz);
 
 		addEsciActionListener();
 	}

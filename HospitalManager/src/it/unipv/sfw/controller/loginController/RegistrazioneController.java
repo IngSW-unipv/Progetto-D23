@@ -31,12 +31,12 @@ public class RegistrazioneController {
 
 	private void addActionListenerRegistraUtente() {
 		RegistraUtenteActionListener regUtente = new RegistraUtenteActionListener(model, view);
-		view.getRegistratiPanel().getBtnConfermaReg().addActionListener(regUtente);
+		view.getOperatoreUfficioPanel().getAggiungiUtenteBtn().addActionListener(regUtente);
 	}
 
 
 	private void addActionListenerConfermaRegistrazione() {
-		RegistraPazienteActionListener regPaz = new RegistraPazienteActionListener(model, view);
+		ConfermaRegistraPazienteActionListener regPaz = new ConfermaRegistraPazienteActionListener(model, view);
 		view.getRegistratiPanelPaziente().getBtnConfermaReg().addActionListener(regPaz);
 		
 	}

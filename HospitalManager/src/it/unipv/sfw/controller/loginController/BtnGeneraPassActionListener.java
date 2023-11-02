@@ -18,7 +18,8 @@ public class BtnGeneraPassActionListener implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		model.getPassGenerata();
+		String pw = model.generaPwTemp();
+		view.getRegistratiPanelPaziente().getPasswordField().setText(pw);
 		
 	}
 

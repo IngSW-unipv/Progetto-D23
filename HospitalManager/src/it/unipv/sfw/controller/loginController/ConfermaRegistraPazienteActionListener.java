@@ -7,11 +7,11 @@ import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.persona.Persona;
 import it.unipv.sfw.view.ViewController;
 
-public class RegistraPazienteActionListener implements ActionListener{
+public class ConfermaRegistraPazienteActionListener implements ActionListener{
 	private StrutturaSanitaria model;
 	private ViewController view;
 
-	public RegistraPazienteActionListener(StrutturaSanitaria model, ViewController view) {
+	public ConfermaRegistraPazienteActionListener(StrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}
@@ -19,6 +19,7 @@ public class RegistraPazienteActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		try {
 		String nome = view.getRegistratiPanelPaziente().getNomeField().getText();
 		String cognome = view.getRegistratiPanelPaziente().getCognomeField().getText();
 		String CF = view.getRegistratiPanelPaziente().getCfField().getText();
@@ -35,21 +36,21 @@ public class RegistraPazienteActionListener implements ActionListener{
 		String cap = view.getRegistratiPanelPaziente().getCapField().getText();
 		String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
 		
-		Persona newPersona = new Persona(CF, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-				indirizzo, cap, email, cellulare);
-		
-		model.aggiungiPaziente(newPersona, pw);
+		model.registrazionePaziente(specializzazione, CF, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
+				indirizzo, cap, email, cellulare, pw);
+		//SPECIALIZZAZIONE DA TOGLIERE, VEDI CON NICO
 		
 		pulisciTextField();
-		//PopUpOk ok = new PopUpOk();
-		//ok.infoBox("Nuovo account creato", "OK");
+		PopUpOk ok = new PopUpOk();
+		ok.infoBox("Nuovo account creato", "OK");
 		view.getRegistratiPanelPaziente().setVisible(false);
-		
-		//catch {
-		//	PopupError err = new PopupError();
-			//err.infoBox("le due password non coincidono", "Errore");
-		//	pulisciTextField();
-		//}
+		view.getLoginPanel().setVisible(true);
+		}
+		catch {
+			PopupError err = new PopupError();
+			err.infoBox("le due password non coincidono", "Errore");
+			pulisciTextField();
+		}
 	}
 
 	private void pulisciTextField() {

@@ -1,5 +1,5 @@
 package it.unipv.sfw.model;
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.HashMap;
 
 import it.unipv.sfw.jdbc.bean.account.AccountDAO;
@@ -323,5 +323,14 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public void setCfPersone(HashMap<String, Persona> cfPersone) {
 		this.cfPersone = cfPersone;
 	}	
+	
+	//public TipoAccount getTipoAccount(int Id) {
+		//return tipoAccount;
+	//}
+	
+	//public ArrayList<Prenotazione> getPrenotazioniDueToMed(int Id) {
+	//	return prenotazioniDueToMed;
+	//}
+	
 	
 }
