@@ -14,7 +14,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private String telefono;
 	private String email;
 	
-	private ArrayList<Persona> persone;
+	
 	private ArrayList<Paziente> pazienti;
 	private ArrayList<Medico> medici;
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
@@ -25,7 +25,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	//private ArrayList<Erogazione> erogazioni;
 	
 	HashMap<String,Persona> cfPersone;
-
+	HashMap<Integer,Account> idAccAccount;
+	HashMap<Integer,Paziente> idAccPaziente;
 	
 	private int accountAttivi;
 	private int numeroPrenotazioni;
@@ -44,7 +45,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 
 	@Override
-	public boolean registrazionePaziente(String specializzazione, String cf, String nome, String cognome,
+	public boolean registrazionePaziente(String cf, String nome, String cognome,
 			String sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
 			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, String pw) {
 		boolean check = false;
@@ -308,21 +309,33 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.accountDAO = accountDAO;
 	}
 
-	public ArrayList<Persona> getPersone() {
-		return persone;
-	}
-
-	public void setPersone(ArrayList<Persona> persone) {
-		this.persone = persone;
-	}
-
 	public HashMap<String, Persona> getCfPersone() {
 		return cfPersone;
 	}
 
 	public void setCfPersone(HashMap<String, Persona> cfPersone) {
 		this.cfPersone = cfPersone;
+	}
+
+	public HashMap<Integer, Account> getIdAccAccount() {
+		return idAccAccount;
+	}
+
+	public void setIdAccPersone(HashMap<Integer, Account> idAccAccount) {
+		this.idAccAccount = idAccAccount;
 	}	
+
+	public void setIdAccAccount(HashMap<Integer, Account> idAccAccount) {
+		this.idAccAccount = idAccAccount;
+	}
+
+	public Persona getPazienteByIdAcc(int idAcc) {
+		Account a = this.getIdAccAccount().get(idAcc);
+		Persona p = a.getP();
+		return p;
+	}
+	
+	
 	
 	//public TipoAccount getTipoAccount(int Id) {
 		//return tipoAccount;

@@ -86,7 +86,35 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		ResultSet rs1;
 		
 		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_PAZIENTE = ?";
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_PAZIENTE = ? AND ESITO IS NULL";
+			ps1 = conn.prepareStatement(query);
+			ps1.setInt(0, idPaziente);
+			rs1= ps1.executeQuery(query);
+			
+			while (rs1.next()) {
+				PrenotazioneDB pren= new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getInt("ID_PAZIENTE"), rs1.getInt("ID_MEDICO"),
+						rs1.getInt("ID_OSS"), rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"),
+						rs1.getString("NOTE"));
+				prenotazioniPaziente.add(pren);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		ConnessioneDB.closeConnection(conn);
+		
+		return prenotazioniPaziente;
+	}
+	
+	@Override
+	public ArrayList<PrenotazioneDB> selectPrenotazioniErogateByIdPaziente(int idPaziente) {
+		ArrayList<PrenotazioneDB> prenotazioniPaziente = new ArrayList<>();
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		ResultSet rs1;
+		
+		try {
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_PAZIENTE = ? AND ESITO IS NOT NULL";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(0, idPaziente);
 			rs1= ps1.executeQuery(query);

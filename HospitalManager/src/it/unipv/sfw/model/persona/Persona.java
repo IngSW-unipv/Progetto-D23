@@ -1,10 +1,6 @@
 package it.unipv.sfw.model.persona;
 
-import java.util.ArrayList;
-
-import it.unipv.sfw.model.Prenotazione;
-
-public class Persona {
+public abstract class Persona {
 	private String cf;
 	private String nome;
 	private String cognome;
@@ -19,6 +15,8 @@ public class Persona {
 	private String cap;
 	private String eMail;
 	private String cellulare;
+	
+	
 	
 	public Persona(String cf, String nome, String cognome, String sesso, String dataNascita, String luogoNascita,
 			String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes, String indirizzo,
@@ -151,9 +149,5 @@ public class Persona {
 	public void setCellulare(String cellulare) {
 		this.cellulare = cellulare;
 	}
-	
-	
 		
-	
-	
 }

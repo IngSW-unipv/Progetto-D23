@@ -8,4 +8,5 @@ public interface IAnagraficaDAO {
 	ArrayList<AnagraficaDB> selectAllAnagrafica();
 	AnagraficaDB selectAnagraficaByCf(String cf);
 	boolean insertAnagrafica(Persona p);
+	ArrayList<AnagraficaDB> selectAnagraficaMedici();
 }

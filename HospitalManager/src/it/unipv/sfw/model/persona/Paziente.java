@@ -48,6 +48,19 @@ public class Paziente extends Persona implements IPrenotante {
 	CartellaClinica getCartellaPersonale() {
 		return cartellaPersonale;
 	}
+
+	public ArrayList<Prenotazione> getPrenotazioni() {
+		return prenotazioni;
+	}
+
+	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
+	}
+
+	public void setCartellaPersonale(CartellaClinica cartellaPersonale) {
+		this.cartellaPersonale = cartellaPersonale;
+	}
+	
 	
 	
 

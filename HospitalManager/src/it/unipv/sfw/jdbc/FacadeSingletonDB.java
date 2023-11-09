@@ -6,13 +6,15 @@ import it.unipv.sfw.jdbc.bean.account.*;
 import it.unipv.sfw.jdbc.bean.anagrafica.*;
 import it.unipv.sfw.jdbc.bean.calendario.*;
 import it.unipv.sfw.jdbc.bean.cartellaclinica.*;
-import it.unipv.sfw.jdbc.bean.esiti.*;
+//import it.unipv.sfw.jdbc.bean.esiti.*;
 import it.unipv.sfw.jdbc.bean.prenotazione.*;
 import it.unipv.sfw.jdbc.bean.prestazionesanitaria.*;
 import it.unipv.sfw.model.Account;
+import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.PrestazioneSanitaria;
 import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.persona.Persona;
+import it.unipv.sfw.model.persona.Medico;
+import it.unipv.sfw.model.persona.Paziente;
 
 public class FacadeSingletonDB {
 	
@@ -23,30 +25,33 @@ public class FacadeSingletonDB {
 	private IAnagraficaDAO anagrafica;
 	private ICalendarioDAO calendario;
 	private ICartellaClinicaDAO cartellaClinica;
-	private IEsitiDAO esiti;
+	//private IEsitiDAO esito;
 	private IPrenotazioneDAO prenotazione;
 	private IPrestazioneSanitariaDAO prestazione;
 
 	//costruttore
 	//...
 	
-	public void popolaPersona() {
-		ArrayList<AnagraficaDB> anagrafiche = new ArrayList<>();
+	
+	public void popolaMedici() {
+		ArrayList<AnagraficaDB> medici = new ArrayList<>();
 		
+		medici = anagrafica.selectAnagraficaMedici();
 		
-		anagrafiche = anagrafica.selectAllAnagrafica();
-		
-		for (AnagraficaDB a: anagrafiche) {
+		for (AnagraficaDB a: medici) {
 			
-			Persona p = new Persona(a.getCf(), a.getNome(), a.getCognome(), a.getSesso(), 
+			Medico m = new Medico(a.getCf(), a.getNome(), a.getCognome(), a.getSesso(), 
 					a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(), 
 					a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
 			
-			struttura1.getPersone().add(p);
+			struttura1.getMedici().add(m);
 			
-			struttura1.getCfPersone().put(a.getCf(), p);
+			struttura1.getCfPersone().put(a.getCf(), m);
 		}
 	}
+	
+	
+	// popola pazienti, opsan, opuff uguali a popola medici
 		
 		public void popolaAccount() {
 			ArrayList<AccountDB> accounts = new ArrayList<>();
@@ -54,8 +59,12 @@ public class FacadeSingletonDB {
 			accounts = account.selectAllAccounts();
 			
 			for (AccountDB a: accounts) {
-				struttura1.getAccounts().add(new Account(struttura1.getCfPersone().get(a.getCf()), a.getIdAcc(), a.getPw(), 
-						a.getSpecializzazione(), a.getTipoAcc()));
+				
+				Account acc = new Account(struttura1.getCfPersone().get(a.getCf()), a.getIdAcc(), a.getPw(), 
+						a.getSpecializzazione(), a.getTipoAcc());
+				
+				struttura1.getAccounts().add(acc);
+
 			}
 	}
 	
@@ -69,6 +78,30 @@ public class FacadeSingletonDB {
 		}
 		
 	}
+	
+//	public void popolaPrenotazioniErogate(Paziente p, Account a) {
+//		ArrayList<PrenotazioneDB> prenotazioniDB = new ArrayList<>();
+//		prenotazioniDB = prenotazione.selectPrenotazioniErogateByIdPaziente(a.getIdAcc());
+//		
+//		for (PrenotazioneDB i : prenotazioniDB) {
+//			
+//			Prenotazione PrenotazioniModello = new Prenotazione(a.getIdAcc(), , null, a, a, null, null)
+//
+//		}
+//		
+//	}
+//	
+//	public void popolaCartellaClinica(Paziente p, Account a) {
+//		CartellaClinicaDB cc = cartellaClinica.selectCartellaByIdAcc(a.getIdAcc());
+//		
+//		CartellaClinica cartellaPersonale = new CartellaClinica(cc.getAltezza(), cc.getPeso(), cc.getGruppoSanguigno(), );
+//		
+//			p.setCartellaPersonale(null);
+//		
+//	}
+	
+	
+	
 	
 	
 }

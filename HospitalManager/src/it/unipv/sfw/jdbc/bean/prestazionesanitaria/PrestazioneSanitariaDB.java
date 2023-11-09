@@ -8,10 +8,10 @@ public class PrestazioneSanitariaDB {
 	private LocalTime durata;
 	private double costo;
 	
-	public PrestazioneSanitariaDB(String idPrest, TipoPrestazione tipo, String durata, double costo) {
+	public PrestazioneSanitariaDB(String idPrest, String tipo, String durata, double costo) {
 		super();
 		this.idPrest = idPrest;
-		this.tipo = tipo;
+		this.tipo = TipoPrestazione.valueOf(tipo);
 	    this.durata = LocalTime.parse(durata);
 		this.costo = costo;
 	}

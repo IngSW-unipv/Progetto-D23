@@ -12,7 +12,7 @@ public class Prenotazione {
 	private LocalDate data;
 	private LocalTime orario;
 	private boolean accreditamento;
-	private Esito esiti;
+	private String esito;
 	
 	public Prenotazione(int idPren, Account paziente, PrestazioneSanitaria prestazione, Account medico, Account opSanitario,
 			LocalDate data, LocalTime orario) {
@@ -25,7 +25,7 @@ public class Prenotazione {
 		this.data = data;
 		this.orario = orario;
 		this.accreditamento = false;
-		this.esiti = new Esito(null, null);
+		this.esito = null;
 	}
 
 	public int getIdPren() {
@@ -92,14 +92,12 @@ public class Prenotazione {
 		this.accreditamento = accreditamento;
 	}
 
-	public Esito getEsiti() {
-		return esiti;
+	public String getEsiti() {
+		return esito;
 	}
 
-	public void setEsiti(Esito esiti) {
-		this.esiti = esiti;
+	public void setEsiti(String esito) {
+		this.esito = esito;
 	}
-
-
 	
 }

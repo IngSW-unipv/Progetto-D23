@@ -113,4 +113,33 @@ public class AnagraficaDAO implements IAnagraficaDAO {
 			ConnessioneDB.closeConnection(conn);
 			return af;
 		}
+		
+		@Override
+		public ArrayList<AnagraficaDB> selectAnagraficaMedici() {
+			ArrayList<AnagraficaDB> medici = new  ArrayList<>();
+
+			conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+			Statement st1;
+			ResultSet rs1;
+			
+			try {
+				st1= conn.createStatement();
+				String query= "SELECT ANAGRAFICA.* from hospitalmanager.PROFILI JOIN hospitalmanager.ANAGRAFICA ON PROFILI.CF = ANAGRAFICA.CF WHERE PROFILI.TIPO = 'ME'";
+				rs1= st1.executeQuery(query);
+				
+				while (rs1.next()) {
+					 AnagraficaDB m = new AnagraficaDB(rs1.getString("CF"), rs1.getString("NOME"), rs1.getString("COGNOME"),
+							rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
+							rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
+							rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));
+					 medici.add(m);
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			ConnessioneDB.closeConnection(conn);
+			return medici;
+		}
 }
