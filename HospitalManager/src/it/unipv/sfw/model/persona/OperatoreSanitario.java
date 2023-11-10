@@ -1,13 +1,17 @@
 package it.unipv.sfw.model.persona;
 
-public class OperatoreSanitario extends Persona {
+import it.unipv.sfw.model.TipoAccount;
 
-	public OperatoreSanitario(String cf, String nome, String cognome, String sesso, String dataNascita,
-			String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes, String cittaRes,
-			String indirizzo, String cap, String eMail, String cellulare) {
-		super(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes, provinciaRes, cittaRes,
-				indirizzo, cap, eMail, cellulare);
+public class OperatoreSanitario extends Account {
+
+	public OperatoreSanitario(int idAcc, String pw, TipoAccount tipoAcc, String cf, String nome, String cognome,
+			String sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
+			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
+		super(idAcc, pw, tipoAcc, cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 		// TODO Auto-generated constructor stub
 	}
+
+	
 
 }

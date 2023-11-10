@@ -2,26 +2,27 @@ package it.unipv.sfw.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.Paziente;
+
 
 public class Prenotazione {
 	private int idPren;
-	private Account paziente;
+	private Paziente paziente;
 	private PrestazioneSanitaria prestazione;
-	private Account medico;
-	private Account opSanitario;
+	private Account personaleSanitario;
 	private LocalDate data;
 	private LocalTime orario;
 	private boolean accreditamento;
 	private String esito;
 	
-	public Prenotazione(int idPren, Account paziente, PrestazioneSanitaria prestazione, Account medico, Account opSanitario,
-			LocalDate data, LocalTime orario) {
+	public Prenotazione(int idPren, Paziente paziente, PrestazioneSanitaria prestazione, Account personaleSanitario,
+			LocalDate data, LocalTime orario, boolean accreditamento, String esito) {
 		super();
 		this.idPren = idPren;
 		this.paziente = paziente;
-		this.prestazione= prestazione;
-		this.medico = medico;
-		this.opSanitario = opSanitario;
+		this.prestazione = prestazione;
+		this.personaleSanitario = personaleSanitario;
 		this.data = data;
 		this.orario = orario;
 		this.accreditamento = false;
@@ -36,11 +37,11 @@ public class Prenotazione {
 		this.idPren = idPren;
 	}
 
-	public Account getPaziente() {
+	public Paziente getPaziente() {
 		return paziente;
 	}
 
-	public void setPaziente(Account paziente) {
+	public void setPaziente(Paziente paziente) {
 		this.paziente = paziente;
 	}
 
@@ -52,20 +53,12 @@ public class Prenotazione {
 		this.prestazione = prestazione;
 	}
 
-	public Account getMedico() {
-		return medico;
+	public Account getPersonaleSanitario() {
+		return personaleSanitario;
 	}
 
-	public void setMedico(Account medico) {
-		this.medico = medico;
-	}
-
-	public Account getOpSanitario() {
-		return opSanitario;
-	}
-
-	public void setOpSanitario(Account opSanitario) {
-		this.opSanitario = opSanitario;
+	public void setPersonaleSanitario(Account personaleSanitario) {
+		this.personaleSanitario = personaleSanitario;
 	}
 
 	public LocalDate getData() {
@@ -92,12 +85,18 @@ public class Prenotazione {
 		this.accreditamento = accreditamento;
 	}
 
-	public String getEsiti() {
+	public String getEsito() {
 		return esito;
 	}
 
-	public void setEsiti(String esito) {
+	public void setEsito(String esito) {
 		this.esito = esito;
 	}
+	
+	
+	
+	
+	
+	
 	
 }

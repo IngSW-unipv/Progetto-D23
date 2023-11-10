@@ -24,9 +24,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<Prenotazione> prenotazioni;
 	//private ArrayList<Erogazione> erogazioni;
 	
-	HashMap<String,Persona> cfPersone;
-	HashMap<Integer,Account> idAccAccount;
-	HashMap<Integer,Paziente> idAccPaziente;
+	HashMap<String,Account> cfPersone;
+	//HashMap<Integer,Account> idAccAccount;
+	//HashMap<Integer,Paziente> idAccPaziente;
 	
 	private int accountAttivi;
 	private int numeroPrenotazioni;
@@ -50,16 +50,16 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, String pw) {
 		boolean check = false;
 		try {
-			Paziente p = new Paziente(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-					provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-			Account a = new Account(p, this.generaIdAcc(), pw, null, TipoAccount.PA);
-			//CartellaClinica cc = new CartellaClinica();
+//			Paziente p = new Paziente(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+//					provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+//			Account a = new Account(p, this.generaIdAcc(), pw, null, TipoAccount.PA);
+//			//CartellaClinica cc = new CartellaClinica();
+//			
+//			anagraficaDAO.insertAnagrafica(p);
+//			accountDAO.insertAccount(a);
 			
-			anagraficaDAO.insertAnagrafica(p);
-			accountDAO.insertAccount(a);
-			
-			pazienti.add(p);
-			accounts.add(a);
+//			pazienti.add(p);
+//			accounts.add(a);
 			
 			check = true;
 			
@@ -79,43 +79,43 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		try {
 			switch(tipoAcc) {
 			case ME:
-				Medico m = new Medico(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-				Account a1 = new Account(m, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.ME);
-				
-				anagraficaDAO.insertAnagrafica(m);
-				accountDAO.insertAccount(a1);
-				
-				medici.add(m);
-				accounts.add(a1);
-				
+//				Medico m = new Medico(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+//						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+//				Account a1 = new Account(m, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.ME);
+//				
+//				anagraficaDAO.insertAnagrafica(m);
+//				accountDAO.insertAccount(a1);
+//				
+//				medici.add(m);
+//				accounts.add(a1);
+//				
 				check = true;
 				break;
 				
 			case OS:
-				OperatoreSanitario os = new OperatoreSanitario(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-				Account a2 = new Account(os, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.OS);
-				
-				anagraficaDAO.insertAnagrafica(os);
-				accountDAO.insertAccount(a2);
-				
-				operatoriSanitari.add(os);
-				accounts.add(a2);
+//				OperatoreSanitario os = new OperatoreSanitario(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+//						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+//				Account a2 = new Account(os, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.OS);
+//				
+//				anagraficaDAO.insertAnagrafica(os);
+//				accountDAO.insertAccount(a2);
+//				
+//				operatoriSanitari.add(os);
+//				accounts.add(a2);
 				
 				check = true;
 				break;
 				
 			case OU:
-				OperatoreUfficio ou = new OperatoreUfficio(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-				Account a3 = new Account(ou, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.OU);
-				
-				anagraficaDAO.insertAnagrafica(ou);
-				accountDAO.insertAccount(a3);
-				
-				operatoriUfficio.add(ou);
-				accounts.add(a3);
+//				OperatoreUfficio ou = new OperatoreUfficio(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+//						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+//				Account a3 = new Account(ou, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.OU);
+//				
+//				anagraficaDAO.insertAnagrafica(ou);
+//				accountDAO.insertAccount(a3);
+//				
+//				operatoriUfficio.add(ou);
+//				accounts.add(a3);
 				
 				check = true;
 				break;
@@ -309,30 +309,30 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.accountDAO = accountDAO;
 	}
 
-	public HashMap<String, Persona> getCfPersone() {
+	public HashMap<String, Account> getCfPersone() {
 		return cfPersone;
 	}
 
-	public void setCfPersone(HashMap<String, Persona> cfPersone) {
+	public void setCfPersone(HashMap<String, Account> cfPersone) {
 		this.cfPersone = cfPersone;
 	}
 
-	public HashMap<Integer, Account> getIdAccAccount() {
-		return idAccAccount;
-	}
+//	public HashMap<Integer, Account> getIdAccAccount() {
+//		return idAccAccount;
+//	}
+//
+//	public void setIdAccPersone(HashMap<Integer, Account> idAccAccount) {
+//		this.idAccAccount = idAccAccount;
+//	}	
+//
+//	public void setIdAccAccount(HashMap<Integer, Account> idAccAccount) {
+//		this.idAccAccount = idAccAccount;
+//	}
 
-	public void setIdAccPersone(HashMap<Integer, Account> idAccAccount) {
-		this.idAccAccount = idAccAccount;
-	}	
-
-	public void setIdAccAccount(HashMap<Integer, Account> idAccAccount) {
-		this.idAccAccount = idAccAccount;
-	}
-
-	public Persona getPazienteByIdAcc(int idAcc) {
-		Account a = this.getIdAccAccount().get(idAcc);
-		Persona p = a.getP();
-		return p;
+//	public Account getPazienteByIdAcc(int idAcc) {
+//		Account a = this.getIdAccAccount().get(idAcc);
+//		Account p = a.getP();
+//		return p;
 	}
 	
 	
