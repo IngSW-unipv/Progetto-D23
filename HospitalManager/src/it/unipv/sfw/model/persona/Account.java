@@ -4,11 +4,9 @@ import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.exception.LoginException;
 
 public abstract class Account {
-	private int idAcc;
+	private String cf;
 	private String pw;
 	private TipoAccount tipoAcc;
-	
-	private String cf;
 	private String nome;
 	private String cognome;
 	private String sesso;
@@ -24,12 +22,11 @@ public abstract class Account {
 	private String cellulare;
 	
 	
-	public Account(int idAcc, String pw, TipoAccount tipoAcc, String cf, String nome,
+	public Account(String pw, TipoAccount tipoAcc, String cf, String nome,
 			String cognome, String sesso, String dataNascita, String luogoNascita, String provinciaNascita,
 			String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail,
 			String cellulare) {
 		super();
-		this.idAcc = idAcc;
 		this.pw = pw;
 		this.tipoAcc = tipoAcc;
 		this.cf = cf;
@@ -75,13 +72,6 @@ public abstract class Account {
 		
 	}
 
-	public int getIdAcc() {
-		return idAcc;
-	}
-
-	public void setIdAcc(int idAcc) {
-		this.idAcc = idAcc;
-	}
 
 	public String getPw() {
 		return pw;

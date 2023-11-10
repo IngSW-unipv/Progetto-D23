@@ -11,7 +11,7 @@ public interface IProfiloDAO {
 	ArrayList<ProfiloDB> selectAllMedici();
 	ArrayList<ProfiloDB> selectAllOperatoriSanitari();
 	ArrayList<ProfiloDB> selectAlloperatoriUfficio();
-	ProfiloDB selectProfiloByCF(String CF, TipoAccount tipo);
+	ProfiloDB selectProfiloByCF(String cf, TipoAccount tipo);
 	boolean insertProfilo(Account a);
-	boolean updatePw(String CF, TipoAccount tipo, String pw);
+	boolean updatePw(String cf, TipoAccount tipo, String pw);
 }
