@@ -18,7 +18,7 @@ import it.unipv.sfw.model.persona.Paziente;
 
 public class FacadeSingletonDB {
 	
-	private static FacadeSingletonDB controllerDB;
+	
 	private static StrutturaSanitaria struttura1;
 	
 	private IAccountDAO account;

@@ -2,8 +2,7 @@ package it.unipv.sfw.model;
 import java.util.ArrayList; 
 import java.util.HashMap;
 
-import it.unipv.sfw.jdbc.bean.account.AccountDAO;
-import it.unipv.sfw.jdbc.bean.anagrafica.AnagraficaDAO;
+import it.unipv.sfw.jdbc.FacadeSingletonDB;
 import it.unipv.sfw.model.exception.LoginException;
 import it.unipv.sfw.model.persona.*;
 
@@ -14,12 +13,10 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private String telefono;
 	private String email;
 	
-	
 	private ArrayList<Paziente> pazienti;
 	private ArrayList<Medico> medici;
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
-	private ArrayList<Account> accounts;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Prenotazione> prenotazioni;
 	//private ArrayList<Erogazione> erogazioni;
@@ -31,16 +28,11 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private int accountAttivi;
 	private int numeroPrenotazioni;
 	
-	private AnagraficaDAO anagraficaDAO;
-	private AccountDAO accountDAO;
-
+	private static FacadeSingletonDB controllerDB;
 	
 	//costruttore 1
 	public StrutturaSanitaria() {
 		super();
-		
-		this.anagraficaDAO = new AnagraficaDAO();
-		this.accountDAO = new AccountDAO();
 		this.cfPersone = new HashMap<>();
 	}
 
@@ -157,36 +149,38 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return password;
 	}
 
+	
+	// DA MODIFICARE
 	@Override
 	public boolean cambioPw(int idAcc, String vecchiaPw, String nuovaPw) {
-		Account a = accounts.get(idAcc);
-		boolean check1 = false;
-		boolean check2 = false;
-		try {
-			check1 = accountDAO.updatePw(idAcc, nuovaPw);
-			check2 = a.setPw(vecchiaPw, nuovaPw);
-		}
-		catch(LoginException e) {
-			check2 = false;
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			check1 = false;
-		}
-		return check1 && check2;
+//		Account a = accounts.get(idAcc);
+//		boolean check1 = false;
+//		boolean check2 = false;
+//		try {
+//			check1 = accountDAO.updatePw(idAcc, nuovaPw);
+//			check2 = a.setPw(vecchiaPw, nuovaPw);
+//		}
+//		catch(LoginException e) {
+//			check2 = false;
+//		}
+//		catch(Exception e) {
+//			e.printStackTrace();
+//			check1 = false;
+//		}
+//		return check1 && check2;
 	}
 	
 	@Override
 	public boolean login(int idAcc, String pw) {
-		Account a = accounts.get(idAcc);
-		boolean check = false;
-		try {
-			check = a.controllaPw(pw);
-		}
-		catch(LoginException e) {
-			check = false;
-		}
-		return check;
+//		Account a = accounts.get(idAcc);
+//		boolean check = false;
+//		try {
+//			check = a.controllaPw(pw);
+//		}
+//		catch(LoginException e) {
+//			check = false;
+//		}
+//		return check;
 	}
 
 	public String getNome() {
@@ -253,13 +247,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.operatoriUfficio = operatoriUfficio;
 	}
 
-	public ArrayList<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(ArrayList<Account> accounts) {
-		this.accounts = accounts;
-	}
+//	public ArrayList<Account> getAccounts() {
+//		return accounts;
+//	}
+//
+//	public void setAccounts(ArrayList<Account> accounts) {
+//		this.accounts = accounts;
+//	}
 
 	public ArrayList<PrestazioneSanitaria> getPrestazioni() {
 		return prestazioni;
@@ -293,21 +287,21 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.numeroPrenotazioni = numeroPrenotazioni;
 	}
 
-	public AnagraficaDAO getAnagraficaDAO() {
-		return anagraficaDAO;
-	}
-
-	public void setAnagraficaDAO(AnagraficaDAO anagraficaDAO) {
-		this.anagraficaDAO = anagraficaDAO;
-	}
-
-	public AccountDAO getAccountDAO() {
-		return accountDAO;
-	}
-
-	public void setAccountDAO(AccountDAO accountDAO) {
-		this.accountDAO = accountDAO;
-	}
+//	public AnagraficaDAO getAnagraficaDAO() {
+//		return anagraficaDAO;
+//	}
+//
+//	public void setAnagraficaDAO(AnagraficaDAO anagraficaDAO) {
+//		this.anagraficaDAO = anagraficaDAO;
+//	}
+//
+//	public AccountDAO getAccountDAO() {
+//		return accountDAO;
+//	}
+//
+//	public void setAccountDAO(AccountDAO accountDAO) {
+//		this.accountDAO = accountDAO;
+//	}
 
 	public HashMap<String, Account> getCfPersone() {
 		return cfPersone;
@@ -345,5 +339,3 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	//	return prenotazioniDueToMed;
 	//}
 	
-	
-}

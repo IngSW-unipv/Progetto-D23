@@ -1,14 +1,12 @@
-package it.unipv.sfw.model.persona;
+package it.unipv.sfw.jdbc.bean.profilo;
 
 import it.unipv.sfw.model.TipoAccount;
-import it.unipv.sfw.model.exception.LoginException;
 
-public abstract class Account {
-	private int idAcc;
-	private String pw;
-	private TipoAccount tipoAcc;
-	
+public class ProfiloDB {
 	private String cf;
+	private TipoAccount tipoAcc;
+	private String pw;
+	private String specializzazione;
 	private String nome;
 	private String cognome;
 	private String sesso;
@@ -23,16 +21,15 @@ public abstract class Account {
 	private String eMail;
 	private String cellulare;
 	
-	
-	public Account(int idAcc, String pw, TipoAccount tipoAcc, String cf, String nome,
+	public ProfiloDB(String cf, String tipoAcc, String pw, String specializzazione, String nome,
 			String cognome, String sesso, String dataNascita, String luogoNascita, String provinciaNascita,
 			String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail,
 			String cellulare) {
 		super();
-		this.idAcc = idAcc;
-		this.pw = pw;
-		this.tipoAcc = tipoAcc;
 		this.cf = cf;
+		this.tipoAcc = TipoAccount.valueOf(tipoAcc);
+		this.pw = pw;
+		this.specializzazione = specializzazione;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.sesso = sesso;
@@ -48,39 +45,13 @@ public abstract class Account {
 		this.cellulare = cellulare;
 	}
 
-	public boolean setPw(String vecchiaPw, String nuovaPw) throws LoginException {
-		boolean check = false;
-		if(controllaPw(vecchiaPw)) {
-			if(vecchiaPw == nuovaPw) {
-				throw new LoginException("La nuova password non può essere uguale a quella corrente");
-			}
-			else {
-				this.pw = nuovaPw;
-				check = true;
-			}
-		}
-		
-		return check;
-	}
-	
-	public boolean controllaPw(String pw) throws LoginException{
-		boolean check = false;
-		if(this.pw != pw) {
-			throw new LoginException("La password inserita non è corretta");
-		}
-		else {
-			check = true;
-		}
-		return check;
-		
+
+	public TipoAccount getTipoAcc() {
+		return tipoAcc;
 	}
 
-	public int getIdAcc() {
-		return idAcc;
-	}
-
-	public void setIdAcc(int idAcc) {
-		this.idAcc = idAcc;
+	public void setTipoAcc(TipoAccount tipoAcc) {
+		this.tipoAcc = tipoAcc;
 	}
 
 	public String getPw() {
@@ -91,12 +62,12 @@ public abstract class Account {
 		this.pw = pw;
 	}
 
-	public TipoAccount getTipoAcc() {
-		return tipoAcc;
+	public String getSpecializzazione() {
+		return specializzazione;
 	}
 
-	public void setTipoAcc(TipoAccount tipoAcc) {
-		this.tipoAcc = tipoAcc;
+	public void setSpecializzazione(String specializzazione) {
+		this.specializzazione = specializzazione;
 	}
 
 	public String getCf() {
@@ -212,5 +183,6 @@ public abstract class Account {
 	}
 	
 	
-		
+	
+
 }

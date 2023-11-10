@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import it.unipv.sfw.jdbc.ConnessioneDB;
-import it.unipv.sfw.jdbc.bean.anagrafica.AnagraficaDB;
 
 public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 	private Connection conn;

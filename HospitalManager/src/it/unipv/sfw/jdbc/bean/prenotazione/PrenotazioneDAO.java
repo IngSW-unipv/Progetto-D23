@@ -60,8 +60,8 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, p.getIdPren());
 			ps1.setInt(2, p.getPaziente().getIdAcc());
-			ps1.setInt(3, p.getMedico().getIdAcc());
-			ps1.setInt(4, p.getOpSanitario().getIdAcc());
+//			ps1.setInt(3, p.getMedico().getIdAcc());
+//			ps1.setInt(4, p.getOpSanitario().getIdAcc());
 			ps1.setString(5, p.getPrestazione().getIdPrest());
 			ps1.setDate(6, Date.valueOf(p.getData()));
 			ps1.setTime(7, Time.valueOf(p.getOrario()));
