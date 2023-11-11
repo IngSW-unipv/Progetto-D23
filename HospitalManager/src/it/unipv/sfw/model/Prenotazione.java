@@ -9,14 +9,14 @@ import it.unipv.sfw.model.persona.Paziente;
 public class Prenotazione {
 	private int idPren;
 	private Paziente paziente;
-	private PrestazioneSanitaria prestazione;
 	private Account personaleSanitario;
+	private PrestazioneSanitaria prestazione;
 	private LocalDate data;
 	private LocalTime orario;
 	private boolean accreditamento;
 	private String esito;
 	
-	public Prenotazione(int idPren, Paziente paziente, PrestazioneSanitaria prestazione, Account personaleSanitario,
+	public Prenotazione(int idPren, Paziente paziente, Account personaleSanitario, PrestazioneSanitaria prestazione, 
 			LocalDate data, LocalTime orario, boolean accreditamento, String esito) {
 		super();
 		this.idPren = idPren;

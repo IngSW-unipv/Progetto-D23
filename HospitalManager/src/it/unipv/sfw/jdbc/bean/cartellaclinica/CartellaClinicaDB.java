@@ -3,21 +3,21 @@ package it.unipv.sfw.jdbc.bean.cartellaclinica;
 import it.unipv.sfw.model.GruppiSanguigni;
 
 public class CartellaClinicaDB {
-	private int idAcc;
+	private String cf;
 	private int altezza;
 	private int peso;
 	GruppiSanguigni gruppoSanguigno;
 	
-	public CartellaClinicaDB(int idAcc, int altezza, int peso, String gruppoSanguigno) {
+	public CartellaClinicaDB(String cf, int altezza, int peso, String gruppoSanguigno) {
 		super();
-		this.idAcc = idAcc;
+		this.cf = cf;
 		this.altezza = altezza;
 		this.peso = peso;
 		this.gruppoSanguigno = GruppiSanguigni.valueOf(gruppoSanguigno);
 	}
 
-	public int getIdAcc() {
-		return idAcc;
+	public String getCf() {
+		return cf;
 	}
 
 	public int getAltezza() {

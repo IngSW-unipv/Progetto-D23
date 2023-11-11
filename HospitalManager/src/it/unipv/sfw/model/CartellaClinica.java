@@ -9,62 +9,45 @@ public class CartellaClinica {
 	private ArrayList<Prenotazione> prenotazioni;
 	//private ArrayList <Erogazione> erogazioni;
 	
-	//costruttore 1
-		public CartellaClinica() {
-			super();
-			this.prenotazioni = new ArrayList<>();
-			//this.erogazioni = new ArrayList<>();
-		}
-	
-	//costruttore 2
-	public CartellaClinica(double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
+	public CartellaClinica(double altezza, double peso, GruppiSanguigni gruppoSanguigno, ArrayList<Prenotazione> prenotazioni) {
 		super();
 		this.altezza = altezza;
 		this.peso = peso;
 		this.gruppoSanguigno = gruppoSanguigno;
-		this.prenotazioni = new ArrayList<>();
-		//this.erogazioni = new ArrayList<>();
+		this.prenotazioni = prenotazioni;
 	}
-	
+
 	public double getAltezza() {
 		return altezza;
 	}
-	
-	public double getPeso() {
-		return peso;
-	}
-	
-	public GruppiSanguigni getGruppoSanguigno() {
-		return gruppoSanguigno;
-	}
-	
-	public ArrayList<Prenotazione> getPrenotazioni() {
-		return prenotazioni;
-	}
-	
-//	public ArrayList<Erogazione> getErogazioni() {
-//		return erogazioni;
-//	}
-	
+
 	public void setAltezza(double altezza) {
 		this.altezza = altezza;
 	}
-	
+
+	public double getPeso() {
+		return peso;
+	}
+
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-	
+
+	public GruppiSanguigni getGruppoSanguigno() {
+		return gruppoSanguigno;
+	}
+
 	public void setGruppoSanguigno(GruppiSanguigni gruppoSanguigno) {
 		this.gruppoSanguigno = gruppoSanguigno;
 	}
-	
+
+	public ArrayList<Prenotazione> getPrenotazioni() {
+		return prenotazioni;
+	}
+
 	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
-  }
+	}
 	
-//	public void setErogazioni(ArrayList<Erogazione> erogazioni) {
-//		this.erogazioni = erogazioni;
-//	}
 
-	
 }

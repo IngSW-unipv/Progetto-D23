@@ -22,14 +22,14 @@ public abstract class Account {
 	private String cellulare;
 	
 	
-	public Account(String pw, TipoAccount tipoAcc, String cf, String nome,
+	public Account(String cf,String pw, TipoAccount tipoAcc, String nome,
 			String cognome, String sesso, String dataNascita, String luogoNascita, String provinciaNascita,
 			String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail,
 			String cellulare) {
 		super();
+		this.cf = cf;
 		this.pw = pw;
 		this.tipoAcc = tipoAcc;
-		this.cf = cf;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.sesso = sesso;

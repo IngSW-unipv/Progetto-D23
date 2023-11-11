@@ -5,58 +5,91 @@ import java.time.LocalTime;
 
 public class PrenotazioneDB {
 	private int idPren;
-	private int idPaziente;
-	private int idMedico;
-	private int idOperatoreSanitario;
+	private String Paziente;
+	private String PersonaleSanitario;
 	private String idPrest;
 	private LocalDate dataPren;
 	private LocalTime oraPren;
-	private String note;
+	private boolean accreditamento;
+	private String esito;
 	
-	public PrenotazioneDB(int idPren, int idPaziente, int idMedico, int idOperatoreSanitario, String idPrest,
-			String dataPren, String oraPren, String note) {
+	public PrenotazioneDB(int idPren, String paziente, String personaleSanitario, String idPrest, String dataPren,
+			String oraPren, boolean accreditamento, String esito) {
 		super();
 		this.idPren = idPren;
-		this.idPaziente = idPaziente;
-		this.idMedico = idMedico;
-		this.idOperatoreSanitario = idOperatoreSanitario;
+		Paziente = paziente;
+		PersonaleSanitario = personaleSanitario;
 		this.idPrest = idPrest;
 		this.dataPren = LocalDate.parse(dataPren);
 		this.oraPren = LocalTime.parse(oraPren);
-		this.note = note;
+		this.accreditamento = accreditamento;
+		this.esito = esito;
 	}
 
 	public int getIdPren() {
 		return idPren;
 	}
 
-	public int getIdPaziente() {
-		return idPaziente;
+	public void setIdPren(int idPren) {
+		this.idPren = idPren;
 	}
 
-	public int getIdMedico() {
-		return idMedico;
+	public String getPaziente() {
+		return Paziente;
 	}
 
-	public int getIdOperatoreSanitario() {
-		return idOperatoreSanitario;
+	public void setPaziente(String paziente) {
+		Paziente = paziente;
+	}
+
+	public String getPersonaleSanitario() {
+		return PersonaleSanitario;
+	}
+
+	public void setPersonaleSanitario(String personaleSanitario) {
+		PersonaleSanitario = personaleSanitario;
 	}
 
 	public String getIdPrest() {
 		return idPrest;
 	}
 
+	public void setIdPrest(String idPrest) {
+		this.idPrest = idPrest;
+	}
+
 	public LocalDate getDataPren() {
 		return dataPren;
+	}
+
+	public void setDataPren(LocalDate dataPren) {
+		this.dataPren = dataPren;
 	}
 
 	public LocalTime getOraPren() {
 		return oraPren;
 	}
 
-	public String getNote() {
-		return note;
+	public void setOraPren(LocalTime oraPren) {
+		this.oraPren = oraPren;
 	}
 
+	public boolean isAccreditamento() {
+		return accreditamento;
+	}
+
+	public void setAccreditamento(boolean accreditamento) {
+		this.accreditamento = accreditamento;
+	}
+
+	public String getEsito() {
+		return esito;
+	}
+
+	public void setEsito(String esito) {
+		this.esito = esito;
+	}
+	
+	
 		
 }

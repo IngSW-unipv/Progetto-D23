@@ -22,6 +22,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	//private ArrayList<Erogazione> erogazioni;
 	
 	HashMap<String,Account> cfPersone;
+	HashMap<String,PrestazioneSanitaria> idPrestazioni;
 	//HashMap<Integer,Account> idAccAccount;
 	//HashMap<Integer,Paziente> idAccPaziente;
 	
@@ -34,6 +35,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public StrutturaSanitaria() {
 		super();
 		this.cfPersone = new HashMap<>();
+		this.idPrestazioni = new HashMap<>();
 	}
 
 	@Override
@@ -310,6 +312,15 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public void setCfPersone(HashMap<String, Account> cfPersone) {
 		this.cfPersone = cfPersone;
 	}
+
+	public HashMap<String, PrestazioneSanitaria> getIdPrestazioni() {
+		return idPrestazioni;
+	}
+
+	public void setIdPrestazioni(HashMap<String, PrestazioneSanitaria> idPrestazioni) {
+		this.idPrestazioni = idPrestazioni;
+	}
+	
 
 //	public HashMap<Integer, Account> getIdAccAccount() {
 //		return idAccAccount;

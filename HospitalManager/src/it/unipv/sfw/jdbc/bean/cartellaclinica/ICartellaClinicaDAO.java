@@ -5,5 +5,5 @@ import java.util.ArrayList;
 public interface ICartellaClinicaDAO {
 	ArrayList<CartellaClinicaDB> selectAllCartelle();
 	boolean insertCartelle(CartellaClinicaDB cc);
-	CartellaClinicaDB selectCartellaByIdAcc(int idAcc);
+	CartellaClinicaDB selectCartellaByCf(String cf);
 	}

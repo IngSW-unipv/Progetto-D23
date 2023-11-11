@@ -34,9 +34,10 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			rs1= st1.executeQuery(query);
 			
 			while (rs1.next()) {
-				PrenotazioneDB pren= new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getInt("ID_PAZIENTE"), rs1.getInt("ID_MEDICO"),
-						rs1.getInt("ID_OSS"), rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"),
-						rs1.getString("NOTE"));
+				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
+						rs1.getString("ESITO"));
+				
 				prenotazioni.add(pren);
 			}
 		}
@@ -59,13 +60,13 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			String query = "INSERT INTO hospitalmanager.PRENOTAZIONE VALUES (?,?,?,?,?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, p.getIdPren());
-			ps1.setInt(2, p.getPaziente().getIdAcc());
-//			ps1.setInt(3, p.getMedico().getIdAcc());
-//			ps1.setInt(4, p.getOpSanitario().getIdAcc());
-			ps1.setString(5, p.getPrestazione().getIdPrest());
-			ps1.setDate(6, Date.valueOf(p.getData()));
-			ps1.setTime(7, Time.valueOf(p.getOrario()));
-			ps1.setBoolean(8, p.isAccreditamento());
+			ps1.setString(2, p.getPaziente().getCf());
+			ps1.setString(3, p.getPersonaleSanitario().getCf());
+			ps1.setString(4, p.getPrestazione().getIdPrest());
+			ps1.setDate(5, Date.valueOf(p.getData()));
+			ps1.setTime(6, Time.valueOf(p.getOrario()));
+			ps1.setBoolean(7, p.isAccreditamento());
+			ps1.setString(8, null); //esito
 			ps1.executeUpdate(query);
 			
 			check = true;
@@ -79,22 +80,23 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	}
 
 	@Override
-	public ArrayList<PrenotazioneDB> selectPrenotazioniByIdPaziente(int idPaziente) {
+	public ArrayList<PrenotazioneDB> selectPrenotazioniByPaziente(String cf) {
 		ArrayList<PrenotazioneDB> prenotazioniPaziente = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;
 		
 		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_PAZIENTE = ? AND ESITO IS NULL";
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PAZIENTE = ? AND ESITO IS NULL";
 			ps1 = conn.prepareStatement(query);
-			ps1.setInt(0, idPaziente);
+			ps1.setString(1, cf);
 			rs1= ps1.executeQuery(query);
 			
 			while (rs1.next()) {
-				PrenotazioneDB pren= new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getInt("ID_PAZIENTE"), rs1.getInt("ID_MEDICO"),
-						rs1.getInt("ID_OSS"), rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"),
-						rs1.getString("NOTE"));
+				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
+						rs1.getString("ESITO"));
+				
 				prenotazioniPaziente.add(pren);
 			}
 		}
@@ -107,22 +109,22 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	}
 	
 	@Override
-	public ArrayList<PrenotazioneDB> selectPrenotazioniErogateByIdPaziente(int idPaziente) {
+	public ArrayList<PrenotazioneDB> selectPrenotazioniErogateByPaziente(String cf) {
 		ArrayList<PrenotazioneDB> prenotazioniPaziente = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;
 		
 		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_PAZIENTE = ? AND ESITO IS NOT NULL";
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PAZIENTE = ? AND ESITO IS NOT NULL";
 			ps1 = conn.prepareStatement(query);
-			ps1.setInt(0, idPaziente);
+			ps1.setString(1, cf);
 			rs1= ps1.executeQuery(query);
 			
 			while (rs1.next()) {
-				PrenotazioneDB pren= new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getInt("ID_PAZIENTE"), rs1.getInt("ID_MEDICO"),
-						rs1.getInt("ID_OSS"), rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"),
-						rs1.getString("NOTE"));
+				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
+						rs1.getString("ESITO"));
 				prenotazioniPaziente.add(pren);
 			}
 		}
@@ -135,23 +137,23 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	}
 
 	@Override
-	public ArrayList<PrenotazioneDB> selectPrenotazioniByIdMedico(int idMedico) {
-		ArrayList<PrenotazioneDB> prenotazioniMedico = new ArrayList<>();
+	public ArrayList<PrenotazioneDB> selectPrenotazioniByPersonaleSanitario(String cf) {
+		ArrayList<PrenotazioneDB> prenotazioniPS = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;
 		
 		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_MEDICO = ?";
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PERSONALE_SANITARIO = ?";
 			ps1 = conn.prepareStatement(query);
-			ps1.setInt(0, idMedico);
+			ps1.setString(1, cf);
 			rs1= ps1.executeQuery(query);
 			
 			while (rs1.next()) {
-				PrenotazioneDB pren= new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getInt("ID_PAZIENTE"), rs1.getInt("ID_MEDICO"),
-						rs1.getInt("ID_OSS"), rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"),
-						rs1.getString("NOTE"));
-				prenotazioniMedico.add(pren);
+				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
+						rs1.getString("ESITO"));
+				prenotazioniPS.add(pren);
 			}
 		}
 		catch(Exception e){
@@ -159,35 +161,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		}
 		ConnessioneDB.closeConnection(conn);
 		
-		return prenotazioniMedico;
-	}
-
-	@Override
-	public ArrayList<PrenotazioneDB> selectPrenotazioniByIdOperatore(int idOperatoreSanitario) {
-		ArrayList<PrenotazioneDB> prenotazioniOpSanitario = new ArrayList<>();
-		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
-		PreparedStatement ps1;
-		ResultSet rs1;
-		
-		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_OSS = ?";
-			ps1 = conn.prepareStatement(query);
-			ps1.setInt(0, idOperatoreSanitario);
-			rs1= ps1.executeQuery(query);
-			
-			while (rs1.next()) {
-				PrenotazioneDB pren= new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getInt("ID_PAZIENTE"), rs1.getInt("ID_MEDICO"),
-						rs1.getInt("ID_OSS"), rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"),
-						rs1.getString("NOTE"));
-				prenotazioniOpSanitario.add(pren);
-			}
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		ConnessioneDB.closeConnection(conn);
-		
-		return prenotazioniOpSanitario;
+		return prenotazioniPS;
 	}
 
 	@Override
@@ -203,9 +177,9 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			ps1.setInt(0, idPren);
 			rs1= ps1.executeQuery(query);
 			
-			prenotazione = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getInt("ID_PAZIENTE"), rs1.getInt("ID_MEDICO"),
-				rs1.getInt("ID_OSS"), rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"),
-				rs1.getString("NOTE"));
+			prenotazione = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
+					rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
+					rs1.getString("ESITO"));
 		
 		}
 		catch(Exception e){

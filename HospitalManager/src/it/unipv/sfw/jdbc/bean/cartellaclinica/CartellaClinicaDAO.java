@@ -30,7 +30,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 			rs1= st1.executeQuery(query);
 			
 			while (rs1.next()) {
-				CartellaClinicaDB cc = new CartellaClinicaDB(rs1.getInt("ID_ACC"), rs1.getInt("ALTEZZA"), rs1.getInt("PESO"), rs1.getString("GRUPPO_SANGUIGNO"));
+				CartellaClinicaDB cc = new CartellaClinicaDB(rs1.getString("CF"), rs1.getInt("ALTEZZA"), rs1.getInt("PESO"), rs1.getString("GRUPPO_SANGUIGNO"));
 				cartelleCliniche.add(cc);
 			}
 		}
@@ -52,7 +52,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 		try {
 			String query = "INSERT INTO hospitalmanager.CARTELLE_CLINICHE VALUES (?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
-			ps1.setInt(1, cc.getIdAcc());
+			ps1.setString(1, cc.getCf());
 			ps1.setInt(2, cc.getAltezza());
 			ps1.setInt(3, cc.getPeso());
 			ps1.setString(4,  cc.getGruppoSanguigno().name());
@@ -69,7 +69,8 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 	}
 
 	@Override
-	public CartellaClinicaDB selectCartellaByIdAcc(int idAcc) {
+	public CartellaClinicaDB selectCartellaByCf(String cf) {
+		// TODO Auto-generated method stub
 		CartellaClinicaDB cc = null;
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
@@ -77,13 +78,13 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 
 		
 		try {
-			String query= "SELECT * from hospitalmanager.CARTELLA_CLINICA WHERE ID_ACC = ? ";
+			String query= "SELECT * from hospitalmanager.CARTELLA_CLINICA WHERE CF = ? ";
 			ps1 = conn.prepareStatement(query);
-			ps1.setInt(1, idAcc);
+			ps1.setString(1, cf);
 			rs1 = ps1.executeQuery();
 			
 			while (rs1.next()) {
-				cc = new CartellaClinicaDB(rs1.getInt("ID_ACC"), rs1.getInt("ALTEZZA"), rs1.getInt("PESO"), rs1.getString("GRUPPO_SANGUIGNO"));
+				cc = new CartellaClinicaDB(rs1.getString("CF"), rs1.getInt("ALTEZZA"), rs1.getInt("PESO"), rs1.getString("GRUPPO_SANGUIGNO"));
 			}
 		}
 		catch(Exception e){

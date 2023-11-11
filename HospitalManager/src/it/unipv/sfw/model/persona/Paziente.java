@@ -7,30 +7,27 @@ import it.unipv.sfw.model.*;
 public class Paziente extends Account implements IPrenotante {
 
 	private ArrayList<Prenotazione> prenotazioni;
-	private CartellaClinica cartellaPersonale;
-	
-	
+	private CartellaClinica cartellaPersonale;	
 
-	public Paziente(int idAcc, String pw, TipoAccount tipoAcc, String cf, String nome, String cognome, String sesso,
+	//costruttore 1
+	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
 			ArrayList<Prenotazione> prenotazioni, CartellaClinica cartellaPersonale) {
-		super(idAcc, pw, tipoAcc, cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
 				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 		this.prenotazioni = prenotazioni;
 		this.cartellaPersonale = cartellaPersonale;
 	}
-	
-	
 
-	public Paziente(int idAcc, String pw, TipoAccount tipoAcc, String cf, String nome, String cognome, String sesso,
+	//costruttore 2
+	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
-		super(idAcc, pw, tipoAcc, cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
 				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+		this.prenotazioni = new ArrayList<>();
 	}
-
-
 
 	@Override
 	public boolean inserisciPrenotazione(String idPrest) {
