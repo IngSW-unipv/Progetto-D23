@@ -1,5 +1,7 @@
 package it.unipv.sfw.jdbc;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.bean.calendario.*;
@@ -38,7 +40,7 @@ public class FacadeSingletonDB {
 	public void popolaPazienti() {
 		ArrayList<ProfiloDB> pazienti = new ArrayList<>();
 		
-		pazienti = profilo.selectAllMedici();
+		pazienti = profilo.selectAllPazienti();
 		
 		for (ProfiloDB i: pazienti) {
 			
@@ -51,16 +53,34 @@ public class FacadeSingletonDB {
 		}
 	}
 	
-	public void popolaMedici() {
+	public void popolaMedici() {	
 		ArrayList<ProfiloDB> medici = new ArrayList<>();
 		
-		medici = profilo.selectAllPazienti();
+		medici = profilo.selectAllMedici();
 		
 		for (ProfiloDB i: medici) {
 			
+			ArrayList<Prenotazione> calendarioMedico = new ArrayList<>();
+			
+			ArrayList<PrenotazioneDB> calendarioDB = new ArrayList<>();
+			calendarioDB = prenotazione.selectPrenotazioniByPersonaleSanitario(i.getCf());
+			
+			
+			for(PrenotazioneDB k : calendarioDB) {
+				Paziente paziente = (Paziente)struttura1.getCfPersone().get(k.getPaziente());
+				Account personaleSanitario = struttura1.getCfPersone().get(k.getPersonaleSanitario());
+				PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(k.getIdPren());
+				
+				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
+						prestazione, k.getDataPren(), k.getOraPren(), k.isAccreditamento(), k.getEsito());
+				
+				calendarioMedico.add(prenotazione);
+			}
+			
 			Medico m = new Medico(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), TipoPrestazione.valueOf(i.getSpecializzazione()));
+					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), 
+					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioMedico);
 			
 			struttura1.getMedici().add(m);
 			struttura1.getCfPersone().put(i.getCf(), m);
@@ -74,9 +94,27 @@ public class FacadeSingletonDB {
 		
 		for (ProfiloDB i: operatoriSanitari) {
 			
+			ArrayList<Prenotazione> calendarioOperatore = new ArrayList<>();
+			
+			ArrayList<PrenotazioneDB> calendarioDB = new ArrayList<>();
+			calendarioDB = prenotazione.selectPrenotazioniByPersonaleSanitario(i.getCf());
+			
+			
+			for(PrenotazioneDB k : calendarioDB) {
+				Paziente paziente = (Paziente)struttura1.getCfPersone().get(k.getPaziente());
+				Account personaleSanitario = struttura1.getCfPersone().get(k.getPersonaleSanitario());
+				PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(k.getIdPren());
+				
+				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
+						prestazione, k.getDataPren(), k.getOraPren(), k.isAccreditamento(), k.getEsito());
+				
+				calendarioOperatore.add(prenotazione);
+			}
+			
 			OperatoreSanitario os = new OperatoreSanitario(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), TipoPrestazione.valueOf(i.getSpecializzazione()));
+					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), 
+					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioOperatore);
 			
 			struttura1.getOperatoriSanitari().add(os);
 			struttura1.getCfPersone().put(i.getCf(), os);
@@ -158,10 +196,8 @@ public class FacadeSingletonDB {
 			}
 			
 			}
-			
 		}
 		
-	//GESTIONE CALENDARI???
 		
 	public void inserisciProfilo(Account a) {
 		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), a.getSpecializzazione().toString(), a.getNome(), a.getCognome(), 
@@ -171,6 +207,9 @@ public class FacadeSingletonDB {
 		profilo.insertProfilo(accountDB);
 	}
 	
+	public void visualizzaSlotLiberi() {
+		
+	}
 	
 	
 	public void inserisciCartellaClinica(CartellaClinica cc) {
@@ -178,6 +217,9 @@ public class FacadeSingletonDB {
 	}
 	
 	public void inserisciPrenotazione(Prenotazione p) {
+		
+		// INSERISCI PRENOTAZIONE IN TABLE PRENOTAZIONI 
+		// E AGGIORNA TABLE CALENDARIO
 		
 	}
 	
