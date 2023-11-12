@@ -198,6 +198,11 @@ public class FacadeSingletonDB {
 			}
 		}
 		
+	public void visualizzaSlotLiberi(String idPrest) {
+		
+		
+		
+	}	
 		
 	public void inserisciProfilo(Account a) {
 		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), a.getSpecializzazione().toString(), a.getNome(), a.getCognome(), 
@@ -207,19 +212,20 @@ public class FacadeSingletonDB {
 		profilo.insertProfilo(accountDB);
 	}
 	
-	public void visualizzaSlotLiberi() {
-		
-	}
-	
-	
-	public void inserisciCartellaClinica(CartellaClinica cc) {
-		
+	public void inserisciCartellaClinica(Paziente p) {
+		CartellaClinica cc = p.getCartellaPersonale();
+		CartellaClinicaDB cartellaDB = new CartellaClinicaDB(p.getCf(), cc.getAltezza(), cc.getPeso(), cc.getGruppoSanguigno().toString());
+		cartellaClinica.insertCartelle(cartellaDB);
 	}
 	
 	public void inserisciPrenotazione(Prenotazione p) {
 		
-		// INSERISCI PRENOTAZIONE IN TABLE PRENOTAZIONI 
-		// E AGGIORNA TABLE CALENDARIO
+		PrenotazioneDB prenotazioneDB = new PrenotazioneDB(p.getIdPren(), p.getPaziente().getCf(), p.getPersonaleSanitario().getCf(), 
+				p.getPrestazione().getIdPrest(), p.getData().toString(), p.getOrario().toString(), p.isAccreditamento(), p.getEsito());
+		
+		prenotazione.insertPrenotazione(prenotazioneDB);
+		calendario.UpdateCalendario(prenotazioneDB);
+		// INSERISCI PRENOTAZIONE IN TABLE PRENOTAZIONI E AGGIORNA TABLE CALENDARIO
 		
 	}
 	

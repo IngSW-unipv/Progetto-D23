@@ -53,8 +53,8 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 			String query = "INSERT INTO hospitalmanager.CARTELLE_CLINICHE VALUES (?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, cc.getCf());
-			ps1.setInt(2, cc.getAltezza());
-			ps1.setInt(3, cc.getPeso());
+			ps1.setDouble(2, cc.getAltezza());
+			ps1.setDouble(3, cc.getPeso());
 			ps1.setString(4,  cc.getGruppoSanguigno().name());
 			ps1.executeUpdate(query);
 			//ps1.executeUpdate();

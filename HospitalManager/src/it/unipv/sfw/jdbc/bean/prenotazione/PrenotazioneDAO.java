@@ -9,7 +9,6 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
-import it.unipv.sfw.model.Prenotazione;
 
 public class PrenotazioneDAO implements IPrenotazioneDAO {
 	private Connection conn;
@@ -50,7 +49,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	}
 
 	@Override
-	public boolean insertPrenotazione(Prenotazione p) {
+	public boolean insertPrenotazione(PrenotazioneDB p) {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		
@@ -60,11 +59,11 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			String query = "INSERT INTO hospitalmanager.PRENOTAZIONE VALUES (?,?,?,?,?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, p.getIdPren());
-			ps1.setString(2, p.getPaziente().getCf());
-			ps1.setString(3, p.getPersonaleSanitario().getCf());
-			ps1.setString(4, p.getPrestazione().getIdPrest());
-			ps1.setDate(5, Date.valueOf(p.getData()));
-			ps1.setTime(6, Time.valueOf(p.getOrario()));
+			ps1.setString(2, p.getPaziente());
+			ps1.setString(3, p.getPersonaleSanitario());
+			ps1.setString(4, p.getIdPrest());
+			ps1.setDate(5, Date.valueOf(p.getDataPren()));
+			ps1.setTime(6, Time.valueOf(p.getOraPren()));
 			ps1.setBoolean(7, p.isAccreditamento());
 			ps1.setString(8, null); //esito
 			ps1.executeUpdate(query);
@@ -191,7 +190,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	}
 
 	@Override
-	public boolean updateAccreditamento(Prenotazione p, boolean pagamento) {
+	public boolean updateAccreditamento(PrenotazioneDB p, boolean pagamento) {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		

@@ -4,11 +4,11 @@ import it.unipv.sfw.model.GruppiSanguigni;
 
 public class CartellaClinicaDB {
 	private String cf;
-	private int altezza;
-	private int peso;
+	private double altezza;
+	private double peso;
 	GruppiSanguigni gruppoSanguigno;
 	
-	public CartellaClinicaDB(String cf, int altezza, int peso, String gruppoSanguigno) {
+	public CartellaClinicaDB(String cf, double altezza, double peso, String gruppoSanguigno) {
 		super();
 		this.cf = cf;
 		this.altezza = altezza;
@@ -20,11 +20,11 @@ public class CartellaClinicaDB {
 		return cf;
 	}
 
-	public int getAltezza() {
+	public double getAltezza() {
 		return altezza;
 	}
 
-	public int getPeso() {
+	public double getPeso() {
 		return peso;
 	}
 

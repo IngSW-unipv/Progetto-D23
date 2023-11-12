@@ -20,6 +20,16 @@ public class Medico extends Account {
 		this.specializzazione = specializzazione;
 		this.calendario = calendario;
 	}
+	
+	public Medico(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
+			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
+			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
+			TipoPrestazione specializzazione) {
+		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+		this.specializzazione = specializzazione;
+		this.calendario = new ArrayList<>();
+	}
 
 	@Override
 	public TipoPrestazione getSpecializzazione() {

@@ -19,14 +19,10 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Prenotazione> prenotazioni;
-	//private ArrayList<Erogazione> erogazioni;
 	
 	HashMap<String,Account> cfPersone;
 	HashMap<String,PrestazioneSanitaria> idPrestazioni;
-	//HashMap<Integer,Account> idAccAccount;
-	//HashMap<Integer,Paziente> idAccPaziente;
 	
-	private int accountAttivi;
 	private int numeroPrenotazioni;
 	
 	private static FacadeSingletonDB controllerDB;
@@ -39,78 +35,50 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 
 	@Override
-	public boolean registrazionePaziente(String cf, String nome, String cognome,
+	public boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
 			String sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
-			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, String pw) {
+			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, 
+			TipoPrestazione specializzazione) {
 		boolean check = false;
 		try {
-//			Paziente p = new Paziente(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-//					provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-//			Account a = new Account(p, this.generaIdAcc(), pw, null, TipoAccount.PA);
-//			//CartellaClinica cc = new CartellaClinica();
-//			
-//			anagraficaDAO.insertAnagrafica(p);
-//			accountDAO.insertAccount(a);
-			
-//			pazienti.add(p);
-//			accounts.add(a);
-			
-			check = true;
-			
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		return check;
-	}
-
-	@Override
-	public boolean registrazioneDipendente(TipoAccount tipoAcc, String pw, String specializzazione, String cf,
-			String nome, String cognome, String sesso, String dataNascita, String luogoNascita, String provinciaNascita,
-			String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail,
-			String cellulare) {
-		boolean check = false;
-		try {
-			switch(tipoAcc) {
+			switch(tipo) {
+			case PA:
+				Paziente p = new Paziente(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
+						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+				
+				controllerDB.inserisciProfilo(p);
+				pazienti.add(p);
+				
+				check = true;			
+				break;
+				
 			case ME:
-//				Medico m = new Medico(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-//						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-//				Account a1 = new Account(m, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.ME);
-//				
-//				anagraficaDAO.insertAnagrafica(m);
-//				accountDAO.insertAccount(a1);
-//				
-//				medici.add(m);
-//				accounts.add(a1);
-//				
+				Medico m = new Medico(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
+						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
+				
+				controllerDB.inserisciProfilo(m);
+				medici.add(m);
+							
 				check = true;
 				break;
 				
 			case OS:
-//				OperatoreSanitario os = new OperatoreSanitario(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-//						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-//				Account a2 = new Account(os, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.OS);
-//				
-//				anagraficaDAO.insertAnagrafica(os);
-//				accountDAO.insertAccount(a2);
-//				
-//				operatoriSanitari.add(os);
-//				accounts.add(a2);
+				OperatoreSanitario os = new OperatoreSanitario(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
+						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
 				
+				controllerDB.inserisciProfilo(os);
+				operatoriSanitari.add(os);
+							
 				check = true;
 				break;
 				
 			case OU:
-//				OperatoreUfficio ou = new OperatoreUfficio(cf, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-//						provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-//				Account a3 = new Account(ou, this.generaIdAcc(), this.generaPwTemp(), specializzazione, TipoAccount.OU);
-//				
-//				anagraficaDAO.insertAnagrafica(ou);
-//				accountDAO.insertAccount(a3);
-//				
-//				operatoriUfficio.add(ou);
-//				accounts.add(a3);
+				OperatoreUfficio ou = new OperatoreUfficio(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
+						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
+				controllerDB.inserisciProfilo(ou);
+				operatoriUfficio.add(ou);
+							
 				check = true;
 				break;
 				
@@ -125,12 +93,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return check;
 	}
 
-	@Override
-	public int generaIdAcc() {
-		accountAttivi++;
-		return accountAttivi;
-	}
-
+	
 	@Override
 	public int generaIdPren() {
 		numeroPrenotazioni++;
@@ -151,38 +114,16 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return password;
 	}
 
-	
-	// DA MODIFICARE
-	@Override
-	public boolean cambioPw(int idAcc, String vecchiaPw, String nuovaPw) {
-//		Account a = accounts.get(idAcc);
-//		boolean check1 = false;
-//		boolean check2 = false;
-//		try {
-//			check1 = accountDAO.updatePw(idAcc, nuovaPw);
-//			check2 = a.setPw(vecchiaPw, nuovaPw);
-//		}
-//		catch(LoginException e) {
-//			check2 = false;
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//			check1 = false;
-//		}
-//		return check1 && check2;
-	}
-	
 	@Override
 	public boolean login(int idAcc, String pw) {
-//		Account a = accounts.get(idAcc);
-//		boolean check = false;
-//		try {
-//			check = a.controllaPw(pw);
-//		}
-//		catch(LoginException e) {
-//			check = false;
-//		}
-//		return check;
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean cambioPw(int idAcc, String vecchiaPw, String nuovaPw) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	public String getNome() {
@@ -249,14 +190,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.operatoriUfficio = operatoriUfficio;
 	}
 
-//	public ArrayList<Account> getAccounts() {
-//		return accounts;
-//	}
-//
-//	public void setAccounts(ArrayList<Account> accounts) {
-//		this.accounts = accounts;
-//	}
-
 	public ArrayList<PrestazioneSanitaria> getPrestazioni() {
 		return prestazioni;
 	}
@@ -273,14 +206,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.prenotazioni = prenotazioni;
 	}
 
-	public int getAccountAttivi() {
-		return accountAttivi;
-	}
-
-	public void setAccountAttivi(int accountAttivi) {
-		this.accountAttivi = accountAttivi;
-	}
-
 	public int getNumeroPrenotazioni() {
 		return numeroPrenotazioni;
 	}
@@ -288,22 +213,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public void setNumeroPrenotazioni(int numeroPrenotazioni) {
 		this.numeroPrenotazioni = numeroPrenotazioni;
 	}
-
-//	public AnagraficaDAO getAnagraficaDAO() {
-//		return anagraficaDAO;
-//	}
-//
-//	public void setAnagraficaDAO(AnagraficaDAO anagraficaDAO) {
-//		this.anagraficaDAO = anagraficaDAO;
-//	}
-//
-//	public AccountDAO getAccountDAO() {
-//		return accountDAO;
-//	}
-//
-//	public void setAccountDAO(AccountDAO accountDAO) {
-//		this.accountDAO = accountDAO;
-//	}
 
 	public HashMap<String, Account> getCfPersone() {
 		return cfPersone;
@@ -320,33 +229,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public void setIdPrestazioni(HashMap<String, PrestazioneSanitaria> idPrestazioni) {
 		this.idPrestazioni = idPrestazioni;
 	}
-	
 
-//	public HashMap<Integer, Account> getIdAccAccount() {
-//		return idAccAccount;
-//	}
-//
-//	public void setIdAccPersone(HashMap<Integer, Account> idAccAccount) {
-//		this.idAccAccount = idAccAccount;
-//	}	
-//
-//	public void setIdAccAccount(HashMap<Integer, Account> idAccAccount) {
-//		this.idAccAccount = idAccAccount;
-//	}
-
-//	public Account getPazienteByIdAcc(int idAcc) {
-//		Account a = this.getIdAccAccount().get(idAcc);
-//		Account p = a.getP();
-//		return p;
-	}
-	
-	
-	
-	//public TipoAccount getTipoAccount(int Id) {
-		//return tipoAccount;
-	//}
-	
-	//public ArrayList<Prenotazione> getPrenotazioniDueToMed(int Id) {
-	//	return prenotazioniDueToMed;
-	//}
+}
 	

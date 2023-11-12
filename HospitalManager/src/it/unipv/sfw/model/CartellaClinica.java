@@ -17,6 +17,11 @@ public class CartellaClinica {
 		this.prenotazioni = prenotazioni;
 	}
 
+	public CartellaClinica() {
+		super();
+		this.prenotazioni = new ArrayList<>();
+	}
+
 	public double getAltezza() {
 		return altezza;
 	}

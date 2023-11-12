@@ -9,6 +9,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
+import it.unipv.sfw.jdbc.bean.prenotazione.PrenotazioneDB;
 import it.unipv.sfw.model.Prenotazione;
 
 public class CalendarioDAO implements ICalendarioDAO {
@@ -85,7 +86,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	
 	//inserimento appuntamenti nel calendario
 	@Override
-	public boolean UpdateCalendario(Prenotazione p) {
+	public boolean UpdateCalendario(PrenotazioneDB p) {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		
@@ -94,10 +95,10 @@ public class CalendarioDAO implements ICalendarioDAO {
 		try {
 			String query = "UPDATE hospitalmanager.CALENDARI SET ? = ? WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, p.getPrestazione().getIdPrest());	//identifica la colonna della table CALENDARI
+			ps1.setString(1, p.getIdPrest());	//identifica la colonna della table CALENDARI
 			ps1.setInt(2, p.getIdPren());		//identificatore prenotazione da inserire a calendario
-			ps1.setDate(3, Date.valueOf(p.getData()));
-			ps1.setTime(4, Time.valueOf(p.getOrario()));
+			ps1.setDate(3, Date.valueOf(p.getDataPren()));
+			ps1.setTime(4, Time.valueOf(p.getOraPren()));
 			ps1.executeUpdate(query);
 			//ps1.executeUpdate();
 			

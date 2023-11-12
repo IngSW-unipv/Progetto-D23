@@ -27,6 +27,7 @@ public class Paziente extends Account implements IPrenotante {
 		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
 				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 		this.prenotazioni = new ArrayList<>();
+		this.cartellaPersonale = new CartellaClinica();
 	}
 
 	@Override
@@ -41,11 +42,11 @@ public class Paziente extends Account implements IPrenotante {
 		return false;
 	}
 	
-	ArrayList<Prenotazione> mostraPrenotazioni(){
+	public ArrayList<Prenotazione> mostraPrenotazioni(){
 		return null;
 	}
 	
-	CartellaClinica getCartellaPersonale() {
+	public CartellaClinica getCartellaPersonale() {
 		return cartellaPersonale;
 	}
 
