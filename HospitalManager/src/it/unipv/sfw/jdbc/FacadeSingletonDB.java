@@ -12,6 +12,8 @@ import it.unipv.sfw.model.CartellaClinica;
 import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.PrestazioneSanitaria;
 import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.TipoPrestazione;
 import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.persona.OperatoreSanitario;
@@ -58,7 +60,7 @@ public class FacadeSingletonDB {
 			
 			Medico m = new Medico(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare());
+					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), TipoPrestazione.valueOf(i.getSpecializzazione()));
 			
 			struttura1.getMedici().add(m);
 			struttura1.getCfPersone().put(i.getCf(), m);
@@ -74,7 +76,7 @@ public class FacadeSingletonDB {
 			
 			OperatoreSanitario os = new OperatoreSanitario(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare());
+					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), TipoPrestazione.valueOf(i.getSpecializzazione()));
 			
 			struttura1.getOperatoriSanitari().add(os);
 			struttura1.getCfPersone().put(i.getCf(), os);
@@ -158,5 +160,25 @@ public class FacadeSingletonDB {
 			}
 			
 		}
+		
+	//GESTIONE CALENDARI???
+		
+	public void inserisciProfilo(Account a) {
+		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), a.getSpecializzazione().toString(), a.getNome(), a.getCognome(), 
+				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
+				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
+		
+		profilo.insertProfilo(accountDB);
+	}
+	
+	
+	
+	public void inserisciCartellaClinica(CartellaClinica cc) {
+		
+	}
+	
+	public void inserisciPrenotazione(Prenotazione p) {
+		
+	}
 	
 }

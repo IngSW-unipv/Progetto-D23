@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.Medico;
+import it.unipv.sfw.model.persona.OperatoreSanitario;
 
 public interface IProfiloDAO {
 	ArrayList<ProfiloDB> selectAllProfili();
@@ -12,6 +14,6 @@ public interface IProfiloDAO {
 	ArrayList<ProfiloDB> selectAllOperatoriSanitari();
 	ArrayList<ProfiloDB> selectAlloperatoriUfficio();
 	ProfiloDB selectProfiloByCF(String cf, TipoAccount tipo);
-	boolean insertProfilo(Account a);
+	boolean insertProfilo(ProfiloDB a);
 	boolean updatePw(String cf, TipoAccount tipo, String pw);
 }

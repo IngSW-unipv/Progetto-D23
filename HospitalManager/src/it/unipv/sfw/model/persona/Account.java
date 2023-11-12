@@ -1,6 +1,7 @@
 package it.unipv.sfw.model.persona;
 
 import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.TipoPrestazione;
 import it.unipv.sfw.model.exception.LoginException;
 
 public abstract class Account {
@@ -45,6 +46,10 @@ public abstract class Account {
 		this.cellulare = cellulare;
 	}
 
+	public TipoPrestazione getSpecializzazione() {
+		return null;
+	}
+	
 	public boolean setPw(String vecchiaPw, String nuovaPw) throws LoginException {
 		boolean check = false;
 		if(controllaPw(vecchiaPw)) {

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.Medico;
+import it.unipv.sfw.model.persona.OperatoreSanitario;
 
 public class ProfiloDAO implements IProfiloDAO {
 	private Connection conn;
@@ -212,7 +214,7 @@ public class ProfiloDAO implements IProfiloDAO {
 	}
 
 	@Override
-	public boolean insertProfilo(Account a) {
+	public boolean insertProfilo(ProfiloDB a) {
 		// TODO Auto-generated method stub
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
@@ -220,7 +222,7 @@ public class ProfiloDAO implements IProfiloDAO {
 		boolean check = true;
 		
 		try {
-			String query = "INSERT INTO hospitalmanager.PROFILI VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO hospitalmanager.PROFILI VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, a.getCf());
 			ps1.setString(2, a.getTipoAcc().name());
@@ -238,6 +240,7 @@ public class ProfiloDAO implements IProfiloDAO {
 			ps1.setString(14, a.getCap());
 			ps1.setString(15, a.geteMail());
 			ps1.setString(16, a.getCellulare());
+			ps1.setString(17, a.getSpecializzazione());
 			
 			ps1.executeUpdate(query);
 			//ps1.executeUpdate();
@@ -276,7 +279,5 @@ public class ProfiloDAO implements IProfiloDAO {
 		ConnessioneDB.closeConnection(conn);
 		return check;
 	}
-
-
 
 }
