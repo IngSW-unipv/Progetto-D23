@@ -13,6 +13,7 @@ import it.unipv.sfw.jdbc.bean.profilo.ProfiloDB;
 import it.unipv.sfw.model.CartellaClinica;
 import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.PrestazioneSanitaria;
+import it.unipv.sfw.model.SlotCalendario;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
@@ -198,11 +199,18 @@ public class FacadeSingletonDB {
 			}
 		}
 		
-	public void visualizzaSlotLiberi(String idPrest) {
-		
-		
-		
-	}	
+		public ArrayList<SlotCalendario> visualizzaSlotLiberi(String idPrest) {
+			ArrayList<SlotCalendario> slotLiberi = null;
+			ArrayList<SlotCalendarioDB> slotDB = calendario.SelectVoidSlot(idPrest);
+			
+			for(SlotCalendarioDB i : slotDB) {
+				Prenotazione p = struttura1.getIdPrenotazioni().get(i.getIdPren());
+				SlotCalendario slot = new SlotCalendario(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(), p);
+				slotLiberi.add(slot);
+			}
+			
+			return slotLiberi;
+		}	
 		
 	public void inserisciProfilo(Account a) {
 		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), a.getSpecializzazione().toString(), a.getNome(), a.getCognome(), 

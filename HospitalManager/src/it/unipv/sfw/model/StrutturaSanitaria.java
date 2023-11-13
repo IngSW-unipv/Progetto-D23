@@ -22,6 +22,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	HashMap<String,Account> cfPersone;
 	HashMap<String,PrestazioneSanitaria> idPrestazioni;
+	HashMap<String, Prenotazione> idPrenotazioni;
 	
 	private int numeroPrenotazioni;
 	
@@ -32,6 +33,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		super();
 		this.cfPersone = new HashMap<>();
 		this.idPrestazioni = new HashMap<>();
+		this.idPrenotazioni = new HashMap<>();
 	}
 
 	@Override
@@ -230,5 +232,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.idPrestazioni = idPrestazioni;
 	}
 
+	public HashMap<String, Prenotazione> getIdPrenotazioni() {
+		return idPrenotazioni;
+	}
+
+	public void setIdPrenotazioni(HashMap<String, Prenotazione> idPrenotazioni) {
+		this.idPrenotazioni = idPrenotazioni;
+	}
+	
 }
 	

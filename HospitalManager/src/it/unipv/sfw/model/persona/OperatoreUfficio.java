@@ -12,7 +12,7 @@ public class OperatoreUfficio extends Account implements IPrenotante {
 				cittaRes, indirizzo, cap, eMail, cellulare);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public boolean inserisciPrenotazione(String idPrest) {
 		// TODO Auto-generated method stub

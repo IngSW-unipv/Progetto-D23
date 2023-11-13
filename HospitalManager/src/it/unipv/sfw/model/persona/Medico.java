@@ -31,6 +31,11 @@ public class Medico extends Account {
 		this.calendario = new ArrayList<>();
 	}
 
+	
+	public void aggiornaEsito(Prenotazione p) {
+		
+	}
+	
 	@Override
 	public TipoPrestazione getSpecializzazione() {
 		return specializzazione;
