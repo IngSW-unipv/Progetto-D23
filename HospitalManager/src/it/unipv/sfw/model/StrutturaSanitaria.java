@@ -117,7 +117,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 
 	@Override
-	public boolean login(int idAcc, String pw) {
+	public boolean login(String cf, String pw) {
 		// TODO Auto-generated method stub
 		return false;
 	}
