@@ -3,6 +3,7 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.beans.XMLDecoder;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -20,26 +21,37 @@ import it.unipv.sfw.model.Prenotazione;
 public class OperatoreUfficioPanel extends JPanel{
 	
 	private JLabel nome, cognome, cf, tipoAccount;
+	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList visite;
 	private JButton prenota, cancella, logout, aggiungiUtente;
 	private DefaultListModel modelloLista;
+	private JLabel calendario;
 	
 	public OperatoreUfficioPanel() {
-		setLayout(new BorderLayout());
+		setLayout(new GridLayout(2,2));
 		
-		JPanel barNord = new JPanel();
-		barNord.setLayout(new FlowLayout());
-		JPanel barSud = new JPanel();
-		barSud.setLayout(new FlowLayout());
+		JPanel barNordOvest = new JPanel();
+		barNordOvest.setLayout(new BorderLayout());
+		JPanel barNordEst = new JPanel();
+		barNordEst.setLayout(new GridLayout(2,1));
+		JPanel barSudOvest = new JPanel();
+		barSudOvest.setLayout(new GridLayout(4,2));
+		JPanel barSudEst = new JPanel();
+		barSudEst.setLayout(new GridLayout(2,1));
 		
-		nome = new JLabel("Nome");
-		cognome = new JLabel("Cognome");
-		cf = new JLabel("Cf");
-		tipoAccount = new JLabel("Operatore Ufficio");
+		nome = new JLabel("NOME:");
+		pNome = new JLabel("Luigi");
+		cognome = new JLabel("COGNOME:");
+		pCognome = new JLabel("Di Maio");
+		cf = new JLabel("CF:");
+		pCf = new JLabel("DMILGU74R03A083S");
+		tipoAccount = new JLabel("TIPO ACCOUNT:");
+		pTipoAccount = new JLabel("Operatore Ufficio");
 		prenota = new JButton("PRENOTA");
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
 		aggiungiUtente = new JButton("AGGIUNGI UTENTE");
+		calendario = new JLabel("CALENDARIO");
 		
 		visite = new JList();
 		visite.setPreferredSize(new Dimension(700, 500));
@@ -47,20 +59,27 @@ public class OperatoreUfficioPanel extends JPanel{
 		
 		visite.setModel(modelloLista);
 		
+		barNordOvest.add(calendario, BorderLayout.PAGE_START);
+		barNordOvest.add(new JScrollPane(visite), BorderLayout.CENTER);
+		add(barNordOvest);
 		
-		barNord.add(nome);
-		barNord.add(cognome);
-		barNord.add(cf);
-		barNord.add(tipoAccount);
-		add(barNord, BorderLayout.NORTH);
+		barNordEst.add(cancella);
+		barNordEst.add(prenota);
+		add(barNordEst);
 		
-		add(new JScrollPane(visite), BorderLayout.CENTER);
+		barSudOvest.add(nome);
+		barSudOvest.add(pNome);
+		barSudOvest.add(cognome);
+		barSudOvest.add(pCognome);
+		barSudOvest.add(cf);
+		barSudOvest.add(pCf);
+		barSudOvest.add(tipoAccount);
+		barSudOvest.add(pTipoAccount);
+		add(barSudOvest);
 		
-		barSud.add(cancella);
-		barSud.add(prenota);
-		barSud.add(aggiungiUtente);
-		barSud.add(logout);
-		add(barSud, BorderLayout.SOUTH);
+		barSudEst.add(aggiungiUtente);
+		barSudEst.add(logout);
+		add(barSudEst);
 		
 	}
 	

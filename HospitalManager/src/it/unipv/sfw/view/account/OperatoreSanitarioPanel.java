@@ -3,6 +3,7 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.beans.XMLDecoder;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -18,24 +19,35 @@ import javax.swing.JScrollPane;
 import it.unipv.sfw.model.Prenotazione;
 
 public class OperatoreSanitarioPanel extends JPanel{
+	
 	private JLabel nome, cognome, cf, tipoAccount;
+	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList visite;
-	private JButton logout;
+	private JButton logout, cambiaPw;
 	private DefaultListModel modelloLista;
+	private JLabel calendario;
 	
 	public OperatoreSanitarioPanel() {
-		setLayout(new BorderLayout());
+		setLayout(new GridLayout(3,1));
 		
 		JPanel barNord = new JPanel();
-		barNord.setLayout(new FlowLayout());
+		barNord.setLayout(new BorderLayout());
 		JPanel barSud = new JPanel();
-		barSud.setLayout(new FlowLayout());
+		barSud.setLayout(new GridLayout(8,1));
+		JPanel barCentro = new JPanel();
+		barCentro.setLayout(new GridLayout(2,1));
 		
-		nome = new JLabel("Nome");
-		cognome = new JLabel("Cognome");
-		cf = new JLabel("Cf");
-		tipoAccount = new JLabel("Operatore Sanitario");
+		nome = new JLabel("NOME:");
+		pNome = new JLabel("Lele");
+		cognome = new JLabel("COGNOME:");
+		pCognome = new JLabel("Adani");
+		cf = new JLabel("CF:");
+		pCf = new JLabel("DNALLE79T09A045S");
+		tipoAccount = new JLabel("TIPO ACCOUNT");
+		pTipoAccount = new JLabel("Operatore Sanitario");
 		logout = new JButton("LOGOUT");
+		cambiaPw = new JButton("CAMBIA PASSWORD");
+		calendario = new JLabel("CALENDARIO");
 		
 		visite = new JList();
 		visite.setPreferredSize(new Dimension(700, 500));
@@ -44,16 +56,23 @@ public class OperatoreSanitarioPanel extends JPanel{
 		visite.setModel(modelloLista);
 		
 		
-		barNord.add(nome);
-		barNord.add(cognome);
-		barNord.add(cf);
-		barNord.add(tipoAccount);
-		add(barNord, BorderLayout.NORTH);
+		barNord.add(calendario, BorderLayout.PAGE_START);
+		barNord.add(new JScrollPane(visite), BorderLayout.CENTER);
+		add(barNord);
 		
-		add(new JScrollPane(visite), BorderLayout.CENTER);
+		barCentro.add(cambiaPw);
+		barCentro.add(logout);
+		add(barCentro);
 		
-		barSud.add(logout);
-		add(barSud, BorderLayout.SOUTH);
+		barSud.add(nome);
+		barSud.add(pNome);
+		barSud.add(cognome);
+		barSud.add(pCognome);
+		barSud.add(cf);
+		barSud.add(pCf);
+		barSud.add(tipoAccount);
+		barSud.add(pTipoAccount);
+		add(barSud);
 		
 	}
 	
