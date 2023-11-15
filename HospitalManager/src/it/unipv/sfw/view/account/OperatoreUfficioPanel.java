@@ -3,6 +3,8 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.beans.XMLDecoder;
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
@@ -70,24 +72,33 @@ public class OperatoreUfficioPanel extends JPanel{
 		return nome;
 	}
 
-	public void setNome(JLabel nome) {
-		this.nome = nome;
+	public void setNome(String nome) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(nome.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.nome = label;
 	}
 
 	public JLabel getCognome() {
 		return cognome;
 	}
 
-	public void setCognome(JLabel cognome) {
-		this.cognome = cognome;
+	public void setCognome(String cognome) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cognome.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.cognome = label;
 	}
 
 	public JLabel getCf() {
 		return cf;
 	}
 
-	public void setCf(JLabel cf) {
-		this.cf = cf;
+	public void setCf(String cf) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cf.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.cf = label;
 	}
 
 	public JLabel getTipoAccount() {

@@ -3,6 +3,8 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.beans.XMLDecoder;
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -38,7 +40,7 @@ public class PazientePanel extends JPanel{
 		
 		
 		nome = new JLabel("NOME:");
-		pNome = new JLabel("Pippo");
+		pNome = new JLabel();
 		cognome = new JLabel("COGNOME:");
 		pCognome = new JLabel("Franco");
 		cf = new JLabel("CF:");
@@ -115,6 +117,27 @@ public class PazientePanel extends JPanel{
 	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
 		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
 		this.visite = list;
+	}
+
+	public void setNome(String nome) {
+	    XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(nome.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.nome = label;
+	}
+
+	public void setCognome(String cognome) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cognome.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.cognome = label;
+	}
+
+	public void setCf(String cf) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cf.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.cf = label;
 	}
 
 	

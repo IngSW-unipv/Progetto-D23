@@ -3,6 +3,8 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.beans.XMLDecoder;
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
@@ -68,16 +70,25 @@ public class OperatoreSanitarioPanel extends JPanel{
 		return logout;
 	}
 	
-	public void setNome(JLabel nome) {
-		this.nome = nome;
+	public void setNome(String nome) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(nome.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.nome = label;
 	}
 
-	public void setCognome(JLabel cognome) {
-		this.cognome = cognome;
+	public void setCognome(String cognome) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cognome.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.cognome = label;
 	}
 
-	public void setCf(JLabel Cf) {
-		this.cf = Cf;
+	public void setCf(String Cf) {
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(Cf.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.cf = label;
 	}
 }
 

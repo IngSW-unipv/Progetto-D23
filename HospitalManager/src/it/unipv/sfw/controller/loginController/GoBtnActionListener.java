@@ -1,6 +1,6 @@
 package it.unipv.sfw.controller.loginController;
 
-import java.awt.*;
+import java.awt.*; 
 
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
@@ -10,7 +10,9 @@ import javax.swing.JFrame;
 import it.unipv.sfw.view.ViewController;
 //import it.unipv.sfw.jdbc.bean.DbControllerSingleton;
 import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoAccount; 
+import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.*;
 
 
 public class GoBtnActionListener implements ActionListener {
@@ -29,10 +31,10 @@ public class GoBtnActionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int Id = Integer.parseInt(view.getLoginPanel().getIdAccountText().getText());
+		String Cf = view.getLoginPanel().getCfText().getText();
 		String pw = view.getLoginPanel().getPasswordField().toString();
 		
-		boolean isMatching = model.login(Id, pw);  
+		boolean isMatching = model.login(Cf, pw);  
 
 		if(isMatching) {
 			view.getLoginPanel().setVisible(false);
@@ -46,50 +48,55 @@ public class GoBtnActionListener implements ActionListener {
 			view.setSize(screenWidth, screenHeight);
 			view.setLocationRelativeTo(null);
 			
-			TipoAccount tipoAcc = model.getTipoAccount(Id);
+			Account acc = model.getCfPersone().get(Cf);
+			TipoAccount tipoAcc = acc.getTipoAcc();
 			
 			switch(tipoAcc) {
 			case ME: 
 				view.setVisible(true);
-				view.getMedicoPanel().setListaVisite(model.getPrenotazioniDueToMed(Id));
+				Medico med = (Medico) acc;
+				view.getMedicoPanel().setListaVisite(med.getCalendario());
 				view.getMedicoPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
-				view.getMedicoPanel().setNome(model.getNomeById(Id));
-				view.getMedicoPanel().setCognome(model.getCognomeById(Id));
-				view.getMedicoPanel().setCf(model.getCfById(Id));
+				view.getMedicoPanel().setNome(med.getNome());
+				view.getMedicoPanel().setCognome(med.getCognome());
+				view.getMedicoPanel().setCf(med.getCf());
 			
 			case OS:
 				view.setVisible(true);
+				OperatoreSanitario Op = (OperatoreSanitario)acc;
 				view.getOperatoreSanitarioPanel().setListaVisite(model.getPrenotazioni());
 				view.getOperatoreSanitarioPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
-				view.getOperatoreSanitarioPanel().setNome(model.getNomeById(Id));
-				view.getOperatoreSanitarioPanel().setCognome(model.getCognomeById(Id));
-				view.getOperatoreSanitarioPanel().setCf(model.getCfById(Id));
+				view.getOperatoreSanitarioPanel().setNome(Op.getNome());
+				view.getOperatoreSanitarioPanel().setCognome(Op.getCognome());
+				view.getOperatoreSanitarioPanel().setCf(Op.getCf());
 
 
 			case OU:
 				view.setVisible(true);
+				OperatoreUfficio Ou = (OperatoreUfficio) acc;
 				view.getOperatoreUfficioPanel().setListaVisite(model.getPrenotazioni());
 				view.getOperatoreUfficioPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
-				view.getOperatoreUfficioPanel().setNome(model.getNomeById(Id));
-				view.getOperatoreUfficioPanel().setCognome(model.getCognomeById(Id));
-				view.getOperatoreUfficioPanel().setCf(model.getCfById(Id));
+				view.getOperatoreUfficioPanel().setNome(Ou.getNome());
+				view.getOperatoreUfficioPanel().setCognome(Ou.getCognome());
+				view.getOperatoreUfficioPanel().setCf(Ou.getCf());
 				
 
 			case PA:
 				view.setVisible(true);
-				view.getPazientePanel().setListaVisite(model.getPrenotazioniDueToPaz(Id));
+				Paziente p =(Paziente)acc;		
+				view.getPazientePanel().setListaVisite(p.mostraPrenotazioni());
 				view.getPazientePanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
-				view.getPazientePanel().setNome(model.getNomeById(Id));
-				view.getPazientePanel().setCognome(model.getCognomeById(Id));
-				view.getPazientePanel().setCf(model.getCfById(Id));
+				view.getPazientePanel().setNome(p.getNome());
+				view.getPazientePanel().setCognome(p.getCognome());
+				view.getPazientePanel().setCf(p.getCf());
 
 
 			default:

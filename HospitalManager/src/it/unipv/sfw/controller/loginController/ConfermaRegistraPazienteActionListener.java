@@ -1,10 +1,11 @@
 package it.unipv.sfw.controller.loginController;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 
 import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.persona.Persona;
+import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.TipoPrestazione;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaRegistraPazienteActionListener implements ActionListener{
@@ -18,34 +19,37 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		try {
-		String nome = view.getRegistratiPanelPaziente().getNomeField().getText();
-		String cognome = view.getRegistratiPanelPaziente().getCognomeField().getText();
-		String CF = view.getRegistratiPanelPaziente().getCfField().getText();
-		String dataNascita = view.getRegistratiPanelPaziente().getDataNascitaField().getText();
-		String luogoNascita = view.getRegistratiPanelPaziente().getLuogoNascitaField().getText();
-		String provinciaNascita = view.getRegistratiPanelPaziente().getProvinciaNascitaField().getText();
-		String regResidenza = view.getRegistratiPanelPaziente().getRegioneResidenzaField().getText();
-		String provResidenza = view.getRegistratiPanelPaziente().getProvinciaResidenzaField().getText();
-		String cittaRes = view.getRegistratiPanelPaziente().getCittaResidenzaField().getText();
-		String indirizzo = view.getRegistratiPanelPaziente().getIndirizzoField().getText();
-		String email = view.getRegistratiPanelPaziente().getEmailField().getText();
-		String cellulare = view.getRegistratiPanelPaziente().getCellulareField().getText();
-		String pw = view.getRegistratiPanelPaziente().getPasswordField().toString();
-		String cap = view.getRegistratiPanelPaziente().getCapField().getText();
-		String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
-		
-		model.registrazionePaziente(specializzazione, CF, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-				indirizzo, cap, email, cellulare, pw);
-		//SPECIALIZZAZIONE DA TOGLIERE, VEDI CON NICO
-		
-		pulisciTextField();
-		PopUpOk ok = new PopUpOk();
-		ok.infoBox("Nuovo account creato", "OK");
-		view.getRegistratiPanelPaziente().setVisible(false);
-		view.getLoginPanel().setVisible(true);
+			String nome = view.getRegistratiPanelPaziente().getNomeField().getText();
+			String cognome = view.getRegistratiPanelPaziente().getCognomeField().getText();
+			String CF = view.getRegistratiPanelPaziente().getCfField().getText();
+			String dataNascita = view.getRegistratiPanelPaziente().getDataNascitaField().getText();
+			String luogoNascita = view.getRegistratiPanelPaziente().getLuogoNascitaField().getText();
+			String provinciaNascita = view.getRegistratiPanelPaziente().getProvinciaNascitaField().getText();
+			String regResidenza = view.getRegistratiPanelPaziente().getRegioneResidenzaField().getText();
+			String provResidenza = view.getRegistratiPanelPaziente().getProvinciaResidenzaField().getText();
+			String cittaRes = view.getRegistratiPanelPaziente().getCittaResidenzaField().getText();
+			String indirizzo = view.getRegistratiPanelPaziente().getIndirizzoField().getText();
+			String email = view.getRegistratiPanelPaziente().getEmailField().getText();
+			String cellulare = view.getRegistratiPanelPaziente().getCellulareField().getText();
+			String pw = view.getRegistratiPanelPaziente().getPasswordField().toString();
+			String cap = view.getRegistratiPanelPaziente().getCapField().getText();
+			String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
+			
+			TipoAccount tipo = TipoAccount.PA;
+			TipoPrestazione specializzazione = null;
+					
+			model.registrazioneAccount(CF, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
+					indirizzo, cap, email, cellulare, specializzazione);
+			
+			
+			pulisciTextField();
+			PopUpOk ok = new PopUpOk();
+			ok.infoBox("Nuovo account creato", "OK");
+			view.getRegistratiPanelPaziente().setVisible(false);
+			view.getLoginPanel().setVisible(true);
 		}
+	
 		catch {
 			PopupError err = new PopupError();
 			err.infoBox("le due password non coincidono", "Errore");
