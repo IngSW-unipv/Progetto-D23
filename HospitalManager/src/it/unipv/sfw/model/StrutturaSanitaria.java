@@ -24,7 +24,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	HashMap<String,PrestazioneSanitaria> idPrestazioni;
 	HashMap<String, Prenotazione> idPrenotazioni;
 	
-	private int numeroPrenotazioni;
+	private int ultimaPrenotazione;
 	
 	private static FacadeSingletonDB controllerDB;
 	
@@ -98,8 +98,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	@Override
 	public int generaIdPren() {
-		numeroPrenotazioni++;
-		return numeroPrenotazioni;
+		ultimaPrenotazione++;
+		return ultimaPrenotazione;
 	}
 	
 	@Override
@@ -208,12 +208,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.prenotazioni = prenotazioni;
 	}
 
-	public int getNumeroPrenotazioni() {
-		return numeroPrenotazioni;
+	public int getUltimaPrenotazione() {
+		return ultimaPrenotazione;
 	}
-
-	public void setNumeroPrenotazioni(int numeroPrenotazioni) {
-		this.numeroPrenotazioni = numeroPrenotazioni;
+	
+	public void setUltimaPrenotazione() {
+		this.ultimaPrenotazione = controllerDB.idUltimaPrenotazione();
 	}
 
 	public HashMap<String, Account> getCfPersone() {

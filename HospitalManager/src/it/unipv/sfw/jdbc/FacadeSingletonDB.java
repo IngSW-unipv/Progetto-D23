@@ -237,4 +237,8 @@ public class FacadeSingletonDB {
 		
 	}
 	
+	public int idUltimaPrenotazione() {
+		return prenotazione.selectNumeroPrenotazione();
+	}
+	
 }
