@@ -1,7 +1,5 @@
 package it.unipv.sfw.jdbc;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.bean.calendario.*;
@@ -14,8 +12,8 @@ import it.unipv.sfw.model.CartellaClinica;
 import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.PrestazioneSanitaria;
 import it.unipv.sfw.model.SlotCalendario;
+import it.unipv.sfw.model.SlotCalendarioSingoli;
 import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
 import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Medico;
@@ -199,13 +197,13 @@ public class FacadeSingletonDB {
 			}
 		}
 		
-		public ArrayList<SlotCalendario> visualizzaSlotLiberi(String idPrest) {
-			ArrayList<SlotCalendario> slotLiberi = null;
-			ArrayList<SlotCalendarioDB> slotDB = calendario.SelectVoidSlot(idPrest);
+		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(String idPrest) {
+			ArrayList<SlotCalendarioSingoli> slotLiberi = null;
+			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.SelectVoidSlot(idPrest);
 			
-			for(SlotCalendarioDB i : slotDB) {
+			for(SlotCalendarioSingoloDB i : slotDB) {
 				Prenotazione p = struttura1.getIdPrenotazioni().get(i.getIdPren());
-				SlotCalendario slot = new SlotCalendario(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(), p);
+				SlotCalendarioSingoli slot = new SlotCalendarioSingoli(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(), p);
 				slotLiberi.add(slot);
 			}
 			
@@ -240,5 +238,45 @@ public class FacadeSingletonDB {
 	public int idUltimaPrenotazione() {
 		return prenotazione.selectNumeroPrenotazione();
 	}
+	
+	public void popolaPrenotazioniTutte() {
+		
+		ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniDaErogare();
+		
+		
+		for(PrenotazioneDB i : prDB) {
+			Paziente paziente = (Paziente) struttura1.getCfPersone().get(i.getPaziente());
+			Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
+			PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(i.getIdPrest());
+			
+			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren(), 
+					i.isAccreditamento(), i.getEsito());
+			
+			struttura1.getPrenotazioni().add(a);
+			struttura1.getIdPrenotazioni().put(i.getIdPren(), a);
+		
+		}
+	}
+	
+	public void popolaCalendario() {
+		ArrayList<SlotCalendarioDB> c = calendario.SelectCalendario();
+		
+		for(SlotCalendarioDB i : c) {
+			Prenotazione prenPrest1 = struttura1.getIdPrenotazioni().get(i.getIdPren1());
+			Prenotazione prenPrest2 = struttura1.getIdPrenotazioni().get(i.getIdPren2());
+			Prenotazione prenPrest3 = struttura1.getIdPrenotazioni().get(i.getIdPren3());
+			Prenotazione prenPrest4 = struttura1.getIdPrenotazioni().get(i.getIdPren4());
+			Prenotazione prenPrest5 = struttura1.getIdPrenotazioni().get(i.getIdPren5());
+			Prenotazione prenPrest6 = struttura1.getIdPrenotazioni().get(i.getIdPren6());
+			Prenotazione prenPrest7 = struttura1.getIdPrenotazioni().get(i.getIdPren7());
+
+			SlotCalendario slot = new SlotCalendario(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(),
+					prenPrest1, prenPrest2, prenPrest3, prenPrest4, prenPrest5, prenPrest6, prenPrest7);
+			
+			struttura1.getCalendario().add(slot);
+			
+		}
+	}
+	
 	
 }

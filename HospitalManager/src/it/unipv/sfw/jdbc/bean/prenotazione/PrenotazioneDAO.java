@@ -233,7 +233,32 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		ConnessioneDB.closeConnection(conn);
 		return numeroPren;
 	}
-	
-	
+
+	@Override
+	public ArrayList<PrenotazioneDB> selectPrenotazioniDaErogare() {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1= conn.createStatement();
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ESITO IS NULL";
+			rs1= st1.executeQuery(query);
+			
+			while (rs1.next()) {
+				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
+						rs1.getString("ESITO"));
+				
+				prenotazioni.add(pren);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		ConnessioneDB.closeConnection(conn);
+		
+		return prenotazioni;
+	}	
 
 }

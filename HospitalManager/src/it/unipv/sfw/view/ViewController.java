@@ -40,7 +40,7 @@ public class ViewController extends JFrame {
 		
 		//Login
 		loginP = new LoginPanel();
-		//panel.add(loginP);
+		panel.add(loginP);
 		
 		//Paziente
 		pazienteP = new PazientePanel();
@@ -48,7 +48,7 @@ public class ViewController extends JFrame {
 		
 		//Registrati
 		registratiP = new RegistratiPanel();
-		panel.add(registratiP);
+		//panel.add(registratiP);
 		
 		
 		frame.setVisible(true);

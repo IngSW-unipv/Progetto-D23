@@ -11,4 +11,5 @@ public interface IPrenotazioneDAO {
 	boolean insertPrenotazione(PrenotazioneDB p);
 	boolean updateAccreditamento(PrenotazioneDB p, boolean pagamento);
 	int selectNumeroPrenotazione();
+	ArrayList<PrenotazioneDB> selectPrenotazioniDaErogare();
 }

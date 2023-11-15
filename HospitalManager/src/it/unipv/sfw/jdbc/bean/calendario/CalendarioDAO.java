@@ -14,49 +14,53 @@ import it.unipv.sfw.model.Prenotazione;
 
 public class CalendarioDAO implements ICalendarioDAO {
 	private Connection conn;
+	ArrayList<SlotCalendarioSingoloDB> calendarioSingolo;
 	ArrayList<SlotCalendarioDB> calendario;
 	
 	
 	public CalendarioDAO() {
 		super();
-		this.calendario = new ArrayList<>();
+		this.calendarioSingolo = new ArrayList<>();
 	}
 
+//	String giorno, String vacanza, String orario, int idPren1, int idPren2, int idPren3,
+//	int idPren4, int idPren5, int idPren6, int idPren7) {
 
-//	@Override
-//	public ArrayList<SlotCalendarioDB> SelectCalendario() {
-//		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
-//		Statement st1;
-//		ResultSet rs1;
-//		
-//		try {
-//			st1 = conn.createStatement();
-//			String query = "SELECT * FROM hospitalmanager.CALENDARI";
-//			rs1 = st1.executeQuery(query);
-//			
-//			while(rs1.next()) {
-//				SlotCalendarioDB sc = new SlotCalendarioDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
-//						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("PREST01"), rs1.getInt("PREST02"),
-//						rs1.getInt("PREST03"), rs1.getInt("PREST04"), rs1.getInt("PREST05"), rs1.getInt("PREST06"), 
-//						rs1.getInt("PREST07"), rs1.getInt("PREST08")); 
-//				
-//				calendario.add(sc);
-//			}
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		ConnessioneDB.closeConnection(conn);
-//				
-//		return calendario;
-//	}
+
+	@Override
+	public ArrayList<SlotCalendarioDB> SelectCalendario() {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1 = conn.createStatement();
+			String query = "SELECT * FROM hospitalmanager.CALENDARI";
+			rs1 = st1.executeQuery(query);
+			
+			while(rs1.next()) {
+				SlotCalendarioDB sc = new SlotCalendarioDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("NOME_VACANZE"),
+						rs1.getString("GIORNO_SETTIMANA"), rs1.getString("ORARIO"), rs1.getInt("PREST01"), rs1.getInt("PREST02"),
+						rs1.getInt("PREST03"), rs1.getInt("PREST04"), rs1.getInt("PREST05"), rs1.getInt("PREST06"), 
+						rs1.getInt("PREST07")); 
+				
+				calendario.add(sc);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+				
+		return calendario;
+	}
 	
 	// ricerca slot liberi per prestazione
 
 	@Override
-	public ArrayList<SlotCalendarioDB> SelectVoidSlot(String idPrest){
-		ArrayList<SlotCalendarioDB> slotLiberi = new ArrayList<>();
+	public ArrayList<SlotCalendarioSingoloDB> SelectVoidSlot(String idPrest){
+		ArrayList<SlotCalendarioSingoloDB> slotLiberi = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;
@@ -76,7 +80,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 			rs1 = ps1.executeQuery(query);
 			
 			while(rs1.next()) {
-				SlotCalendarioDB sc = new SlotCalendarioDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
 						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt(idPrest));
 				
 				slotLiberi.add(sc);
@@ -88,7 +92,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 		
 		ConnessioneDB.closeConnection(conn);
 				
-		return calendario;
+		return calendarioSingolo;
 	}
 	
 	//inserimento appuntamenti nel calendario

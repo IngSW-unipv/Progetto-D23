@@ -19,10 +19,11 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Prenotazione> prenotazioni;
+	private ArrayList<SlotCalendario> calendario;
 	
 	HashMap<String,Account> cfPersone;
 	HashMap<String,PrestazioneSanitaria> idPrestazioni;
-	HashMap<String, Prenotazione> idPrenotazioni;
+	HashMap<Integer, Prenotazione> idPrenotazioni;
 	
 	private int ultimaPrenotazione;
 	
@@ -232,13 +233,23 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.idPrestazioni = idPrestazioni;
 	}
 
-	public HashMap<String, Prenotazione> getIdPrenotazioni() {
+	public HashMap<Integer, Prenotazione> getIdPrenotazioni() {
 		return idPrenotazioni;
 	}
 
-	public void setIdPrenotazioni(HashMap<String, Prenotazione> idPrenotazioni) {
+	public void setIdPrenotazioni(HashMap<Integer, Prenotazione> idPrenotazioni) {
 		this.idPrenotazioni = idPrenotazioni;
 	}
+
+	public ArrayList<SlotCalendario> getCalendario() {
+		return calendario;
+	}
+
+	public void setCalendario(ArrayList<SlotCalendario> calendario) {
+		this.calendario = calendario;
+	}
+	
+	
 	
 }
 	
