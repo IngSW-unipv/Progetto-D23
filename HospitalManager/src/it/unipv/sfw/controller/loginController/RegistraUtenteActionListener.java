@@ -21,8 +21,8 @@ public class RegistraUtenteActionListener implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		try {
+		
 		String nome = view.getRegistratiPanel().getNomeField().getText();
 		String cognome = view.getRegistratiPanel().getCognomeField().getText();
 		String CF = view.getRegistratiPanel().getCfField().getText();
@@ -53,10 +53,9 @@ public class RegistraUtenteActionListener implements ActionListener {
 			TipoAccount tipoAcc = TipoAccount.OS;
 		}
 		
-		model.registrazioneDipendente(tipoAcc, pw, specializzazione, CF, nome, cognome,
-				sesso, dataNascita, luogoNascita, provinciaNascita, tipoAccount,
-				provinciaNascita,cittaRes, indirizzo, cap, email, cellulare);
-		//ANCHE QUI DA RIVEDERE SPECIALIZZAZIONE
+		model.registrazioneAccount(CF, pw, tipoAcc, CF, nome, cognome,
+				sesso, dataNascita, luogoNascita, provinciaNascita,
+				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, specializzazione);
 		
 		pulisciTextField();
 		PopUpOk ok = new PopUpOk();

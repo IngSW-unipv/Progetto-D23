@@ -19,7 +19,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
+		try{
 			String nome = view.getRegistratiPanelPaziente().getNomeField().getText();
 			String cognome = view.getRegistratiPanelPaziente().getCognomeField().getText();
 			String CF = view.getRegistratiPanelPaziente().getCfField().getText();
@@ -38,11 +38,11 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			
 			TipoAccount tipo = TipoAccount.PA;
 			TipoPrestazione specializzazione = null;
-					
+						
 			model.registrazioneAccount(CF, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-					indirizzo, cap, email, cellulare, specializzazione);
-			
-			
+						indirizzo, cap, email, cellulare, specializzazione);
+				
+				
 			pulisciTextField();
 			PopUpOk ok = new PopUpOk();
 			ok.infoBox("Nuovo account creato", "OK");
@@ -50,7 +50,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			view.getLoginPanel().setVisible(true);
 		}
 	
-		catch {
+		catch{
 			PopupError err = new PopupError();
 			err.infoBox("le due password non coincidono", "Errore");
 			pulisciTextField();
