@@ -21,7 +21,7 @@ public class LoginPanel extends JPanel{
 		
 		passwordField = new JPasswordField();
 		idAccountText = new JTextField();
-		lblIdAccount = new JLabel("Id Account\n");
+		lblIdAccount = new JLabel("Codice Fiscale\n");
 		lblPassword = new JLabel("Password\n");
 		lblDomanda1 = new JLabel("Hai già un account?");
 		btnLogin = new JButton("ACCEDI");

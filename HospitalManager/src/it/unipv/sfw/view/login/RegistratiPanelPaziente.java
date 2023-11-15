@@ -9,16 +9,16 @@ public class RegistratiPanelPaziente extends JPanel{
 	private JLabel registrazione, nuoviDati;
 	private JLabel nome, cognome, cf, sesso;
 	private JLabel dataNascita, luogoNascita, provinciaNascita; 
-	private JLabel regioneResidenza, provinciaResidenza, cittaResidenza, indirizzo;
+	private JLabel regioneResidenza, provinciaResidenza, cittaResidenza, indirizzo, cap;
 	private JLabel email, cellulare;
-	private JLabel idAccount, tipo, tipoFisso, idAccountAssegnato;
+	private JLabel tipo, tipoFisso;
 	private JLabel password;
 	private JLabel generaPassword;
 	private JLabel conferma;
 	
 	private JTextField nomeField, cognomeField, cfField;
 	private JTextField dataNascitaField, luogoNascitaField, provinciaNascitaField;
-	private JTextField regioneResidenzaField, provinciaResidenzaField, cittaResidenzaField, indirizzoField;
+	private JTextField regioneResidenzaField, provinciaResidenzaField, cittaResidenzaField, indirizzoField, capField;
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
 	private JButton btnGeneraPass, btnConfermaReg;
@@ -57,13 +57,12 @@ public class RegistratiPanelPaziente extends JPanel{
 		provinciaResidenza = new JLabel("Provincia di residenza");
 		cittaResidenza = new JLabel("Citta di residenza");
 		indirizzo = new JLabel("Indirizzo");
+		cap = new JLabel("Cap");
 		email = new JLabel("Email");
 		cellulare = new JLabel("Cellulare");
 		
-		idAccount = new JLabel("Id Account");
 		tipo = new JLabel("Tipo Account");
 		tipoFisso = new JLabel("Paziente");
-		idAccountAssegnato = new JLabel("Da Assegnare");
 		
 		scegliSesso = new JComboBox<>(sessoString);
 		
@@ -77,8 +76,6 @@ public class RegistratiPanelPaziente extends JPanel{
 		
 		add(registrazione);
 		add(nuoviDati);
-		add(idAccount);
-		add(idAccountAssegnato);
 		add(tipo);
 		add(tipoFisso);
 		add(nome);
@@ -101,6 +98,8 @@ public class RegistratiPanelPaziente extends JPanel{
 		add(provinciaResidenzaField);
 		add(cittaResidenza);
 		add(cittaResidenzaField);
+		add(cap);
+		add(capField);
 		add(indirizzo);
 		add(indirizzoField);
 		add(email);
@@ -235,6 +234,26 @@ public class RegistratiPanelPaziente extends JPanel{
 		this.cittaResidenza = cittaResidenza;
 	}
 
+	
+	public JLabel getCap() {
+		return cap;
+	}
+
+
+	public void setCap(JLabel cap) {
+		this.cap = cap;
+	}
+
+
+	public JTextField getCapField() {
+		return capField;
+	}
+
+
+	public void setCapField(JTextField capField) {
+		this.capField = capField;
+	}
+
 
 	public JLabel getIndirizzo() {
 		return indirizzo;
@@ -266,16 +285,6 @@ public class RegistratiPanelPaziente extends JPanel{
 	}
 
 
-	public JLabel getIdAccount() {
-		return idAccount;
-	}
-
-
-	public void setIdAccount(JLabel idAccount) {
-		this.idAccount = idAccount;
-	}
-
-
 	public JLabel getTipo() {
 		return tipo;
 	}
@@ -293,16 +302,6 @@ public class RegistratiPanelPaziente extends JPanel{
 
 	public void setTipoFisso(JLabel tipoFisso) {
 		this.tipoFisso = tipoFisso;
-	}
-
-
-	public JLabel getIdAccountAssegnato() {
-		return idAccountAssegnato;
-	}
-
-
-	public void setIdAccountAssegnato(JLabel idAccountAssegnato) {
-		this.idAccountAssegnato = idAccountAssegnato;
 	}
 
 

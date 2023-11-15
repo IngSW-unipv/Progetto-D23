@@ -9,16 +9,16 @@ public class RegistratiPanel extends JPanel{
 	private JLabel registrazione, nuoviDati;
 	private JLabel nome, cognome, cf, sesso;
 	private JLabel dataNascita, luogoNascita, provinciaNascita; 
-	private JLabel regioneResidenza, provinciaResidenza, cittaResidenza, indirizzo;
+	private JLabel regioneResidenza, provinciaResidenza, cittaResidenza, indirizzo, cap;
 	private JLabel email, cellulare;
-	private JLabel idAccount, tipo, idAccountAssegnato;
+	private JLabel tipo;
 	private JLabel password;
 	private JLabel generaPassword;
 	private JLabel conferma;
 	
 	private JTextField nomeField, cognomeField, cfField;
 	private JTextField dataNascitaField, luogoNascitaField, provinciaNascitaField;
-	private JTextField regioneResidenzaField, provinciaResidenzaField, cittaResidenzaField, indirizzoField;
+	private JTextField regioneResidenzaField, provinciaResidenzaField, cittaResidenzaField, indirizzoField, capField;
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
 	private JButton btnGeneraPass, btnConfermaReg;
@@ -35,7 +35,6 @@ public class RegistratiPanel extends JPanel{
 		nomeField = new JTextField();
 		cognomeField = new JTextField();
 		cfField = new JTextField();
-		//sessoField = new JTextField();
 		dataNascitaField = new JTextField();
 		luogoNascitaField = new JTextField();
 		provinciaNascitaField = new JTextField();
@@ -60,14 +59,13 @@ public class RegistratiPanel extends JPanel{
 		regioneResidenza = new JLabel("Regione di residenza");
 		provinciaResidenza = new JLabel("Provincia di residenza");
 		cittaResidenza = new JLabel("Citta di residenza");
+		cap = new JLabel("Cap");
 		indirizzo = new JLabel("Indirizzo");
 		email = new JLabel("Email");
 		cellulare = new JLabel("Cellulare");
 		
-		idAccount = new JLabel("Id Account");
 		tipo = new JLabel("Tipo Account");
 		scegliTipo = new JComboBox<>(tipoAccount);
-		idAccountAssegnato = new JLabel("Da Assegnare");
 		
 		scegliSesso = new JComboBox<>(sessoString);
 		
@@ -80,8 +78,6 @@ public class RegistratiPanel extends JPanel{
 		
 		add(registrazione);
 		add(nuoviDati);
-		add(idAccount);
-		add(idAccountAssegnato);
 		add(tipo);
 		add(scegliTipo);
 		add(nome);
@@ -104,6 +100,8 @@ public class RegistratiPanel extends JPanel{
 		add(provinciaResidenzaField);
 		add(cittaResidenza);
 		add(cittaResidenzaField);
+		add(cap);
+		add(capField);
 		add(indirizzo);
 		add(indirizzoField);
 		add(email);
@@ -239,6 +237,26 @@ public class RegistratiPanel extends JPanel{
 	}
 
 
+	public JLabel getCap() {
+		return cap;
+	}
+
+
+	public void setCap(JLabel cap) {
+		this.cap = cap;
+	}
+
+
+	public JTextField getCapField() {
+		return capField;
+	}
+
+
+	public void setCapField(JTextField capField) {
+		this.capField = capField;
+	}
+
+
 	public JLabel getIndirizzo() {
 		return indirizzo;
 	}
@@ -269,16 +287,6 @@ public class RegistratiPanel extends JPanel{
 	}
 
 
-	public JLabel getIdAccount() {
-		return idAccount;
-	}
-
-
-	public void setIdAccount(JLabel idAccount) {
-		this.idAccount = idAccount;
-	}
-
-
 	public JLabel getTipo() {
 		return tipo;
 	}
@@ -286,16 +294,6 @@ public class RegistratiPanel extends JPanel{
 
 	public void setTipo(JLabel tipo) {
 		this.tipo = tipo;
-	}
-
-
-	public JLabel getIdAccountAssegnato() {
-		return idAccountAssegnato;
-	}
-
-
-	public void setIdAccountAssegnato(JLabel idAccountAssegnato) {
-		this.idAccountAssegnato = idAccountAssegnato;
 	}
 
 

@@ -63,8 +63,8 @@ public class OperatoreUfficioPanel extends JPanel{
 		barNordOvest.add(new JScrollPane(visite), BorderLayout.CENTER);
 		add(barNordOvest);
 		
-		barNordEst.add(cancella);
 		barNordEst.add(prenota);
+		barNordEst.add(cancella);
 		add(barNordEst);
 		
 		barSudOvest.add(nome);
