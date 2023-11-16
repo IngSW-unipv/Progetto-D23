@@ -38,6 +38,7 @@ public class RegistratiPanelPaziente extends JPanel{
 		regioneResidenzaField = new JTextField();
 		provinciaResidenzaField = new JTextField();
 		cittaResidenzaField = new JTextField();
+		capField = new JTextField();
 		indirizzoField = new JTextField();
 		emailField = new JTextField();
 		cellulareField = new JTextField();
