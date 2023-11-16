@@ -25,7 +25,7 @@ public class OperatoreSanitarioPanel extends JPanel{
 	private JList visite;
 	private JButton logout, cambiaPw;
 	private DefaultListModel modelloLista;
-	private JLabel calendario;
+	private JLabel appuntamenti;
 	
 	public OperatoreSanitarioPanel() {
 		setLayout(new GridLayout(3,1));
@@ -47,7 +47,7 @@ public class OperatoreSanitarioPanel extends JPanel{
 		pTipoAccount = new JLabel("Operatore Sanitario");
 		logout = new JButton("LOGOUT");
 		cambiaPw = new JButton("CAMBIA PASSWORD");
-		calendario = new JLabel("CALENDARIO");
+		appuntamenti = new JLabel("APPUNTAMENTI");
 		
 		visite = new JList();
 		visite.setPreferredSize(new Dimension(700, 500));
@@ -56,7 +56,7 @@ public class OperatoreSanitarioPanel extends JPanel{
 		visite.setModel(modelloLista);
 		
 		
-		barNord.add(calendario, BorderLayout.PAGE_START);
+		barNord.add(appuntamenti, BorderLayout.PAGE_START);
 		barNord.add(new JScrollPane(visite), BorderLayout.CENTER);
 		add(barNord);
 		

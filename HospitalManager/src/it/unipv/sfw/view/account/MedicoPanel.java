@@ -24,7 +24,7 @@ public class MedicoPanel extends JPanel{
 	private JList visite;
 	private JButton logout, cambiaPw;
 	private DefaultListModel modelloLista;
-	private JLabel calendario;
+	private JLabel appuntamenti;
 	
 	public MedicoPanel() {
 		setLayout(new GridLayout(3,1));
@@ -46,7 +46,7 @@ public class MedicoPanel extends JPanel{
 		pTipoAccount = new JLabel("Medico");
 		logout = new JButton("LOGOUT");
 		cambiaPw = new JButton("CAMBIA PASSWORD");
-		calendario = new JLabel("CALENDARIO");
+		appuntamenti = new JLabel("APPUNTAMENTI");
 		
 		visite = new JList();
 		visite.setPreferredSize(new Dimension(700, 500));
@@ -55,7 +55,7 @@ public class MedicoPanel extends JPanel{
 		visite.setModel(modelloLista);
 		
 		
-		barNord.add(calendario, BorderLayout.PAGE_START);
+		barNord.add(appuntamenti, BorderLayout.PAGE_START);
 		barNord.add(new JScrollPane(visite), BorderLayout.CENTER);
 		add(barNord);
 		

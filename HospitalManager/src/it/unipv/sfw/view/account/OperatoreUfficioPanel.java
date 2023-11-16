@@ -22,22 +22,26 @@ public class OperatoreUfficioPanel extends JPanel{
 	
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
-	private JList visite;
+	private JList visite, utenti, calendar;
 	private JButton prenota, cancella, logout, aggiungiUtente;
 	private DefaultListModel modelloLista;
-	private JLabel calendario;
+	private JLabel appuntamenti, utente, calendario;
 	
 	public OperatoreUfficioPanel() {
-		setLayout(new GridLayout(2,2));
+		setLayout(new GridLayout(3,2));
 		
 		JPanel barNordOvest = new JPanel();
 		barNordOvest.setLayout(new BorderLayout());
 		JPanel barNordEst = new JPanel();
 		barNordEst.setLayout(new GridLayout(2,1));
+		JPanel barCentroSx = new JPanel();
+		barCentroSx.setLayout(new BorderLayout());
+		JPanel barCentroDx = new JPanel();
+		barCentroDx.setLayout(new GridLayout(2,1));
 		JPanel barSudOvest = new JPanel();
-		barSudOvest.setLayout(new GridLayout(4,2));
+		barSudOvest.setLayout(new BorderLayout());
 		JPanel barSudEst = new JPanel();
-		barSudEst.setLayout(new GridLayout(2,1));
+		barSudEst.setLayout(new GridLayout(4,2));
 		
 		nome = new JLabel("NOME:");
 		pNome = new JLabel("Luigi");
@@ -51,34 +55,54 @@ public class OperatoreUfficioPanel extends JPanel{
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
 		aggiungiUtente = new JButton("AGGIUNGI UTENTE");
+		appuntamenti = new JLabel("APPUNTAMENTI");
+		utente = new JLabel("UTENTI");
 		calendario = new JLabel("CALENDARIO");
 		
 		visite = new JList();
 		visite.setPreferredSize(new Dimension(700, 500));
 		modelloLista = new DefaultListModel();
 		
-		visite.setModel(modelloLista);
+		utenti = new JList();
+		utenti.setPreferredSize(new Dimension(700, 500));
+		modelloLista = new DefaultListModel();
 		
-		barNordOvest.add(calendario, BorderLayout.PAGE_START);
+		calendar = new JList();
+		calendar.setPreferredSize(new Dimension(700, 500));
+		modelloLista = new DefaultListModel();
+		
+		visite.setModel(modelloLista);
+		utenti.setModel(modelloLista);
+		calendar.setModel(modelloLista);
+		
+		barNordOvest.add(appuntamenti, BorderLayout.PAGE_START);
 		barNordOvest.add(new JScrollPane(visite), BorderLayout.CENTER);
 		add(barNordOvest);
 		
-		barNordEst.add(prenota);
 		barNordEst.add(cancella);
+		barNordEst.add(prenota);
 		add(barNordEst);
 		
-		barSudOvest.add(nome);
-		barSudOvest.add(pNome);
-		barSudOvest.add(cognome);
-		barSudOvest.add(pCognome);
-		barSudOvest.add(cf);
-		barSudOvest.add(pCf);
-		barSudOvest.add(tipoAccount);
-		barSudOvest.add(pTipoAccount);
+		barCentroSx.add(utente, BorderLayout.PAGE_START);
+		barCentroSx.add(new JScrollPane(utenti), BorderLayout.CENTER);
+		add(barCentroSx);
+		
+		barCentroDx.add(aggiungiUtente);
+		barCentroDx.add(logout);
+		add(barCentroDx);
+		
+		barSudOvest.add(calendario, BorderLayout.PAGE_START);
+		barSudOvest.add(new JScrollPane(calendar), BorderLayout.CENTER);
 		add(barSudOvest);
 		
-		barSudEst.add(aggiungiUtente);
-		barSudEst.add(logout);
+		barSudEst.add(nome);
+		barSudEst.add(pNome);
+		barSudEst.add(cognome);
+		barSudEst.add(pCognome);
+		barSudEst.add(cf);
+		barSudEst.add(pCf);
+		barSudEst.add(tipoAccount);
+		barSudEst.add(pTipoAccount);
 		add(barSudEst);
 		
 	}
