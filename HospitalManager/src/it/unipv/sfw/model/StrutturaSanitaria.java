@@ -25,6 +25,10 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	HashMap<String,PrestazioneSanitaria> idPrestazioni;
 	HashMap<Integer, Prenotazione> idPrenotazioni;
 	
+	// aggiunta di Aldin
+	private Account utenteCorrente;
+	//////////
+	
 	private int ultimaPrenotazione;
 	
 	private static FacadeSingletonDB controllerDB;
@@ -249,7 +253,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.calendario = calendario;
 	}
 	
+	public void setUtenteCorrente(String cf) {
+		this.utenteCorrente = this.cfPersone.get(cf);
+	}
 	
-	
+	public Account getUtenteCorrente() {
+		return utenteCorrente;
+	}
 }
 	

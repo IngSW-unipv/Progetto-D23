@@ -1,5 +1,7 @@
 package it.unipv.sfw.model.persona;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.*;
@@ -31,7 +33,7 @@ public class Paziente extends Account implements IPrenotante {
 	}
 
 	@Override
-	public boolean inserisciPrenotazione(String idPrest) {
+	public boolean inserisciPrenotazione(String idPrest, LocalDate data, LocalTime orario) {
 		// TODO Auto-generated method stub
 		return false;
 	}

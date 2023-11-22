@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaRegistraPazienteActionListener implements ActionListener{
@@ -50,9 +51,9 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			view.getLoginPanel().setVisible(true);
 		}
 	
-		catch{
-			PopupError err = new PopupError();
-			err.infoBox("le due password non coincidono", "Errore");
+		catch(exception e){
+			PopUpError err = new PopUpError();
+			PopUpError.infoBox("le due password non coincidono", "Errore");
 			pulisciTextField();
 		}
 	}

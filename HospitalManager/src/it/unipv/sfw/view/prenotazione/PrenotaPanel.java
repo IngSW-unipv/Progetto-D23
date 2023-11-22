@@ -90,7 +90,7 @@ public class PrenotaPanel extends JPanel{
 		this.scegliPrestazione = scegliPrestazione;
 	}
 
-	public JButton getConferma() {
+	public JButton getConfermaBtn() {
 		return conferma;
 	}
 
@@ -114,5 +114,7 @@ public class PrenotaPanel extends JPanel{
 		this.precedente = precedente;
 	}
 
-
+	public String getPrestazioneScelta() {
+		return (String) scegliPrestazione.getSelectedItem();
+	}
 }

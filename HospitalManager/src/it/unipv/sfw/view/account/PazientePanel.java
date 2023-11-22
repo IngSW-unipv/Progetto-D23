@@ -140,6 +140,9 @@ public class PazientePanel extends JPanel{
 	    this.cf = label;
 	}
 
+	public JButton getPrenotaBtn() {
+		return prenota;
+	}
 	
 }
 

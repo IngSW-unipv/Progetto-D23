@@ -20,7 +20,7 @@ public class GoBtnActionListener implements ActionListener {
 	private ViewController view;
 	private StrutturaSanitaria model;
 	//private DbControllerSingleton dbControl;
-	private String CF;
+	private String Cf;
 
 	public GoBtnActionListener (StrutturaSanitaria model, ViewController view) {
 		super();
@@ -50,6 +50,7 @@ public class GoBtnActionListener implements ActionListener {
 			
 			Account acc = model.getCfPersone().get(Cf);
 			TipoAccount tipoAcc = acc.getTipoAcc();
+			model.setUtenteCorrente(Cf);
 			
 			switch(tipoAcc) {
 			case ME: 
