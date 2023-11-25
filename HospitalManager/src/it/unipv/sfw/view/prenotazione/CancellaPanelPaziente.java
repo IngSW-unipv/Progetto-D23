@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
-public class CancellaPanel extends JPanel{
+public class CancellaPanelPaziente extends JPanel{
 	
 	private JLabel tipoPrestazione;
 	private JLabel slot, cancellaSlot;
@@ -14,7 +14,7 @@ public class CancellaPanel extends JPanel{
 	private JComboBox <String> scegliPrestazione;
 	private JButton conferma, successivo, precedente;
 	
-	public CancellaPanel() {
+	public CancellaPanelPaziente() {
 		
 		setLayout(new BorderLayout(40,40));
 		

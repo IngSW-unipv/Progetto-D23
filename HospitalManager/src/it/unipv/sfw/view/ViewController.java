@@ -10,7 +10,7 @@ import it.unipv.sfw.view.account.PazientePanel;
 import it.unipv.sfw.view.login.LoginPanel;
 import it.unipv.sfw.view.login.RegistratiPanel;
 import it.unipv.sfw.view.login.RegistratiPanelPaziente;
-import it.unipv.sfw.view.prenotazione.PrenotaPanel;
+import it.unipv.sfw.view.prenotazione.PrenotaPanelPaziente;
 
 public class ViewController extends JFrame {
 	
@@ -24,7 +24,7 @@ public class ViewController extends JFrame {
 	private OperatoreUfficioPanel operatoreUfficioP;
 	private RegistratiPanel registratiP;
 	private RegistratiPanelPaziente registratiPP;
-	private PrenotaPanel prenotatiP;
+	private PrenotaPanelPaziente prenotatiP;
 
 	
 	public ViewController() {
@@ -88,7 +88,7 @@ public class ViewController extends JFrame {
 		return registratiPP;
 	}
 	
-	public PrenotaPanel getPrenotaPanel() {
+	public PrenotaPanelPaziente getPrenotaPanel() {
 		return prenotatiP;
 	}
 }

@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
-public class PrenotaPanel extends JPanel{
+public class PrenotaPanelPaziente extends JPanel{
 	
 	private JLabel tipoPrestazione;
 	private JLabel slot, slotProposto;
@@ -14,7 +14,7 @@ public class PrenotaPanel extends JPanel{
 	private JComboBox <String> scegliPrestazione;
 	private JButton conferma, successivo, precedente;
 	
-	public PrenotaPanel() {
+	public PrenotaPanelPaziente() {
 		
 		setLayout(new BorderLayout(40,40));
 		
