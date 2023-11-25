@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.jdbc.bean.prenotazione.PrenotazioneDB;
 import it.unipv.sfw.model.Prenotazione;
+import it.unipv.sfw.model.TipoPrestazione;
 
 public class CalendarioDAO implements ICalendarioDAO {
 	private Connection conn;
@@ -22,10 +23,6 @@ public class CalendarioDAO implements ICalendarioDAO {
 		super();
 		this.calendarioSingolo = new ArrayList<>();
 	}
-
-//	String giorno, String vacanza, String orario, int idPren1, int idPren2, int idPren3,
-//	int idPren4, int idPren5, int idPren6, int idPren7) {
-
 
 	@Override
 	public ArrayList<SlotCalendarioDB> SelectCalendario() {
@@ -40,9 +37,9 @@ public class CalendarioDAO implements ICalendarioDAO {
 			
 			while(rs1.next()) {
 				SlotCalendarioDB sc = new SlotCalendarioDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("NOME_VACANZE"),
-						rs1.getString("GIORNO_SETTIMANA"), rs1.getString("ORARIO"), rs1.getInt("PREST01"), rs1.getInt("PREST02"),
-						rs1.getInt("PREST03"), rs1.getInt("PREST04"), rs1.getInt("PREST05"), rs1.getInt("PREST06"), 
-						rs1.getInt("PREST07")); 
+						rs1.getString("GIORNO_SETTIMANA"), rs1.getString("ORARIO"), rs1.getInt("VISITA_ONCOLOGICA"), rs1.getInt("VISITA_PSICOLOGICA"),
+						rs1.getInt("ESAMI_SANGUE"), rs1.getInt("TAC"), rs1.getInt("RISONANZA_MAGNETICA"), rs1.getInt("CHEMIOTERAPIA"), 
+						rs1.getInt("RADIOTERAPIA")); 
 				
 				calendario.add(sc);
 			}
@@ -59,7 +56,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	// ricerca slot liberi per prestazione
 
 	@Override
-	public ArrayList<SlotCalendarioSingoloDB> SelectVoidSlot(String idPrest){
+	public ArrayList<SlotCalendarioSingoloDB> SelectVoidSlot(TipoPrestazione prest){
 		ArrayList<SlotCalendarioSingoloDB> slotLiberi = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
@@ -74,14 +71,14 @@ public class CalendarioDAO implements ICalendarioDAO {
 					+ "AND NOME_VACANZE IS NULL "
 					+ "AND GIORNO_SETTIMANA <> 'Domenica'";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, idPrest);
-			ps1.setString(2, idPrest);
+			ps1.setString(1, prest.name());
+			ps1.setString(2, prest.name());
 			ps1.setDate(3, dataCorrente);
 			rs1 = ps1.executeQuery(query);
 			
 			while(rs1.next()) {
 				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
-						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt(idPrest));
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt(prest.name()));
 				
 				slotLiberi.add(sc);
 			}

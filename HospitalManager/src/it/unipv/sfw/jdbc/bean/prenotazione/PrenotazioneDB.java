@@ -3,27 +3,25 @@ package it.unipv.sfw.jdbc.bean.prenotazione;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import it.unipv.sfw.model.TipoPrestazione;
+
 public class PrenotazioneDB {
 	private int idPren;
 	private String Paziente;
 	private String PersonaleSanitario;
-	private String idPrest;
+	private TipoPrestazione tipo;
 	private LocalDate dataPren;
 	private LocalTime oraPren;
-	private boolean accreditamento;
-	private String esito;
 	
-	public PrenotazioneDB(int idPren, String paziente, String personaleSanitario, String idPrest, String dataPren,
-			String oraPren, boolean accreditamento, String esito) {
+	public PrenotazioneDB(int idPren, String paziente, String personaleSanitario, String tipo,
+			String dataPren, String oraPren) {
 		super();
 		this.idPren = idPren;
 		Paziente = paziente;
 		PersonaleSanitario = personaleSanitario;
-		this.idPrest = idPrest;
+		this.tipo = TipoPrestazione.valueOf(tipo);
 		this.dataPren = LocalDate.parse(dataPren);
 		this.oraPren = LocalTime.parse(oraPren);
-		this.accreditamento = accreditamento;
-		this.esito = esito;
 	}
 
 	public int getIdPren() {
@@ -50,12 +48,12 @@ public class PrenotazioneDB {
 		PersonaleSanitario = personaleSanitario;
 	}
 
-	public String getIdPrest() {
-		return idPrest;
+	public TipoPrestazione getTipo() {
+		return tipo;
 	}
 
-	public void setIdPrest(String idPrest) {
-		this.idPrest = idPrest;
+	public void setTipo(TipoPrestazione tipo) {
+		this.tipo = tipo;
 	}
 
 	public LocalDate getDataPren() {
@@ -73,23 +71,7 @@ public class PrenotazioneDB {
 	public void setOraPren(LocalTime oraPren) {
 		this.oraPren = oraPren;
 	}
-
-	public boolean isAccreditamento() {
-		return accreditamento;
-	}
-
-	public void setAccreditamento(boolean accreditamento) {
-		this.accreditamento = accreditamento;
-	}
-
-	public String getEsito() {
-		return esito;
-	}
-
-	public void setEsito(String esito) {
-		this.esito = esito;
-	}
 	
+
 	
-		
 }

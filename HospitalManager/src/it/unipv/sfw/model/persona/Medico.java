@@ -32,10 +32,6 @@ public class Medico extends Account {
 	}
 
 	
-	public void aggiornaEsito(Prenotazione p) {
-		
-	}
-	
 	@Override
 	public TipoPrestazione getSpecializzazione() {
 		return specializzazione;

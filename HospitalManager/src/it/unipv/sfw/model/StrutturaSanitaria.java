@@ -22,12 +22,10 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<SlotCalendario> calendario;
 	
 	HashMap<String,Account> cfPersone;
-	HashMap<String,PrestazioneSanitaria> idPrestazioni;
+	HashMap<TipoPrestazione,PrestazioneSanitaria> tipoPrestazioni;
 	HashMap<Integer, Prenotazione> idPrenotazioni;
 	
-	// aggiunta di Aldin
 	private Account utenteCorrente;
-	//////////
 	
 	private int ultimaPrenotazione;
 	
@@ -37,7 +35,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public StrutturaSanitaria() {
 		super();
 		this.cfPersone = new HashMap<>();
-		this.idPrestazioni = new HashMap<>();
+		this.tipoPrestazioni = new HashMap<>();
 		this.idPrenotazioni = new HashMap<>();
 	}
 
@@ -229,12 +227,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.cfPersone = cfPersone;
 	}
 
-	public HashMap<String, PrestazioneSanitaria> getIdPrestazioni() {
-		return idPrestazioni;
+	public HashMap<TipoPrestazione, PrestazioneSanitaria> getTipoPrestazioni() {
+		return tipoPrestazioni;
 	}
 
-	public void setIdPrestazioni(HashMap<String, PrestazioneSanitaria> idPrestazioni) {
-		this.idPrestazioni = idPrestazioni;
+	public void setIdPrestazioni(HashMap<TipoPrestazione, PrestazioneSanitaria> tipoPrestazioni) {
+		this.tipoPrestazioni = tipoPrestazioni;
 	}
 
 	public HashMap<Integer, Prenotazione> getIdPrenotazioni() {

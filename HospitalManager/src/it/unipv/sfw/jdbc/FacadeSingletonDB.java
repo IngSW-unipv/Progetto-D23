@@ -23,7 +23,6 @@ import it.unipv.sfw.model.persona.Paziente;
 
 public class FacadeSingletonDB {
 	
-	
 	private static StrutturaSanitaria struttura1;
 	
 	private IProfiloDAO profilo;
@@ -68,10 +67,10 @@ public class FacadeSingletonDB {
 			for(PrenotazioneDB k : calendarioDB) {
 				Paziente paziente = (Paziente)struttura1.getCfPersone().get(k.getPaziente());
 				Account personaleSanitario = struttura1.getCfPersone().get(k.getPersonaleSanitario());
-				PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(k.getIdPren());
+				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(k.getTipo());
 				
 				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
-						prestazione, k.getDataPren(), k.getOraPren(), k.isAccreditamento(), k.getEsito());
+						prestazione, k.getDataPren(), k.getOraPren());
 				
 				calendarioMedico.add(prenotazione);
 			}
@@ -102,10 +101,10 @@ public class FacadeSingletonDB {
 			for(PrenotazioneDB k : calendarioDB) {
 				Paziente paziente = (Paziente)struttura1.getCfPersone().get(k.getPaziente());
 				Account personaleSanitario = struttura1.getCfPersone().get(k.getPersonaleSanitario());
-				PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(k.getIdPren());
+				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(k.getTipo());
 				
 				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
-						prestazione, k.getDataPren(), k.getOraPren(), k.isAccreditamento(), k.getEsito());
+						prestazione, k.getDataPren(), k.getOraPren());
 				
 				calendarioOperatore.add(prenotazione);
 			}
@@ -143,10 +142,10 @@ public class FacadeSingletonDB {
 		
 		for (PrestazioneSanitariaDB p : prestazioni) {
 			
-			PrestazioneSanitaria ps = new PrestazioneSanitaria(p.getIdPrest(),p.getTipo(), p.getDurata(), p.getCosto());
+			PrestazioneSanitaria ps = new PrestazioneSanitaria(p.getTipo(), p.getDurata());
 			
 			struttura1.getPrestazioni().add(ps);
-			struttura1.getIdPrestazioni().put(p.getIdPrest(), ps);
+			struttura1.getTipoPrestazioni().put(p.getTipo(), ps);
 		}
 		
 	}
@@ -161,10 +160,9 @@ public class FacadeSingletonDB {
 		
 		for(PrenotazioneDB i : prDB) {
 			Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
-			PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(i.getIdPrest());
+			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
 			
-			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren(), 
-					i.isAccreditamento(), i.getEsito());
+			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
 			
 			prModello.add(a);
 		}
@@ -186,10 +184,9 @@ public class FacadeSingletonDB {
 			
 			for(PrenotazioneDB i : prDB) {
 				Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
-				PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(i.getIdPrest());
+				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
 				
-				Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren(), 
-						i.isAccreditamento(), i.getEsito());
+				Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
 				
 				paziente.getPrenotazioni().add(a);
 			}
@@ -197,9 +194,9 @@ public class FacadeSingletonDB {
 			}
 		}
 		
-		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(String idPrest) {
+		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(TipoPrestazione prest) {
 			ArrayList<SlotCalendarioSingoli> slotLiberi = null;
-			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.SelectVoidSlot(idPrest);
+			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.SelectVoidSlot(prest);
 			
 			for(SlotCalendarioSingoloDB i : slotDB) {
 				Prenotazione p = struttura1.getIdPrenotazioni().get(i.getIdPren());
@@ -227,7 +224,7 @@ public class FacadeSingletonDB {
 	public void inserisciPrenotazione(Prenotazione p) {
 		
 		PrenotazioneDB prenotazioneDB = new PrenotazioneDB(p.getIdPren(), p.getPaziente().getCf(), p.getPersonaleSanitario().getCf(), 
-				p.getPrestazione().getIdPrest(), p.getData().toString(), p.getOrario().toString(), p.isAccreditamento(), p.getEsito());
+				p.getPrestazione().getTipo().name(), p.getData().toString(), p.getOrario().toString());
 		
 		prenotazione.insertPrenotazione(prenotazioneDB);
 		calendario.UpdateCalendario(prenotazioneDB);
@@ -247,10 +244,9 @@ public class FacadeSingletonDB {
 		for(PrenotazioneDB i : prDB) {
 			Paziente paziente = (Paziente) struttura1.getCfPersone().get(i.getPaziente());
 			Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
-			PrestazioneSanitaria prestazione = struttura1.getIdPrestazioni().get(i.getIdPrest());
+			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
 			
-			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren(), 
-					i.isAccreditamento(), i.getEsito());
+			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
 			
 			struttura1.getPrenotazioni().add(a);
 			struttura1.getIdPrenotazioni().put(i.getIdPren(), a);

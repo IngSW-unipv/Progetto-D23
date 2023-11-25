@@ -13,11 +13,9 @@ public class Prenotazione {
 	private PrestazioneSanitaria prestazione;
 	private LocalDate data;
 	private LocalTime orario;
-	private boolean accreditamento;
-	private String esito;
 	
 	public Prenotazione(int idPren, Paziente paziente, Account personaleSanitario, PrestazioneSanitaria prestazione, 
-			LocalDate data, LocalTime orario, boolean accreditamento, String esito) {
+			LocalDate data, LocalTime orario) {
 		super();
 		this.idPren = idPren;
 		this.paziente = paziente;
@@ -25,8 +23,6 @@ public class Prenotazione {
 		this.personaleSanitario = personaleSanitario;
 		this.data = data;
 		this.orario = orario;
-		this.accreditamento = false;
-		this.esito = null;
 	}
 
 	public int getIdPren() {
@@ -77,26 +73,4 @@ public class Prenotazione {
 		this.orario = orario;
 	}
 
-	public boolean isAccreditamento() {
-		return accreditamento;
-	}
-
-	public void setAccreditamento(boolean accreditamento) {
-		this.accreditamento = accreditamento;
-	}
-
-	public String getEsito() {
-		return esito;
-	}
-
-	public void setEsito(String esito) {
-		this.esito = esito;
-	}
-	
-	
-	
-	
-	
-	
-	
 }

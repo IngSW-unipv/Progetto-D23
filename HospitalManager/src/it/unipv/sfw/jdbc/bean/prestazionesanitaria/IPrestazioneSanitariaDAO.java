@@ -4,6 +4,5 @@ import java.util.ArrayList;
 
 public interface IPrestazioneSanitariaDAO {
 	ArrayList<PrestazioneSanitariaDB> selectAllPrestazioniSanitarie();
-	PrestazioneSanitariaDB selectPrestazioneByIdPrest(int idPrest);
 
 }

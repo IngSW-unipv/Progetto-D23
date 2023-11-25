@@ -3,21 +3,13 @@ import java.time.LocalTime;
 import it.unipv.sfw.model.TipoPrestazione;
 
 public class PrestazioneSanitariaDB {
-	private String idPrest;
 	private TipoPrestazione tipo;
 	private LocalTime durata;
-	private double costo;
 	
-	public PrestazioneSanitariaDB(String idPrest, String tipo, String durata, double costo) {
+	public PrestazioneSanitariaDB(String tipo, String durata) {
 		super();
-		this.idPrest = idPrest;
 		this.tipo = TipoPrestazione.valueOf(tipo);
 	    this.durata = LocalTime.parse(durata);
-		this.costo = costo;
-	}
-
-	public String getIdPrest() {
-		return idPrest;
 	}
 
 	public TipoPrestazione getTipo() {
@@ -26,10 +18,6 @@ public class PrestazioneSanitariaDB {
 
 	public LocalTime getDurata() {
 		return durata;
-	}
-
-	public double getCosto() {
-		return costo;
 	}
 	
 }

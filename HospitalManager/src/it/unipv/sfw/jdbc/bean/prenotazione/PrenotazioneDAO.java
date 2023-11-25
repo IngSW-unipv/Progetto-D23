@@ -34,8 +34,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
-						rs1.getString("ESITO"));
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				
 				prenotazioni.add(pren);
 			}
@@ -64,8 +63,6 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			ps1.setString(4, p.getIdPrest());
 			ps1.setDate(5, Date.valueOf(p.getDataPren()));
 			ps1.setTime(6, Time.valueOf(p.getOraPren()));
-			ps1.setBoolean(7, p.isAccreditamento());
-			ps1.setString(8, null); //esito
 			ps1.executeUpdate(query);
 			
 			check = true;
@@ -93,8 +90,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
-						rs1.getString("ESITO"));
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				
 				prenotazioniPaziente.add(pren);
 			}
@@ -122,8 +118,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
-						rs1.getString("ESITO"));
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				prenotazioniPaziente.add(pren);
 			}
 		}
@@ -150,8 +145,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
-						rs1.getString("ESITO"));
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				prenotazioniPS.add(pren);
 			}
 		}
@@ -177,8 +171,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			rs1= ps1.executeQuery(query);
 			
 			prenotazione = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-					rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
-					rs1.getString("ESITO"));
+					rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 		
 		}
 		catch(Exception e){
@@ -187,31 +180,6 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		ConnessioneDB.closeConnection(conn);
 		
 		return prenotazione;
-	}
-
-	@Override
-	public boolean updateAccreditamento(PrenotazioneDB p, boolean pagamento) {
-		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
-		PreparedStatement ps1;
-		
-		boolean check = true;
-		
-		try {
-			String query = "UPDATE hospitalmanager.PRENOTAZIONI SET ACCREDITAMENTO = ? WHERE ID_PREN = ?";
-			ps1 = conn.prepareStatement(query);
-			ps1.setBoolean(1, pagamento);
-			ps1.setInt(2, p.getIdPren());
-			ps1.executeUpdate(query);
-			//ps1.executeUpdate();
-			
-		}
-		catch(Exception e){
-			e.printStackTrace();
-			check = false;
-		}
-		
-		ConnessioneDB.closeConnection(conn);
-		return check;
 	}
 
 	@Override
@@ -247,8 +215,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"), rs1.getBoolean("ACCREDITAMENTO"),
-						rs1.getString("ESITO"));
+						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				
 				prenotazioni.add(pren);
 			}
