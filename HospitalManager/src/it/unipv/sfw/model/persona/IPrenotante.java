@@ -8,4 +8,6 @@ import it.unipv.sfw.model.Prenotazione;
 public interface IPrenotante {
 	boolean inserisciPrenotazione(String idPrest, LocalDate data, LocalTime orario);
 	boolean cancellaPrenotazione(Prenotazione p);
+	boolean scorriPrenotazioni();
+	
 }
