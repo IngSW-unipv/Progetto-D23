@@ -144,5 +144,8 @@ public class PazientePanel extends JPanel{
 		return prenota;
 	}
 	
+	public JButton getLogoutBtn() {
+		return logout;
+	}
 }
 

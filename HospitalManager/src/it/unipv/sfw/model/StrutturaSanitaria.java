@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
+import it.unipv.sfw.jdbc.bean.calendario.SlotCalendarioSingoloDB;
 import it.unipv.sfw.model.exception.LoginException;
 import it.unipv.sfw.model.persona.*;
 
@@ -20,6 +21,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	private ArrayList<Prenotazione> prenotazioni;
 	private ArrayList<SlotCalendario> calendario;
+	
+	private ArrayList<SlotCalendarioSingoloDB> slot_liberi;
+	private int indiceArraySlotLiberi;
 	
 	HashMap<String,Account> cfPersone;
 	HashMap<TipoPrestazione,PrestazioneSanitaria> tipoPrestazioni;
@@ -257,6 +261,29 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	public Account getUtenteCorrente() {
 		return utenteCorrente;
+	}
+	
+	///////////////////////////////
+	
+	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoloDB> slot_liberi) {
+		this.slot_liberi = slot_liberi;
+		indiceArraySlotLiberi = 0;
+	}
+	
+	public void incIndexArraySlotLiberi() {
+		indiceArraySlotLiberi++;
+	}
+	
+	public void decIndexArraySlotLiberi() {
+		indiceArraySlotLiberi--;
+	}
+	
+	public int getIndexArraySlotLiberi() {
+		return indiceArraySlotLiberi;
+	}
+	
+	public ArrayList<SlotCalendarioSingoloDB> getArraySlotLiberi() {
+		return slot_liberi;
 	}
 }
 	

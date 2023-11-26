@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.view.ViewController;
 
 public class PrenotaActionListener implements ActionListener {
@@ -21,10 +23,21 @@ public class PrenotaActionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		view.setVisible(true);
-		view.getPrenotaPanel().setVisible(true);
-		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		view.getContentPane().setLayout(null);
+		Account user = model.getUtenteCorrente();
+		TipoAccount tipoAcc = user.getTipoAcc();
+		
+		if (tipoAcc == TipoAccount.OU) {
+			view.setVisible(true);
+			view.getPrenotatiPanelUfficio().setVisible(true);
+			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			view.getContentPane().setLayout(null);
+		}
+		else {
+			view.setVisible(true);
+			view.getPrenotatiPanelPaziente().setVisible(true);
+			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			view.getContentPane().setLayout(null);
+		}
 	}
 
 }

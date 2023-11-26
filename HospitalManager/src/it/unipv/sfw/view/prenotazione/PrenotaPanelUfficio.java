@@ -97,7 +97,7 @@ public class PrenotaPanelUfficio extends JPanel {
 		this.scegliPrestazione = scegliPrestazione;
 	}
 
-	public JButton getConferma() {
+	public JButton getConfermaBtn() {
 		return conferma;
 	}
 

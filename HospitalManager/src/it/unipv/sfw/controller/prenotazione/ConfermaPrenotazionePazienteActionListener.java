@@ -10,12 +10,12 @@ import it.unipv.sfw.model.persona.Paziente;
 import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
 
-public class ConfermaPrenotazioneActionListener implements ActionListener {
+public class ConfermaPrenotazionePazienteActionListener implements ActionListener {
 	
 	private StrutturaSanitaria model;
 	private ViewController view;
 
-	public ConfermaPrenotazioneActionListener(StrutturaSanitaria model, ViewController view) {
+	public ConfermaPrenotazionePazienteActionListener(StrutturaSanitaria model, ViewController view) {
 		super();
 		this.view = view;
 		this.model = model;
@@ -25,11 +25,6 @@ public class ConfermaPrenotazioneActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		try {
-			String tipoPrestazione = view.getPrenotaPanel().getPrestazioneScelta();
-			JLabel slot = view.getPrenotaPanel().getSlot();
-			//devi ricavare data e ora da questa Label
-			Paziente p = (Paziente) model.getUtenteCorrente();
-			p.inserisciPrenotazione(tipoPrestazione, null, null);
 			
 			
 		}
