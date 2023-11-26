@@ -206,7 +206,7 @@ public class FacadeSingletonDB {
 		
 		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(TipoPrestazione prest) {
 			ArrayList<SlotCalendarioSingoli> slotLiberi = null;
-			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.SelectVoidSlot(prest);
+			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.selectVoidSlot(prest);
 			
 			for(SlotCalendarioSingoloDB i : slotDB) {
 				Prenotazione p = struttura1.getIdPrenotazioni().get(i.getIdPren());
@@ -237,9 +237,18 @@ public class FacadeSingletonDB {
 				p.getPrestazione().getTipo().name(), p.getData().toString(), p.getOrario().toString());
 		
 		prenotazione.insertPrenotazione(prenotazioneDB);
-		calendario.UpdateCalendario(prenotazioneDB);
+		calendario.updateCalendarioNewPren(prenotazioneDB);
 		// INSERISCI PRENOTAZIONE IN TABLE PRENOTAZIONI E AGGIORNA TABLE CALENDARIO
 		
+	}
+	
+	public void cancellaPrenotazione(Prenotazione p) {
+		
+		PrenotazioneDB prenotazioneDB = new PrenotazioneDB(p.getIdPren(), p.getPaziente().getCf(), p.getPersonaleSanitario().getCf(), 
+				p.getPrestazione().getTipo().name(), p.getData().toString(), p.getOrario().toString());
+		
+		prenotazione.deletePrenotazione(prenotazioneDB);
+		calendario.updateCalendarioDelPren(prenotazioneDB);		
 	}
 	
 	public int idUltimaPrenotazione() {
@@ -265,7 +274,7 @@ public class FacadeSingletonDB {
 	}
 	
 	public void popolaCalendario() {
-		ArrayList<SlotCalendarioDB> c = calendario.SelectCalendario();
+		ArrayList<SlotCalendarioDB> c = calendario.selectCalendario();
 		
 		for(SlotCalendarioDB i : c) {
 			Prenotazione prenPrest1 = struttura1.getIdPrenotazioni().get(i.getIdPren1());

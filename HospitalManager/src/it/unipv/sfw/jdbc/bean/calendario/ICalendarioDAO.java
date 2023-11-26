@@ -7,7 +7,8 @@ import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.TipoPrestazione;
 
 public interface ICalendarioDAO {
-	ArrayList<SlotCalendarioDB> SelectCalendario();
-	boolean UpdateCalendario(PrenotazioneDB p);
-	ArrayList<SlotCalendarioSingoloDB> SelectVoidSlot(TipoPrestazione prest);
+	ArrayList<SlotCalendarioDB> selectCalendario();
+	boolean updateCalendarioNewPren(PrenotazioneDB p);
+	ArrayList<SlotCalendarioSingoloDB> selectVoidSlot(TipoPrestazione prest);
+	boolean updateCalendarioDelPren(PrenotazioneDB p);
 }

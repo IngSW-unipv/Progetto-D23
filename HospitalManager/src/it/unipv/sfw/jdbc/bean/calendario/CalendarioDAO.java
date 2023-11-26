@@ -25,7 +25,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	}
 
 	@Override
-	public ArrayList<SlotCalendarioDB> SelectCalendario() {
+	public ArrayList<SlotCalendarioDB> selectCalendario() {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
@@ -56,7 +56,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	// ricerca slot liberi per prestazione
 
 	@Override
-	public ArrayList<SlotCalendarioSingoloDB> SelectVoidSlot(TipoPrestazione prest){
+	public ArrayList<SlotCalendarioSingoloDB> selectVoidSlot(TipoPrestazione prest){
 		ArrayList<SlotCalendarioSingoloDB> slotLiberi = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
@@ -94,7 +94,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	
 	//inserimento appuntamenti nel calendario
 	@Override
-	public boolean UpdateCalendario(PrenotazioneDB p) {
+	public boolean updateCalendarioNewPren(PrenotazioneDB p) {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		
@@ -103,10 +103,37 @@ public class CalendarioDAO implements ICalendarioDAO {
 		try {
 			String query = "UPDATE hospitalmanager.CALENDARI SET ? = ? WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, p.getIdPrest());	//identifica la colonna della table CALENDARI
+			ps1.setString(1, p.getTipo().name());	//identifica la colonna della table CALENDARI
 			ps1.setInt(2, p.getIdPren());		//identificatore prenotazione da inserire a calendario
 			ps1.setDate(3, Date.valueOf(p.getDataPren()));
 			ps1.setTime(4, Time.valueOf(p.getOraPren()));
+			ps1.executeUpdate(query);
+			//ps1.executeUpdate();
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			check = false;
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+		return check;
+	}
+
+	//cancella appuntamenti nel calendario
+	@Override
+	public boolean updateCalendarioDelPren(PrenotazioneDB p) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		
+		boolean check = true;
+		
+		try {
+			String query = "UPDATE hospitalmanager.CALENDARI SET ? = NULL WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
+			ps1 = conn.prepareStatement(query);
+			ps1.setString(1, p.getTipo().name());	//identifica la colonna della table CALENDARI
+			ps1.setDate(2, Date.valueOf(p.getDataPren()));
+			ps1.setTime(3, Time.valueOf(p.getOraPren()));
 			ps1.executeUpdate(query);
 			//ps1.executeUpdate();
 			

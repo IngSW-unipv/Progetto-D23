@@ -60,9 +60,32 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			ps1.setInt(1, p.getIdPren());
 			ps1.setString(2, p.getPaziente());
 			ps1.setString(3, p.getPersonaleSanitario());
-			ps1.setString(4, p.getIdPrest());
+			ps1.setString(4, p.getTipo().name());
 			ps1.setDate(5, Date.valueOf(p.getDataPren()));
 			ps1.setTime(6, Time.valueOf(p.getOraPren()));
+			ps1.executeUpdate(query);
+			
+			check = true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			check = false;
+		}
+		ConnessioneDB.closeConnection(conn);
+		return check;
+	}
+	
+	@Override
+	public boolean deletePrenotazione(PrenotazioneDB p) {
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		PreparedStatement ps1;
+		
+		boolean check;
+		
+		try {
+			String query = "DELETE FROM hospitalmanager.PRENOTAZIONE WHERE ID_PREN = ?";
+			ps1 = conn.prepareStatement(query);
+			ps1.setInt(1, p.getIdPren());
 			ps1.executeUpdate(query);
 			
 			check = true;

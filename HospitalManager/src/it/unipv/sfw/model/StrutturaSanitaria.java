@@ -22,8 +22,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
-	private ArrayList<Prenotazione> prenotazioni;
-	private ArrayList<SlotCalendario> calendario;
+	private ArrayList<Prenotazione> prenotazioni;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
+	private ArrayList<SlotCalendario> calendario;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	
 	private ArrayList<SlotCalendarioSingoli> slot_liberi;
 	private int indiceArraySlotLiberi;
