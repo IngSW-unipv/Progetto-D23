@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import it.unipv.sfw.model.Prenotazione;
+import it.unipv.sfw.model.TipoPrestazione;
 
 public interface IPrenotante {
-	boolean inserisciPrenotazione(String idPrest, LocalDate data, LocalTime orario);
 	boolean cancellaPrenotazione(Prenotazione p);
-	boolean scorriPrenotazioni();
+	boolean inserisciPrenotazione(TipoPrestazione prest, LocalDate data, LocalTime orario);
 	
 }

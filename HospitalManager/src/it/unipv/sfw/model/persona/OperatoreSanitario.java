@@ -6,7 +6,7 @@ import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
 
-public class OperatoreSanitario extends Account {
+public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 	
 	private TipoPrestazione specializzazione;
 	private ArrayList<Prenotazione> calendario;
@@ -46,6 +46,12 @@ public class OperatoreSanitario extends Account {
 
 	public void setCalendario(ArrayList<Prenotazione> calendario) {
 		this.calendario = calendario;
+	}
+
+	@Override
+	public boolean mostraCalendario() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

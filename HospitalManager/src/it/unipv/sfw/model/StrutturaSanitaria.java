@@ -31,6 +31,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	HashMap<String,Account> cfPersone;
 	HashMap<TipoPrestazione,PrestazioneSanitaria> tipoPrestazioni;
 	HashMap<Integer, Prenotazione> idPrenotazioni;
+	HashMap<TipoPrestazione, Account> personaleSanitario;
 	
 	private Account utenteCorrente;
 	
@@ -44,6 +45,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.cfPersone = new HashMap<>();
 		this.tipoPrestazioni = new HashMap<>();
 		this.idPrenotazioni = new HashMap<>();
+		this.personaleSanitario = new HashMap<>();
 	}
 
 	public static StrutturaSanitaria getIstanzaStruttura() {
@@ -273,8 +275,21 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return utenteCorrente;
 	}
 	
-	///////////////////////////////
+	public HashMap<TipoPrestazione, Account> getPersonaleSanitario() {
+		return personaleSanitario;
+	}
+
+	public void setPersonaleSanitario(HashMap<TipoPrestazione, Account> personaleSanitario) {
+		this.personaleSanitario = personaleSanitario;
+	}
 	
+	
+	
+	
+	
+	
+	//////////////////////////////	
+
 	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoli> slot_liberi) {
 		this.slot_liberi = slot_liberi;
 		indiceArraySlotLiberi = 0;

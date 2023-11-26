@@ -33,9 +33,21 @@ public class Paziente extends Account implements IPrenotante {
 	}
 
 	@Override
-	public boolean inserisciPrenotazione(String idPrest, LocalDate data, LocalTime orario) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean inserisciPrenotazione(TipoPrestazione prest, LocalDate data, LocalTime orario) {
+		boolean check = false;
+		try {
+			int idPren = StrutturaSanitaria.getIstanzaStruttura().generaIdPren();
+			Account personale = StrutturaSanitaria.getIstanzaStruttura().getPersonaleSanitario().get(prest);
+			PrestazioneSanitaria prestazione = StrutturaSanitaria.getIstanzaStruttura().getTipoPrestazioni().get(prest);
+			Prenotazione p = new Prenotazione(idPren, this, personale, prestazione, data, orario);
+			check = false;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			check = true;
+		}
+		
+		return check;
 	}
 
 	@Override
@@ -63,8 +75,6 @@ public class Paziente extends Account implements IPrenotante {
 	public void setCartellaPersonale(CartellaClinica cartellaPersonale) {
 		this.cartellaPersonale = cartellaPersonale;
 	}
-	
-	
 	
 
 }

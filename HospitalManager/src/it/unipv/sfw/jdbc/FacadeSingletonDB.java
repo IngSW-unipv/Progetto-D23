@@ -90,6 +90,7 @@ public class FacadeSingletonDB {
 			
 			struttura1.getMedici().add(m);
 			struttura1.getCfPersone().put(i.getCf(), m);
+			struttura1.getPersonaleSanitario().put(TipoPrestazione.valueOf(i.getSpecializzazione()), m);
 		}
 	}
 	
@@ -124,6 +125,7 @@ public class FacadeSingletonDB {
 			
 			struttura1.getOperatoriSanitari().add(os);
 			struttura1.getCfPersone().put(i.getCf(), os);
+			struttura1.getPersonaleSanitario().put(TipoPrestazione.valueOf(i.getSpecializzazione()), os);
 		}
 	}
 	
@@ -281,6 +283,8 @@ public class FacadeSingletonDB {
 			
 		}
 	}
+	
+	
 	
 	
 }

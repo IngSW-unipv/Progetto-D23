@@ -3,6 +3,7 @@ package it.unipv.sfw.jdbc.bean.profilo;
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.TipoPrestazione;
 import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.persona.OperatoreSanitario;

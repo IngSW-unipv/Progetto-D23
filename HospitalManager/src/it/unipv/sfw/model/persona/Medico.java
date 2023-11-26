@@ -3,10 +3,11 @@ package it.unipv.sfw.model.persona;
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.Prenotazione;
+import it.unipv.sfw.model.SlotCalendarioSingoli;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
 
-public class Medico extends Account {
+public class Medico extends Account implements IPersonaleSanitario{
 	
 	private TipoPrestazione specializzazione;
 	private ArrayList<Prenotazione> calendario;
@@ -47,6 +48,12 @@ public class Medico extends Account {
 
 	public void setCalendario(ArrayList<Prenotazione> calendario) {
 		this.calendario = calendario;
+	}
+
+	@Override
+	public boolean mostraCalendario() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
