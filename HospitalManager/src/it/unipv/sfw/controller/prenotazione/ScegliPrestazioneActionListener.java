@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 
 import it.unipv.sfw.jdbc.bean.calendario.SlotCalendarioSingoloDB;
+import it.unipv.sfw.model.SlotCalendarioSingoli;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
@@ -66,9 +67,9 @@ public class ScegliPrestazioneActionListener implements ActionListener{
 			tipoPrest = TipoPrestazione.ESAME_SANGUE;
 		}
 		
-		ArrayList<SlotCalendarioSingoloDB> slot_liberi = model.SelectVoidSlot(tipoPrest);
+		ArrayList<SlotCalendarioSingoli> slot_liberi = model.getArraySlotLiberiOriginale(tipoPrest);
 		model.setArraySlotLiberi(slot_liberi);
-		SlotCalendarioSingoloDB primo_slot = (SlotCalendarioSingoloDB) slot_liberi.listIterator(0);
+		SlotCalendarioSingoli primo_slot = (SlotCalendarioSingoli) slot_liberi.listIterator(0);
 		LocalDate data = primo_slot.getData();
 		LocalTime orario = primo_slot.getOrario();
 		

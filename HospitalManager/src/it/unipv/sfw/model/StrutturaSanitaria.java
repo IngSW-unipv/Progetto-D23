@@ -25,7 +25,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<Prenotazione> prenotazioni;
 	private ArrayList<SlotCalendario> calendario;
 	
-	private ArrayList<SlotCalendarioSingoloDB> slot_liberi;
+	private ArrayList<SlotCalendarioSingoli> slot_liberi;
 	private int indiceArraySlotLiberi;
 	
 	HashMap<String,Account> cfPersone;
@@ -275,7 +275,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	///////////////////////////////
 	
-	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoloDB> slot_liberi) {
+	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoli> slot_liberi) {
 		this.slot_liberi = slot_liberi;
 		indiceArraySlotLiberi = 0;
 	}
@@ -292,8 +292,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return indiceArraySlotLiberi;
 	}
 	
-	public ArrayList<SlotCalendarioSingoloDB> getArraySlotLiberi() {
+	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberi() {
 		return slot_liberi;
+	}
+	
+	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
+		return controllerDB.visualizzaSlotLiberi(tipoPrest);
 	}
 }
 	

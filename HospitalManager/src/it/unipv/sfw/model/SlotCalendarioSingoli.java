@@ -20,5 +20,11 @@ public class SlotCalendarioSingoli {
 		this.pren = pren;
 	}
 	
+	public LocalDate getData() {
+		return data;
+	}
 	
+	public LocalTime getOrario() {
+		return orario;
+	}
 }

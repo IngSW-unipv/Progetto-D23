@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 
 import it.unipv.sfw.jdbc.bean.calendario.SlotCalendarioSingoloDB;
+import it.unipv.sfw.model.SlotCalendarioSingoli;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.persona.Account;
@@ -29,11 +30,11 @@ public class PrecedenteActionListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ArrayList<SlotCalendarioSingoloDB> lista = model.getArraySlotLiberi();
+		ArrayList<SlotCalendarioSingoli> lista = model.getArraySlotLiberi();
 		model.decIndexArraySlotLiberi();
 		int index = model.getIndexArraySlotLiberi();
 		
-		SlotCalendarioSingoloDB previousSlot = lista.get(index);
+		SlotCalendarioSingoli previousSlot = lista.get(index);
 		LocalDate data = previousSlot.getData();
 		LocalTime orario = previousSlot.getOrario();
 		
