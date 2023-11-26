@@ -9,6 +9,9 @@ import it.unipv.sfw.model.persona.*;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
+	
+	private static StrutturaSanitaria struttura;
+	
 	private String nome;
 	private String indirizzo;
 	private String telefono;
@@ -36,13 +39,20 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private static FacadeSingletonDB controllerDB;
 	
 	//costruttore 1
-	public StrutturaSanitaria() {
+	private StrutturaSanitaria() {
 		super();
 		this.cfPersone = new HashMap<>();
 		this.tipoPrestazioni = new HashMap<>();
 		this.idPrenotazioni = new HashMap<>();
 	}
 
+	public static StrutturaSanitaria getIstanzaStruttura() {
+		if(struttura == null) {
+			struttura = new StrutturaSanitaria();
+		}
+		return struttura;
+	}
+	
 	@Override
 	public boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
 			String sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,

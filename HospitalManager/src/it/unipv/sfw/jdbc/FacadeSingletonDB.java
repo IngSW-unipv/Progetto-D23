@@ -22,19 +22,27 @@ import it.unipv.sfw.model.persona.OperatoreUfficio;
 import it.unipv.sfw.model.persona.Paziente;
 
 public class FacadeSingletonDB {
-	
-	private static StrutturaSanitaria struttura1;
+		
+	private static FacadeSingletonDB istanzaFacade = null;
+	private static StrutturaSanitaria struttura1 = StrutturaSanitaria.getIstanzaStruttura();
 	
 	private IProfiloDAO profilo;
 	private ICalendarioDAO calendario;
 	private ICartellaClinicaDAO cartellaClinica;
 	private IPrenotazioneDAO prenotazione;
-	private IPrestazioneSanitariaDAO prestazione;
+	private IPrestazioneSanitariaDAO prestazione;	
+	
+	private FacadeSingletonDB() {
+		super();
+	}
+	
+	public static FacadeSingletonDB getIstanzaFacade() {
+		if(istanzaFacade == null) {
+			istanzaFacade = new FacadeSingletonDB();
+		}
+		return istanzaFacade;
+	}
 
-	//costruttore
-	//...
-	
-	
 	public void popolaPazienti() {
 		ArrayList<ProfiloDB> pazienti = new ArrayList<>();
 		
