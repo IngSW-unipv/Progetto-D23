@@ -3,7 +3,6 @@ package it.unipv.sfw.model.persona;
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.SlotCalendarioSingoli;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
 

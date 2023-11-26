@@ -3,14 +3,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
-import it.unipv.sfw.jdbc.bean.calendario.SlotCalendarioSingoloDB;
-import it.unipv.sfw.model.exception.LoginException;
 import it.unipv.sfw.model.persona.*;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	private static StrutturaSanitaria struttura;
+	private static FacadeSingletonDB istanzaDB = FacadeSingletonDB.getIstanzaFacade();
 	
 	private String nome;
 	private String indirizzo;
@@ -25,7 +24,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<Prenotazione> prenotazioni;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	private ArrayList<SlotCalendario> calendario;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	
-	private ArrayList<SlotCalendarioSingoli> slot_liberi;
+	private ArrayList<SlotCalendarioSingoli> slotLiberi;
 	private int indiceArraySlotLiberi;
 	
 	HashMap<String,Account> cfPersone;
@@ -37,7 +36,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	private int ultimaPrenotazione;
 	
-	private static FacadeSingletonDB controllerDB;
 	
 	//costruttore 1
 	private StrutturaSanitaria() {
@@ -67,7 +65,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				Paziente p = new Paziente(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
-				controllerDB.inserisciProfilo(p);
+				istanzaDB.inserisciProfilo(p);
 				pazienti.add(p);
 				
 				check = true;			
@@ -77,7 +75,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				Medico m = new Medico(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
 				
-				controllerDB.inserisciProfilo(m);
+				istanzaDB.inserisciProfilo(m);
 				medici.add(m);
 							
 				check = true;
@@ -87,7 +85,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				OperatoreSanitario os = new OperatoreSanitario(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
 				
-				controllerDB.inserisciProfilo(os);
+				istanzaDB.inserisciProfilo(os);
 				operatoriSanitari.add(os);
 							
 				check = true;
@@ -97,7 +95,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				OperatoreUfficio ou = new OperatoreUfficio(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
-				controllerDB.inserisciProfilo(ou);
+				istanzaDB.inserisciProfilo(ou);
 				operatoriUfficio.add(ou);
 							
 				check = true;
@@ -232,7 +230,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 	
 	public void setUltimaPrenotazione() {
-		this.ultimaPrenotazione = controllerDB.idUltimaPrenotazione();
+		this.ultimaPrenotazione = istanzaDB.idUltimaPrenotazione();
 	}
 
 	public HashMap<String, Account> getCfPersone() {
@@ -290,8 +288,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	//////////////////////////////	
 
-	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoli> slot_liberi) {
-		this.slot_liberi = slot_liberi;
+	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoli> slotLiberi) {
+		this.slotLiberi = slotLiberi;
 		indiceArraySlotLiberi = 0;
 	}
 	
@@ -308,11 +306,11 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 	
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberi() {
-		return slot_liberi;
+		return slotLiberi;
 	}
 	
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
-		return controllerDB.visualizzaSlotLiberi(tipoPrest);
+		return istanzaDB.visualizzaSlotLiberi(tipoPrest);
 	}
 }
 	

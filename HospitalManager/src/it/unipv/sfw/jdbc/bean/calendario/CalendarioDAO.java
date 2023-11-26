@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.jdbc.bean.prenotazione.PrenotazioneDB;
-import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.TipoPrestazione;
 
 public class CalendarioDAO implements ICalendarioDAO {
