@@ -312,5 +312,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
 		return istanzaDB.visualizzaSlotLiberi(tipoPrest);
 	}
+	
+	public void inserisciPrenotazione(Prenotazione p) {
+		istanzaDB.inserisciPrenotazione(p);
+	}
 }
 	
