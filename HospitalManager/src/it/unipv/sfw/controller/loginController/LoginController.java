@@ -7,15 +7,12 @@ import it.unipv.sfw.view.ViewController; // MainView
 public class LoginController {
 	private ViewController view;
 	private StrutturaSanitaria model;
-	//private DbControllerSingleton dbControl;
 	private GoBtnActionListener go;
 	
 	public LoginController(StrutturaSanitaria model, ViewController view) {
 
 		this.view = view; 
 		this.model = model;
-		
-		//dbControl = DbControllerSingleton.getInstance();
 
 		go = new GoBtnActionListener(model, view);
 		view.getLoginPanel().getBtnLogin().addActionListener(go);
@@ -23,19 +20,10 @@ public class LoginController {
 		addEsciActionListener();
 	}
 
-	/**
-	 * restituisce bottone ok del login
-	 * @return GoBtnActionlistener
-	 */
 	public GoBtnActionListener getGo() {
 		return go;
 	}
 
-	/**
-	 * aggiunge actionlistener al bottone esci
-	 * per uscire da account loggato
-	 * @return void
-	 */
 	private void addEsciActionListener() {
 
 		EsciAccountActionListener esci = new EsciAccountActionListener(model, view);

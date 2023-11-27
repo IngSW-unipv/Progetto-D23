@@ -9,7 +9,7 @@ import javax.swing.*;
 public class LoginPanel extends JPanel{
 	
 	private JPasswordField passwordField;
-	private JTextField idAccountText;
+	private JTextField cfText;
 	private JLabel lblIdAccount,lblPassword;
 	private JLabel lblDomanda1, lblDomanda2;
 	private JButton btnLogin, btnRegistraPaziente;
@@ -20,7 +20,7 @@ public class LoginPanel extends JPanel{
 		setLayout(new GridLayout(5,2));
 		
 		passwordField = new JPasswordField();
-		idAccountText = new JTextField();
+		cfText = new JTextField();
 		lblIdAccount = new JLabel("Codice Fiscale\n");
 		lblPassword = new JLabel("Password\n");
 		lblDomanda1 = new JLabel("Hai già un account?");
@@ -29,7 +29,7 @@ public class LoginPanel extends JPanel{
 		btnRegistraPaziente = new JButton("REGISTRAZIONE PAZIENTE");
 		
 		add(lblIdAccount);
-		add(idAccountText);
+		add(cfText);
 		add(lblPassword);
 		add(passwordField);
 		add(lblDomanda1);
@@ -52,12 +52,12 @@ public class LoginPanel extends JPanel{
 		this.passwordField = passwordField;
 	}
 
-	public JTextField getIdAccountText() {
-		return idAccountText;
+	public JTextField getCfText() {
+		return cfText;
 	}
 
-	public void setIdAccountText(JTextField idAccountText) {
-		this.idAccountText = idAccountText;
+	public void setCfText(JTextField cf) {
+		this.cfText = cf;
 	}
 
 	public JLabel getLblIdAccount() {

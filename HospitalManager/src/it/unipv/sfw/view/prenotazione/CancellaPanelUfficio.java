@@ -47,4 +47,20 @@ public class CancellaPanelUfficio extends JPanel{
 		
 	}
 
+	public JButton getConferma() {
+		return conferma;
+	}
+	
+	public JTextField getIdPrenotazione() {
+		return idPren;
+	}
+	
+	public JTextField getCf() {
+		return cf;
+	}
+	
+	
+	
+	
+	
 }

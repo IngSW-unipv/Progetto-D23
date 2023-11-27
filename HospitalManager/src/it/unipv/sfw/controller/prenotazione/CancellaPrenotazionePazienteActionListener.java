@@ -8,21 +8,21 @@ import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
-public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
+public class CancellaPrenotazionePazienteActionListener implements ActionListener{
 	private StrutturaSanitaria model;
 	private ViewController view;
 
-	public CancellaPrenotazioneOpUffActionListener(StrutturaSanitaria model, ViewController view) {
+	public CancellaPrenotazionePazienteActionListener(StrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		try {
-			String cfPaziente = view.getCancellaPanelUfficio().getCf().getText();
 			
-			String s = view.getCancellaPanelUfficio().getIdPrenotazione().getText();
+			String s = view.getCancellaPanelPaziente().getIdPrenotazione().getText();
 			int idPren = Integer.valueOf(s);
 		
 			HashMap<Integer, Prenotazione> mappaPrenotazioni = model.getIdPrenotazioni();

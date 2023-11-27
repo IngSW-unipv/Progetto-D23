@@ -91,7 +91,7 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 			view.getPrenotatiPanelPaziente().setVisible(false);
 			view.getPazientePanel().setVisible(true);
 
-		} catch (Exception e) {
+		} catch (Exception e1) {
 			PopUpError err = new PopUpError();
 			PopUpError.infoBox("Ops!", "Qualcosa è andato storto!");
 		}

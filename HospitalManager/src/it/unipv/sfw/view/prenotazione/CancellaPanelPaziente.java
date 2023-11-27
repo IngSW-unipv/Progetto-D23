@@ -41,5 +41,12 @@ public class CancellaPanelPaziente extends JPanel{
 		add(conferma, BorderLayout.PAGE_END);
 		
 	}
-
+	
+	public JTextField getIdPrenotazione() {
+		return idPren;
+	}
+	
+	public JButton getConferma() {
+		return conferma;
+	}
 }

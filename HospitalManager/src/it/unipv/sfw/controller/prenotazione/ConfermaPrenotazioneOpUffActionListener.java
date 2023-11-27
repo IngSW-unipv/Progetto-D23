@@ -69,10 +69,6 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			
 			String CodiceFiscale = view.getPrenotatiPanelUfficio().getCfField().getText();
 			
-			// Personale sanitario che effettua la prestazione
-			HashMap<TipoPrestazione, Account> mappa = model.getPersonaleSanitario();
-			Account personaleSanitario = mappa.get(tipoPrest);
-			
 			// data e ora prenotati per la prestazione
 			ArrayList<SlotCalendarioSingoli> slotLiberi = model.getArraySlotLiberi();
 			int indice = model.getIndexArraySlotLiberi();
