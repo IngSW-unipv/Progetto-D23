@@ -15,12 +15,12 @@ public class PazientePanel extends JPanel{
 	
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
-	private JList visite, esiti;
+	private JList visite, erogate;
 	private JButton prenota, cancella, logout, cambiaPw;
 	private DefaultListModel modelloLista;
 	private JLabel altezza, peso, gruppoSanguigno;
 	private JLabel pAltezza, pPeso, pGruppoSanguigno;
-	private JLabel prenotazione, esito;
+	private JLabel prenotazione, prenotazioniErogate;
 	
 	public PazientePanel() {
 		setLayout(new GridLayout(3,2));
@@ -58,19 +58,19 @@ public class PazientePanel extends JPanel{
 		gruppoSanguigno = new JLabel("GRUPPO SANGUIGNO:");
 		pGruppoSanguigno = new JLabel("0 Positivo");
 		prenotazione = new JLabel("PRENOTAZIONI");
-		esito = new JLabel("ESITI");
+		prenotazioniErogate = new JLabel("PRENOTAZIONI EROGATE");
 		
 		
 		visite = new JList();
 		visite.setPreferredSize(new Dimension(700, 500));
 		modelloLista = new DefaultListModel();
 		
-		esiti = new JList();
-		esiti.setPreferredSize(new Dimension(700, 500));
+		erogate = new JList();
+		erogate.setPreferredSize(new Dimension(700, 500));
 		modelloLista = new DefaultListModel();
 		
 		visite.setModel(modelloLista);
-		esiti.setModel(modelloLista);
+		erogate.setModel(modelloLista);
 		
 		
 		barNordOvest.add(prenotazione, BorderLayout.PAGE_START);
@@ -81,8 +81,8 @@ public class PazientePanel extends JPanel{
 		barNordEst.add(cancella);
 		add(barNordEst);
 		
-		barCentroSx.add(esito, BorderLayout.PAGE_START);
-		barCentroSx.add(new JScrollPane(esiti), BorderLayout.CENTER);
+		barCentroSx.add(prenotazioniErogate, BorderLayout.PAGE_START);
+		barCentroSx.add(new JScrollPane(erogate), BorderLayout.CENTER);
 		add(barCentroSx);
 		
 		barCentroDx.add(cambiaPw);

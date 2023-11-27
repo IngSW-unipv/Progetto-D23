@@ -1,19 +1,18 @@
 package it.unipv.sfw.view.prenotazione;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.*;
 
 public class CancellaPanelUfficio extends JPanel{
 	
-	private JLabel tipoPrestazione;
+	private JLabel idPrenotazione;
 	private JLabel slot, cancellaSlot;
 	private JLabel cfPaziente;
-	private JTextField cf;
-	private String[] prestazioneString = {"Visita Oncologica", "Visita Psicologica", "Esami Sangue", "Tac", "Risonanza Magnetica", "Chemioterapia", "Radioterapia"};
-	private JComboBox <String> scegliPrestazione;
-	private JButton conferma, successivo, precedente;
+	private JTextField cf, idPren;
+	private JButton conferma;
 	
 	public CancellaPanelUfficio() {
 		
@@ -22,24 +21,22 @@ public class CancellaPanelUfficio extends JPanel{
 		JPanel barNord = new JPanel();
 		barNord.setLayout(new GridLayout(4,1));
 		JPanel barCentro = new JPanel();
-		barCentro.setLayout(new GridLayout(2,1));
+		barCentro.setLayout(new FlowLayout());
 		
-		tipoPrestazione = new JLabel("SCEGLI PRESTAZIONE");
-		scegliPrestazione = new JComboBox<>(prestazioneString);
+		idPrenotazione = new JLabel("INSERIRE ID PRENOTAZIONE");
 		cfPaziente = new JLabel("INSERIRE CF PAZIENTE");
 		cf = new JTextField();
+		idPren = new JTextField();
 		
-		cancellaSlot = new JLabel("Prenotazione da Cancellare");
+		cancellaSlot = new JLabel("PRENOTAZIONE DA CANCELLARE:");
 		slot = new JLabel("04-12-2023 15:00");
 
 		conferma = new JButton("CANCELLA APPUNTAMENTO");
-		successivo = new JButton("APPUNTAMENTO SUCCESSIVO");
-		precedente = new JButton("APPUNTAMENTO PRECEDENTE");
 		
-		barNord.add(tipoPrestazione);
-		barNord.add(scegliPrestazione);
 		barNord.add(cfPaziente);
 		barNord.add(cf);
+		barNord.add(idPrenotazione);
+		barNord.add(idPren);
 		add(barNord, BorderLayout.PAGE_START);
 		
 		barCentro.add(cancellaSlot);
@@ -47,10 +44,6 @@ public class CancellaPanelUfficio extends JPanel{
 		add(barCentro, BorderLayout.CENTER);
 		
 		add(conferma, BorderLayout.PAGE_END);
-		
-		add(precedente, BorderLayout.LINE_START);
-		
-		add(successivo, BorderLayout.LINE_END);
 		
 	}
 
