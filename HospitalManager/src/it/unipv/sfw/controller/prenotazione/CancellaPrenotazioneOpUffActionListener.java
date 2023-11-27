@@ -1,4 +1,4 @@
-package it.unipv.sfw.controller.operatoreUffController;
+package it.unipv.sfw.controller.prenotazione;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
-public class CancellaPrenotazioneActionListener implements ActionListener{
+public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 
-	public CancellaPrenotazioneActionListener(StrutturaSanitaria model, ViewController view) {
+	public CancellaPrenotazioneOpUffActionListener(StrutturaSanitaria model, ViewController view) {
 		// TODO Auto-generated constructor stub
 	}
 

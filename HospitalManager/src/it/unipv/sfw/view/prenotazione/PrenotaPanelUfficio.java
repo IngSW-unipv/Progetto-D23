@@ -64,6 +64,10 @@ public class PrenotaPanelUfficio extends JPanel {
 	public void setTipoPrestazione(JLabel tipoPrestazione) {
 		this.tipoPrestazione = tipoPrestazione;
 	}
+	
+	public JTextField getCfField() {
+		return cf;
+	}
 
 	public JLabel getSlot() {
 		return slot;
@@ -121,4 +125,7 @@ public class PrenotaPanelUfficio extends JPanel {
 		this.precedente = precedente;
 	}
 
+	public String getPrestazioneScelta() {
+		return (String) scegliPrestazione.getSelectedItem();
+	}
 }

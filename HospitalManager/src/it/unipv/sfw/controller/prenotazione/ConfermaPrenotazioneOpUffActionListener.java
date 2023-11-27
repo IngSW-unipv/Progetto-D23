@@ -7,10 +7,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JLabel;
-
-import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.PrestazioneSanitaria;
 import it.unipv.sfw.model.SlotCalendarioSingoli;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.TipoPrestazione;
@@ -19,25 +15,24 @@ import it.unipv.sfw.model.persona.Paziente;
 import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
 
-public class ConfermaPrenotazionePazienteActionListener implements ActionListener {
-
+public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 	private StrutturaSanitaria model;
 	private ViewController view;
 	private TipoPrestazione tipoPrest;
 
-	public ConfermaPrenotazionePazienteActionListener(StrutturaSanitaria model, ViewController view) {
+	public ConfermaPrenotazioneOpUffActionListener(StrutturaSanitaria model, ViewController view) {
 		super();
-		this.view = view;
 		this.model = model;
+		this.view = view;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		
 		try {
 
 			// tipo di prestazione
-			String s = view.getPrenotatiPanelPaziente().getPrestazioneScelta();
+			String s = view.getPrenotatiPanelUfficio().getPrestazioneScelta();
 
 			switch (s) {
 			case "Visita Oncologica":
@@ -71,31 +66,33 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 			default:
 				tipoPrest = TipoPrestazione.ESAME_SANGUE;
 			}
-
+			
+			String CodiceFiscale = view.getPrenotatiPanelUfficio().getCfField().getText();
+			
 			// Personale sanitario che effettua la prestazione
 			HashMap<TipoPrestazione, Account> mappa = model.getPersonaleSanitario();
 			Account personaleSanitario = mappa.get(tipoPrest);
-
+			
 			// data e ora prenotati per la prestazione
 			ArrayList<SlotCalendarioSingoli> slotLiberi = model.getArraySlotLiberi();
 			int indice = model.getIndexArraySlotLiberi();
 			SlotCalendarioSingoli slotCorrente = (SlotCalendarioSingoli) slotLiberi.listIterator(indice);
 			LocalDate data = slotCorrente.getData();
 			LocalTime orario = slotCorrente.getOrario();
-
-			// paziente
-			Paziente paz = (Paziente) model.getUtenteCorrente();
-
-			model.inserisciPrenotazione(tipoPrest, paz, data, orario);
 			
-			view.getPrenotatiPanelPaziente().setVisible(false);
-			view.getPazientePanel().setVisible(true);
+			//Paziente
+			HashMap<String, Account> listaUtenti = model.getCfPersone();
+			Paziente paziente = (Paziente) listaUtenti.get(CodiceFiscale);
+			
+			model.inserisciPrenotazione(tipoPrest, paziente, data, orario);
+			
+			view.getPrenotatiPanelUfficio().setVisible(false);
+			view.getOperatoreUfficioPanel().setVisible(true);
 
-		} catch (Exception e) {
+			
+			}catch(Exception e1){
 			PopUpError err = new PopUpError();
 			PopUpError.infoBox("Ops!", "Qualcosa è andato storto!");
 		}
-
 	}
-
-}
+}	

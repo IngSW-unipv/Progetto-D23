@@ -147,5 +147,9 @@ public class PazientePanel extends JPanel{
 	public JButton getLogoutBtn() {
 		return logout;
 	}
+	
+	public JButton getCancellaBtn() {
+		return cancella;
+	}
 }
 
