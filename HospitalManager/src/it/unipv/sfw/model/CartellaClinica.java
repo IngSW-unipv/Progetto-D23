@@ -7,7 +7,6 @@ public class CartellaClinica {
 	private double peso;
 	private GruppiSanguigni gruppoSanguigno;
 	private ArrayList<Prenotazione> prenotazioni;
-	//private ArrayList <Erogazione> erogazioni;
 	
 	public CartellaClinica(double altezza, double peso, GruppiSanguigni gruppoSanguigno, ArrayList<Prenotazione> prenotazioni) {
 		super();
@@ -17,8 +16,11 @@ public class CartellaClinica {
 		this.prenotazioni = prenotazioni;
 	}
 
-	public CartellaClinica() {
+	public CartellaClinica(double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
 		super();
+		this.altezza = altezza;
+		this.peso = peso;
+		this.gruppoSanguigno = gruppoSanguigno;
 		this.prenotazioni = new ArrayList<>();
 	}
 

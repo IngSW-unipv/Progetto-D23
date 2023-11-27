@@ -1,4 +1,6 @@
 package it.unipv.sfw.model;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList; 
 import java.util.HashMap;
 
@@ -21,7 +23,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
-	private ArrayList<Prenotazione> prenotazioni;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	private ArrayList<SlotCalendario> calendario;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	
 	private ArrayList<SlotCalendarioSingoli> slotLiberi;
@@ -144,7 +145,91 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public boolean inserisciPrenotazione(TipoPrestazione prest, Paziente paziente, LocalDate data, LocalTime orario) {
+		boolean check = false;
+		try {
+			int idPren = struttura.generaIdPren();
+			Account personale = struttura.getPersonaleSanitario().get(prest);
+			PrestazioneSanitaria prestazione = struttura.getTipoPrestazioni().get(prest);
+			Prenotazione p = new Prenotazione(idPren, paziente, personale, prestazione, data, orario);
+			
+			istanzaDB.inserisciPrenotazione(p);
+			paziente.getPrenotazioni().add(p);
+			
+			if(personale.getTipoAcc() == TipoAccount.ME) {
+				Medico m = (Medico)personale;
+				m.getCalendario().add(p);
+			}else {
+				OperatoreSanitario op = (OperatoreSanitario)personale;
+				op.getCalendario().add(p);
+			}
+			
+			check = true;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
 
+	@Override
+	public boolean cancellaPrenotazione(Prenotazione p) {
+		boolean check = false;
+		try {
+			istanzaDB.cancellaPrenotazione(p);
+			
+			for(Prenotazione i : p.getPaziente().getPrenotazioni()) {
+				if(p.getIdPren() == i.getIdPren()) {
+					p.getPaziente().getPrenotazioni().remove(i);
+				}
+			}
+			
+			if(p.getPersonaleSanitario().getTipoAcc() == TipoAccount.ME) {
+				Medico m = (Medico)p.getPersonaleSanitario();
+				
+				for(Prenotazione i : m.getCalendario()) {
+					if(p.getIdPren() == i.getIdPren()) {
+						m.getCalendario().remove(i);
+					}
+				}
+			}else {
+				OperatoreSanitario op = (OperatoreSanitario)p.getPersonaleSanitario();
+				
+				for(Prenotazione i : op.getCalendario()) {
+					if(p.getIdPren() == i.getIdPren()) {
+						op.getCalendario().remove(i);
+					}
+				}
+	
+			check = true;
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+
+	@Override
+	public boolean aggiornaDatiSanitariPaziente(Paziente p, double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
+		boolean check = false;
+		try {
+			CartellaClinica cc = new CartellaClinica(altezza, peso, gruppoSanguigno);
+			p.setCartellaPersonale(cc);
+			istanzaDB.inserisciCartellaClinica(p);
+			check = true;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return check;
+		
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -215,14 +300,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 
 	public void setPrestazioni(ArrayList<PrestazioneSanitaria> prestazioni) {
 		this.prestazioni = prestazioni;
-	}
-
-	public ArrayList<Prenotazione> getPrenotazioni() {
-		return prenotazioni;
-	}
-
-	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
-		this.prenotazioni = prenotazioni;
 	}
 
 	public int getUltimaPrenotazione() {
@@ -313,8 +390,5 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return istanzaDB.visualizzaSlotLiberi(tipoPrest);
 	}
 	
-	public void inserisciPrenotazione(Prenotazione p) {
-		istanzaDB.inserisciPrenotazione(p);
-	}
 }
 	

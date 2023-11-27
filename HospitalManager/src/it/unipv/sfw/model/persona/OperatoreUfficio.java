@@ -1,9 +1,8 @@
 package it.unipv.sfw.model.persona;
 
-import it.unipv.sfw.model.Prenotazione;
 import it.unipv.sfw.model.TipoAccount;
 
-public class OperatoreUfficio extends Account implements IPrenotante {
+public class OperatoreUfficio extends Account {
 
 	public OperatoreUfficio(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
@@ -13,16 +12,5 @@ public class OperatoreUfficio extends Account implements IPrenotante {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public boolean inserisciPrenotazione(String idPrest) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean cancellaPrenotazione(Prenotazione p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

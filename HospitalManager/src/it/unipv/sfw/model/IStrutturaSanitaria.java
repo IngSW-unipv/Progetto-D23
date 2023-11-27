@@ -1,5 +1,10 @@
 package it.unipv.sfw.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import it.unipv.sfw.model.persona.Paziente;
+
 public interface IStrutturaSanitaria {
 	boolean login(String cf, String pw);
 	int generaIdPren();
@@ -9,4 +14,7 @@ public interface IStrutturaSanitaria {
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
 			TipoPrestazione specializzazione);
+	boolean inserisciPrenotazione(TipoPrestazione prest, Paziente paziente, LocalDate data, LocalTime orario);
+	boolean cancellaPrenotazione(Prenotazione p);
+	boolean aggiornaDatiSanitariPaziente(Paziente p, double altezza, double peso, GruppiSanguigni gruppoSanguigno);
 }
