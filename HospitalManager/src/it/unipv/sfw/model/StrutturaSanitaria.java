@@ -45,6 +45,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.tipoPrestazioni = new HashMap<>();
 		this.idPrenotazioni = new HashMap<>();
 		this.personaleSanitario = new HashMap<>();
+		
+		this.ultimaPrenotazione = istanzaDB.idUltimaPrenotazione();
+		istanzaDB.popolaPazienti();
+		istanzaDB.popolaMedici();
+		istanzaDB.popolaOperatoriSanitari();
+		istanzaDB.popolaOperatoriUfficio();
+		istanzaDB.popolaPrestazione();
 	}
 
 	public static StrutturaSanitaria getIstanzaStruttura() {
@@ -306,8 +313,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return ultimaPrenotazione;
 	}
 	
-	public void setUltimaPrenotazione() {
-		this.ultimaPrenotazione = istanzaDB.idUltimaPrenotazione();
+	public void setUltimaPrenotazione(int ultimaPrenotazione) {
+		this.ultimaPrenotazione = ultimaPrenotazione;
 	}
 
 	public HashMap<String, Account> getCfPersone() {
@@ -388,6 +395,15 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
 		return istanzaDB.visualizzaSlotLiberi(tipoPrest);
+	}
+	
+	public static void main(String[] args) {
+		StrutturaSanitaria.getIstanzaStruttura().setNome("");
+		StrutturaSanitaria.getIstanzaStruttura().setIndirizzo("");
+		StrutturaSanitaria.getIstanzaStruttura().setTelefono("");
+		StrutturaSanitaria.getIstanzaStruttura().setEmail("");
+		
+		
 	}
 	
 }
