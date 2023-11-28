@@ -4,8 +4,10 @@ import java.time.LocalTime;
 import java.util.ArrayList; 
 import java.util.HashMap;
 
+import it.unipv.sfw.controller.loginController.LoginController;
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
 import it.unipv.sfw.model.persona.*;
+import it.unipv.sfw.view.ViewController;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
@@ -45,6 +47,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.tipoPrestazioni = new HashMap<>();
 		this.idPrenotazioni = new HashMap<>();
 		this.personaleSanitario = new HashMap<>();
+		
+		this.istanzaDB = FacadeSingletonDB.getIstanzaFacade();
 		
 		this.ultimaPrenotazione = istanzaDB.idUltimaPrenotazione();
 		istanzaDB.popolaPazienti();
@@ -414,10 +418,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 	
 	public static void main(String[] args) {
-		StrutturaSanitaria.getIstanzaStruttura().setNome("");
-		StrutturaSanitaria.getIstanzaStruttura().setIndirizzo("");
-		StrutturaSanitaria.getIstanzaStruttura().setTelefono("");
-		StrutturaSanitaria.getIstanzaStruttura().setEmail("");
+		StrutturaSanitaria model = StrutturaSanitaria.getIstanzaStruttura();
+		ViewController view = new ViewController();
+		LoginController controllerLogin = new LoginController(model, view);
 		
 		
 	}

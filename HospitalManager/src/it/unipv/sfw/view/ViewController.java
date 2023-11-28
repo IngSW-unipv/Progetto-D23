@@ -62,9 +62,9 @@ public class ViewController extends JFrame {
 		frame.setVisible(true);
 	}
 	
-	public static void main(String[] args) {
-		ViewController main = new ViewController();
-	}
+//	public static void main(String[] args) {
+//		ViewController main = new ViewController();
+//	}
 
 	public LoginPanel getLoginPanel() {
 		return loginP;

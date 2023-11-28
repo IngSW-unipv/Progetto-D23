@@ -30,6 +30,10 @@ public class ProfiloDAO implements IProfiloDAO {
 		this.pazienti = new ArrayList<>();
 	}
 
+	public ProfiloDAO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public ArrayList<ProfiloDB> selectAllProfili() {
 		// TODO Auto-generated method stub

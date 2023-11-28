@@ -18,6 +18,10 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 		this.cartelleCliniche = new ArrayList<>();
 	}
 
+	public CartellaClinicaDAO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public ArrayList<CartellaClinicaDB> selectAllCartelle() {
 		conn= ConnessioneDB.startConnection(conn,"hospitalmanager");

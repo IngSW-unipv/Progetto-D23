@@ -6,7 +6,7 @@ import it.unipv.sfw.view.ViewController; // MainView
 
 public class LoginController {
 	private ViewController view;
-	private StrutturaSanitaria model;
+	private static StrutturaSanitaria model = StrutturaSanitaria.getIstanzaStruttura();
 	private GoBtnActionListener go;
 	
 	public LoginController(StrutturaSanitaria model, ViewController view) {

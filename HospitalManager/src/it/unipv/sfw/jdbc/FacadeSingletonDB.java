@@ -7,6 +7,7 @@ import it.unipv.sfw.jdbc.bean.cartellaclinica.*;
 import it.unipv.sfw.jdbc.bean.prenotazione.*;
 import it.unipv.sfw.jdbc.bean.prestazionesanitaria.*;
 import it.unipv.sfw.jdbc.bean.profilo.IProfiloDAO;
+import it.unipv.sfw.jdbc.bean.profilo.ProfiloDAO;
 import it.unipv.sfw.jdbc.bean.profilo.ProfiloDB;
 import it.unipv.sfw.model.CartellaClinica;
 import it.unipv.sfw.model.Prenotazione;
@@ -23,7 +24,7 @@ import it.unipv.sfw.model.persona.Paziente;
 
 public class FacadeSingletonDB {
 		
-	private static FacadeSingletonDB istanzaFacade = null;
+	private static FacadeSingletonDB istanzaDB;
 	private static StrutturaSanitaria struttura1 = StrutturaSanitaria.getIstanzaStruttura();
 	
 	private IProfiloDAO profilo;
@@ -34,13 +35,18 @@ public class FacadeSingletonDB {
 	
 	private FacadeSingletonDB() {
 		super();
+		this.profilo = new ProfiloDAO();
+		this.calendario = new CalendarioDAO();
+		this.cartellaClinica = new CartellaClinicaDAO();
+		this.prenotazione = new PrenotazioneDAO();
+		this.prestazione = new PrestazioneSanitariaDAO();
 	}
-	
+
 	public static FacadeSingletonDB getIstanzaFacade() {
-		if(istanzaFacade == null) {
-			istanzaFacade = new FacadeSingletonDB();
+		if(istanzaDB == null) {
+			istanzaDB = new FacadeSingletonDB();
 		}
-		return istanzaFacade;
+		return istanzaDB;
 	}
 
 	public void popolaPazienti() {
@@ -166,7 +172,7 @@ public class FacadeSingletonDB {
 		for(Paziente paziente : pazienti) {
 		
 		ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniErogateByPaziente(paziente.getCf());
-		ArrayList<Prenotazione> prModello = null;
+		ArrayList<Prenotazione> prModello = new ArrayList<>();
 		
 		for(PrenotazioneDB i : prDB) {
 			Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
@@ -205,7 +211,7 @@ public class FacadeSingletonDB {
 		}
 		
 		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(TipoPrestazione prest) {
-			ArrayList<SlotCalendarioSingoli> slotLiberi = null;
+			ArrayList<SlotCalendarioSingoli> slotLiberi = new ArrayList<>();
 			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.selectVoidSlot(prest);
 			
 			for(SlotCalendarioSingoloDB i : slotDB) {
