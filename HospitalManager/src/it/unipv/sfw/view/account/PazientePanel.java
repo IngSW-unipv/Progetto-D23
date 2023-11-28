@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import it.unipv.sfw.model.Prenotazione;
+import it.unipv.sfw.model.PrestazioneSanitaria;
 
 public class PazientePanel extends JPanel{
 	
@@ -150,6 +151,27 @@ public class PazientePanel extends JPanel{
 	
 	public JButton getCancellaBtn() {
 		return cancella;
+	}
+	
+	public void setAltezza(String altezza){
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(altezza.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.pAltezza = label;
+	}
+
+	public void setPeso(String peso){
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(peso.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.pPeso = label;
+	}
+
+	public void setGruppoSanguigno(String sangue){
+		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(sangue.getBytes()));
+	    JLabel label = (JLabel) d.readObject();
+	    d.close();
+	    this.pGruppoSanguigno = label;
 	}
 }
 

@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import it.unipv.sfw.model.Prenotazione;
+import it.unipv.sfw.model.PrestazioneSanitaria;
 
 public class OperatoreSanitarioPanel extends JPanel{
 	
@@ -80,7 +81,7 @@ public class OperatoreSanitarioPanel extends JPanel{
 		modelloLista.addElement(s);
 	}
 	
-	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
+	public void setListaVisite (ArrayList<PrestazioneSanitaria> prenotazioni) {
 		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
 		this.visite = list;
 	}

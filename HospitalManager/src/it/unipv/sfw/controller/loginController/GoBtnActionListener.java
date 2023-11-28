@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
+import it.unipv.sfw.model.GruppiSanguigni;
 //import it.unipv.sfw.jdbc.bean.DbControllerSingleton;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.TipoAccount;
@@ -68,7 +69,7 @@ public class GoBtnActionListener implements ActionListener {
 			case OS:
 				view.setVisible(true);
 				OperatoreSanitario Op = (OperatoreSanitario)acc;
-				view.getOperatoreSanitarioPanel().setListaVisite(model.getPrenotazioni());
+				view.getOperatoreSanitarioPanel().setListaVisite(model.getPrestazioni());
 				view.getOperatoreSanitarioPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
@@ -80,7 +81,7 @@ public class GoBtnActionListener implements ActionListener {
 			case OU:
 				view.setVisible(true);
 				OperatoreUfficio Ou = (OperatoreUfficio) acc;
-				view.getOperatoreUfficioPanel().setListaVisite(model.getPrenotazioni());
+				view.getOperatoreUfficioPanel().setListaVisite(model.getPrestazioni());
 				view.getOperatoreUfficioPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
@@ -92,13 +93,28 @@ public class GoBtnActionListener implements ActionListener {
 			case PA:
 				view.setVisible(true);
 				Paziente p =(Paziente)acc;		
-				view.getPazientePanel().setListaVisite(p.mostraPrenotazioni());
+				view.getPazientePanel().setListaVisite(p.getPrenotazioni());
 				view.getPazientePanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getPazientePanel().setNome(p.getNome());
 				view.getPazientePanel().setCognome(p.getCognome());
 				view.getPazientePanel().setCf(p.getCf());
+				
+				//metto l'altezza nella JLabel
+				double altezzaDouble = p.getCartellaPersonale().getAltezza();
+				String altezzaString = Double.toString(altezzaDouble);
+				view.getPazientePanel().setAltezza(altezzaString);
+
+				//metto il peso nella JLabel
+				double pesoDouble = p.getCartellaPersonale().getPeso();
+				String pesoString = Double.toString(pesoDouble);
+				view.getPazientePanel().setPeso(pesoString);
+
+				//metto il gruppo sanguigno nella JLabel
+				GruppiSanguigni sangue = p.getCartellaPersonale().getGruppoSanguigno();
+				String stringaGruppo = sangue.name();
+				view.getPazientePanel().setGruppoSanguigno(stringaGruppo);
 
 
 			default:
