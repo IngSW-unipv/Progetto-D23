@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.persona.Persona;
+import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
 
 public class RegistraUtenteActionListener implements ActionListener {
@@ -63,8 +64,8 @@ public class RegistraUtenteActionListener implements ActionListener {
 		view.getRegistratiPanel().setVisible(false);
 		view.getOperatoreUfficioPanel().setVisible(true);
 		}
-		catch {
-			PopupError err = new PopupError();
+		catch(Exception e1) {
+			PopUpError err = new PopUpError();
 			err.infoBox("Registrazione non riuscita", "Errore");
 			pulisciTextField();
 		}
