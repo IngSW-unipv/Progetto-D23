@@ -143,14 +143,30 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 
 	@Override
 	public boolean login(String cf, String pw) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean check = false;
+		try {
+			Account a = this.getCfPersone().get(cf);
+			check = a.controllaPw(pw);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return check;
 	}
 
 	@Override
-	public boolean cambioPw(int idAcc, String vecchiaPw, String nuovaPw) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean cambioPw(String cf, String vecchiaPw, String nuovaPw) {
+		boolean check = false;
+		try {
+			Account a = this.getCfPersone().get(cf);
+			if(a.controllaPw(vecchiaPw) == true) {
+				a.setPw(vecchiaPw, nuovaPw);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return check;
 	}
 	
 	@Override

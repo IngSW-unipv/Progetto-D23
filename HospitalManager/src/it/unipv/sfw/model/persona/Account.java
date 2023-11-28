@@ -1,8 +1,9 @@
 package it.unipv.sfw.model.persona;
 
+import javax.security.auth.login.LoginException;
+
 import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.TipoPrestazione;
-import it.unipv.sfw.model.exception.LoginException;
 
 public abstract class Account {
 	private String cf;
@@ -57,7 +58,7 @@ public abstract class Account {
 				throw new LoginException("La nuova password non può essere uguale a quella corrente");
 			}
 			else {
-				this.pw = nuovaPw;
+				this.setPw(nuovaPw);
 				check = true;
 			}
 		}

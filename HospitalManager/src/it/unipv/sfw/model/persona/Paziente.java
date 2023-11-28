@@ -2,7 +2,6 @@ package it.unipv.sfw.model.persona;
 
 import java.util.ArrayList;
 
-import it.unipv.sfw.jdbc.FacadeSingletonDB;
 import it.unipv.sfw.model.*;
 
 public class Paziente extends Account {
