@@ -255,23 +255,23 @@ public class FacadeSingletonDB {
 		return prenotazione.selectNumeroPrenotazione();
 	}
 	
-	public void popolaPrenotazioniTutte() {
-		
-		ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniDaErogare();
-		
-		
-		for(PrenotazioneDB i : prDB) {
-			Paziente paziente = (Paziente) struttura1.getCfPersone().get(i.getPaziente());
-			Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
-			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
-			
-			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
-			
-			struttura1.getPrenotazioni().add(a);
-			struttura1.getIdPrenotazioni().put(i.getIdPren(), a);
-		
-		}
-	}
+//	public void popolaPrenotazioniTutte() {
+//		
+//		ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniDaErogare();
+//		
+//		
+//		for(PrenotazioneDB i : prDB) {
+//			Paziente paziente = (Paziente) struttura1.getCfPersone().get(i.getPaziente());
+//			Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
+//			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
+//			
+//			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
+//			
+//			struttura1.getPrenotazioni().add(a);
+//			struttura1.getIdPrenotazioni().put(i.getIdPren(), a);
+//		
+//		}
+//	}
 	
 	public void popolaCalendario() {
 		ArrayList<SlotCalendarioDB> c = calendario.selectCalendario();
