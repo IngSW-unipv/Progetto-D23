@@ -175,5 +175,9 @@ public class PazientePanel extends JPanel{
 	    d.close();
 	    this.pGruppoSanguigno = label;
 	}
+	
+	public JButton getCambiaPw() {
+		return cambiaPw;
+	}
 }
 

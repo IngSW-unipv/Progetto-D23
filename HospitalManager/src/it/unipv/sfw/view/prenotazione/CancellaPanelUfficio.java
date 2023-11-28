@@ -61,7 +61,13 @@ public class CancellaPanelUfficio extends JPanel{
 		return cf;
 	}
 	
+	public void setSlot(JLabel slot) {
+		this.slot = slot;
+	}
 	
+	public JButton getCerca() {
+		return cerca;
+	}
 	
 	
 	

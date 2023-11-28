@@ -52,4 +52,18 @@ public class CancellaPanelPaziente extends JPanel{
 	public JButton getConferma() {
 		return conferma;
 	}
+	
+	public void setSlot(JLabel slot) {
+		this.slot = slot;
+	}
+	
+	public JButton getCerca() {
+		return cerca;
+	}
+	
+	
+	
+	
+	
+	
 }

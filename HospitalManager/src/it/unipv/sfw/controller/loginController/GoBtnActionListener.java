@@ -20,15 +20,13 @@ import it.unipv.sfw.model.persona.*;
 public class GoBtnActionListener implements ActionListener {
 
 	private ViewController view;
-	private static StrutturaSanitaria model;;
-	//private DbControllerSingleton dbControl;
+	private static StrutturaSanitaria model;
 	private String Cf;
 
 	public GoBtnActionListener (StrutturaSanitaria model, ViewController view) {
 		super();
 		this.view = view;
 		this.model = model;
-		//dbControl = DbControllerSingleton.getInstance();
 	}
 
 	@Override

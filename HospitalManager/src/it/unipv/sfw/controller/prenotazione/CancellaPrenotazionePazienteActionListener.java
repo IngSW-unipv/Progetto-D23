@@ -29,11 +29,17 @@ public class CancellaPrenotazionePazienteActionListener implements ActionListene
 			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
 			model.cancellaPrenotazione(prenSelezionata);
+			
+			PulisciTextField();
 		
 		} catch(Exception e1) {
 			e1.printStackTrace();
 		}
 		
+	}
+	
+	private void PulisciTextField() {
+		view.getCancellaPanelPaziente().getIdPrenotazione().setText(null);
 	}
 
 }

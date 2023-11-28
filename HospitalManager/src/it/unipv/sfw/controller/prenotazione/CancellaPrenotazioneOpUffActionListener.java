@@ -29,11 +29,18 @@ public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
 			model.cancellaPrenotazione(prenSelezionata);
+			
+			PulisciTextField();
 		
 		} catch(Exception e1) {
 			e1.printStackTrace();
 		}
 		
+	}
+
+	private void PulisciTextField() {
+		view.getCancellaPanelUfficio().getCf().setText(null);
+		view.getCancellaPanelUfficio().getIdPrenotazione().setText(null);
 	}
 
 }

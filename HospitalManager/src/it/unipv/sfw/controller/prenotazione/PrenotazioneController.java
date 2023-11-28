@@ -8,6 +8,10 @@ public class PrenotazioneController {
 	private ViewController view;
 	private StrutturaSanitaria model;
 	private PrenotaActionListener prenota;
+	
+	private CercaPrenDaCancellarePaziente cercaPrenPaz;
+	private CercaPrenDaCancellareUff cercaPrenUff;
+	
 	private ConfermaPrenotazionePazienteActionListener confermaPaziente;
 	private ConfermaPrenotazioneOpUffActionListener confermaUfficio;
 	
@@ -25,6 +29,9 @@ public class PrenotazioneController {
 		
 		prenota = new PrenotaActionListener(model, view);
 		cancella = new CancellaActionListener(model, view);
+		
+		cercaPrenPaz = new CercaPrenDaCancellarePaziente(model, view);
+		cercaPrenUff = new CercaPrenDaCancellareUff(model, view);
 		
 		confermaPaziente = new ConfermaPrenotazionePazienteActionListener(model, view);
 		confermaUfficio = new ConfermaPrenotazioneOpUffActionListener(model, view);	
@@ -50,6 +57,9 @@ public class PrenotazioneController {
 		
 		view.getCancellaPanelPaziente().getConferma().addActionListener(confermaCancellaPaz);
 		view.getCancellaPanelUfficio().getConferma().addActionListener(confermaCancellaOpUff);
+		
+		view.getCancellaPanelPaziente().getCerca().addActionListener(cercaPrenPaz);
+		view.getCancellaPanelUfficio().getCerca().addActionListener(cercaPrenUff);
 		
 		view.getPrenotatiPanelPaziente().getScegliPrestazione().addActionListener(scegliPrest);
 		view.getPrenotatiPanelUfficio().getScegliPrestazione().addActionListener(scegliPrest);

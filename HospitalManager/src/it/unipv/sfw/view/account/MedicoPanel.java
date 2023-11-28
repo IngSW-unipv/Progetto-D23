@@ -107,4 +107,8 @@ public class MedicoPanel extends JPanel{
 	    d.close();
 	    this.cf = label;
 	}
+	
+	public JButton getCambiaPw() {
+		return cambiaPw;
+	}
 }

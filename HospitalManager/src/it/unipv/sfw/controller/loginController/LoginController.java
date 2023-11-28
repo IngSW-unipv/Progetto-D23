@@ -1,6 +1,5 @@
 package it.unipv.sfw.controller.loginController;
 
-//import it.unipv.sfw.jdbc.bean.DbControllerSingleton;  // controller del db
 import it.unipv.sfw.model.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController; // MainView
 
