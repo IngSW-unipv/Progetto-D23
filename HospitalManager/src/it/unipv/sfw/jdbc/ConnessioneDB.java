@@ -51,6 +51,7 @@ public class ConnessioneDB {
 			Class.forName(dbDriver);
 			
 			conn = DriverManager.getConnection(dbURL, username, password);// Apertura connessione
+			
 
 		}
 		catch (Exception e) 

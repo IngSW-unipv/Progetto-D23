@@ -4,27 +4,25 @@ import java.time.LocalTime;
 import java.util.ArrayList; 
 import java.util.HashMap;
 
-import it.unipv.sfw.controller.loginController.LoginController;
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
 import it.unipv.sfw.model.persona.*;
-import it.unipv.sfw.view.ViewController;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
-	private static StrutturaSanitaria struttura;
-	private static FacadeSingletonDB istanzaDB = FacadeSingletonDB.getIstanzaFacade();
+	private static StrutturaSanitaria struttura1 = null;
+	private static FacadeSingletonDB istanzaDB = null;// = FacadeSingletonDB.getIstanzaFacade();
 	
 	private String nome;
 	private String indirizzo;
 	private String telefono;
 	private String email;
 	
-	private ArrayList<Paziente> pazienti;
-	private ArrayList<Medico> medici;
-	private ArrayList<OperatoreSanitario> operatoriSanitari;
-	private ArrayList<OperatoreUfficio> operatoriUfficio;
-	private ArrayList<PrestazioneSanitaria> prestazioni;
+	private ArrayList<Paziente> pazienti = new ArrayList<>();
+	private ArrayList<Medico> medici = new ArrayList<>();
+	private ArrayList<OperatoreSanitario> operatoriSanitari = new ArrayList<>();
+	private ArrayList<OperatoreUfficio> operatoriUfficio = new ArrayList<>();
+	private ArrayList<PrestazioneSanitaria> prestazioni = new ArrayList<>();
 	private ArrayList<SlotCalendario> calendario;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	
 	private ArrayList<SlotCalendarioSingoli> slotLiberi;
@@ -43,6 +41,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	//costruttore 1
 	private StrutturaSanitaria() {
 		super();
+		
+//		this.pazienti = new ArrayList<>();
+//		this.medici = new ArrayList<>();
+//		this.operatoriSanitari = new ArrayList<>();
+//		this.operatoriUfficio = new ArrayList<>();
+//		this.prestazioni = new ArrayList<>();
+		
 		this.cfPersone = new HashMap<>();
 		this.tipoPrestazioni = new HashMap<>();
 		this.idPrenotazioni = new HashMap<>();
@@ -59,10 +64,10 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 
 	public static StrutturaSanitaria getIstanzaStruttura() {
-		if(struttura == null) {
-			struttura = new StrutturaSanitaria();
+		if(struttura1 == null) {
+			struttura1 = new StrutturaSanitaria();
 		}
-		return struttura;
+		return struttura1;
 	}
 	
 	@Override
@@ -177,9 +182,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public boolean inserisciPrenotazione(TipoPrestazione prest, Paziente paziente, LocalDate data, LocalTime orario) {
 		boolean check = false;
 		try {
-			int idPren = struttura.generaIdPren();
-			Account personale = struttura.getPersonaleSanitario().get(prest);
-			PrestazioneSanitaria prestazione = struttura.getTipoPrestazioni().get(prest);
+			int idPren = struttura1.generaIdPren();
+			Account personale = struttura1.getPersonaleSanitario().get(prest);
+			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(prest);
 			Prenotazione p = new Prenotazione(idPren, paziente, personale, prestazione, data, orario);
 			
 			istanzaDB.inserisciPrenotazione(p);
@@ -415,14 +420,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
 		return istanzaDB.visualizzaSlotLiberi(tipoPrest);
-	}
-	
-	public static void main(String[] args) {
-		StrutturaSanitaria model = StrutturaSanitaria.getIstanzaStruttura();
-		ViewController view = new ViewController();
-		LoginController controllerLogin = new LoginController(model, view);
-		
-		
 	}
 	
 }

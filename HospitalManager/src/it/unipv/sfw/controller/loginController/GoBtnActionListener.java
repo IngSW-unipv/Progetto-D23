@@ -20,7 +20,7 @@ import it.unipv.sfw.model.persona.*;
 public class GoBtnActionListener implements ActionListener {
 
 	private ViewController view;
-	private static StrutturaSanitaria model = StrutturaSanitaria.getIstanzaStruttura();
+	private static StrutturaSanitaria model;;
 	//private DbControllerSingleton dbControl;
 	private String Cf;
 

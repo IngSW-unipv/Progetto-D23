@@ -216,7 +216,10 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			st1= conn.createStatement();
 			String query= "SELECT ID_PREN FROM hospitalmanager.PRENOTAZIONI where ID_PREN= (select max(ID_PREN) from hospitalmanager.PRENOTAZIONI)";
 			rs1= st1.executeQuery(query);
-			numeroPren= rs1.getInt("ID_PREN");
+			if(rs1.next()) {
+				numeroPren= rs1.getInt("ID_PREN");
+			}
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();

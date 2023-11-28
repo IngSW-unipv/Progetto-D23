@@ -15,7 +15,7 @@ public class ProfiloDAO implements IProfiloDAO {
 	ArrayList<ProfiloDB> medici;
 	ArrayList<ProfiloDB> operatoriSanitari;
 	ArrayList<ProfiloDB> operatoriUfficio;
-	ArrayList<ProfiloDB> pazienti;
+	//ArrayList<ProfiloDB> pazienti;
 	
 	
 
@@ -27,7 +27,7 @@ public class ProfiloDAO implements IProfiloDAO {
 		this.medici = new ArrayList<>();
 		this.operatoriSanitari = new ArrayList<>();
 		this.operatoriUfficio = new ArrayList<>();
-		this.pazienti = new ArrayList<>();
+		//this.pazienti = new ArrayList<>();
 	}
 
 	public ProfiloDAO() {
@@ -49,7 +49,7 @@ public class ProfiloDAO implements IProfiloDAO {
 			while(rs1.next()) {
 				ProfiloDB a = new ProfiloDB(rs1.getString("CF"), rs1.getString("TIPO"),
 						rs1.getString("PW"), rs1.getString("SPECIALIZZAZIONE"), rs1.getString("NOME"), rs1.getString("COGNOME"),
-						rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
+						rs1.getString("SESSO"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
 						rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
 						rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));
 				accounts.add(a);
@@ -67,6 +67,7 @@ public class ProfiloDAO implements IProfiloDAO {
 	@Override
 	public ArrayList<ProfiloDB> selectAllPazienti() {
 		// TODO Auto-generated method stub
+		ArrayList<ProfiloDB> pazienti = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
@@ -79,7 +80,7 @@ public class ProfiloDAO implements IProfiloDAO {
 			while(rs1.next()) {
 				ProfiloDB a = new ProfiloDB(rs1.getString("CF"), rs1.getString("TIPO"),
 						rs1.getString("PW"), rs1.getString("SPECIALIZZAZIONE"), rs1.getString("NOME"), rs1.getString("COGNOME"),
-						rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
+						rs1.getString("SESSO"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
 						rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
 						rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));
 				pazienti.add(a);
@@ -109,7 +110,7 @@ public class ProfiloDAO implements IProfiloDAO {
 			while(rs1.next()) {
 				ProfiloDB a = new ProfiloDB(rs1.getString("CF"), rs1.getString("TIPO"),
 						rs1.getString("PW"), rs1.getString("SPECIALIZZAZIONE"), rs1.getString("NOME"), rs1.getString("COGNOME"),
-						rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
+						rs1.getString("SESSO"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
 						rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
 						rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));
 				medici.add(a);
@@ -138,7 +139,7 @@ public class ProfiloDAO implements IProfiloDAO {
 			while(rs1.next()) {
 				ProfiloDB a = new ProfiloDB(rs1.getString("CF"), rs1.getString("TIPO"),
 						rs1.getString("PW"), rs1.getString("SPECIALIZZAZIONE"), rs1.getString("NOME"), rs1.getString("COGNOME"),
-						rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
+						rs1.getString("SESSO"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
 						rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
 						rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));
 				operatoriSanitari.add(a);
@@ -167,7 +168,7 @@ public class ProfiloDAO implements IProfiloDAO {
 			while(rs1.next()) {
 				ProfiloDB a = new ProfiloDB(rs1.getString("CF"), rs1.getString("TIPO"),
 						rs1.getString("PW"), rs1.getString("SPECIALIZZAZIONE"), rs1.getString("NOME"), rs1.getString("COGNOME"),
-						rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
+						rs1.getString("SESSO"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
 						rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
 						rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));
 				operatoriUfficio.add(a);
@@ -201,7 +202,7 @@ public class ProfiloDAO implements IProfiloDAO {
 						while (rs1.next()) {
 							 p= new ProfiloDB(rs1.getString("CF"), rs1.getString("TIPO"),
 										rs1.getString("PW"), rs1.getString("SPECIALIZZAZIONE"), rs1.getString("NOME"), rs1.getString("COGNOME"),
-										rs1.getString("GENERE"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
+										rs1.getString("SESSO"), rs1.getString("DATA_NASCITA"), rs1.getString("LUOGO_NASCITA"), rs1.getString("PROVINCIA_NASCITA"),
 										rs1.getString("REGIONE_RESIDENZA"), rs1.getString("PROVINCIA_RESIDENZA"), rs1.getString("CITTA_RESIDENZA"), rs1.getString("INDIRIZZO"),
 										rs1.getString("CAP"), rs1.getString("EMAIL"), rs1.getString("CELLULARE"));
 						}
