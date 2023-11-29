@@ -63,6 +63,13 @@ public class ViewController extends JFrame {
 		registratiP = new RegistratiPanel();
 		//panel.add(registratiP);
 		
+		
+		//////////////////////////
+		medicoP = new MedicoPanel();
+		operatoreSanitarioP = new OperatoreSanitarioPanel();
+		operatoreUfficioP = new OperatoreUfficioPanel();
+		//////////////////////////
+		
 		frame.setVisible(true);
 		
 	}
