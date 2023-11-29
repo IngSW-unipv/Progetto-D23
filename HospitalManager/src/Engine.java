@@ -1,4 +1,5 @@
 
+import it.unipv.sfw.controller.facadecontroller.FacadeController;
 import it.unipv.sfw.controller.loginController.LoginController;
 import it.unipv.sfw.controller.loginController.RegistrazioneController;
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
@@ -10,8 +11,7 @@ public class Engine {
 		FacadeSingletonDB db = FacadeSingletonDB.getIstanzaFacade();
 		StrutturaSanitaria model =db.getStruttura1();
 		ViewController view = new ViewController();
-		LoginController controllerLogin = new LoginController(model, view);
-		RegistrazioneController regController = new RegistrazioneController(model, view);
+		FacadeController facadeController = new FacadeController(model, view);
 		
 		
 	}
