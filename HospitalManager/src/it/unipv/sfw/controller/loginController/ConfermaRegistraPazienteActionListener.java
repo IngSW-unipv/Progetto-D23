@@ -51,7 +51,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			view.getLoginPanel().setVisible(true);
 		}
 	
-		catch(exception e){
+		catch(Exception e1){
 			PopUpError err = new PopUpError();
 			PopUpError.infoBox("le due password non coincidono", "Errore");
 			pulisciTextField();
