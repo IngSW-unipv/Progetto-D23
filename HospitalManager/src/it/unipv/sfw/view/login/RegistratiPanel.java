@@ -525,6 +525,8 @@ public class RegistratiPanel extends JPanel{
 		this.scegliSesso = scegliSesso;
 	}
 	
-
+	public String getSpecializzazioneScelta() {
+		return (String) scegliSpecializzazione.getSelectedItem();
+	}
 }
 

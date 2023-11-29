@@ -2,7 +2,7 @@ package it.unipv.sfw.view;
 
 import javax.swing.JOptionPane;
 
-public class PopUpError {
+public class PopUp {
 	
 		public static void infoBox(String infoMessage, String titleBar)
 	    {

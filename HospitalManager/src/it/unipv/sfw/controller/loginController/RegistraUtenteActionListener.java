@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import it.unipv.sfw.model.persona.Persona;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
-import it.unipv.sfw.view.PopUpError;
+import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class RegistraUtenteActionListener implements ActionListener {
@@ -40,6 +40,7 @@ public class RegistraUtenteActionListener implements ActionListener {
 		String cap = view.getRegistratiPanel().getCapField().getText();
 		String sesso = view.getRegistratiPanel().getSessoScelto();
 		String tipoAccount = view.getRegistratiPanel().getTipoAccountScelto();
+		String specializzazione = view.getRegistratiPanel().getSpecializzazioneScelta();
 		
 		if (tipoAccount == "paziente") {
 			TipoAccount tipoAcc = TipoAccount.PA;
@@ -59,14 +60,14 @@ public class RegistraUtenteActionListener implements ActionListener {
 				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, specializzazione);
 		
 		pulisciTextField();
-		PopUpOk ok = new PopUpOk();
-		ok.infoBox("Nuovo account creato", "OK");
+		PopUp ok = new PopUp();
+		PopUp.infoBox("Nuovo account creato", "OK");
 		view.getRegistratiPanel().setVisible(false);
 		view.getOperatoreUfficioPanel().setVisible(true);
 		}
 		catch(Exception e1) {
-			PopUpError err = new PopUpError();
-			err.infoBox("Registrazione non riuscita", "Errore");
+			PopUp err = new PopUp();
+			PopUp.infoBox("Registrazione non riuscita", "Errore");
 			pulisciTextField();
 		}
 	}

@@ -12,7 +12,7 @@ import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Paziente;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
-import it.unipv.sfw.view.PopUpError;
+import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
@@ -87,8 +87,8 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 
 			
 			}catch(Exception e1){
-			PopUpError err = new PopUpError();
-			PopUpError.infoBox("Ops!", "Qualcosa è andato storto!");
+			PopUp err = new PopUp();
+			PopUp.infoBox("Ops!", "Qualcosa è andato storto!");
 		}
 	}
 }	

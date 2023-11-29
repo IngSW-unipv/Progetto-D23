@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.view.PopUpError;
+import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
@@ -114,9 +114,9 @@ public class GoBtnActionListener implements ActionListener {
 
 			default:
 
-				PopUpError err = new PopUpError();
+				PopUp err = new PopUp();
 
-				PopUpError.infoBox("Errore", "Username o password incorretti");
+				PopUp.infoBox("Errore", "Username o password incorretti");
 				pulisciTextField();
 			}
 		}
