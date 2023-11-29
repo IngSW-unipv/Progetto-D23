@@ -69,10 +69,10 @@ public class RegistratiPanelPaziente extends JPanel{
 		
 		password = new JLabel("Password");
 		
-		generaPassword = new JLabel("Genera password casuale");
+		generaPassword = new JLabel("Genera Password Casuale");
 		btnGeneraPass = new JButton("GENERA");
 		
-		conferma = new JLabel("Conferma registrazione");
+		conferma = new JLabel("Conferma Registrazione");
 		btnConfermaReg = new JButton("CONFERMA");
 		
 		back = new JLabel("Torna Indietro");

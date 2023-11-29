@@ -26,7 +26,7 @@ public class RegistratiPanel extends JPanel{
 	private JComboBox<String> scegliTipo;
 	private String[] sessoString = {"Maschio", "Femmina"};
 	private JComboBox<String> scegliSesso;
-	private String[] tipoSpecializzazione = {"VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAME_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
+	private String[] tipoSpecializzazione = {"NULL","VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAME_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
 	private JComboBox<String> scegliSpecializzazione;
 	
 	
@@ -82,7 +82,7 @@ public class RegistratiPanel extends JPanel{
 		back = new JLabel("Torna Indietro");
 		indietro = new JButton("INDIETRO");
 		
-		specializzazione = new JLabel("Scegli Speciializzazione");
+		specializzazione = new JLabel("Scegli Specializzazione");
 		scegliSpecializzazione = new JComboBox<>(tipoSpecializzazione);
 		
 		add(registrazione);
