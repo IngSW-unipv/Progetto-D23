@@ -60,7 +60,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 			ps1.setDouble(2, cc.getAltezza());
 			ps1.setDouble(3, cc.getPeso());
 			ps1.setString(4,  cc.getGruppoSanguigno().name());
-			ps1.executeUpdate(query);
+			ps1.executeUpdate();
 			//ps1.executeUpdate();
 		}
 		catch(Exception e){

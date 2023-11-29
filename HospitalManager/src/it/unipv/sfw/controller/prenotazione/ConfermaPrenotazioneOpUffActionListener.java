@@ -44,7 +44,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 				break;
 
 			case "Esami Sangue":
-				tipoPrest = TipoPrestazione.ESAME_SANGUE;
+				tipoPrest = TipoPrestazione.ESAMI_SANGUE;
 				break;
 
 			case "Tac":
@@ -64,7 +64,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 				break;
 
 			default:
-				tipoPrest = TipoPrestazione.ESAME_SANGUE;
+				tipoPrest = TipoPrestazione.ESAMI_SANGUE;
 			}
 			
 			String CodiceFiscale = view.getPrenotatiPanelUfficio().getCfField().getText();

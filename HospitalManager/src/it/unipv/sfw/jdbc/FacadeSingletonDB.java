@@ -9,7 +9,6 @@ import it.unipv.sfw.jdbc.bean.prestazionesanitaria.*;
 import it.unipv.sfw.jdbc.bean.profilo.IProfiloDAO;
 import it.unipv.sfw.jdbc.bean.profilo.ProfiloDAO;
 import it.unipv.sfw.jdbc.bean.profilo.ProfiloDB;
-import it.unipv.sfw.model.calendario.SlotCalendario;
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
 import it.unipv.sfw.model.persona.Account;
@@ -42,9 +41,16 @@ public class FacadeSingletonDB {
 		this.cartellaClinica = new CartellaClinicaDAO();
 		this.prenotazione = new PrenotazioneDAO();
 		this.prestazione = new PrestazioneSanitariaDAO();
-	}
-
+		
+		popolaPazienti();
+		popolaMedici();
+		popolaOperatoriSanitari();
+		popolaOperatoriUfficio();
+		popolaPrestazione();
+		recuperoIdUltimaPrenotazione();
+		
 	
+	}
 	
 	public StrutturaSanitaria getStruttura1() {
 		return struttura1;
@@ -273,8 +279,10 @@ public class FacadeSingletonDB {
 		calendario.updateCalendarioDelPren(prenotazioneDB);		
 	}
 	
-	public int idUltimaPrenotazione() {
-		return prenotazione.selectNumeroPrenotazione();
+	public void recuperoIdUltimaPrenotazione() {
+		int n = prenotazione.selectNumeroPrenotazione();
+		struttura1.setUltimaPrenotazione(n);
+		
 	}
 	
 //	public void popolaPrenotazioniTutte() {
@@ -295,25 +303,25 @@ public class FacadeSingletonDB {
 //		}
 //	}
 	
-	public void popolaCalendario() {
-		ArrayList<SlotCalendarioDB> c = calendario.selectCalendario();
-		
-		for(SlotCalendarioDB i : c) {
-			Prenotazione prenPrest1 = struttura1.getIdPrenotazioni().get(i.getIdPren1());
-			Prenotazione prenPrest2 = struttura1.getIdPrenotazioni().get(i.getIdPren2());
-			Prenotazione prenPrest3 = struttura1.getIdPrenotazioni().get(i.getIdPren3());
-			Prenotazione prenPrest4 = struttura1.getIdPrenotazioni().get(i.getIdPren4());
-			Prenotazione prenPrest5 = struttura1.getIdPrenotazioni().get(i.getIdPren5());
-			Prenotazione prenPrest6 = struttura1.getIdPrenotazioni().get(i.getIdPren6());
-			Prenotazione prenPrest7 = struttura1.getIdPrenotazioni().get(i.getIdPren7());
-
-			SlotCalendario slot = new SlotCalendario(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(),
-					prenPrest1, prenPrest2, prenPrest3, prenPrest4, prenPrest5, prenPrest6, prenPrest7);
-			
-			struttura1.getCalendario().add(slot);
-			
-		}
-	}
+//	public void popolaCalendario() {
+//		ArrayList<SlotCalendarioDB> c = calendario.selectCalendario();
+//		
+//		for(SlotCalendarioDB i : c) {
+//			Prenotazione prenPrest1 = struttura1.getIdPrenotazioni().get(i.getIdPren1());
+//			Prenotazione prenPrest2 = struttura1.getIdPrenotazioni().get(i.getIdPren2());
+//			Prenotazione prenPrest3 = struttura1.getIdPrenotazioni().get(i.getIdPren3());
+//			Prenotazione prenPrest4 = struttura1.getIdPrenotazioni().get(i.getIdPren4());
+//			Prenotazione prenPrest5 = struttura1.getIdPrenotazioni().get(i.getIdPren5());
+//			Prenotazione prenPrest6 = struttura1.getIdPrenotazioni().get(i.getIdPren6());
+//			Prenotazione prenPrest7 = struttura1.getIdPrenotazioni().get(i.getIdPren7());
+//
+//			SlotCalendario slot = new SlotCalendario(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(),
+//					prenPrest1, prenPrest2, prenPrest3, prenPrest4, prenPrest5, prenPrest6, prenPrest7);
+//			
+//			struttura1.getCalendario().add(slot);
+//			
+//		}
+//	}
 	
 	
 	

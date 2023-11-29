@@ -73,7 +73,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 			ps1.setString(1, prest.name());
 			ps1.setString(2, prest.name());
 			ps1.setDate(3, dataCorrente);
-			rs1 = ps1.executeQuery(query);
+			rs1 = ps1.executeQuery();
 			
 			while(rs1.next()) {
 				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
@@ -106,7 +106,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 			ps1.setInt(2, p.getIdPren());		//identificatore prenotazione da inserire a calendario
 			ps1.setDate(3, Date.valueOf(p.getDataPren()));
 			ps1.setTime(4, Time.valueOf(p.getOraPren()));
-			ps1.executeUpdate(query);
+			ps1.executeUpdate();
 			//ps1.executeUpdate();
 			
 		}
@@ -133,7 +133,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 			ps1.setString(1, p.getTipo().name());	//identifica la colonna della table CALENDARI
 			ps1.setDate(2, Date.valueOf(p.getDataPren()));
 			ps1.setTime(3, Time.valueOf(p.getOraPren()));
-			ps1.executeUpdate(query);
+			ps1.executeUpdate();
 			//ps1.executeUpdate();
 			
 		}

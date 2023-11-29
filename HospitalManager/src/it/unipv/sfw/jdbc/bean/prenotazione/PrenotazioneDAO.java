@@ -34,7 +34,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
+						rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				
 				prenotazioni.add(pren);
 			}
@@ -63,7 +63,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			ps1.setString(4, p.getTipo().name());
 			ps1.setDate(5, Date.valueOf(p.getDataPren()));
 			ps1.setTime(6, Time.valueOf(p.getOraPren()));
-			ps1.executeUpdate(query);
+			ps1.executeUpdate();
 			
 			check = true;
 		}
@@ -86,7 +86,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			String query = "DELETE FROM hospitalmanager.PRENOTAZIONE WHERE ID_PREN = ?";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, p.getIdPren());
-			ps1.executeUpdate(query);
+			ps1.executeUpdate();
 			
 			check = true;
 		}
@@ -109,11 +109,11 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PAZIENTE = ? AND ESITO IS NULL";
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, cf);
-			rs1= ps1.executeQuery(query);
+			rs1= ps1.executeQuery();
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
+						rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				
 				prenotazioniPaziente.add(pren);
 			}
@@ -134,14 +134,14 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		ResultSet rs1;
 		
 		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PAZIENTE = ? AND ESITO IS NOT NULL";
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PAZIENTE =? AND ESITO IS NOT NULL";
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, cf);
-			rs1= ps1.executeQuery(query);
+			rs1= ps1.executeQuery();
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
+						rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				prenotazioniPaziente.add(pren);
 			}
 		}
@@ -161,14 +161,14 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		ResultSet rs1;
 		
 		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PERSONALE_SANITARIO = ?";
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PERSONALE_SANITARIO =?";
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, cf);
-			rs1= ps1.executeQuery(query);
+			rs1= ps1.executeQuery();
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
+						rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				prenotazioniPS.add(pren);
 			}
 		}
@@ -191,10 +191,10 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE ID_PREN = ?";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(0, idPren);
-			rs1= ps1.executeQuery(query);
+			rs1= ps1.executeQuery();
 			
 			prenotazione = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-					rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
+					rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 		
 		}
 		catch(Exception e){
@@ -241,7 +241,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
 			while (rs1.next()) {
 				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("ID_PREST"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
+						rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
 				
 				prenotazioni.add(pren);
 			}

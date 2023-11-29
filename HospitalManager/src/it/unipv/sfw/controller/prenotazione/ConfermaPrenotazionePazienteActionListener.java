@@ -49,7 +49,7 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 				break;
 
 			case "Esami Sangue":
-				tipoPrest = TipoPrestazione.ESAME_SANGUE;
+				tipoPrest = TipoPrestazione.ESAMI_SANGUE;
 				break;
 
 			case "Tac":
@@ -69,7 +69,7 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 				break;
 
 			default:
-				tipoPrest = TipoPrestazione.ESAME_SANGUE;
+				tipoPrest = TipoPrestazione.ESAMI_SANGUE;
 			}
 
 			// Personale sanitario che effettua la prestazione

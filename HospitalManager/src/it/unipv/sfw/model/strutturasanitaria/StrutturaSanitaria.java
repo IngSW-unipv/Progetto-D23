@@ -18,7 +18,7 @@ import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	//private static StrutturaSanitaria struttura1 = null;
-	private static FacadeSingletonDB istanzaDB = null;
+	//private static FacadeSingletonDB istanzaDB = null;
 	//private static FacadeSingletonDB istanzaDB = FacadeSingletonDB.getIstanzaFacade();
 
 	private String nome;
@@ -26,12 +26,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private String telefono;
 	private String email;
 	
-	private ArrayList<Paziente> pazienti = new ArrayList<>();
-	private ArrayList<Medico> medici = new ArrayList<>();
-	private ArrayList<OperatoreSanitario> operatoriSanitari = new ArrayList<>();
-	private ArrayList<OperatoreUfficio> operatoriUfficio = new ArrayList<>();
-	private ArrayList<PrestazioneSanitaria> prestazioni = new ArrayList<>();
-	private ArrayList<SlotCalendario> calendario;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
+	private ArrayList<Paziente> pazienti;
+	private ArrayList<Medico> medici;
+	private ArrayList<OperatoreSanitario> operatoriSanitari;
+	private ArrayList<OperatoreUfficio> operatoriUfficio;
+	private ArrayList<PrestazioneSanitaria> prestazioni;
+	//private ArrayList<SlotCalendario> calendario;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	
 	private ArrayList<SlotCalendarioSingoli> slotLiberi;
 	private int indiceArraySlotLiberi;
@@ -55,6 +55,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.telefono = "0382 00000";
 		this.email = "clinicaoncologicapavia@hm.it";
 		
+		this.pazienti = new ArrayList<>();
+		this.medici = new ArrayList<>();
+		this.operatoriSanitari = new ArrayList<>();
+		this.operatoriUfficio = new ArrayList<>();
+		this.prestazioni = new ArrayList<>();
+		this.slotLiberi = new ArrayList<>();
+		
 		this.cfPersone = new HashMap<>();
 		this.tipoPrestazioni = new HashMap<>();
 		this.idPrenotazioni = new HashMap<>();
@@ -62,12 +69,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		
 		//this.istanzaDB = FacadeSingletonDB.getIstanzaFacade();
 		
-		this.ultimaPrenotazione = FacadeSingletonDB.getIstanzaFacade().idUltimaPrenotazione();
-		istanzaDB.popolaPazienti();
-		istanzaDB.popolaMedici();
-		istanzaDB.popolaOperatoriSanitari();
-		istanzaDB.popolaOperatoriUfficio();
-		istanzaDB.popolaPrestazione();
+		
+//		FacadeSingletonDB.getIstanzaFacade().popolaPazienti();
+//		FacadeSingletonDB.getIstanzaFacade().popolaMedici();
+//		FacadeSingletonDB.getIstanzaFacade().popolaOperatoriSanitari();
+//		FacadeSingletonDB.getIstanzaFacade().popolaOperatoriUfficio();
+//		FacadeSingletonDB.getIstanzaFacade().popolaPrestazione();
 	}
 
 //	public static StrutturaSanitaria getIstanzaStruttura() {
@@ -89,7 +96,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				Paziente p = new Paziente(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
-				istanzaDB.inserisciProfilo(p);
+				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(p);
 				pazienti.add(p);
 				
 				check = true;			
@@ -99,7 +106,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				Medico m = new Medico(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
 				
-				istanzaDB.inserisciProfilo(m);
+				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(m);
 				medici.add(m);
 							
 				check = true;
@@ -109,7 +116,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				OperatoreSanitario os = new OperatoreSanitario(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
 				
-				istanzaDB.inserisciProfilo(os);
+				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(os);
 				operatoriSanitari.add(os);
 							
 				check = true;
@@ -119,7 +126,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				OperatoreUfficio ou = new OperatoreUfficio(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
-				istanzaDB.inserisciProfilo(ou);
+				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(ou);
 				operatoriUfficio.add(ou);
 							
 				check = true;
@@ -163,6 +170,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		try {
 			Account a = this.getCfPersone().get(cf);
 			check = a.controllaPw(pw);
+			if(check) {
+				setUtenteCorrente(cf);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -194,7 +204,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			PrestazioneSanitaria prestazione = this.getTipoPrestazioni().get(prest);
 			Prenotazione p = new Prenotazione(idPren, paziente, personale, prestazione, data, orario);
 			
-			istanzaDB.inserisciPrenotazione(p);
+			FacadeSingletonDB.getIstanzaFacade().inserisciPrenotazione(p);
 			paziente.getPrenotazioni().add(p);
 			
 			if(personale.getTipoAcc() == TipoAccount.ME) {
@@ -218,7 +228,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public boolean cancellaPrenotazione(Prenotazione p) {
 		boolean check = false;
 		try {
-			istanzaDB.cancellaPrenotazione(p);
+			FacadeSingletonDB.getIstanzaFacade().cancellaPrenotazione(p);
 			
 			for(Prenotazione i : p.getPaziente().getPrenotazioni()) {
 				if(p.getIdPren() == i.getIdPren()) {
@@ -259,7 +269,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		try {
 			CartellaClinica cc = new CartellaClinica(altezza, peso, gruppoSanguigno);
 			p.setCartellaPersonale(cc);
-			istanzaDB.inserisciCartellaClinica(p);
+			FacadeSingletonDB.getIstanzaFacade().inserisciCartellaClinica(p);
 			check = true;
 			
 		}catch(Exception e) {
@@ -373,13 +383,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.idPrenotazioni = idPrenotazioni;
 	}
 
-	public ArrayList<SlotCalendario> getCalendario() {
-		return calendario;
-	}
-
-	public void setCalendario(ArrayList<SlotCalendario> calendario) {
-		this.calendario = calendario;
-	}
+//	public ArrayList<SlotCalendario> getCalendario() {
+//		return calendario;
+//	}
+//
+//	public void setCalendario(ArrayList<SlotCalendario> calendario) {
+//		this.calendario = calendario;
+//	}
 	
 	public void setUtenteCorrente(String cf) {
 		this.utenteCorrente = this.cfPersone.get(cf);
@@ -426,7 +436,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 	
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
-		return istanzaDB.visualizzaSlotLiberi(tipoPrest);
+		return FacadeSingletonDB.getIstanzaFacade().visualizzaSlotLiberi(tipoPrest);
 	}	
 	
 }

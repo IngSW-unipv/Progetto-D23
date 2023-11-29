@@ -10,9 +10,6 @@ import it.unipv.sfw.view.ViewController;
 
 public class FacadeController {
 	
-	private StrutturaSanitaria model;
-	private ViewController view;
-	
 	private LoginController loginController;
 	private RegistrazioneController registrazioneController;
 	private OperatoreUffController opUffController;
@@ -28,6 +25,8 @@ public class FacadeController {
 		prenController = new PrenotazioneController(model, view);
 		
 	}
+	
+	
 	
 	
 	
