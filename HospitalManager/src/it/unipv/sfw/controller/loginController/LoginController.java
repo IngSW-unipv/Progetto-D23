@@ -1,6 +1,6 @@
 package it.unipv.sfw.controller.loginController;
 
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController; // MainView
 
 public class LoginController {

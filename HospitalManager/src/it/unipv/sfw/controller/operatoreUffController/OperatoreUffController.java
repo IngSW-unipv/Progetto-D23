@@ -2,7 +2,7 @@ package it.unipv.sfw.controller.operatoreUffController;
 
 import it.unipv.sfw.controller.prenotazione.CancellaPrenotazioneOpUffActionListener;
 import it.unipv.sfw.controller.prenotazione.ConfermaPrenotazioneOpUffActionListener;
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class OperatoreUffController {

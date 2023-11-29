@@ -3,9 +3,9 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 
-import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoAccount;
-import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.model.persona.TipoAccount;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
 

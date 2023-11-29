@@ -1,6 +1,8 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.cartellaclinica;
 
 import java.util.ArrayList;
+
+import it.unipv.sfw.model.prenotazione.Prenotazione;
 
 public class CartellaClinica {
 	private double altezza;

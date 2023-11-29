@@ -7,11 +7,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import it.unipv.sfw.model.SlotCalendarioSingoli;
-import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Paziente;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
 

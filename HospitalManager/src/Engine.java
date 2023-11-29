@@ -1,7 +1,7 @@
 
 import it.unipv.sfw.controller.loginController.LoginController;
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class Engine {

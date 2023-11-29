@@ -1,9 +1,13 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.strutturasanitaria;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
 import it.unipv.sfw.model.persona.Paziente;
+import it.unipv.sfw.model.persona.TipoAccount;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public interface IStrutturaSanitaria {
 	boolean login(String cf, String pw);

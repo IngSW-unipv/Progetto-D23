@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.PrestazioneSanitaria;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 
 public class PazientePanel extends JPanel{
 	

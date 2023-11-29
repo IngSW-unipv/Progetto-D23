@@ -9,11 +9,8 @@ import javax.swing.JFrame;
 
 import it.unipv.sfw.view.PopUpError;
 import it.unipv.sfw.view.ViewController;
-import it.unipv.sfw.model.GruppiSanguigni;
-//import it.unipv.sfw.jdbc.bean.DbControllerSingleton;
-import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoAccount;
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
 import it.unipv.sfw.model.persona.*;
 
 

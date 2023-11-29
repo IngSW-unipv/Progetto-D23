@@ -1,4 +1,4 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.cartellaclinica;
 
 public enum GruppiSanguigni {
 	A_POSITIVO,

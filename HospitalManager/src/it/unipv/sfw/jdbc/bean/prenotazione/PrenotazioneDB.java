@@ -3,7 +3,7 @@ package it.unipv.sfw.jdbc.bean.prenotazione;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public class PrenotazioneDB {
 	private int idPren;

@@ -1,6 +1,6 @@
 package it.unipv.sfw.jdbc.bean.profilo;
 
-import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.persona.TipoAccount;
 
 public class ProfiloDB {
 	private String cf;

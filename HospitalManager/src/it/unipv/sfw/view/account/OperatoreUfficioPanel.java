@@ -16,8 +16,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.PrestazioneSanitaria;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 
 public class OperatoreUfficioPanel extends JPanel{
 	

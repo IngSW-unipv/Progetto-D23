@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class AddUtenteActionListener implements ActionListener {

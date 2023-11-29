@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoAccount;
 import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.TipoAccount;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class PrenotaActionListener implements ActionListener {

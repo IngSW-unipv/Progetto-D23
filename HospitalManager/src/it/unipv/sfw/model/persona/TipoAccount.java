@@ -1,4 +1,4 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.persona;
 
 public enum TipoAccount {
 	ME,

@@ -1,7 +1,9 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.calendario;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+
+import it.unipv.sfw.model.prenotazione.Prenotazione;
 
 public class SlotCalendario {
 	private LocalDate data;

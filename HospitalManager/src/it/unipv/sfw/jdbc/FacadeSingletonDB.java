@@ -9,18 +9,18 @@ import it.unipv.sfw.jdbc.bean.prestazionesanitaria.*;
 import it.unipv.sfw.jdbc.bean.profilo.IProfiloDAO;
 import it.unipv.sfw.jdbc.bean.profilo.ProfiloDAO;
 import it.unipv.sfw.jdbc.bean.profilo.ProfiloDB;
-import it.unipv.sfw.model.CartellaClinica;
-import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.PrestazioneSanitaria;
-import it.unipv.sfw.model.SlotCalendario;
-import it.unipv.sfw.model.SlotCalendarioSingoli;
-import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.model.calendario.SlotCalendario;
+import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
+import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
 import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.persona.OperatoreSanitario;
 import it.unipv.sfw.model.persona.OperatoreUfficio;
 import it.unipv.sfw.model.persona.Paziente;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 
 public class FacadeSingletonDB {
 		

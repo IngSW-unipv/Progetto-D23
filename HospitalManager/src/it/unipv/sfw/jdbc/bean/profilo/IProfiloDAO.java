@@ -2,7 +2,7 @@ package it.unipv.sfw.jdbc.bean.profilo;
 
 import java.util.ArrayList;
 
-import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.persona.TipoAccount;
 
 public interface IProfiloDAO {
 	ArrayList<ProfiloDB> selectAllProfili();

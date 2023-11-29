@@ -2,8 +2,7 @@ package it.unipv.sfw.model.persona;
 
 import javax.security.auth.login.LoginException;
 
-import it.unipv.sfw.model.TipoAccount;
-import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public abstract class Account {
 	private String cf;

@@ -3,7 +3,7 @@ package it.unipv.sfw.controller.passwordController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaCambiaPassActionListener implements ActionListener{

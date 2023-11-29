@@ -1,6 +1,6 @@
 package it.unipv.sfw.controller.prenotazione;
 
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class PrenotazioneController {

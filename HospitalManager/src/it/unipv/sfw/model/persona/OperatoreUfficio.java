@@ -1,7 +1,5 @@
 package it.unipv.sfw.model.persona;
 
-import it.unipv.sfw.model.TipoAccount;
-
 public class OperatoreUfficio extends Account {
 
 	public OperatoreUfficio(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,

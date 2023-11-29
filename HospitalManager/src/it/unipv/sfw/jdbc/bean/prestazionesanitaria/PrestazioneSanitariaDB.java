@@ -1,6 +1,7 @@
 package it.unipv.sfw.jdbc.bean.prestazionesanitaria;
 import java.time.LocalTime;
-import it.unipv.sfw.model.TipoPrestazione;
+
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public class PrestazioneSanitariaDB {
 	private TipoPrestazione tipo;

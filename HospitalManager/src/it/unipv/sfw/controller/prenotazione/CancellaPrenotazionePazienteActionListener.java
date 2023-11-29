@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class CancellaPrenotazionePazienteActionListener implements ActionListener{

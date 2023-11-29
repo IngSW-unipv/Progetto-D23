@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 import javax.swing.JLabel;
 
-import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.StrutturaSanitaria;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class CercaPrenDaCancellarePaziente implements ActionListener{

@@ -1,11 +1,18 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.strutturasanitaria;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList; 
 import java.util.HashMap;
 
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
+import it.unipv.sfw.model.calendario.SlotCalendario;
+import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
+import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
+import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
 import it.unipv.sfw.model.persona.*;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
@@ -42,11 +49,10 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private StrutturaSanitaria() {
 		super();
 		
-//		this.pazienti = new ArrayList<>();
-//		this.medici = new ArrayList<>();
-//		this.operatoriSanitari = new ArrayList<>();
-//		this.operatoriUfficio = new ArrayList<>();
-//		this.prestazioni = new ArrayList<>();
+		this.nome = "Clinica Oncologica Pavia";
+		this.indirizzo = "Via Minerva 1, Pavia(PV), Lombaridia, Italia";
+		this.telefono = "0382 00000";
+		this.email = "clinicaoncologicapavia@hm.it";
 		
 		this.cfPersone = new HashMap<>();
 		this.tipoPrestazioni = new HashMap<>();
@@ -420,7 +426,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
 		return istanzaDB.visualizzaSlotLiberi(tipoPrest);
-	}
+	}	
 	
 }
 	

@@ -3,7 +3,7 @@ package it.unipv.sfw.jdbc.bean.calendario;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.bean.prenotazione.PrenotazioneDB;
-import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public interface ICalendarioDAO {
 	ArrayList<SlotCalendarioDB> selectCalendario();

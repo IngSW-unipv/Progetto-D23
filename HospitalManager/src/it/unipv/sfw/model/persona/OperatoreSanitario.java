@@ -2,9 +2,8 @@ package it.unipv.sfw.model.persona;
 
 import java.util.ArrayList;
 
-import it.unipv.sfw.model.Prenotazione;
-import it.unipv.sfw.model.TipoAccount;
-import it.unipv.sfw.model.TipoPrestazione;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 	

@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 
 import it.unipv.sfw.jdbc.bean.calendario.SlotCalendarioSingoloDB;
-import it.unipv.sfw.model.SlotCalendarioSingoli;
-import it.unipv.sfw.model.StrutturaSanitaria;
-import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.TipoAccount;
+import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class PrecedenteActionListener implements ActionListener{

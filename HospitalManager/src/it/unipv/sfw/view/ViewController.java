@@ -39,12 +39,15 @@ public class ViewController extends JFrame {
 		frame = new JFrame();
 		panel = new JPanel();
 
+		Image icon = Toolkit.getDefaultToolkit().getImage("img\\icona.png");  
+		frame.setIconImage(icon);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 800);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setTitle("HOSPITAL MANAGER");
+		
 		
 		frame.getContentPane().add(panel);
 		
@@ -60,8 +63,8 @@ public class ViewController extends JFrame {
 		registratiP = new RegistratiPanel();
 		//panel.add(registratiP);
 		
-		
 		frame.setVisible(true);
+		
 	}
 	
 //	public static void main(String[] args) {

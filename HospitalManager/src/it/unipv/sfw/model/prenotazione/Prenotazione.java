@@ -1,4 +1,4 @@
-package it.unipv.sfw.model;
+package it.unipv.sfw.model.prenotazione;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

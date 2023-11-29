@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
-import it.unipv.sfw.model.TipoAccount;
+import it.unipv.sfw.model.persona.TipoAccount;
 
 public class ProfiloDAO implements IProfiloDAO {
 	private Connection conn;

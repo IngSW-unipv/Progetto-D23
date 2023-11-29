@@ -15,7 +15,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import it.unipv.sfw.model.Prenotazione;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
 
 public class MedicoPanel extends JPanel{
 	
