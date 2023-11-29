@@ -2,13 +2,9 @@ package it.unipv.sfw.view.account;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.beans.XMLDecoder;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
-import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,7 +12,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 
 public class OperatoreUfficioPanel extends JPanel{
@@ -45,11 +40,11 @@ public class OperatoreUfficioPanel extends JPanel{
 		barSudEst.setLayout(new GridLayout(4,2));
 		
 		nome = new JLabel("NOME:");
-		pNome = new JLabel("Luigi");
+		pNome = new JLabel();
 		cognome = new JLabel("COGNOME:");
-		pCognome = new JLabel("Di Maio");
+		pCognome = new JLabel();
 		cf = new JLabel("CF:");
-		pCf = new JLabel("DMILGU74R03A083S");
+		pCf = new JLabel();
 		tipoAccount = new JLabel("TIPO ACCOUNT:");
 		pTipoAccount = new JLabel("Operatore Ufficio");
 		prenota = new JButton("PRENOTA");
@@ -112,37 +107,28 @@ public class OperatoreUfficioPanel extends JPanel{
 		modelloLista.addElement(s);
 	}
 
-	public JLabel getNome() {
-		return nome;
+	public void setNome(String nome) {
+	    pNome.setText(nome);
 	}
 
-	public void setNome(String nome) {
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(nome.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.nome = label;
+	public void setCognome(String cognome) {
+		pCognome.setText(cognome);
+	}
+
+	public void setCf(String cf) {
+		pCf.setText(cf);
+	}
+	
+	public JLabel getNome() {
+		return nome;
 	}
 
 	public JLabel getCognome() {
 		return cognome;
 	}
 
-	public void setCognome(String cognome) {
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cognome.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.cognome = label;
-	}
-
 	public JLabel getCf() {
 		return cf;
-	}
-
-	public void setCf(String cf) {
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cf.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.cf = label;
 	}
 
 	public JLabel getTipoAccount() {

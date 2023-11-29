@@ -82,7 +82,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 
 		
 		try {
-			String query= "SELECT * from hospitalmanager.CARTELLA_CLINICA WHERE CF = ? ";
+			String query= "SELECT * from hospitalmanager.CARTELLE_CLINICHE WHERE CF = ? ";
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, cf);
 			rs1 = ps1.executeQuery();

@@ -47,6 +47,8 @@ public class FacadeSingletonDB {
 		popolaOperatoriSanitari();
 		popolaOperatoriUfficio();
 		popolaPrestazione();
+		popolaCartellaClinica(struttura1.getPazienti());
+		popolaPrenotazioni(struttura1.getPazienti());
 		recuperoIdUltimaPrenotazione();
 		
 	

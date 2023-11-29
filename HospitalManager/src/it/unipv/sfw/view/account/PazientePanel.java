@@ -11,11 +11,12 @@ import it.unipv.sfw.model.prenotazione.Prenotazione;
 
 public class PazientePanel extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
-	private JList visite, erogate;
+	private JList<String> visite, erogate;
 	private JButton prenota, cancella, logout, cambiaPw, modificaCartella;
-	private DefaultListModel modelloLista;
+	private DefaultListModel<String> modelloLista;
 	private JLabel altezza, peso, gruppoSanguigno;
 	private JLabel pAltezza, pPeso, pGruppoSanguigno;
 	private JLabel prenotazione, prenotazioniErogate;
@@ -44,7 +45,7 @@ public class PazientePanel extends JPanel{
 		cf = new JLabel("CF:");
 		pCf = new JLabel();
 		tipoAccount = new JLabel("TIPO ACCOUNT:");
-		pTipoAccount = new JLabel();
+		pTipoAccount = new JLabel("Paziente");
 		prenota = new JButton("PRENOTA");
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
@@ -60,13 +61,14 @@ public class PazientePanel extends JPanel{
 		prenotazioniErogate = new JLabel("PRENOTAZIONI EROGATE");
 		
 		
-		visite = new JList();
+		visite = new JList<>();
 		visite.setPreferredSize(new Dimension(700, 500));
-		modelloLista = new DefaultListModel();
+		visite.getAutoscrolls();
+		modelloLista = new DefaultListModel<>();
 		
-		erogate = new JList();
+		erogate = new JList<>();
 		erogate.setPreferredSize(new Dimension(700, 500));
-		modelloLista = new DefaultListModel();
+		modelloLista = new DefaultListModel<>();
 		
 		visite.setModel(modelloLista);
 		erogate.setModel(modelloLista);
@@ -113,20 +115,22 @@ public class PazientePanel extends JPanel{
 		modelloLista.addElement(s);
 	}
 	
-//	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
-//		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
-//		this.visite = list;
-//	}
-	
 	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
 		modelloLista.clear();
-		
 		for(Prenotazione p : prenotazioni) {
-			modelloLista.addElement(p);
+			
+			String idPren = String.valueOf(p.getIdPren());
+			String pSanitarioNome = p.getPersonaleSanitario().getNome();
+			String pSanitarioCognome = p.getPersonaleSanitario().getCognome();
+			String prest = p.getPrestazione().getTipo().name();
+			String data = p.getData().toString();
+			String orario = p.getOrario().toString();
+			String s = new String("ID PRENOTAZIONE: "+idPren+", MEDICO/OPERATORE: "+pSanitarioNome
+					+" "+pSanitarioCognome+", PRESTAZIONE: "+prest+", DATA: "+data+", ORA: "+orario);
+			
+			modelloLista.addElement(s);
 		}
-		
 		visite.setModel(modelloLista);
-
 	}
 	
 	public void setNome(String nome) {
@@ -139,10 +143,6 @@ public class PazientePanel extends JPanel{
 
 	public void setCf(String cf) {
 		pCf.setText(cf);
-	}
-	
-	public void setTipoAccount(String tipo){
-		pTipoAccount.setText(tipo);
 	}
 	
 	public void setAltezza(String altezza){

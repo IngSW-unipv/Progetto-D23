@@ -37,12 +37,12 @@ public class GoBtnActionListener implements ActionListener {
 			Toolkit kit = Toolkit.getDefaultToolkit();
 			Dimension screenSize = kit.getScreenSize();
 			
-			int screenHeight= screenSize.height;
-			int screenWidth = screenSize.width;
-			
-			//serve per centrare il frame nello schermo
-			view.setSize(screenWidth, screenHeight);
-			view.setLocationRelativeTo(null);
+//			int screenHeight= screenSize.height;
+//			int screenWidth = screenSize.width;
+//			
+//			//serve per centrare il frame nello schermo
+//			view.setSize(screenWidth, screenHeight);
+//			view.setLocationRelativeTo(null);
 			
 			Account acc = model.getCfPersone().get(cf);
 			TipoAccount tipoAcc = acc.getTipoAcc();
@@ -59,6 +59,7 @@ public class GoBtnActionListener implements ActionListener {
 				view.getMedicoPanel().setNome(med.getNome());
 				view.getMedicoPanel().setCognome(med.getCognome());
 				view.getMedicoPanel().setCf(med.getCf());
+				break;
 			
 			case OS:
 				view.getLoginPanel().setVisible(false);
@@ -70,7 +71,7 @@ public class GoBtnActionListener implements ActionListener {
 				view.getOperatoreSanitarioPanel().setNome(Op.getNome());
 				view.getOperatoreSanitarioPanel().setCognome(Op.getCognome());
 				view.getOperatoreSanitarioPanel().setCf(Op.getCf());
-
+				break;
 
 			case OU:
 				view.getLoginPanel().setVisible(false);
@@ -82,7 +83,7 @@ public class GoBtnActionListener implements ActionListener {
 				view.getOperatoreUfficioPanel().setNome(Ou.getNome());
 				view.getOperatoreUfficioPanel().setCognome(Ou.getCognome());
 				view.getOperatoreUfficioPanel().setCf(Ou.getCf());
-				
+				break;
 
 			case PA:
 				view.getLoginPanel().setVisible(false);
@@ -109,13 +110,14 @@ public class GoBtnActionListener implements ActionListener {
 				GruppiSanguigni sangue = p.getCartellaPersonale().getGruppoSanguigno();
 				String stringaGruppo = sangue.name();
 				view.getPazientePanel().setGruppoSanguigno(stringaGruppo);
-
+				break;
 
 			default:
-
-				PopUp.infoBox("Errore", "Username o password incorretti");
-				pulisciTextField();
+				break;				
 			}
+		}else {
+			PopUp.infoBox("Username o password incorretti", "Errore");
+			pulisciTextField();
 		}
 		
 	}

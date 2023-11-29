@@ -2,10 +2,7 @@ package it.unipv.sfw.view.account;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.beans.XMLDecoder;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -37,11 +34,11 @@ public class MedicoPanel extends JPanel{
 		barCentro.setLayout(new GridLayout(2,1));
 		
 		nome = new JLabel("NOME:");
-		pNome = new JLabel("Antonio");
+		pNome = new JLabel();
 		cognome = new JLabel("COGNOME:");
-		pCognome = new JLabel("Cassano");
+		pCognome = new JLabel();
 		cf = new JLabel("CF:");
-		pCf = new JLabel("CSSNTN79T09A045S");
+		pCf = new JLabel();
 		tipoAccount = new JLabel("TIPO ACCOUNT");
 		pTipoAccount = new JLabel("Medico");
 		logout = new JButton("LOGOUT");
@@ -88,24 +85,15 @@ public class MedicoPanel extends JPanel{
 	}
 	
 	public void setNome(String nome) {
-	    XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(nome.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.nome = label;
+	    pNome.setText(nome);
 	}
 
 	public void setCognome(String cognome) {
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cognome.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.cognome = label;
+		pCognome.setText(cognome);
 	}
 
-	public void setCf(String Cf) {
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(Cf.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.cf = label;
+	public void setCf(String cf) {
+		pCf.setText(cf);
 	}
 	
 	public JButton getCambiaPw() {

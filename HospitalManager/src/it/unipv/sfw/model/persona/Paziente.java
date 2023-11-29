@@ -2,7 +2,6 @@ package it.unipv.sfw.model.persona;
 
 import java.util.ArrayList;
 
-import it.unipv.sfw.model.*;
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 

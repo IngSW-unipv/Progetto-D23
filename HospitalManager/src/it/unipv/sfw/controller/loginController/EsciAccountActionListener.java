@@ -23,6 +23,10 @@ public class EsciAccountActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setUtenteCorrente(null);
+		view.getPazientePanel().setVisible(false);
+		view.getMedicoPanel().setVisible(false);
+		view.getOperatoreSanitarioPanel().setVisible(false);
+		view.getOperatoreUfficioPanel().setVisible(false);
 		view.getLoginPanel().setVisible(true);
 	}
 
