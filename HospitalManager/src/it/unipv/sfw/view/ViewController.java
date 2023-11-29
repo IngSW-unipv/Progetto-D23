@@ -68,6 +68,9 @@ public class ViewController extends JFrame {
 		medicoP = new MedicoPanel();
 		operatoreSanitarioP = new OperatoreSanitarioPanel();
 		operatoreUfficioP = new OperatoreUfficioPanel();
+		registratiPP = new RegistratiPanelPaziente();
+		panel.add(registratiPP);
+		registratiPP.setVisible(false);
 		//////////////////////////
 		
 		frame.setVisible(true);
@@ -76,8 +79,8 @@ public class ViewController extends JFrame {
 	
 //	public static void main(String[] args) {
 //		ViewController main = new ViewController();
-//	}
-
+//	}	
+	
 	public LoginPanel getLoginPanel() {
 		return loginP;
 	}

@@ -51,7 +51,7 @@ public class GoBtnActionListener implements ActionListener {
 			
 			switch(tipoAcc) {
 			case ME: 
-				view.setVisible(true);
+				
 				Medico med = (Medico) acc;
 				view.getMedicoPanel().setListaVisite(med.getCalendario());
 				view.getMedicoPanel().setVisible(true);
@@ -62,7 +62,7 @@ public class GoBtnActionListener implements ActionListener {
 				view.getMedicoPanel().setCf(med.getCf());
 			
 			case OS:
-				view.setVisible(true);
+				
 				OperatoreSanitario Op = (OperatoreSanitario)acc;
 				view.getOperatoreSanitarioPanel().setListaVisite(model.getPrestazioni());
 				view.getOperatoreSanitarioPanel().setVisible(true);
@@ -74,7 +74,7 @@ public class GoBtnActionListener implements ActionListener {
 
 
 			case OU:
-				view.setVisible(true);
+				
 				OperatoreUfficio Ou = (OperatoreUfficio) acc;
 				view.getOperatoreUfficioPanel().setListaVisite(model.getPrestazioni());
 				view.getOperatoreUfficioPanel().setVisible(true);
@@ -86,7 +86,7 @@ public class GoBtnActionListener implements ActionListener {
 				
 
 			case PA:
-				view.setVisible(true);
+				
 				Paziente p =(Paziente)acc;		
 				view.getPazientePanel().setListaVisite(p.getPrenotazioni());
 				view.getPazientePanel().setVisible(true);
