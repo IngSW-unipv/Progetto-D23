@@ -17,8 +17,7 @@ import it.unipv.sfw.model.persona.*;
 public class GoBtnActionListener implements ActionListener {
 
 	private ViewController view;
-	private static StrutturaSanitaria model;
-	private String Cf;
+	private StrutturaSanitaria model;
 
 	public GoBtnActionListener (StrutturaSanitaria model, ViewController view) {
 		super();
@@ -28,10 +27,10 @@ public class GoBtnActionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String Cf = view.getLoginPanel().getCfText().getText();
+		String cf = view.getLoginPanel().getCfText().getText();
 		String pw = view.getLoginPanel().getPasswordField().toString();
 		
-		boolean isMatching = model.login(Cf, pw);  
+		boolean isMatching = model.login(cf, pw);  
 
 		if(isMatching) {
 			view.getLoginPanel().setVisible(false);
@@ -45,16 +44,16 @@ public class GoBtnActionListener implements ActionListener {
 			view.setSize(screenWidth, screenHeight);
 			view.setLocationRelativeTo(null);
 			
-			Account acc = model.getCfPersone().get(Cf);
+			Account acc = model.getCfPersone().get(cf);
 			TipoAccount tipoAcc = acc.getTipoAcc();
-			model.setUtenteCorrente(Cf);
+			model.setUtenteCorrente(cf);
 			
 			switch(tipoAcc) {
 			case ME: 
-				
+				view.getLoginPanel().setVisible(false);
+				view.getMedicoPanel().setVisible(true);
 				Medico med = (Medico) acc;
 				view.getMedicoPanel().setListaVisite(med.getCalendario());
-				view.getMedicoPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getMedicoPanel().setNome(med.getNome());
@@ -62,10 +61,10 @@ public class GoBtnActionListener implements ActionListener {
 				view.getMedicoPanel().setCf(med.getCf());
 			
 			case OS:
-				
+				view.getLoginPanel().setVisible(false);
+				view.getOperatoreSanitarioPanel().setVisible(true);
 				OperatoreSanitario Op = (OperatoreSanitario)acc;
 				view.getOperatoreSanitarioPanel().setListaVisite(model.getPrestazioni());
-				view.getOperatoreSanitarioPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getOperatoreSanitarioPanel().setNome(Op.getNome());
@@ -74,10 +73,10 @@ public class GoBtnActionListener implements ActionListener {
 
 
 			case OU:
-				
+				view.getLoginPanel().setVisible(false);
+				view.getOperatoreUfficioPanel().setVisible(true);
 				OperatoreUfficio Ou = (OperatoreUfficio) acc;
 				view.getOperatoreUfficioPanel().setListaVisite(model.getPrestazioni());
-				view.getOperatoreUfficioPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getOperatoreUfficioPanel().setNome(Ou.getNome());
@@ -86,10 +85,10 @@ public class GoBtnActionListener implements ActionListener {
 				
 
 			case PA:
-				
+				view.getLoginPanel().setVisible(false);
+				view.getPazientePanel().setVisible(true);
 				Paziente p =(Paziente)acc;		
 				view.getPazientePanel().setListaVisite(p.getPrenotazioni());
-				view.getPazientePanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getPazientePanel().setNome(p.getNome());
@@ -113,8 +112,6 @@ public class GoBtnActionListener implements ActionListener {
 
 
 			default:
-
-				PopUp err = new PopUp();
 
 				PopUp.infoBox("Errore", "Username o password incorretti");
 				pulisciTextField();

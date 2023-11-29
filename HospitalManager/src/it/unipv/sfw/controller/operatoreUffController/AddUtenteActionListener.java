@@ -19,7 +19,7 @@ public class AddUtenteActionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		view.setVisible(true);
+		view.getOperatoreUfficioPanel().setVisible(false);
 		view.getRegistratiPanel().setVisible(true);
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		view.getContentPane().setLayout(null);	

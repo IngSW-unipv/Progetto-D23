@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
@@ -21,7 +20,7 @@ public class CambiaPasswordActionListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		view.setVisible(true);
+		//impostare false il panel che chiama questo actionPerformed
 		view.getCambiaPwPanel().setVisible(true);
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		view.getContentPane().setLayout(null);

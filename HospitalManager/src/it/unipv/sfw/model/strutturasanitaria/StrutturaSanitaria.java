@@ -17,9 +17,10 @@ import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
-	private static StrutturaSanitaria struttura1 = null;
-	private static FacadeSingletonDB istanzaDB = null;// = FacadeSingletonDB.getIstanzaFacade();
-	
+	//private static StrutturaSanitaria struttura1 = null;
+	private static FacadeSingletonDB istanzaDB = null;
+	//private static FacadeSingletonDB istanzaDB = FacadeSingletonDB.getIstanzaFacade();
+
 	private String nome;
 	private String indirizzo;
 	private String telefono;
@@ -46,7 +47,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	
 	//costruttore 1
-	private StrutturaSanitaria() {
+	public StrutturaSanitaria() {
 		super();
 		
 		this.nome = "Clinica Oncologica Pavia";
@@ -59,9 +60,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.idPrenotazioni = new HashMap<>();
 		this.personaleSanitario = new HashMap<>();
 		
-		this.istanzaDB = FacadeSingletonDB.getIstanzaFacade();
+		//this.istanzaDB = FacadeSingletonDB.getIstanzaFacade();
 		
-		this.ultimaPrenotazione = istanzaDB.idUltimaPrenotazione();
+		this.ultimaPrenotazione = FacadeSingletonDB.getIstanzaFacade().idUltimaPrenotazione();
 		istanzaDB.popolaPazienti();
 		istanzaDB.popolaMedici();
 		istanzaDB.popolaOperatoriSanitari();
@@ -69,12 +70,12 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		istanzaDB.popolaPrestazione();
 	}
 
-	public static StrutturaSanitaria getIstanzaStruttura() {
-		if(struttura1 == null) {
-			struttura1 = new StrutturaSanitaria();
-		}
-		return struttura1;
-	}
+//	public static StrutturaSanitaria getIstanzaStruttura() {
+//		if(struttura1 == null) {
+//			struttura1 = new StrutturaSanitaria();
+//		}
+//		return struttura1;
+//	}
 	
 	@Override
 	public boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
@@ -188,9 +189,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public boolean inserisciPrenotazione(TipoPrestazione prest, Paziente paziente, LocalDate data, LocalTime orario) {
 		boolean check = false;
 		try {
-			int idPren = struttura1.generaIdPren();
-			Account personale = struttura1.getPersonaleSanitario().get(prest);
-			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(prest);
+			int idPren = this.generaIdPren();
+			Account personale = this.getPersonaleSanitario().get(prest);
+			PrestazioneSanitaria prestazione = this.getTipoPrestazioni().get(prest);
 			Prenotazione p = new Prenotazione(idPren, paziente, personale, prestazione, data, orario);
 			
 			istanzaDB.inserisciPrenotazione(p);

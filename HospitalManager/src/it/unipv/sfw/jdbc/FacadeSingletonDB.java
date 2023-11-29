@@ -25,7 +25,7 @@ import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 public class FacadeSingletonDB {
 		
 	private static FacadeSingletonDB istanzaDB = null;
-	private static StrutturaSanitaria struttura1 = null;
+	private StrutturaSanitaria struttura1;
 	
 	private IProfiloDAO profilo;
 	private ICalendarioDAO calendario;
@@ -35,6 +35,7 @@ public class FacadeSingletonDB {
 	
 	private FacadeSingletonDB() {
 		super();
+		this.struttura1 = new StrutturaSanitaria();
 		
 		this.profilo = new ProfiloDAO();
 		this.calendario = new CalendarioDAO();

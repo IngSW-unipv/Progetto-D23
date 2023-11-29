@@ -3,8 +3,8 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import it.unipv.sfw.model.persona.Persona;
 import it.unipv.sfw.model.persona.TipoAccount;
+import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
@@ -42,22 +42,24 @@ public class RegistraUtenteActionListener implements ActionListener {
 		String tipoAccount = view.getRegistratiPanel().getTipoAccountScelto();
 		String specializzazione = view.getRegistratiPanel().getSpecializzazioneScelta();
 		
+		TipoAccount tipo = null;
+		
 		if (tipoAccount == "paziente") {
-			TipoAccount tipoAcc = TipoAccount.PA;
+			tipo = TipoAccount.PA;
 		}
 		else if(tipoAccount == "medico"){
-			TipoAccount tipoAcc = TipoAccount.ME;
+			tipo = TipoAccount.ME;
 		}
 		else if(tipoAccount == "OperatoreUfficio"){
-			TipoAccount tipoAcc = TipoAccount.OU;
+			tipo = TipoAccount.OU;
 		}
 		else {
-			TipoAccount tipoAcc = TipoAccount.OS;
+			tipo = TipoAccount.OS;
 		}
 		
-		model.registrazioneAccount(CF, pw, tipoAcc, CF, nome, cognome,
+		model.registrazioneAccount(CF, pw, tipoAcc, nome, cognome,
 				sesso, dataNascita, luogoNascita, provinciaNascita,
-				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, specializzazione);
+				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, TipoPrestazione.valueOf(specializzazione));
 		
 		pulisciTextField();
 		PopUp ok = new PopUp();
@@ -66,7 +68,7 @@ public class RegistraUtenteActionListener implements ActionListener {
 		view.getOperatoreUfficioPanel().setVisible(true);
 		}
 		catch(Exception e1) {
-			PopUp err = new PopUp();
+
 			PopUp.infoBox("Registrazione non riuscita", "Errore");
 			pulisciTextField();
 		}

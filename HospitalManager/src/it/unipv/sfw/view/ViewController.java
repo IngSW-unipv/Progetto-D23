@@ -51,35 +51,56 @@ public class ViewController extends JFrame {
 		
 		frame.getContentPane().add(panel);
 		
-		//Login
 		loginP = new LoginPanel();
 		panel.add(loginP);
 		
-		//Paziente
 		pazienteP = new PazientePanel();
-		//panel.add(pazienteP);
+		panel.add(pazienteP);
+		pazienteP.setVisible(false);
 		
-		//Registrati
 		registratiP = new RegistratiPanel();
-		//panel.add(registratiP);
+		panel.add(registratiP);
+		registratiP.setVisible(false);
 		
-		
-		//////////////////////////
 		medicoP = new MedicoPanel();
+		panel.add(medicoP);
+		medicoP.setVisible(false);
+		
 		operatoreSanitarioP = new OperatoreSanitarioPanel();
+		panel.add(operatoreSanitarioP);
+		operatoreSanitarioP.setVisible(false);
+		
 		operatoreUfficioP = new OperatoreUfficioPanel();
+		panel.add(operatoreSanitarioP);
+		operatoreSanitarioP.setVisible(false);
+		
 		registratiPP = new RegistratiPanelPaziente();
 		panel.add(registratiPP);
 		registratiPP.setVisible(false);
-		//////////////////////////
+		
+		cambiaPwPanel = new CambiaPwPanel();
+		panel.add(cambiaPwPanel);
+		cambiaPwPanel.setVisible(false);
+		
+		prenotatiP = new PrenotaPanelPaziente();
+		panel.add(prenotatiP);
+		prenotatiP.setVisible(false);
+		
+		cancellaPP = new CancellaPanelPaziente();
+		panel.add(cancellaPP);
+		cancellaPP.setVisible(false);
+		
+		cancellaPU = new CancellaPanelUfficio();
+		panel.add(cancellaPU);
+		cancellaPU.setVisible(false);
+		
+		prenotatiPU = new PrenotaPanelUfficio();
+		panel.add(prenotatiPU);
+		prenotatiPU.setVisible(false);
 		
 		frame.setVisible(true);
 		
 	}
-	
-//	public static void main(String[] args) {
-//		ViewController main = new ViewController();
-//	}	
 	
 	public LoginPanel getLoginPanel() {
 		return loginP;

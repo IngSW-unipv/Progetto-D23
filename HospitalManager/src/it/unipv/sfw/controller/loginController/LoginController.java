@@ -5,7 +5,7 @@ import it.unipv.sfw.view.ViewController; // MainView
 
 public class LoginController {
 	private ViewController view;
-	private static StrutturaSanitaria model;
+	private StrutturaSanitaria model;
 	private GoBtnActionListener go;
 	
 	public LoginController(StrutturaSanitaria model, ViewController view) {
