@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
-import it.unipv.sfw.model.calendario.SlotCalendario;
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;

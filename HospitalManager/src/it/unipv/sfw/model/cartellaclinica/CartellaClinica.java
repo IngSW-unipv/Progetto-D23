@@ -25,6 +25,11 @@ public class CartellaClinica {
 		this.gruppoSanguigno = gruppoSanguigno;
 		this.prenotazioni = new ArrayList<>();
 	}
+	
+	public CartellaClinica() {
+		super();
+		this.prenotazioni = new ArrayList<>();
+	}
 
 	public double getAltezza() {
 		return altezza;

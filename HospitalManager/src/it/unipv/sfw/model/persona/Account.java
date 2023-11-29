@@ -53,7 +53,7 @@ public abstract class Account {
 	public boolean setPw(String vecchiaPw, String nuovaPw) throws LoginException {
 		boolean check = false;
 		if(controllaPw(vecchiaPw)) {
-			if(vecchiaPw == nuovaPw) {
+			if(vecchiaPw.endsWith(nuovaPw)) {
 				throw new LoginException("La nuova password non può essere uguale a quella corrente");
 			}
 			else {
@@ -67,11 +67,11 @@ public abstract class Account {
 	
 	public boolean controllaPw(String pw) throws LoginException{
 		boolean check = false;
-		if(this.pw != pw) {
-			throw new LoginException("La password inserita non è corretta");
+		if(pw.equals(this.pw)) {
+			check = true;
 		}
 		else {
-			check = true;
+			throw new LoginException("La password inserita non è corretta");
 		}
 		return check;
 		

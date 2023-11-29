@@ -28,7 +28,7 @@ public class GoBtnActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cf = view.getLoginPanel().getCfText().getText();
-		String pw = view.getLoginPanel().getPasswordField().toString();
+		String pw = view.getLoginPanel().getPasswordField().getText();
 		
 		boolean isMatching = model.login(cf, pw);  
 

@@ -29,6 +29,7 @@ public class Paziente extends Account {
 		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
 				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 		this.prenotazioni = new ArrayList<>();
+		this.cartellaPersonale = new CartellaClinica();
 	}
 	
 	public CartellaClinica getCartellaPersonale() {

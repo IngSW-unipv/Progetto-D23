@@ -3,14 +3,11 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.beans.XMLDecoder;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 import it.unipv.sfw.model.prenotazione.Prenotazione;
-import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 
 public class PazientePanel extends JPanel{
 	
@@ -43,22 +40,22 @@ public class PazientePanel extends JPanel{
 		nome = new JLabel("NOME:");
 		pNome = new JLabel();
 		cognome = new JLabel("COGNOME:");
-		pCognome = new JLabel("Franco");
+		pCognome = new JLabel();
 		cf = new JLabel("CF:");
-		pCf = new JLabel("FRNPPP55R01A089S");
+		pCf = new JLabel();
 		tipoAccount = new JLabel("TIPO ACCOUNT:");
-		pTipoAccount = new JLabel("Paziente");
+		pTipoAccount = new JLabel();
 		prenota = new JButton("PRENOTA");
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
 		modificaCartella = new JButton("MODIFICA CARTELLA CLINICA");
 		cambiaPw = new JButton("CAMBIA PASSWORD");
 		altezza = new JLabel("ALTEZZA:");
-		pAltezza = new JLabel("1.70 m");
+		pAltezza = new JLabel();
 		peso = new JLabel("PESO:");
-		pPeso = new JLabel("62 kg");
+		pPeso = new JLabel();
 		gruppoSanguigno = new JLabel("GRUPPO SANGUIGNO:");
-		pGruppoSanguigno = new JLabel("0 Positivo");
+		pGruppoSanguigno = new JLabel("");
 		prenotazione = new JLabel("PRENOTAZIONI");
 		prenotazioniErogate = new JLabel("PRENOTAZIONI EROGATE");
 		
@@ -116,33 +113,54 @@ public class PazientePanel extends JPanel{
 		modelloLista.addElement(s);
 	}
 	
+//	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
+//		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
+//		this.visite = list;
+//	}
 	
 	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
-		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
-		this.visite = list;
-	}
+		modelloLista.clear();
+		
+		for(Prenotazione p : prenotazioni) {
+			modelloLista.addElement(p);
+		}
+		
+		visite.setModel(modelloLista);
 
+	}
+	
 	public void setNome(String nome) {
-	    XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(nome.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.nome = label;
+	    pNome.setText(nome);
 	}
 
 	public void setCognome(String cognome) {
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cognome.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.cognome = label;
+		pCognome.setText(cognome);
 	}
 
 	public void setCf(String cf) {
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(cf.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.cf = label;
+		pCf.setText(cf);
+	}
+	
+	public void setTipoAccount(String tipo){
+		pTipoAccount.setText(tipo);
+	}
+	
+	public void setAltezza(String altezza){
+		pAltezza.setText(altezza);
 	}
 
+	public void setPeso(String peso){
+		pPeso.setText(peso);
+	}
+
+	public void setGruppoSanguigno(String sangue){
+		pGruppoSanguigno.setText(sangue);
+	}
+	
+	public JButton getCambiaPw() {
+		return cambiaPw;
+	}
+	
 	public JButton getPrenotaBtn() {
 		return prenota;
 	}
@@ -153,31 +171,6 @@ public class PazientePanel extends JPanel{
 	
 	public JButton getCancellaBtn() {
 		return cancella;
-	}
-	
-	public void setAltezza(String altezza){
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(altezza.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.pAltezza = label;
-	}
-
-	public void setPeso(String peso){
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(peso.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.pPeso = label;
-	}
-
-	public void setGruppoSanguigno(String sangue){
-		XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(sangue.getBytes()));
-	    JLabel label = (JLabel) d.readObject();
-	    d.close();
-	    this.pGruppoSanguigno = label;
-	}
-	
-	public JButton getCambiaPw() {
-		return cambiaPw;
 	}
 }
 
