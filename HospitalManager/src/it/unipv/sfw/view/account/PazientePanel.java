@@ -16,13 +16,15 @@ public class PazientePanel extends JPanel{
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList<String> visite, erogate;
 	private JButton prenota, cancella, logout, cambiaPw, modificaCartella;
-	private DefaultListModel<String> modelloLista;
+	private DefaultListModel<String> modelloLista, modelloListaDue;
 	private JLabel altezza, peso, gruppoSanguigno;
 	private JLabel pAltezza, pPeso, pGruppoSanguigno;
 	private JLabel prenotazione, prenotazioniErogate;
+	private JScrollPane scrollVisite, scrollErogate;
 	
 	public PazientePanel() {
 		setLayout(new GridLayout(3,2));
+		
 		
 		JPanel barNordOvest = new JPanel();
 		barNordOvest.setLayout(new BorderLayout());
@@ -62,20 +64,30 @@ public class PazientePanel extends JPanel{
 		
 		
 		visite = new JList<>();
-		visite.setPreferredSize(new Dimension(700, 500));
-		visite.getAutoscrolls();
+		visite.setPreferredSize(new Dimension(1000, 1000));
 		modelloLista = new DefaultListModel<>();
 		
 		erogate = new JList<>();
-		erogate.setPreferredSize(new Dimension(700, 500));
-		modelloLista = new DefaultListModel<>();
+		erogate.setPreferredSize(new Dimension(1000, 1000));
+		modelloListaDue = new DefaultListModel<>();
 		
 		visite.setModel(modelloLista);
-		erogate.setModel(modelloLista);
+		erogate.setModel(modelloListaDue);
 		
+		scrollVisite = new JScrollPane(visite);
+		scrollVisite.setPreferredSize(new Dimension(650,150));
+		scrollVisite.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollVisite.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        
+        scrollErogate = new JScrollPane(erogate);
+        scrollErogate.setPreferredSize(new Dimension(650,150));
+        scrollErogate.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollErogate.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        
+
 		
 		barNordOvest.add(prenotazione, BorderLayout.PAGE_START);
-		barNordOvest.add(new JScrollPane(visite), BorderLayout.CENTER);
+		barNordOvest.add(scrollVisite, BorderLayout.CENTER);
 		add(barNordOvest);
 		
 		barNordEst.add(prenota);
@@ -83,7 +95,7 @@ public class PazientePanel extends JPanel{
 		add(barNordEst);
 		
 		barCentroSx.add(prenotazioniErogate, BorderLayout.PAGE_START);
-		barCentroSx.add(new JScrollPane(erogate), BorderLayout.CENTER);
+		barCentroSx.add(scrollErogate, BorderLayout.CENTER);
 		add(barCentroSx);
 		
 		barCentroDx.add(cambiaPw);
