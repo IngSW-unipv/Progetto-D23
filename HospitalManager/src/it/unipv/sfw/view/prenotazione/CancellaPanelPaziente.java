@@ -11,7 +11,7 @@ public class CancellaPanelPaziente extends JPanel{
 	private JLabel idPrenotazione;
 	private JLabel slot, cancellaSlot;
 	private JTextField idPren;
-	private JButton cerca, conferma;
+	private JButton cerca, conferma, indietro;
 	
 	public CancellaPanelPaziente() {
 		
@@ -19,8 +19,12 @@ public class CancellaPanelPaziente extends JPanel{
 		
 		JPanel barNord = new JPanel();
 		barNord.setLayout(new GridLayout(3,1));
+		
 		JPanel barCentro = new JPanel();
 		barCentro.setLayout(new FlowLayout());
+		
+		JPanel barSud = new JPanel();
+		barSud.setLayout(new GridLayout());
 		
 		idPrenotazione = new JLabel("INSERIRE ID PRENOTAZIONE");
 		idPren = new JTextField();
@@ -30,6 +34,7 @@ public class CancellaPanelPaziente extends JPanel{
 
 		cerca = new JButton("CERCA APPUNTAMENTO");
 		conferma = new JButton("CANCELLA APPUNTAMENTO");
+		indietro = new JButton("INDIETRO");
 		
 		barNord.add(idPrenotazione);
 		barNord.add(idPren);
@@ -40,7 +45,9 @@ public class CancellaPanelPaziente extends JPanel{
 		barCentro.add(slot);
 		add(barCentro, BorderLayout.CENTER);
 		
-		add(conferma, BorderLayout.PAGE_END);
+		barSud.add(indietro);
+		barSud.add(conferma);
+		add(barSud, BorderLayout.PAGE_END);
 		
 	}
 	

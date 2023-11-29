@@ -11,26 +11,28 @@ public class RegistratiPanel extends JPanel{
 	private JLabel dataNascita, luogoNascita, provinciaNascita; 
 	private JLabel regioneResidenza, provinciaResidenza, cittaResidenza, indirizzo, cap;
 	private JLabel email, cellulare;
-	private JLabel tipo;
+	private JLabel tipo, specializzazione;
 	private JLabel password;
 	private JLabel generaPassword;
-	private JLabel conferma;
+	private JLabel conferma, back;
 	
 	private JTextField nomeField, cognomeField, cfField;
 	private JTextField dataNascitaField, luogoNascitaField, provinciaNascitaField;
 	private JTextField regioneResidenzaField, provinciaResidenzaField, cittaResidenzaField, indirizzoField, capField;
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
-	private JButton btnGeneraPass, btnConfermaReg;
+	private JButton btnGeneraPass, btnConfermaReg, indietro;
 	private String[] tipoAccount = {"Paziente", "Medico", "OperatoreUfficio", "OperatoreSanitario"};
 	private JComboBox<String> scegliTipo;
 	private String[] sessoString = {"Maschio", "Femmina"};
 	private JComboBox<String> scegliSesso;
+	private String[] tipoSpecializzazione = {"VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAME_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
+	private JComboBox<String> scegliSpecializzazione;
 	
 	
 	public RegistratiPanel() {
 		
-		setLayout(new GridLayout(19,2));
+		setLayout(new GridLayout(21,2));
 		
 		nomeField = new JTextField();
 		cognomeField = new JTextField();
@@ -71,16 +73,24 @@ public class RegistratiPanel extends JPanel{
 		scegliSesso = new JComboBox<>(sessoString);
 		
 		password = new JLabel("Password");
-		generaPassword = new JLabel("Genera password casuale");
+		generaPassword = new JLabel("Genera Password Casuale");
 		btnGeneraPass = new JButton("GENERA");
 		
-		conferma = new JLabel("Conferma registrazione");
+		conferma = new JLabel("Conferma Registrazione");
 		btnConfermaReg = new JButton("CONFERMA");
+		
+		back = new JLabel("Torna Indietro");
+		indietro = new JButton("INDIETRO");
+		
+		specializzazione = new JLabel("Scegli Speciializzazione");
+		scegliSpecializzazione = new JComboBox<>(tipoSpecializzazione);
 		
 		add(registrazione);
 		add(nuoviDati);
 		add(tipo);
 		add(scegliTipo);
+		add(specializzazione);
+		add(scegliSpecializzazione);
 		add(nome);
 		add(nomeField);
 		add(cognome);
@@ -115,6 +125,8 @@ public class RegistratiPanel extends JPanel{
 		add(btnGeneraPass);
 		add(conferma);
 		add(btnConfermaReg);
+		add(back);
+		add(indietro);
 	}
 
 

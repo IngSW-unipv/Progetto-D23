@@ -13,7 +13,7 @@ public class PrenotaPanelUfficio extends JPanel {
 	private JTextField cf;
 	private String[] prestazioneString = {"Visita Oncologica", "Visita Psicologica", "Esami Sangue", "Tac", "Risonanza Magnetica", "Chemioterapia", "Radioterapia"};
 	private JComboBox <String> scegliPrestazione;
-	private JButton conferma, successivo, precedente;
+	private JButton conferma, successivo, precedente, indietro;
 	
 	public PrenotaPanelUfficio() {
 		
@@ -25,6 +25,8 @@ public class PrenotaPanelUfficio extends JPanel {
 		JPanel barCentro = new JPanel();
 		barCentro.setLayout(new GridLayout(2,1));
 		
+		JPanel barSud = new JPanel();
+		barSud.setLayout(new GridLayout());
 		
 		tipoPrestazione = new JLabel("SCEGLI PRESTAZIONE");
 		scegliPrestazione = new JComboBox<>(prestazioneString);
@@ -35,6 +37,7 @@ public class PrenotaPanelUfficio extends JPanel {
 		cfPaziente = new JLabel("INSERIRE CF PAZIENTE");
 		cf = new JTextField();
 		conferma = new JButton("CONFERMA APPUNTAMENTO");
+		indietro = new JButton("INDIETRO");
 		
 		successivo = new JButton("SLOT SUCCESSIVO");
 		precedente = new JButton("SLOT PRECEDENTE");
@@ -49,7 +52,9 @@ public class PrenotaPanelUfficio extends JPanel {
 		barCentro.add(slot);
 		add(barCentro, BorderLayout.CENTER);
 		
-		add(conferma, BorderLayout.PAGE_END);
+		barSud.add(indietro);
+		barSud.add(conferma);
+		add(barSud, BorderLayout.PAGE_END);
 		
 		add(precedente, BorderLayout.LINE_START);
 		

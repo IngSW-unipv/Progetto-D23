@@ -14,20 +14,20 @@ public class RegistratiPanelPaziente extends JPanel{
 	private JLabel tipo, tipoFisso;
 	private JLabel password;
 	private JLabel generaPassword;
-	private JLabel conferma;
+	private JLabel conferma, back;
 	
 	private JTextField nomeField, cognomeField, cfField;
 	private JTextField dataNascitaField, luogoNascitaField, provinciaNascitaField;
 	private JTextField regioneResidenzaField, provinciaResidenzaField, cittaResidenzaField, indirizzoField, capField;
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
-	private JButton btnGeneraPass, btnConfermaReg;
+	private JButton btnGeneraPass, btnConfermaReg, indietro;
 	private String[] sessoString = {"Maschio", "Femmina"};
 	private JComboBox<String> scegliSesso;
 	
 	public RegistratiPanelPaziente() {
 		
-		setLayout(new GridLayout(19,2));
+		setLayout(new GridLayout(20,2));
 		
 		nomeField = new JTextField();
 		cognomeField = new JTextField();
@@ -75,6 +75,9 @@ public class RegistratiPanelPaziente extends JPanel{
 		conferma = new JLabel("Conferma registrazione");
 		btnConfermaReg = new JButton("CONFERMA");
 		
+		back = new JLabel("Torna Indietro");
+		indietro = new JButton("INDIETRO");
+		
 		add(registrazione);
 		add(nuoviDati);
 		add(tipo);
@@ -113,6 +116,8 @@ public class RegistratiPanelPaziente extends JPanel{
 		add(btnGeneraPass);
 		add(conferma);
 		add(btnConfermaReg);
+		add(back);
+		add(indietro);
 	}
 
 
