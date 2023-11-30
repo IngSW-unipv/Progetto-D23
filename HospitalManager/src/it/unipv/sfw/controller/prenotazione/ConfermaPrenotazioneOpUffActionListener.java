@@ -72,7 +72,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			// data e ora prenotati per la prestazione
 			ArrayList<SlotCalendarioSingoli> slotLiberi = model.getArraySlotLiberi();
 			int indice = model.getIndexArraySlotLiberi();
-			SlotCalendarioSingoli slotCorrente = (SlotCalendarioSingoli) slotLiberi.listIterator(indice);
+			SlotCalendarioSingoli slotCorrente = slotLiberi.get(indice);
 			LocalDate data = slotCorrente.getData();
 			LocalTime orario = slotCorrente.getOrario();
 			
@@ -87,7 +87,8 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 
 			
 			}catch(Exception e1){
-			PopUp.infoBox("Ops!", "Qualcosa è andato storto!");
+			e1.printStackTrace();
+			PopUp.infoBox("Qualcosa è andato storto!","Ops!");
 		}
 	}
 }	
