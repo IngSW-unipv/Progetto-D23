@@ -12,10 +12,15 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
+import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.Medico;
+import it.unipv.sfw.model.persona.OperatoreSanitario;
+import it.unipv.sfw.model.persona.Paziente;
+import it.unipv.sfw.model.prenotazione.Prenotazione;
 
 public class OperatoreUfficioPanel extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList<String> visite, utenti, calendar;
@@ -61,16 +66,16 @@ public class OperatoreUfficioPanel extends JPanel{
 		modelloLista = new DefaultListModel<>();
 		
 		utenti = new JList<>();
-		utenti.setPreferredSize(new Dimension(1000, 1000));
-		modelloLista = new DefaultListModel<>();
+		utenti.setPreferredSize(new Dimension(1500, 1000));
+		modelloListaDue = new DefaultListModel<>();
 		
 		calendar = new JList<>();
 		calendar.setPreferredSize(new Dimension(1000, 1000));
-		modelloLista = new DefaultListModel<>();
+		modelloListaTre = new DefaultListModel<>();
 		
 		visite.setModel(modelloLista);
 		utenti.setModel(modelloListaDue);
-		calendar.setModel(modelloListaTre);
+		//calendar.setModel(modelloListaTre);
 		
 		scrollVisite = new JScrollPane(visite);
 		scrollVisite.setPreferredSize(new Dimension(650,150));
@@ -119,8 +124,53 @@ public class OperatoreUfficioPanel extends JPanel{
 		
 	}
 	
-	public void addElementoLista(String s) {
-		modelloLista.addElement(s);
+	public void setListaPrenotazioni (ArrayList<Paziente> pazienti) {
+		modelloLista.clear();
+		for(Paziente a : pazienti) {
+			for(Prenotazione p : a.getPrenotazioni()) {
+				
+				String idPren = String.valueOf(p.getIdPren());
+				String cf = p.getPaziente().getCf();
+				String pazienteNome = p.getPaziente().getNome();
+				String pazienteCognome = p.getPaziente().getCognome();
+				String prest = p.getPrestazione().getTipo().name();
+				String data = p.getData().toString();
+				String orario = p.getOrario().toString();
+				String s = new String("Data: "+data+" | Ora: "+orario+" | ID: "+idPren+" | Paziente: "+cf+", "+pazienteNome
+						+" "+pazienteCognome+" | Prestazione: "+prest);
+				
+				modelloLista.addElement(s);
+			}
+		}
+		
+		visite.setModel(modelloLista);
+	}
+	
+	public void setListaUtenti (ArrayList<Paziente> pazienti, ArrayList<Medico> medici, ArrayList<OperatoreSanitario> operatoriSanitari) {
+		ArrayList<Account> u= new ArrayList<>();
+		u.addAll(pazienti);
+		u.addAll(medici);
+		u.addAll(operatoriSanitari);
+		modelloListaDue.clear();
+		for(Account a : u) {
+			String tipo = a.getTipoAcc().name();
+			String cf = a.getCf();
+			String nome = a.getNome();
+			String cognome = a.getCognome();
+			String sesso = a.getSesso().toString();
+			String data = a.getDataNascita();
+			String luogo = a.getLuogoNascita()+" ("+a.getProvinciaNascita()+")";
+			String residenza = a.getCittaRes()+" ("+a.getProvinciaRes()+"), "+a.getCap()+", "+a.getIndirizzo();
+			String mail = a.geteMail();
+			String cell = a.getCellulare();
+			
+			String s = new String("Tipo: "+tipo+" | Utente: "+cf+", "+nome+" "+cognome+" | Sesso: "+sesso
+					+" | Data Nascita: "+ data+" | Luogo Nascita: "+luogo+" | Residenza: "+residenza
+					+" | EMail: "+mail+" | Cellulare: "+cell);
+			
+			modelloListaDue.addElement(s);
+		}
+		utenti.setModel(modelloListaDue);
 	}
 
 	public void setNome(String nome) {
@@ -157,11 +207,6 @@ public class OperatoreUfficioPanel extends JPanel{
 
 	public JList getVisite() {
 		return visite;
-	}
-
-	public void setListaVisite(ArrayList<PrestazioneSanitaria> prenotazioni) {
-		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
-		this.visite = list;
 	}
 
 	public JButton getPrenotaBtn() {

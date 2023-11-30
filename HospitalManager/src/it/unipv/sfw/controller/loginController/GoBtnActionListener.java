@@ -77,8 +77,8 @@ public class GoBtnActionListener implements ActionListener {
 				view.getLoginPanel().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
 				OperatoreUfficio ou = (OperatoreUfficio) acc;
-				//sistemare dopo aver aggiornato OpertoreUfficioPanel
-				//view.getOperatoreUfficioPanel().setListaVisite();
+				view.getOperatoreUfficioPanel().setListaPrenotazioni(model.getPazienti());
+				view.getOperatoreUfficioPanel().setListaUtenti(model.getPazienti(), model.getMedici(), model.getOperatoriSanitari());
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getOperatoreUfficioPanel().setNome(ou.getNome());

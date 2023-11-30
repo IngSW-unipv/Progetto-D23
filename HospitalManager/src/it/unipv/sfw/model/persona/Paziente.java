@@ -12,7 +12,7 @@ public class Paziente extends Account {
 	private CartellaClinica cartellaPersonale;	
 
 	//costruttore 1
-	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
+	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
 			ArrayList<Prenotazione> prenotazioni, CartellaClinica cartellaPersonale) {
@@ -23,7 +23,7 @@ public class Paziente extends Account {
 	}
 
 	//costruttore 2
-	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
+	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
 		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,

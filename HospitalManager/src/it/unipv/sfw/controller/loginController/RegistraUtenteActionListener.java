@@ -3,6 +3,7 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
@@ -58,11 +59,10 @@ public class RegistraUtenteActionListener implements ActionListener {
 		}
 		
 		model.registrazioneAccount(CF, pw, tipoAcc, nome, cognome,
-				sesso, dataNascita, luogoNascita, provinciaNascita,
+				Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita,
 				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, TipoPrestazione.valueOf(specializzazione));
 		
 		pulisciTextField();
-		PopUp ok = new PopUp();
 		PopUp.infoBox("Nuovo account creato", "OK");
 		view.getRegistratiPanel().setVisible(false);
 		view.getOperatoreUfficioPanel().setVisible(true);

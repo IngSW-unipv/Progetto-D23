@@ -3,6 +3,7 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 
+import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
@@ -40,7 +41,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			TipoAccount tipo = TipoAccount.PA;
 			TipoPrestazione specializzazione = null;
 						
-			model.registrazioneAccount(CF, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
+			model.registrazioneAccount(CF, pw, tipo, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
 						indirizzo, cap, email, cellulare, specializzazione);
 				
 				
@@ -51,7 +52,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 		}
 	
 		catch(Exception e1){
-			PopUp.infoBox("le due password non coincidono", "Errore");
+			e1.printStackTrace();
 			pulisciTextField();
 		}
 	}

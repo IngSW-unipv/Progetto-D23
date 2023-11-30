@@ -10,7 +10,7 @@ public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 	private TipoPrestazione specializzazione;
 	private ArrayList<Prenotazione> calendario;
 
-	public OperatoreSanitario(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
+	public OperatoreSanitario(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
 			TipoPrestazione specializzazione, ArrayList<Prenotazione> calendario) {
@@ -20,7 +20,7 @@ public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 		this.calendario = calendario;
 	}
 	
-	public OperatoreSanitario(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
+	public OperatoreSanitario(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
 			TipoPrestazione specializzazione) {

@@ -7,5 +7,6 @@ public enum TipoPrestazione {
 	TAC,
 	RISONANZA_MAGNETICA,
 	CHEMIOTERAPIA, 
-	RADIOTERAPIA
+	RADIOTERAPIA, 
+	NULL
 }

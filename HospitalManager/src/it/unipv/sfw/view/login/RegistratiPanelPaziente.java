@@ -22,7 +22,7 @@ public class RegistratiPanelPaziente extends JPanel{
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
 	private JButton btnGeneraPass, btnConfermaReg, indietro;
-	private String[] sessoString = {"Maschio", "Femmina"};
+	private String[] sessoString = {"M", "F"};
 	private JComboBox<String> scegliSesso;
 	
 	public RegistratiPanelPaziente() {
@@ -63,7 +63,7 @@ public class RegistratiPanelPaziente extends JPanel{
 		cellulare = new JLabel("Cellulare");
 		
 		tipo = new JLabel("Tipo Account");
-		tipoFisso = new JLabel("Paziente");
+		tipoFisso = new JLabel("PA");
 		
 		scegliSesso = new JComboBox<>(sessoString);
 		

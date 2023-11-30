@@ -71,8 +71,8 @@ public class ViewController extends JFrame {
 		operatoreSanitarioP.setVisible(false);
 		
 		operatoreUfficioP = new OperatoreUfficioPanel();
-		panel.add(operatoreSanitarioP);
-		operatoreSanitarioP.setVisible(false);
+		panel.add(operatoreUfficioP);
+		operatoreUfficioP.setVisible(false);
 		
 		registratiPP = new RegistratiPanelPaziente();
 		panel.add(registratiPP);

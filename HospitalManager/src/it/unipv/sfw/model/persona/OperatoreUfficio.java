@@ -2,7 +2,7 @@ package it.unipv.sfw.model.persona;
 
 public class OperatoreUfficio extends Account {
 
-	public OperatoreUfficio(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, String sesso,
+	public OperatoreUfficio(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
 		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes, provinciaRes,

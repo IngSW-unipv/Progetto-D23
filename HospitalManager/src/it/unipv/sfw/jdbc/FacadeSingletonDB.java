@@ -17,6 +17,7 @@ import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.persona.OperatoreSanitario;
 import it.unipv.sfw.model.persona.OperatoreUfficio;
 import it.unipv.sfw.model.persona.Paziente;
+import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
@@ -81,9 +82,9 @@ public class FacadeSingletonDB {
 		
 		for (ProfiloDB i: pazienti) {
 			
-			Paziente p = new Paziente(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
+			Paziente p = new Paziente(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare());
+					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare());
 			
 			struttura1.getPazienti().add(p);
 			struttura1.getCfPersone().put(i.getCf(), p);
@@ -116,10 +117,10 @@ public class FacadeSingletonDB {
 				calendarioMedico.add(prenotazione);
 				}
 			}
-			
-			Medico m = new Medico(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
+//				
+			Medico m = new Medico(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), 
+					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare(), 
 					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioMedico);
 			
 			struttura1.getMedici().add(m);
@@ -156,9 +157,9 @@ public class FacadeSingletonDB {
 				}
 			}
 			
-			OperatoreSanitario os = new OperatoreSanitario(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
+			OperatoreSanitario os = new OperatoreSanitario(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare(), 
+					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare(), 
 					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioOperatore);
 			
 			struttura1.getOperatoriSanitari().add(os);
@@ -174,9 +175,9 @@ public class FacadeSingletonDB {
 		
 		for (ProfiloDB i: operatoriUfficio) {
 			
-			OperatoreUfficio ou = new OperatoreUfficio(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
+			OperatoreUfficio ou = new OperatoreUfficio(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
-					i.getIndirizzo(), i.getCap(), i.getIndirizzo(), i.geteMail(), i.getCellulare());
+					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare());
 			
 			struttura1.getOperatoriUfficio().add(ou);
 			struttura1.getCfPersone().put(i.getCf(), ou);

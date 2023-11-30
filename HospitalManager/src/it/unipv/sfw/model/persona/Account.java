@@ -10,7 +10,7 @@ public abstract class Account {
 	private TipoAccount tipoAcc;
 	private String nome;
 	private String cognome;
-	private String sesso;
+	private Sesso sesso;
 	private String dataNascita;
 	private String luogoNascita;
 	private String provinciaNascita;
@@ -24,7 +24,7 @@ public abstract class Account {
 	
 	
 	public Account(String cf,String pw, TipoAccount tipoAcc, String nome,
-			String cognome, String sesso, String dataNascita, String luogoNascita, String provinciaNascita,
+			String cognome, Sesso sesso, String dataNascita, String luogoNascita, String provinciaNascita,
 			String regioneRes, String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail,
 			String cellulare) {
 		super();
@@ -118,11 +118,11 @@ public abstract class Account {
 		this.cognome = cognome;
 	}
 
-	public String getSesso() {
+	public Sesso getSesso() {
 		return sesso;
 	}
 
-	public void setSesso(String sesso) {
+	public void setSesso(Sesso sesso) {
 		this.sesso = sesso;
 	}
 

@@ -79,7 +79,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	@Override
 	public boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
-			String sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
+			Sesso sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
 			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, 
 			TipoPrestazione specializzazione) {
 		boolean check = false;
