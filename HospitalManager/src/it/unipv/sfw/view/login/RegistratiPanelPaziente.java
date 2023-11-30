@@ -51,12 +51,12 @@ public class RegistratiPanelPaziente extends JPanel{
 		cognome = new JLabel("Cognome");
 		cf = new JLabel("Codice Fiscale");
 		sesso = new JLabel("Sesso");
-		dataNascita = new JLabel("Data di nascita");
+		dataNascita = new JLabel("Data di nascita (AAAA-MM-GG)");
 		luogoNascita = new JLabel("Luogo di nascita");
 		provinciaNascita = new JLabel("Provincia di nascita");
 		regioneResidenza = new JLabel("Regione di residenza");
 		provinciaResidenza = new JLabel("Provincia di residenza");
-		cittaResidenza = new JLabel("Citta di residenza");
+		cittaResidenza = new JLabel("Città di residenza");
 		indirizzo = new JLabel("Indirizzo");
 		cap = new JLabel("Cap");
 		email = new JLabel("Email");
