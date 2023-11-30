@@ -88,8 +88,8 @@ public class MedicoPanel extends JPanel{
 			String prest = p.getPrestazione().getTipo().name();
 			String data = p.getData().toString();
 			String orario = p.getOrario().toString();
-			String s = new String("ID PRENOTAZIONE: "+idPren+", PAZIENTE: "+cf+" "+pazienteNome
-					+" "+pazienteCognome+", PRESTAZIONE: "+prest+", DATA: "+data+", ORA: "+orario);
+			String s = new String("Data: "+data+" | Ora: "+orario+" | ID: "+idPren+" | Paziente: "+cf+", "+pazienteNome
+					+" "+pazienteCognome+" | Prestazione: "+prest);
 			
 			modelloLista.addElement(s);
 		}

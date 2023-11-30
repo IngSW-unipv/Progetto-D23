@@ -67,13 +67,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.personaleSanitario = new HashMap<>();
 		
 		//this.istanzaDB = FacadeSingletonDB.getIstanzaFacade();
-		
-		
-//		FacadeSingletonDB.getIstanzaFacade().popolaPazienti();
-//		FacadeSingletonDB.getIstanzaFacade().popolaMedici();
-//		FacadeSingletonDB.getIstanzaFacade().popolaOperatoriSanitari();
-//		FacadeSingletonDB.getIstanzaFacade().popolaOperatoriUfficio();
-//		FacadeSingletonDB.getIstanzaFacade().popolaPrestazione();
+
 	}
 
 //	public static StrutturaSanitaria getIstanzaStruttura() {
@@ -285,6 +279,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			for(Paziente p : this.pazienti) {
 				p.spostaPrenotazioniErogate();
 			}
+			for(Medico m : this.medici) {
+				m.eliminaPrenotazioniErogate();
+				}
 			check = true;
 		}catch(Exception e) {
 			e.printStackTrace();

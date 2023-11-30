@@ -3,8 +3,6 @@ package it.unipv.sfw.view.account;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,10 +10,9 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
-
 public class OperatoreSanitarioPanel extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList visite;
@@ -72,14 +69,6 @@ public class OperatoreSanitarioPanel extends JPanel{
 		
 	}
 	
-	public void addElementoLista(String s) {
-		modelloLista.addElement(s);
-	}
-	
-	public void setListaVisite (ArrayList<PrestazioneSanitaria> prenotazioni) {
-		JList list = new JList<>(prenotazioni.toArray(new String[prenotazioni.size()]));
-		this.visite = list;
-	}
 	
 	public void setNome(String nome) {
 	    pNome.setText(nome);

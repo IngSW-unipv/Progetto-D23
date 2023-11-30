@@ -33,15 +33,15 @@ public class GoBtnActionListener implements ActionListener {
 
 		if(isMatching) {
 			view.getLoginPanel().setVisible(false);
-			Toolkit kit = Toolkit.getDefaultToolkit();
-			Dimension screenSize = kit.getScreenSize();
-			
-			int screenHeight= screenSize.height;
-			int screenWidth = screenSize.width;
-			
-			//serve per centrare il frame nello schermo
-			view.setSize(screenWidth, screenHeight);
-			view.setLocationRelativeTo(null);
+//			Toolkit kit = Toolkit.getDefaultToolkit();
+//			Dimension screenSize = kit.getScreenSize();
+//			
+//			int screenHeight= screenSize.height;
+//			int screenWidth = screenSize.width;
+//			
+//			//serve per centrare il frame nello schermo
+//			view.setSize(screenWidth, screenHeight);
+//			view.setLocationRelativeTo(null);
 			
 			Account acc = model.getCfPersone().get(cf);
 			TipoAccount tipoAcc = acc.getTipoAcc();
@@ -52,37 +52,39 @@ public class GoBtnActionListener implements ActionListener {
 			case ME: 
 				view.getLoginPanel().setVisible(false);
 				view.getMedicoPanel().setVisible(true);
-				Medico med = (Medico) acc;
-				view.getMedicoPanel().setListaPrenotazioni(med.getCalendario());
+				Medico m = (Medico) acc;
+				view.getMedicoPanel().setListaPrenotazioni(m.getCalendario());
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
-				view.getMedicoPanel().setNome(med.getNome());
-				view.getMedicoPanel().setCognome(med.getCognome());
-				view.getMedicoPanel().setCf(med.getCf());
+				view.getMedicoPanel().setNome(m.getNome());
+				view.getMedicoPanel().setCognome(m.getCognome());
+				view.getMedicoPanel().setCf(m.getCf());
 				break;
 			
 			case OS:
 				view.getLoginPanel().setVisible(false);
 				view.getOperatoreSanitarioPanel().setVisible(true);
-				OperatoreSanitario Op = (OperatoreSanitario)acc;
-				view.getOperatoreSanitarioPanel().setListaVisite(model.getPrestazioni());
+				OperatoreSanitario op = (OperatoreSanitario)acc;
+				//togliere commento dopo aver aggiornato OperatoreSanotarioPanel
+				//view.getOperatoreSanitarioPanel().setListaVisite(op.getCalendario());
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
-				view.getOperatoreSanitarioPanel().setNome(Op.getNome());
-				view.getOperatoreSanitarioPanel().setCognome(Op.getCognome());
-				view.getOperatoreSanitarioPanel().setCf(Op.getCf());
+				view.getOperatoreSanitarioPanel().setNome(op.getNome());
+				view.getOperatoreSanitarioPanel().setCognome(op.getCognome());
+				view.getOperatoreSanitarioPanel().setCf(op.getCf());
 				break;
 
 			case OU:
 				view.getLoginPanel().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
-				OperatoreUfficio Ou = (OperatoreUfficio) acc;
-				view.getOperatoreUfficioPanel().setListaVisite(model.getPrestazioni());
+				OperatoreUfficio ou = (OperatoreUfficio) acc;
+				//sistemare dopo aver aggiornato OpertoreUfficioPanel
+				//view.getOperatoreUfficioPanel().setListaVisite();
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
-				view.getOperatoreUfficioPanel().setNome(Ou.getNome());
-				view.getOperatoreUfficioPanel().setCognome(Ou.getCognome());
-				view.getOperatoreUfficioPanel().setCf(Ou.getCf());
+				view.getOperatoreUfficioPanel().setNome(ou.getNome());
+				view.getOperatoreUfficioPanel().setCognome(ou.getCognome());
+				view.getOperatoreUfficioPanel().setCf(ou.getCf());
 				break;
 
 			case PA:

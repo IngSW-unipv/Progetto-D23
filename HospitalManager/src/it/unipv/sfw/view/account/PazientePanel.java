@@ -133,8 +133,8 @@ public class PazientePanel extends JPanel{
 			String prest = p.getPrestazione().getTipo().name();
 			String data = p.getData().toString();
 			String orario = p.getOrario().toString();
-			String s = new String("ID PRENOTAZIONE: "+idPren+", MEDICO/OPERATORE: "+pSanitarioNome
-					+" "+pSanitarioCognome+", PRESTAZIONE: "+prest+", DATA: "+data+", ORA: "+orario);
+			String s = new String("Data: "+data+" | Ora: "+orario+" | Prestazione: "+prest+" | ID: "+idPren
+					+" | Personale Sanitario: "+pSanitarioNome+" "+pSanitarioCognome);
 			
 			modelloLista.addElement(s);
 		}
@@ -151,8 +151,8 @@ public class PazientePanel extends JPanel{
 			String prest = p.getPrestazione().getTipo().name();
 			String data = p.getData().toString();
 			String orario = p.getOrario().toString();
-			String s = new String("ID PRENOTAZIONE: "+idPren+", MEDICO/OPERATORE: "+pSanitarioNome
-					+" "+pSanitarioCognome+", PRESTAZIONE: "+prest+", DATA: "+data+", ORA: "+orario);
+			String s = new String("Data: "+data+" | Ora: "+orario+" | Prestazione: "+prest+" | ID: "+idPren
+					+" | Personale Sanitario: "+pSanitarioNome+" "+pSanitarioCognome);
 			
 			modelloListaDue.addElement(s);
 		}

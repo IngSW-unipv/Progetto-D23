@@ -112,7 +112,7 @@ public class FacadeSingletonDB {
 				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
 						prestazione, k.getDataPren(), k.getOraPren());
 				
-				if(prenotazione.getData().isBefore(oggi)) {
+				if(prenotazione.getData().isAfter(oggi) || prenotazione.getData().equals(oggi)) {
 				calendarioMedico.add(prenotazione);
 				}
 			}
@@ -151,7 +151,7 @@ public class FacadeSingletonDB {
 				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
 						prestazione, k.getDataPren(), k.getOraPren());
 				
-				if(prenotazione.getData().isBefore(oggi)) {
+				if(prenotazione.getData().isAfter(oggi) || prenotazione.getData().equals(oggi)) {
 				calendarioOperatore.add(prenotazione);
 				}
 			}
@@ -236,7 +236,7 @@ public class FacadeSingletonDB {
 				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
 				
 				Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
-				if(a.getData().isAfter(oggi)) {
+				if(a.getData().isAfter(oggi) || a.getData().equals(oggi)) {
 					paziente.getPrenotazioni().add(a);
 				}
 				
