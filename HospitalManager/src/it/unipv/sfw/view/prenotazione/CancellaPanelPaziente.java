@@ -68,7 +68,9 @@ public class CancellaPanelPaziente extends JPanel{
 		return cerca;
 	}
 	
-	
+	public JButton getBtnBack() {
+		return indietro;
+	}
 	
 	
 	

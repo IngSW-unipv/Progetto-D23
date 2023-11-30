@@ -33,4 +33,8 @@ public class CambiaPwPanel extends JPanel{
 	public JButton getConfermaBtn() {
 		return conferma;
 	}
+	
+	public JButton getBtnBack() {
+		return indietro;
+	}
 }

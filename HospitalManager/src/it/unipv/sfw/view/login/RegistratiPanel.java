@@ -540,5 +540,9 @@ public class RegistratiPanel extends JPanel{
 	public String getSpecializzazioneScelta() {
 		return (String) scegliSpecializzazione.getSelectedItem();
 	}
+	
+	public JButton getBtnBack() {
+		return indietro;
+	}
 }
 

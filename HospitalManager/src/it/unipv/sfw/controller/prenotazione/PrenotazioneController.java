@@ -23,12 +23,18 @@ public class PrenotazioneController {
 	private SuccessivoActionListener successivo;
 	private PrecedenteActionListener precedente;
 	
+	private GoBackPazienteActionListener goBackPaz;
+	private GoBackOpUffActionListener goBackOpUff;
+	
 	public PrenotazioneController (StrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 		
 		prenota = new PrenotaActionListener(model, view);
 		cancella = new CancellaActionListener(model, view);
+		
+		goBackPaz = new GoBackPazienteActionListener(model, view);
+		goBackOpUff = new GoBackOpUffActionListener(model, view);
 		
 		cercaPrenPaz = new CercaPrenDaCancellarePaziente(model, view);
 		cercaPrenUff = new CercaPrenDaCancellareUff(model, view);
@@ -44,6 +50,12 @@ public class PrenotazioneController {
 		successivo = new SuccessivoActionListener(model, view);
 		
 		precedente = new PrecedenteActionListener(model, view);
+		
+		
+		view.getCancellaPanelPaziente().getBtnBack().addActionListener(goBackPaz);
+		view.getPrenotatiPanelPaziente().getBtnBack().addActionListener(goBackPaz);
+		view.getCancellaPanelUfficio().getBtnBack().addActionListener(goBackOpUff);
+		view.getPrenotatiPanelUfficio().getBtnBack().addActionListener(goBackOpUff);
 		
 		
 		view.getOperatoreUfficioPanel().getPrenotaBtn().addActionListener(prenota);
@@ -69,6 +81,7 @@ public class PrenotazioneController {
 	
 		view.getPrenotatiPanelPaziente().getPrecedente().addActionListener(precedente);
 		view.getPrenotatiPanelUfficio().getPrecedente().addActionListener(precedente);
+		
 		
 	}
 }

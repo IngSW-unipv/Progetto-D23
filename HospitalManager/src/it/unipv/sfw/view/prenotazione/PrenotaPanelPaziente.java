@@ -123,4 +123,8 @@ public class PrenotaPanelPaziente extends JPanel{
 	public String getPrestazioneScelta() {
 		return (String) scegliPrestazione.getSelectedItem();
 	}
+	
+	public JButton getBtnBack() {
+		return indietro;
+	}
 }

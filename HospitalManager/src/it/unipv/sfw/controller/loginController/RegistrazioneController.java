@@ -1,6 +1,6 @@
 package it.unipv.sfw.controller.loginController;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
@@ -20,6 +20,7 @@ public class RegistrazioneController {
 		addActionListenerConfermaRegistrazione();
 		addActionListenerGeneraPassword();
 		addActionListenerRegistraUtente();
+		addActionListenerGoBack();
 	}
 
 
@@ -31,7 +32,7 @@ public class RegistrazioneController {
 
 	private void addActionListenerRegistraUtente() {
 		RegistraUtenteActionListener regUtente = new RegistraUtenteActionListener(model, view);
-		view.getOperatoreUfficioPanel().getAggiungiUtenteBtn().addActionListener(regUtente);
+		view.getRegistratiPanel().getBtnConfermaReg().addActionListener(regUtente);
 	}
 
 
@@ -46,6 +47,12 @@ public class RegistrazioneController {
 		BtnRegistraPazienteActionListener addPaz = new BtnRegistraPazienteActionListener(model, view);
 		view.getLoginPanel().getBtnRegistraPaziente().addActionListener(addPaz);
 		
+	}
+	
+	private void addActionListenerGoBack() {
+		BtnBackRegistrazioneActionListener goBack = new BtnBackRegistrazioneActionListener(model, view);
+		view.getRegistratiPanelPaziente().getBtnBack().addActionListener(goBack);
+		view.getRegistratiPanel().getBtnBack().addActionListener(goBack);
 	}
 
 }

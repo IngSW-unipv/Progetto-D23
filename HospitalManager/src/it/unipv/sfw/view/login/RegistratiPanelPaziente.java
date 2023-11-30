@@ -513,5 +513,8 @@ public class RegistratiPanelPaziente extends JPanel{
 		this.scegliSesso = scegliSesso;
 	}
 	
-
+	public JButton getBtnBack() {
+		return indietro;
+	}
+	
 }

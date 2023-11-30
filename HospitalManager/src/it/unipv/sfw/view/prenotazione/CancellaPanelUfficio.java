@@ -76,6 +76,8 @@ public class CancellaPanelUfficio extends JPanel{
 		return cerca;
 	}
 	
-	
+	public JButton getBtnBack() {
+		return indietro;
+	}
 	
 }
