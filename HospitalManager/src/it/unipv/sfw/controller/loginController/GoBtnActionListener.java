@@ -66,7 +66,7 @@ public class GoBtnActionListener implements ActionListener {
 				view.getOperatoreSanitarioPanel().setVisible(true);
 				OperatoreSanitario op = (OperatoreSanitario)acc;
 				//togliere commento dopo aver aggiornato OperatoreSanotarioPanel
-				//view.getOperatoreSanitarioPanel().setListaVisite(op.getCalendario());
+				view.getOperatoreSanitarioPanel().setListaVisite(op.getCalendario());
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getOperatoreSanitarioPanel().setNome(op.getNome());
