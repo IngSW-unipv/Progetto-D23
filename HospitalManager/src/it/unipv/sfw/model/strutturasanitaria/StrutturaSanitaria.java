@@ -171,6 +171,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			check = a.controllaPw(pw);
 			if(check) {
 				setUtenteCorrente(cf);
+				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -276,6 +277,19 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		}
 		return check;
 		
+	}
+	
+	public boolean aggiornaPrenotazioni() {
+		boolean check = false;
+		try {
+			for(Paziente p : this.pazienti) {
+				p.spostaPrenotazioniErogate();
+			}
+			check = true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
 	
 	public String getNome() {

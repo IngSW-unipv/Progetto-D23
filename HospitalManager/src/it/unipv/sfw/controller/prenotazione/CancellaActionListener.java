@@ -27,13 +27,13 @@ public class CancellaActionListener implements ActionListener{
 		TipoAccount tipoAcc = user.getTipoAcc();
 		
 		if (tipoAcc == TipoAccount.OU) {
-			view.setVisible(true);
+			view.getOperatoreUfficioPanel().setVisible(false);
 			view.getCancellaPanelUfficio().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);
 		}
 		else {
-			view.setVisible(true);
+			view.getPazientePanel().setVisible(false);
 			view.getCancellaPanelPaziente().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);

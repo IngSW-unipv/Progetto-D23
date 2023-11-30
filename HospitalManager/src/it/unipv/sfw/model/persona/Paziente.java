@@ -1,5 +1,6 @@
 package it.unipv.sfw.model.persona;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
@@ -29,6 +30,23 @@ public class Paziente extends Account {
 				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 		this.prenotazioni = new ArrayList<>();
 		this.cartellaPersonale = new CartellaClinica();
+	}
+	
+	public boolean spostaPrenotazioniErogate() {
+		boolean check = false;
+		try {
+			LocalDate oggi = LocalDate.now();
+			for(Prenotazione p : this.prenotazioni) {
+				if(p.getData().isBefore(oggi)) {
+					this.prenotazioni.remove(p);
+					this.cartellaPersonale.getPrenotazioni().add(p);
+				}
+			}
+			check = true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
 	
 	public CartellaClinica getCartellaPersonale() {

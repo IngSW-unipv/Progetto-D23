@@ -45,14 +45,12 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 				
 				
 			pulisciTextField();
-			PopUp ok = new PopUp();
 			PopUp.infoBox("Nuovo account creato", "OK");
 			view.getRegistratiPanelPaziente().setVisible(false);
 			view.getLoginPanel().setVisible(true);
 		}
 	
 		catch(Exception e1){
-			PopUp err = new PopUp();
 			PopUp.infoBox("le due password non coincidono", "Errore");
 			pulisciTextField();
 		}

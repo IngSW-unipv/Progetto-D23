@@ -1,5 +1,6 @@
 package it.unipv.sfw.jdbc;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.bean.calendario.*;
@@ -90,6 +91,7 @@ public class FacadeSingletonDB {
 	}
 	
 	public void popolaMedici() {	
+		LocalDate oggi = LocalDate.now();
 		ArrayList<ProfiloDB> medici = new ArrayList<>();
 		
 		medici = profilo.selectAllMedici();
@@ -110,7 +112,9 @@ public class FacadeSingletonDB {
 				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
 						prestazione, k.getDataPren(), k.getOraPren());
 				
+				if(prenotazione.getData().isBefore(oggi)) {
 				calendarioMedico.add(prenotazione);
+				}
 			}
 			
 			Medico m = new Medico(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
@@ -125,6 +129,8 @@ public class FacadeSingletonDB {
 	}
 	
 	public void popolaOperatoriSanitari() {
+		LocalDate oggi = LocalDate.now();
+
 		ArrayList<ProfiloDB> operatoriSanitari = new ArrayList<>();
 		
 		operatoriSanitari = profilo.selectAllOperatoriSanitari();
@@ -145,7 +151,9 @@ public class FacadeSingletonDB {
 				Prenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
 						prestazione, k.getDataPren(), k.getOraPren());
 				
+				if(prenotazione.getData().isBefore(oggi)) {
 				calendarioOperatore.add(prenotazione);
+				}
 			}
 			
 			OperatoreSanitario os = new OperatoreSanitario(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getDataNascita(), 
@@ -192,10 +200,10 @@ public class FacadeSingletonDB {
 
 	//passando l'arraylist del  modello si popola, per ogni paziente, la cartella clinica comprendente le prenotazioni erogate
 	public void popolaCartellaClinica(ArrayList<Paziente> pazienti) {
-		
+		LocalDate oggi = LocalDate.now();
 		for(Paziente paziente : pazienti) {
 		
-		ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniErogateByPaziente(paziente.getCf());
+		ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniByPaziente(paziente.getCf());
 		ArrayList<Prenotazione> prModello = new ArrayList<>();
 		
 		for(PrenotazioneDB i : prDB) {
@@ -203,8 +211,9 @@ public class FacadeSingletonDB {
 			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
 			
 			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
-			
-			prModello.add(a);
+			if(a.getData().isBefore(oggi)) {
+				prModello.add(a);
+			}
 		}
 		
 		CartellaClinicaDB cc = cartellaClinica.selectCartellaByCf(paziente.getCf());
@@ -216,7 +225,7 @@ public class FacadeSingletonDB {
 	
 	//passando l'arraylist del  modello si popola, per ogni paziente, la lista delle sue prenotazioni ancora da erogare
 		public void popolaPrenotazioni(ArrayList<Paziente> pazienti) {
-			
+			LocalDate oggi = LocalDate.now();
 			for(Paziente paziente : pazienti) {
 			
 			ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniByPaziente(paziente.getCf());
@@ -227,8 +236,10 @@ public class FacadeSingletonDB {
 				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
 				
 				Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
+				if(a.getData().isAfter(oggi)) {
+					paziente.getPrenotazioni().add(a);
+				}
 				
-				paziente.getPrenotazioni().add(a);
 			}
 			
 			}

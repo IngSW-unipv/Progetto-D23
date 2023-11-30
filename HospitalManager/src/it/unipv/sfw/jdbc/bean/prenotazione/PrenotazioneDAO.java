@@ -126,32 +126,32 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		return prenotazioniPaziente;
 	}
 	
-	@Override
-	public ArrayList<PrenotazioneDB> selectPrenotazioniErogateByPaziente(String cf) {
-		ArrayList<PrenotazioneDB> prenotazioniPaziente = new ArrayList<>();
-		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
-		PreparedStatement ps1;
-		ResultSet rs1;
-		
-		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PAZIENTE = ?";
-			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, cf);
-			rs1= ps1.executeQuery();
-			
-			while (rs1.next()) {
-				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
-						rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
-				prenotazioniPaziente.add(pren);
-			}
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		ConnessioneDB.closeConnection(conn);
-		
-		return prenotazioniPaziente;
-	}
+//	@Override
+//	public ArrayList<PrenotazioneDB> selectPrenotazioniErogateByPaziente(String cf) {
+//		ArrayList<PrenotazioneDB> prenotazioniPaziente = new ArrayList<>();
+//		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+//		PreparedStatement ps1;
+//		ResultSet rs1;
+//		
+//		try {
+//			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PAZIENTE = ?";
+//			ps1 = conn.prepareStatement(query);
+//			ps1.setString(1, cf);
+//			rs1= ps1.executeQuery();
+//			
+//			while (rs1.next()) {
+//				PrenotazioneDB pren = new PrenotazioneDB(rs1.getInt("ID_PREN"), rs1.getString("PAZIENTE"), rs1.getString("PERSONALE_SANITARIO"),
+//						rs1.getString("TIPO_PRESTAZIONE"), rs1.getString("DATA_PREN"), rs1.getString("ORA_PREN"));
+//				prenotazioniPaziente.add(pren);
+//			}
+//		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		ConnessioneDB.closeConnection(conn);
+//		
+//		return prenotazioniPaziente;
+//	}
 
 	@Override
 	public ArrayList<PrenotazioneDB> selectPrenotazioniByPersonaleSanitario(String cf) {

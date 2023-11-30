@@ -87,7 +87,6 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 
 			
 			}catch(Exception e1){
-			PopUp err = new PopUp();
 			PopUp.infoBox("Ops!", "Qualcosa è andato storto!");
 		}
 	}

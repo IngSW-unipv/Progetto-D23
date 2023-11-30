@@ -1,13 +1,13 @@
 package it.unipv.sfw.view.login;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.*;
 
 public class LoginPanel extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JPasswordField passwordField;
 	private JTextField cfText;
 	private JLabel lblIdAccount,lblPassword;

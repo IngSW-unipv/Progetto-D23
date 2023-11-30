@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface IPrenotazioneDAO {
 	ArrayList<PrenotazioneDB> selectAllPrenotazioni();
 	PrenotazioneDB selectPrenotazioneByIdPren(int idPren);
-	ArrayList<PrenotazioneDB> selectPrenotazioniErogateByPaziente(String cf);
+//	ArrayList<PrenotazioneDB> selectPrenotazioniErogateByPaziente(String cf);
 	ArrayList<PrenotazioneDB> selectPrenotazioniByPersonaleSanitario(String cf);
 	ArrayList<PrenotazioneDB> selectPrenotazioniByPaziente(String cf);
 	boolean insertPrenotazione(PrenotazioneDB p);

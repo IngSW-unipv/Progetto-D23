@@ -13,14 +13,17 @@ public class CambiaPasswordActionListener implements ActionListener{
 	private ViewController view;
 	private static StrutturaSanitaria model;
 
-	public CambiaPasswordActionListener(StrutturaSanitaria model2, ViewController view2) {
+	public CambiaPasswordActionListener(StrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//impostare false il panel che chiama questo actionPerformed
+		view.getPazientePanel().setVisible(false);
+		view.getMedicoPanel().setVisible(false);
+		view.getOperatoreSanitarioPanel().setVisible(false);
+		view.getOperatoreUfficioPanel().setVisible(false);
 		view.getCambiaPwPanel().setVisible(true);
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		view.getContentPane().setLayout(null);

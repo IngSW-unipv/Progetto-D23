@@ -14,7 +14,7 @@ public class PazientePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
-	private JList<String> visite, erogate;
+	private JList<String> listaPrenotazioni, listaPrenErogate;
 	private JButton prenota, cancella, logout, cambiaPw, modificaCartella;
 	private DefaultListModel<String> modelloLista, modelloListaDue;
 	private JLabel altezza, peso, gruppoSanguigno;
@@ -63,23 +63,23 @@ public class PazientePanel extends JPanel{
 		prenotazioniErogate = new JLabel("PRENOTAZIONI EROGATE");
 		
 		
-		visite = new JList<>();
-		visite.setPreferredSize(new Dimension(1000, 1000));
+		listaPrenotazioni = new JList<>();
+		listaPrenotazioni.setPreferredSize(new Dimension(1000, 1000));
 		modelloLista = new DefaultListModel<>();
 		
-		erogate = new JList<>();
-		erogate.setPreferredSize(new Dimension(1000, 1000));
+		listaPrenErogate = new JList<>();
+		listaPrenErogate.setPreferredSize(new Dimension(1000, 1000));
 		modelloListaDue = new DefaultListModel<>();
 		
-		visite.setModel(modelloLista);
-		erogate.setModel(modelloListaDue);
+		listaPrenotazioni.setModel(modelloLista);
+		listaPrenErogate.setModel(modelloListaDue);
 		
-		scrollVisite = new JScrollPane(visite);
+		scrollVisite = new JScrollPane(listaPrenotazioni);
 		scrollVisite.setPreferredSize(new Dimension(650,150));
 		scrollVisite.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollVisite.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         
-        scrollErogate = new JScrollPane(erogate);
+        scrollErogate = new JScrollPane(listaPrenErogate);
         scrollErogate.setPreferredSize(new Dimension(650,150));
         scrollErogate.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollErogate.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -123,11 +123,7 @@ public class PazientePanel extends JPanel{
 		
 	}
 	
-	public void addElementoLista(String s) {
-		modelloLista.addElement(s);
-	}
-	
-	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
+	public void setListaPrenotazioni (ArrayList<Prenotazione> prenotazioni) {
 		modelloLista.clear();
 		for(Prenotazione p : prenotazioni) {
 			
@@ -142,7 +138,25 @@ public class PazientePanel extends JPanel{
 			
 			modelloLista.addElement(s);
 		}
-		visite.setModel(modelloLista);
+		listaPrenotazioni.setModel(modelloLista);
+	}
+	
+	public void setListaPrenotazioniErogate (ArrayList<Prenotazione> prenotazioni) {
+		modelloListaDue.clear();
+		for(Prenotazione p : prenotazioni) {
+			
+			String idPren = String.valueOf(p.getIdPren());
+			String pSanitarioNome = p.getPersonaleSanitario().getNome();
+			String pSanitarioCognome = p.getPersonaleSanitario().getCognome();
+			String prest = p.getPrestazione().getTipo().name();
+			String data = p.getData().toString();
+			String orario = p.getOrario().toString();
+			String s = new String("ID PRENOTAZIONE: "+idPren+", MEDICO/OPERATORE: "+pSanitarioNome
+					+" "+pSanitarioCognome+", PRESTAZIONE: "+prest+", DATA: "+data+", ORA: "+orario);
+			
+			modelloListaDue.addElement(s);
+		}
+		listaPrenErogate.setModel(modelloListaDue);
 	}
 	
 	public void setNome(String nome) {
@@ -158,11 +172,11 @@ public class PazientePanel extends JPanel{
 	}
 	
 	public void setAltezza(String altezza){
-		pAltezza.setText(altezza);
+		pAltezza.setText(altezza+" cm");
 	}
 
 	public void setPeso(String peso){
-		pPeso.setText(peso);
+		pPeso.setText(peso+" kg");
 	}
 
 	public void setGruppoSanguigno(String sangue){

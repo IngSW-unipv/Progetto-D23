@@ -37,15 +37,16 @@ public class GoBtnActionListener implements ActionListener {
 			Toolkit kit = Toolkit.getDefaultToolkit();
 			Dimension screenSize = kit.getScreenSize();
 			
-//			int screenHeight= screenSize.height;
-//			int screenWidth = screenSize.width;
-//			
-//			//serve per centrare il frame nello schermo
-//			view.setSize(screenWidth, screenHeight);
-//			view.setLocationRelativeTo(null);
+			int screenHeight= screenSize.height;
+			int screenWidth = screenSize.width;
+			
+			//serve per centrare il frame nello schermo
+			view.setSize(screenWidth, screenHeight);
+			view.setLocationRelativeTo(null);
 			
 			Account acc = model.getCfPersone().get(cf);
 			TipoAccount tipoAcc = acc.getTipoAcc();
+			model.aggiornaPrenotazioni();
 			model.setUtenteCorrente(cf);
 			
 			switch(tipoAcc) {
@@ -53,7 +54,7 @@ public class GoBtnActionListener implements ActionListener {
 				view.getLoginPanel().setVisible(false);
 				view.getMedicoPanel().setVisible(true);
 				Medico med = (Medico) acc;
-				view.getMedicoPanel().setListaVisite(med.getCalendario());
+				view.getMedicoPanel().setListaPrenotazioni(med.getCalendario());
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getMedicoPanel().setNome(med.getNome());
@@ -89,7 +90,8 @@ public class GoBtnActionListener implements ActionListener {
 				view.getLoginPanel().setVisible(false);
 				view.getPazientePanel().setVisible(true);
 				Paziente p =(Paziente)acc;		
-				view.getPazientePanel().setListaVisite(p.getPrenotazioni());
+				view.getPazientePanel().setListaPrenotazioni(p.getPrenotazioni());
+				view.getPazientePanel().setListaPrenotazioniErogate(p.getCartellaPersonale().getPrenotazioni());
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
 				view.getPazientePanel().setNome(p.getNome());
