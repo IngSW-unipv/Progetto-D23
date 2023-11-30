@@ -161,7 +161,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		ResultSet rs1;
 		
 		try {
-			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PERSONALE_SANITARIO = ?";
+			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI WHERE PERSONALE_SANITARIO = ? ORDER BY DATA_PREN";
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, cf);
 			rs1= ps1.executeQuery();

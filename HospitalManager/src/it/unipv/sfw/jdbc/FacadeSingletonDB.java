@@ -43,11 +43,11 @@ public class FacadeSingletonDB {
 		this.prenotazione = new PrenotazioneDAO();
 		this.prestazione = new PrestazioneSanitariaDAO();
 		
+		popolaPrestazione();
 		popolaPazienti();
 		popolaMedici();
 		popolaOperatoriSanitari();
 		popolaOperatoriUfficio();
-		popolaPrestazione();
 		popolaCartellaClinica(struttura1.getPazienti());
 		popolaPrenotazioni(struttura1.getPazienti());
 		recuperoIdUltimaPrenotazione();
