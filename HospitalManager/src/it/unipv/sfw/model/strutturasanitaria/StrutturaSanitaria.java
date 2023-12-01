@@ -66,6 +66,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.idPrenotazioni = new HashMap<>();
 		this.personaleSanitario = new HashMap<>();
 		
+		this.indiceArraySlotLiberi = 0;
+
+		
 		//this.istanzaDB = FacadeSingletonDB.getIstanzaFacade();
 
 	}
@@ -289,6 +292,21 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return check;
 	}
 	
+	public void incIndexArraySlotLiberi() {
+		indiceArraySlotLiberi++;
+	}
+	
+	public void decIndexArraySlotLiberi() {
+		indiceArraySlotLiberi--;
+	}
+	
+	public void impostaSlotLiberiPerPrestazione(TipoPrestazione tipoPrest){
+		this.indiceArraySlotLiberi = 0;
+		ArrayList<SlotCalendarioSingoli> slot = FacadeSingletonDB.getIstanzaFacade().visualizzaSlotLiberi(tipoPrest); 
+		this.slotLiberi.clear();
+		this.slotLiberi.addAll(slot);
+	}	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -417,20 +435,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.personaleSanitario = personaleSanitario;
 	}
 	
-	//////////////////////////////	
-
-	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoli> slotLiberi) {
-		this.slotLiberi = slotLiberi;
-		this.indiceArraySlotLiberi = 0;
-	}
-	
-	public void incIndexArraySlotLiberi() {
-		indiceArraySlotLiberi++;
-	}
-	
-	public void decIndexArraySlotLiberi() {
-		indiceArraySlotLiberi--;
-	}
 	
 	public int getIndexArraySlotLiberi() {
 		return indiceArraySlotLiberi;
@@ -439,10 +443,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberi() {
 		return slotLiberi;
 	}
-	
-	public void impostaSlotLiberiPerPrestazione(TipoPrestazione tipoPrest){
-		setArraySlotLiberi(FacadeSingletonDB.getIstanzaFacade().visualizzaSlotLiberi(tipoPrest)); 
-	}	
 	
 }
 	

@@ -34,6 +34,10 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			
 			String cf = view.getPrenotatiPanelUfficio().getCfField().getText();
 			
+			//TEST
+			System.out.println(model.getArraySlotLiberi().size());
+			///////////////
+			
 			// data e ora prenotati per la prestazione
 			SlotCalendarioSingoli slotCorrente = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());
 			LocalDate data = slotCorrente.getData();

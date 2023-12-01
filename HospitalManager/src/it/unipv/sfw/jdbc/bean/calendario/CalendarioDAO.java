@@ -52,33 +52,63 @@ public class CalendarioDAO implements ICalendarioDAO {
 		return calendario;
 	}
 	
+	@Override
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendario1() {
+		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1 = conn.createStatement();
+			String query = "SELECT hospitalmanager.CALENDARI.CALENDARIO_DATA, hospitalmanager.CALENDARI.GIORNO_SETTIMANA, hospitalmanager.CALENDARI.NOME_VACANZE, hospitalmanager.CALENDARI.ORARIO, \r\n"
+					+ "hospitalmanager.CALENDARI.VISITA_ONCOLOGICA \r\n"
+					+ "FROM hospitalmanager.CALENDARI WHERE hospitalmanager.CALENDARI.VISITA_ONCOLOGICA IS NULL \r\n"
+					+ "AND NOME_VACANZE IS NULL AND GIORNO_SETTIMANA <> 'Domenica' ORDER BY CALENDARIO_DATA LIMIT 0, 200";;
+			rs1 = st1.executeQuery(query);
+			
+			while(rs1.next()) {
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("NOME_VACANZE"),
+						rs1.getString("GIORNO_SETTIMANA"), rs1.getString("ORARIO"), rs1.getInt("VISITA_ONCOLOGICA")); 
+				
+				s.add(sc);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+				
+		return s;
+	}
+	
 	// ricerca slot liberi per prestazione
 
 	@Override
-	public ArrayList<SlotCalendarioSingoloDB> selectVoidSlot(TipoPrestazione prest){
+	public ArrayList<SlotCalendarioSingoloDB> selectSlotSingoli(TipoPrestazione prest){
 		ArrayList<SlotCalendarioSingoloDB> slotLiberi = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
 		ResultSet rs1;
 		
-		Date dataCorrente = new Date(System.currentTimeMillis());
-		
 		try {
-			String query = "SELECT CALENDARIO_DATA, GIORNO_SETTIMANA, NOME_VACANZE, ORARIO, ?  FROM hospitalmanager.CALENDARI "
-					+ "WHERE ? IS NULL "
-					+ "AND CALENDARIO_DATA > ? "
-					+ "AND NOME_VACANZE IS NULL "
-					+ "AND GIORNO_SETTIMANA <> 'Domenica'";
+			//String query = "SELECT hospitalmanager.CALENDARI.CALENDARIO_DATA, hospitalmanager.CALENDARI.GIORNO_SETTIMANA, hospitalmanager.CALENDARI.NOME_VACANZE, hospitalmanager.CALENDARI.ORARIO, hospitalmanager.CALENDARI.? FROM hospitalmanager.CALENDARI WHERE hospitalmanager.CALENDARI.? IS NULL AND NOME_VACANZE IS NULL AND GIORNO_SETTIMANA <> 'Domenica' ORDER BY CALENDARIO_DATA LIMIT 0, 200";
+			String query = "SELECT hospitalmanager.CALENDARI.CALENDARIO_DATA, hospitalmanager.CALENDARI.GIORNO_SETTIMANA, hospitalmanager.CALENDARI.NOME_VACANZE, hospitalmanager.CALENDARI.ORARIO, \r\n"
+					+ "hospitalmanager.CALENDARI.? \r\n"
+					+ "FROM hospitalmanager.CALENDARI WHERE hospitalmanager.CALENDARI.? IS NULL \r\n"
+					+ "AND NOME_VACANZE IS NULL AND GIORNO_SETTIMANA <> 'Domenica' ORDER BY CALENDARIO_DATA LIMIT 0, 200";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, prest.name());
-			ps1.setString(2, prest.name());
-			ps1.setDate(3, dataCorrente);
+			ps1.setString(1, prest.toString());
+			ps1.setString(2, prest.toString());
 			rs1 = ps1.executeQuery();
 			
 			while(rs1.next()) {
 				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
 						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt(prest.name()));
-				
+				//test
+				System.out.println(sc.toString());
+				/////////////
 				slotLiberi.add(sc);
 			}
 		}
@@ -90,6 +120,42 @@ public class CalendarioDAO implements ICalendarioDAO {
 				
 		return calendarioSingolo;
 	}
+	
+//	@Override
+//	public ArrayList<SlotCalendarioSingoloDB> selectVoidSlot(TipoPrestazione prest){
+//		ArrayList<SlotCalendarioSingoloDB> slotLiberi = new ArrayList<>();
+//		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+//		PreparedStatement ps1;
+//		ResultSet rs1;
+//		
+//		Date dataCorrente = new Date(System.currentTimeMillis());
+//		System.out.println(dataCorrente.toString());
+//		
+//		try {
+//			String query = "SELECT CALENDARIO_DATA, GIORNO_SETTIMANA, NOME_VACANZE, ORARIO, ? FROM hospitalmanager.CALENDARI WHERE ? IS NULL AND CALENDARIO_DATA > ? AND NOME_VACANZE IS NULL AND GIORNO_SETTIMANA <> 'Domenica' ORDER BY CALENDARIO_DATA LIMIT 0, 200";
+//			ps1 = conn.prepareStatement(query);
+//			ps1.setString(1, prest.name());
+//			ps1.setString(2, prest.name());
+//			ps1.setDate(3, dataCorrente);
+//			rs1 = ps1.executeQuery();
+//			
+//			while(rs1.next()) {
+//				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+//						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt(prest.name()));
+//				//test
+//				System.out.println(sc.toString());
+//				/////////////
+//				slotLiberi.add(sc);
+//			}
+//		}
+//		catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		ConnessioneDB.closeConnection(conn);
+//				
+//		return calendarioSingolo;
+//	}
 	
 	//inserimento appuntamenti nel calendario
 	@Override

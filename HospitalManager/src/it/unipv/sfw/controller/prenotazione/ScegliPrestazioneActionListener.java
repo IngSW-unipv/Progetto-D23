@@ -13,7 +13,6 @@ import it.unipv.sfw.view.ViewController;
 public class ScegliPrestazioneActionListener implements ActionListener{
 	private StrutturaSanitaria model;
 	private ViewController view;
-	private TipoPrestazione tipoPrest;
 
 	public ScegliPrestazioneActionListener(StrutturaSanitaria model, ViewController view) {
 		super();
@@ -25,8 +24,11 @@ public class ScegliPrestazioneActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		try {
 			String s = view.getPrenotatiPanelPaziente().getScegliPrestazione().getSelectedItem().toString();
-			tipoPrest = TipoPrestazione.valueOf(s);		
+			TipoPrestazione tipoPrest = TipoPrestazione.valueOf(s);		
 			model.impostaSlotLiberiPerPrestazione(tipoPrest);
+			//TEST
+			System.out.println(model.getArraySlotLiberi().size());
+			///////////////
 			SlotCalendarioSingoli slot = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());
 			String data = slot.getData().toString();
 			String orario = slot.getOrario().toString();
