@@ -58,7 +58,7 @@ public class RegistraUtenteActionListener implements ActionListener {
 			tipo = TipoAccount.OS;
 		}
 		
-		model.registrazioneAccount(CF, pw, tipoAcc, nome, cognome,
+		model.registrazioneAccount(CF, pw, tipo, nome, cognome,
 				Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita,
 				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, TipoPrestazione.valueOf(specializzazione));
 		

@@ -41,14 +41,18 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			TipoAccount tipo = TipoAccount.PA;
 			TipoPrestazione specializzazione = null;
 						
-			model.registrazioneAccount(CF, pw, tipo, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
+			Boolean check = model.registrazioneAccount(CF, pw, tipo, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
 						indirizzo, cap, email, cellulare, specializzazione);
 				
-				
-			pulisciTextField();
-			PopUp.infoBox("Nuovo account creato", "OK");
-			view.getRegistratiPanelPaziente().setVisible(false);
-			view.getLoginPanel().setVisible(true);
+			if (check == true) {
+				pulisciTextField();
+				PopUp.infoBox("Nuovo account creato", "OK");
+				view.getRegistratiPanelPaziente().setVisible(false);
+				view.getLoginPanel().setVisible(true);
+			} else {
+				PopUp.infoBox("C'è stato un errore", "Errore");
+			}
+			
 		}
 	
 		catch(Exception e1){
