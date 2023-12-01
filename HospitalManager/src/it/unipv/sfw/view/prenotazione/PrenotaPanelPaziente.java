@@ -10,7 +10,7 @@ public class PrenotaPanelPaziente extends JPanel{
 	
 	private JLabel tipoPrestazione;
 	private JLabel slot, slotProposto;
-	private String[] prestazioneString = {"Visita Oncologica", "Visita Psicologica", "Esami Sangue", "Tac", "Risonanza Magnetica", "Chemioterapia", "Radioterapia"};
+	private String[] prestazioneString = {"VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAMI_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
 	private JComboBox <String> scegliPrestazione;
 	private JButton conferma, successivo, precedente, indietro;
 	
@@ -31,7 +31,7 @@ public class PrenotaPanelPaziente extends JPanel{
 		scegliPrestazione = new JComboBox<>(prestazioneString);
 		
 		slotProposto = new JLabel("Slot Proposto");
-		slot = new JLabel("04-12-2023 15:00");
+		slot = new JLabel();
 
 		conferma = new JButton("CONFERMA APPUNTAMENTO");
 		indietro = new JButton("INDIETRO");
@@ -68,8 +68,8 @@ public class PrenotaPanelPaziente extends JPanel{
 		return slot;
 	}
 
-	public void setSlot(JLabel slot) {
-		this.slot = slot;
+	public void setSlot(String slot) {
+		this.slot.setText(slot);
 	}
 
 	public JLabel getSlotProposto() {

@@ -417,16 +417,11 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.personaleSanitario = personaleSanitario;
 	}
 	
-	
-	
-	
-	
-	
 	//////////////////////////////	
 
 	public void setArraySlotLiberi(ArrayList<SlotCalendarioSingoli> slotLiberi) {
 		this.slotLiberi = slotLiberi;
-		indiceArraySlotLiberi = 0;
+		this.indiceArraySlotLiberi = 0;
 	}
 	
 	public void incIndexArraySlotLiberi() {
@@ -445,8 +440,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		return slotLiberi;
 	}
 	
-	public ArrayList<SlotCalendarioSingoli> getArraySlotLiberiOriginale(TipoPrestazione tipoPrest){
-		return FacadeSingletonDB.getIstanzaFacade().visualizzaSlotLiberi(tipoPrest);
+	public void impostaSlotLiberiPerPrestazione(TipoPrestazione tipoPrest){
+		setArraySlotLiberi(FacadeSingletonDB.getIstanzaFacade().visualizzaSlotLiberi(tipoPrest)); 
 	}	
 	
 }

@@ -7,11 +7,12 @@ import javax.swing.*;
 
 public class PrenotaPanelUfficio extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel tipoPrestazione;
 	private JLabel slot, slotProposto;
 	private JLabel cfPaziente;
 	private JTextField cf;
-	private String[] prestazioneString = {"Visita Oncologica", "Visita Psicologica", "Esami Sangue", "Tac", "Risonanza Magnetica", "Chemioterapia", "Radioterapia"};
+	private String[] prestazioneString = {"VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAMI_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
 	private JComboBox <String> scegliPrestazione;
 	private JButton conferma, successivo, precedente, indietro;
 	
@@ -32,7 +33,7 @@ public class PrenotaPanelUfficio extends JPanel {
 		scegliPrestazione = new JComboBox<>(prestazioneString);
 		
 		slotProposto = new JLabel("Slot Proposto");
-		slot = new JLabel("04-12-2023 15:00");
+		slot = new JLabel();
 		
 		cfPaziente = new JLabel("INSERIRE CF PAZIENTE");
 		cf = new JTextField();
@@ -62,6 +63,10 @@ public class PrenotaPanelUfficio extends JPanel {
 		
 	}
 
+	public void setSlot(String slot) {
+		this.slot.setText(slot);
+	}
+	
 	public JLabel getTipoPrestazione() {
 		return tipoPrestazione;
 	}
