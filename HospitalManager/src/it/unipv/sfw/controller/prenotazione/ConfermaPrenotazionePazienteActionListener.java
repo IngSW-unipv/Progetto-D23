@@ -49,14 +49,20 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 			// paziente
 			Paziente paz = (Paziente) model.getUtenteCorrente();
 
-			model.inserisciPrenotazione(tipoPrest, paz, data, orario);
+			boolean check = model.inserisciPrenotazione(tipoPrest, paz, data, orario);
 			
-			view.getPrenotatiPanelPaziente().setVisible(false);
-			view.getPazientePanel().setVisible(true);
+			if (check == true) {
+				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+				view.getPrenotatiPanelPaziente().setVisible(false);
+				view.getPazientePanel().setVisible(true);
+			} else {
+				PopUp.infoBox("Qualcosa è andato storto!","Errore");
+			}
+			
+			
 
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			PopUp.infoBox("Ops!", "Qualcosa è andato storto!");
 		}
 
 	}

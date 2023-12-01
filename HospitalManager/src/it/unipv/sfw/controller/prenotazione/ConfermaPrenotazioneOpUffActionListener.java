@@ -43,15 +43,20 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			HashMap<String, Account> listaUtenti = model.getCfPersone();
 			Paziente paziente = (Paziente) listaUtenti.get(cf);
 			
-			model.inserisciPrenotazione(tipoPrest, paziente, data, orario);
+			boolean check = model.inserisciPrenotazione(tipoPrest, paziente, data, orario);
 			
-			view.getPrenotatiPanelUfficio().setVisible(false);
-			view.getOperatoreUfficioPanel().setVisible(true);
+			if (check == true) {
+				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+				view.getPrenotatiPanelUfficio().setVisible(false);
+				view.getOperatoreUfficioPanel().setVisible(true);
+			} else {
+				PopUp.infoBox("Qualcosa è andato storto!","Errore");
+			}
+			
 
 			
 			}catch(Exception e1){
 			e1.printStackTrace();
-			PopUp.infoBox("Qualcosa è andato storto!","Ops!");
 		}
 	}
 }	

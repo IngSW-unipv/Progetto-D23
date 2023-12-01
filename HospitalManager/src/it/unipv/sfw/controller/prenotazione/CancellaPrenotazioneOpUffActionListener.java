@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
@@ -28,9 +29,15 @@ public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 			HashMap<Integer, Prenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
 			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
-			model.cancellaPrenotazione(prenSelezionata);
+			boolean check = model.cancellaPrenotazione(prenSelezionata);
 			
-			PulisciTextField();
+			if (check == true) {
+				PulisciTextField();
+				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+			} else {
+				PopUp.infoBox("Inserite un Id prenotazione valido", "Errore");
+			}
+			
 		
 		} catch(Exception e1) {
 			e1.printStackTrace();
