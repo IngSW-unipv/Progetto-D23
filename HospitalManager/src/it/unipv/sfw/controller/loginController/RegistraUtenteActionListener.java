@@ -43,14 +43,18 @@ public class RegistraUtenteActionListener implements ActionListener {
 		String specializzazione = view.getRegistratiPanel().getSpecializzazioneScelta();
 		
 		
-		model.registrazioneAccount(CF, pw, TipoAccount.valueOf(tipoAccount), nome, cognome,
+		boolean check = model.registrazioneAccount(CF, pw, TipoAccount.valueOf(tipoAccount), nome, cognome,
 				Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita,
 				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, TipoPrestazione.valueOf(specializzazione));
 		
-		pulisciTextField();
-		PopUp.infoBox("Nuovo account creato", "OK");
-		view.getRegistratiPanel().setVisible(false);
-		view.getOperatoreUfficioPanel().setVisible(true);
+		if (check == true) {
+			pulisciTextField();
+			PopUp.infoBox("Nuovo account creato", "OK");
+			view.getRegistratiPanel().setVisible(false);
+			view.getOperatoreUfficioPanel().setVisible(true);
+		} else {
+			PopUp.infoBox("Registrazione non riuscita", "Errore");
+		}
 		}
 		catch(Exception e1) {
 
@@ -65,13 +69,13 @@ public class RegistraUtenteActionListener implements ActionListener {
 		view.getRegistratiPanel().getCfField().setText(null);
 		view.getRegistratiPanel().getDataNascitaField().setText(null);
 		view.getRegistratiPanel().getLuogoNascitaField().setText(null);
-		view.getRegistratiPanel().getProvinciaNascita().setText(null);
-		view.getRegistratiPanel().getRegioneResidenza().setText(null);
-		view.getRegistratiPanel().getProvinciaResidenza().setText(null);
-		view.getRegistratiPanel().getCittaResidenza().setText(null);
-		view.getRegistratiPanel().getIndirizzo().setText(null);
-		view.getRegistratiPanel().getEmail().setText(null);
-		view.getRegistratiPanel().getCellulare().setText(null);
+		view.getRegistratiPanel().getProvinciaNascitaField().setText(null);
+		view.getRegistratiPanel().getRegioneResidenzaField().setText(null);
+		view.getRegistratiPanel().getProvinciaResidenzaField().setText(null);
+		view.getRegistratiPanel().getCittaResidenzaField().setText(null);
+		view.getRegistratiPanel().getIndirizzoField().setText(null);
+		view.getRegistratiPanel().getEmailField().setText(null);
+		view.getRegistratiPanel().getCellulareField().setText(null);
 		view.getRegistratiPanel().getPasswordField().setText(null);
 		view.getRegistratiPanel().getCapField().setText(null);
 		

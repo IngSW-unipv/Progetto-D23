@@ -21,6 +21,13 @@ public class RegistrazioneController {
 		addActionListenerGeneraPassword();
 		addActionListenerRegistraUtente();
 		addActionListenerGoBack();
+		addActionListenerGeneraPass();
+	}
+
+
+	private void addActionListenerGeneraPass() {
+		BtnGeneraPassActionListener genPass = new BtnGeneraPassActionListener(model, view);
+		view.getRegistratiPanel().getBtnGeneraPass().addActionListener(genPass);
 	}
 
 

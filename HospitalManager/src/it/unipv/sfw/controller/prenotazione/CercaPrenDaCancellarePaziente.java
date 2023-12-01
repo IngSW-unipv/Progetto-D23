@@ -34,22 +34,22 @@ public class CercaPrenDaCancellarePaziente implements ActionListener{
 			HashMap<Integer, Prenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
 			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
-			LocalDate data = prenSelezionata.getData();
-			LocalTime orario = prenSelezionata.getOrario();
+			String data = prenSelezionata.getData().toString();
+			String orario = prenSelezionata.getOrario().toString();
 			
-			DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-			String dataString = data.format(formatterData);
-			
-			DateTimeFormatter formatterOrario = DateTimeFormatter.ofPattern("hh:mm");
-			String orarioString = orario.format(formatterOrario);
-			
-			String slot = dataString + orarioString;
-			
-			XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(slot.getBytes()));
-		    JLabel slotDaCancellare = (JLabel) d.readObject();
-		    d.close();
+//			DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//			String dataString = data.format(formatterData);
+//			
+//			DateTimeFormatter formatterOrario = DateTimeFormatter.ofPattern("hh:mm");
+//			String orarioString = orario.format(formatterOrario);
+//			
+//			String slot = dataString + orarioString;
+//			
+//			XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(slot.getBytes()));
+//		    JLabel slotDaCancellare = (JLabel) d.readObject();
+//		    d.close();
 		    
-		    view.getCancellaPanelPaziente().setSlot(slotDaCancellare);
+		    view.getCancellaPanelPaziente().setSlot(data+" | "+orario);
 			
 		} catch(Exception e1) {
 			e1.printStackTrace();

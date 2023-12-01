@@ -20,6 +20,7 @@ public class GoBackPazienteActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		view.getAggiornaCartellaClinicaPanel().setVisible(false);
 		view.getPrenotatiPanelPaziente().setVisible(false);
 		view.getCancellaPanelPaziente().setVisible(false);
 		view.getPazientePanel().setVisible(true);

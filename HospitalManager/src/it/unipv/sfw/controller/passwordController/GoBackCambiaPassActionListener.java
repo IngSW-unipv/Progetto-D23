@@ -24,6 +24,8 @@ public class GoBackCambiaPassActionListener implements ActionListener{
 		
 		Account acc = model.getUtenteCorrente();
 		TipoAccount tipoAcc = acc.getTipoAcc();
+		view.getCambiaPwPanel().setNewPass(null);
+		view.getCambiaPwPanel().setOldPass(null);
 		view.getCambiaPwPanel().setVisible(false);
 		
 		switch(tipoAcc) {

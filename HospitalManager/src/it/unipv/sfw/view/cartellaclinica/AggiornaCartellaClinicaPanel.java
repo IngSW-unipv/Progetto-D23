@@ -37,6 +37,31 @@ public class AggiornaCartellaClinicaPanel extends JPanel{
 		add(aggiorna);
 		
 	}
+
+	public JButton getBtnBack() {
+		return indietro;
+	}
+	
+	public JButton getBtnAggiorna() {
+		return aggiorna;
+	}
+
+	public JTextField getAltezza(){
+		return altezzaText;
+	}
+
+	public JTextField getPeso(){
+		return pesoText;
+	}
+
+	public String getGruppoScelto() {
+		return (String) scegliGruppo.getSelectedItem();
+	}
+
+	public JComboBox<String> getScegliGruppo(){
+		return scegliGruppo;
+	}
+	
 	
 
 }

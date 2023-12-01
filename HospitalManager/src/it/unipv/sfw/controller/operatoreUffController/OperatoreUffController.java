@@ -27,5 +27,6 @@ public class OperatoreUffController {
 		AddUtenteActionListener addUtente = new AddUtenteActionListener(model, view);
 		view.getOperatoreUfficioPanel().getAggiungiUtenteBtn().addActionListener(addUtente);
 		
+		
 	}
 }

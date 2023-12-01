@@ -65,13 +65,13 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 		view.getRegistratiPanelPaziente().getCfField().setText(null);
 		view.getRegistratiPanelPaziente().getDataNascitaField().setText(null);
 		view.getRegistratiPanelPaziente().getLuogoNascitaField().setText(null);
-		view.getRegistratiPanelPaziente().getProvinciaNascita().setText(null);
-		view.getRegistratiPanelPaziente().getRegioneResidenza().setText(null);
-		view.getRegistratiPanelPaziente().getProvinciaResidenza().setText(null);
-		view.getRegistratiPanelPaziente().getCittaResidenza().setText(null);
-		view.getRegistratiPanelPaziente().getIndirizzo().setText(null);
-		view.getRegistratiPanelPaziente().getEmail().setText(null);
-		view.getRegistratiPanelPaziente().getCellulare().setText(null);
+		view.getRegistratiPanelPaziente().getProvinciaNascitaField().setText(null);
+		view.getRegistratiPanelPaziente().getRegioneResidenzaField().setText(null);
+		view.getRegistratiPanelPaziente().getProvinciaResidenzaField().setText(null);
+		view.getRegistratiPanelPaziente().getCittaResidenzaField().setText(null);
+		view.getRegistratiPanelPaziente().getIndirizzoField().setText(null);
+		view.getRegistratiPanelPaziente().getEmailField().setText(null);
+		view.getRegistratiPanelPaziente().getCellulareField().setText(null);
 		view.getRegistratiPanelPaziente().getPasswordField().setText(null);
 		view.getRegistratiPanelPaziente().getCapField().setText(null);
 		

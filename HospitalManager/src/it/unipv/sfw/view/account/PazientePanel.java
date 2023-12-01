@@ -198,5 +198,9 @@ public class PazientePanel extends JPanel{
 	public JButton getCancellaBtn() {
 		return cancella;
 	}
+
+	public JButton getAggiornaCartellaBtn() {
+		return modificaCartella;
+	}
 }
 

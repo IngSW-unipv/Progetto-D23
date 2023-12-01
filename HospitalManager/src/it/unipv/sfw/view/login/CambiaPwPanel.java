@@ -37,4 +37,12 @@ public class CambiaPwPanel extends JPanel{
 	public JButton getBtnBack() {
 		return indietro;
 	}
+	
+	public void setNewPass(String pass) {
+		this.newPw.setText(pass);
+	}
+	
+	public void setOldPass(String pass) {
+		this.oldPw.setText(pass);
+	}
 }
