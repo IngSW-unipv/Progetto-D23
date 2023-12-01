@@ -50,9 +50,10 @@ public class RegistrazioneController {
 	}
 	
 	private void addActionListenerGoBack() {
-		BtnBackRegistrazioneActionListener goBack = new BtnBackRegistrazioneActionListener(model, view);
+		BtnBackRegistrazionePazienteActionListener goBack = new BtnBackRegistrazionePazienteActionListener(model, view);
 		view.getRegistratiPanelPaziente().getBtnBack().addActionListener(goBack);
-		view.getRegistratiPanel().getBtnBack().addActionListener(goBack);
+		BtnBackRegistrazioneActionListener goBackOpUff = new BtnBackRegistrazioneActionListener(model, view);
+		view.getRegistratiPanel().getBtnBack().addActionListener(goBackOpUff);
 	}
 
 }

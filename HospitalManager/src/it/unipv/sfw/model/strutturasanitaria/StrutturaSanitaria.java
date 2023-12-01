@@ -40,7 +40,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	HashMap<Integer, Prenotazione> idPrenotazioni;
 	HashMap<TipoPrestazione, Account> personaleSanitario;
 	
-	private Account utenteCorrente;
+	private Account utenteCorrente = null;
 	
 	private int ultimaPrenotazione;
 	
