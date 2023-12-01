@@ -62,6 +62,11 @@ public class AggiornaCartellaClinicaPanel extends JPanel{
 		return scegliGruppo;
 	}
 	
-	
+	public void setAltezza(String altezza) {
+		this.altezzaText.setText(altezza);
+	}
 
+	public void setPeso(String peso) {
+		this.pesoText.setText(peso);
+	}
 }

@@ -24,10 +24,28 @@ public class BtnBackRegistrazionePazienteActionListener implements ActionListene
 	public void actionPerformed(ActionEvent e) {
 		
 			view.getRegistratiPanelPaziente().setVisible(false);
+			pulisciTextFields();
 			view.getLoginPanel().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);
 		
+	}
+
+	private void pulisciTextFields() {
+		view.getRegistratiPanelPaziente().getNomeField().setText(null);
+		view.getRegistratiPanelPaziente().getCognomeField().setText(null);
+		view.getRegistratiPanelPaziente().getCfField().setText(null);
+		view.getRegistratiPanelPaziente().getDataNascitaField().setText(null);
+		view.getRegistratiPanelPaziente().getLuogoNascitaField().setText(null);
+		view.getRegistratiPanelPaziente().getProvinciaNascitaField().setText(null);
+		view.getRegistratiPanelPaziente().getRegioneResidenzaField().setText(null);
+		view.getRegistratiPanelPaziente().getProvinciaResidenzaField().setText(null);
+		view.getRegistratiPanelPaziente().getCittaResidenzaField().setText(null);
+		view.getRegistratiPanelPaziente().getIndirizzoField().setText(null);
+		view.getRegistratiPanelPaziente().getEmailField().setText(null);
+		view.getRegistratiPanelPaziente().getCellulareField().setText(null);
+		view.getRegistratiPanelPaziente().getPasswordField().setText(null);
+		view.getRegistratiPanelPaziente().getCapField().setText(null);
 	}
 
 }

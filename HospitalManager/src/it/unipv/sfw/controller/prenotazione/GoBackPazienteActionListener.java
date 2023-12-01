@@ -23,9 +23,16 @@ public class GoBackPazienteActionListener implements ActionListener{
 		view.getAggiornaCartellaClinicaPanel().setVisible(false);
 		view.getPrenotatiPanelPaziente().setVisible(false);
 		view.getCancellaPanelPaziente().setVisible(false);
+		pulisciTextFields();
 		view.getPazientePanel().setVisible(true);
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		view.getContentPane().setLayout(null);
+		
+	}
+
+	private void pulisciTextFields() {
+		view.getAggiornaCartellaClinicaPanel().getAltezza().setText(null);
+		view.getAggiornaCartellaClinicaPanel().getPeso().setText(null);
 		
 	}
 
