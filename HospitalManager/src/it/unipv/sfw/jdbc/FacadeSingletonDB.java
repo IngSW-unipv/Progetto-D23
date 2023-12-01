@@ -249,7 +249,6 @@ public class FacadeSingletonDB {
 		
 		public void visualizzaSlotLiberi(TipoPrestazione prest) {
 			LocalDate oggi = LocalDate.now();
-			LocalTime ora = LocalTime.now();
 			ArrayList<SlotCalendarioSingoloDB> slotDB = new ArrayList<>();
 			
 			switch(prest) {
@@ -282,10 +281,9 @@ public class FacadeSingletonDB {
 				
 				SlotCalendarioSingoli slot = new SlotCalendarioSingoli(i.getData(), i.getGiorno(), i.getOrario());
 				
-				if(slot.getData().isAfter(oggi) && slot.getOrario().isAfter(ora)) {
+				if(slot.getData().isAfter(oggi)) {
 					struttura1.getArraySlotLiberi().add(slot);
 				}
-				struttura1.getArraySlotLiberi().add(slot);
 			}
 			
 			}	

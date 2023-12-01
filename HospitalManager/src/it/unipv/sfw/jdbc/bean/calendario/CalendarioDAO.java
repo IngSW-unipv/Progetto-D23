@@ -177,7 +177,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 			
 			while(rs1.next()) {
 				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
-						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("RISONANZA")); 
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("RISONANZA_MAGNETICA")); 
 				
 				s.add(sc);
 			}
