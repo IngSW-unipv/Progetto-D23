@@ -245,75 +245,50 @@ public class FacadeSingletonDB {
 			}
 			
 			}
-		}
+		}	
 		
-//		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(TipoPrestazione prest) {
-//			ArrayList<SlotCalendarioSingoli> slotLiberi = new ArrayList<>();
-//			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.selectVoidSlot(prest);
-//			
-//			System.out.println(slotDB.isEmpty());
-//			
-//			for(SlotCalendarioSingoloDB i : slotDB) {
-//				//Prenotazione p = struttura1.getIdPrenotazioni().get(i.getIdPren());
-//				
-//				//TEST
-//				//System.out.println(p+" | "+p.getIdPren());
-//				///////////////////
-//				
-//				SlotCalendarioSingoli slot = new SlotCalendarioSingoli(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(), null);
-//				slotLiberi.add(slot);
-//			}
-//			
-//			return slotLiberi;
-//		}	
-		
-//		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(TipoPrestazione prest) {
-//			LocalDate oggi = LocalDate.now();
-//			LocalTime ora = LocalTime.now();
-//			ArrayList<SlotCalendarioSingoli> slotLiberi = new ArrayList<>();
-//			ArrayList<SlotCalendarioDB> slotDB = calendario.selectCalendario();
-//			
-//			System.out.println(slotDB.isEmpty());
-//			
-//			for(SlotCalendarioDB i : slotDB) {
-//				//Prenotazione p = struttura1.getIdPrenotazioni().get(i.getIdPren());
-//				
-//				//TEST
-//				//System.out.println(p+" | "+p.getIdPren());
-//				///////////////////
-//				SlotCalendarioSingoli slot = new SlotCalendarioSingoli(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(), null);
-//				
-//				if(slot.getData().isAfter(oggi) && slot.getOrario().isAfter(ora)) {
-//				slotLiberi.add(slot);
-//				}
-//			}
-//			
-//			return slotLiberi;
-//		}	
-		
-		public ArrayList<SlotCalendarioSingoli> visualizzaSlotLiberi(TipoPrestazione prest) {
+		public void visualizzaSlotLiberi(TipoPrestazione prest) {
 			LocalDate oggi = LocalDate.now();
 			LocalTime ora = LocalTime.now();
-			ArrayList<SlotCalendarioSingoli> slotLiberi = new ArrayList<>();
-			ArrayList<SlotCalendarioSingoloDB> slotDB = calendario.selectCalendario1();
+			ArrayList<SlotCalendarioSingoloDB> slotDB = new ArrayList<>();
 			
-			System.out.println(slotDB.isEmpty());
-			
-			for(SlotCalendarioSingoloDB i : slotDB) {
-				//Prenotazione p = struttura1.getIdPrenotazioni().get(i.getIdPren());
-				
-				//TEST
-				//System.out.println(p+" | "+p.getIdPren());
-				///////////////////
-				SlotCalendarioSingoli slot = new SlotCalendarioSingoli(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(), null);
-				
-				if(slot.getData().isAfter(oggi) && slot.getOrario().isAfter(ora)) {
-				slotLiberi.add(slot);
-				}
+			switch(prest) {
+			case VISITA_ONCOLOGICA:
+				slotDB = calendario.selectCalendarioOncologica();
+				break;
+			case VISITA_PSICOLOGICA:
+				slotDB = calendario.selectCalendarioPsicologica();
+				break;
+			case ESAMI_SANGUE:
+				slotDB = calendario.selectCalendarioEsamiSangue();
+				break;
+			case TAC:
+				slotDB = calendario.selectCalendarioTac();
+				break;
+			case RISONANZA_MAGNETICA:
+				slotDB = calendario.selectCalendarioRisonanza();
+				break;
+			case CHEMIOTERAPIA:
+				slotDB = calendario.selectCalendarioChemio();
+				break;
+			case RADIOTERAPIA:
+				slotDB = calendario.selectCalendarioRadio();
+				break;
+			case NULL:
+				break;
 			}
 			
-			return slotLiberi;
-		}	
+			for(SlotCalendarioSingoloDB i : slotDB) {
+				
+				SlotCalendarioSingoli slot = new SlotCalendarioSingoli(i.getData(), i.getGiorno(), i.getOrario());
+				
+				if(slot.getData().isAfter(oggi) && slot.getOrario().isAfter(ora)) {
+					struttura1.getArraySlotLiberi().add(slot);
+				}
+				struttura1.getArraySlotLiberi().add(slot);
+			}
+			
+			}	
 		
 		
 	public void inserisciProfilo(Account a) {

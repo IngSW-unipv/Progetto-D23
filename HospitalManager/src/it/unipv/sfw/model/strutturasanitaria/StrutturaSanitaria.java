@@ -302,9 +302,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	public void impostaSlotLiberiPerPrestazione(TipoPrestazione tipoPrest){
 		this.indiceArraySlotLiberi = 0;
-		ArrayList<SlotCalendarioSingoli> slot = FacadeSingletonDB.getIstanzaFacade().visualizzaSlotLiberi(tipoPrest); 
 		this.slotLiberi.clear();
-		this.slotLiberi.addAll(slot);
+		FacadeSingletonDB.getIstanzaFacade().visualizzaSlotLiberi(tipoPrest); 
 	}	
 	
 	public String getNome() {

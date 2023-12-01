@@ -49,11 +49,11 @@ public class ScegliPrestazioneActionListener implements ActionListener{
 			TipoAccount tipoAcc = acc.getTipoAcc();
 		    
 		    if(tipoAcc == TipoAccount.PA) {
-		    	view.getPrenotatiPanelPaziente().setSlot(data+orario);
+		    	view.getPrenotatiPanelPaziente().setSlot(data+" | "+orario);
 		    }
 		    
 		    else {
-		    	view.getPrenotatiPanelUfficio().setSlot(data+orario);
+		    	view.getPrenotatiPanelUfficio().setSlot(data+" | "+orario);
 		    }
 		}catch(Exception e1) {
 			e1.printStackTrace();

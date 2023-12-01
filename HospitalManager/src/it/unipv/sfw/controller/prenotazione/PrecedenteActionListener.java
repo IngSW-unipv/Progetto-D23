@@ -22,33 +22,24 @@ public class PrecedenteActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			model.decIndexArraySlotLiberi();
+			if(model.getIndexArraySlotLiberi()>0) {
+				model.decIndexArraySlotLiberi();
+			}
+			
 			
 			SlotCalendarioSingoli slot = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());
 			String data = slot.getData().toString();
 			String orario = slot.getOrario().toString();
 			
-//			DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//			String dataString = data.format(formatterData);
-//			
-//			DateTimeFormatter formatterOrario = DateTimeFormatter.ofPattern("hh:mm");
-//			String orarioString = orario.format(formatterOrario);
-			
-//			String slot = dataString + orarioString;
-			
-//			XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(slot.getBytes()));
-//		    JLabel slotDaInserire = (JLabel) d.readObject();
-//		    d.close();
-			
 		    Account acc = model.getUtenteCorrente();
 			TipoAccount tipoAcc = acc.getTipoAcc();
 		    
 		    if(tipoAcc == TipoAccount.PA) {
-		    	view.getPrenotatiPanelPaziente().setSlot(data+orario);
+		    	view.getPrenotatiPanelPaziente().setSlot(data+" | "+orario);
 		    }
 		    
 		    else {
-		    	view.getPrenotatiPanelUfficio().setSlot(data+orario);
+		    	view.getPrenotatiPanelUfficio().setSlot(data+" | "+orario);
 		    }
 		    
 		}catch(Exception e1) {

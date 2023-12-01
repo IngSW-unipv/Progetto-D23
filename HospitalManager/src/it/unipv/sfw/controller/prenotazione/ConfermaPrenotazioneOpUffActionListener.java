@@ -35,6 +35,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			String cf = view.getPrenotatiPanelUfficio().getCfField().getText();
 			
 			//TEST
+			//model.impostaSlotLiberiPerPrestazione(tipoPrest);
 			System.out.println(model.getArraySlotLiberi().size());
 			///////////////
 			

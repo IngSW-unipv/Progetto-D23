@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.jdbc.bean.prenotazione.PrenotazioneDB;
-import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public class CalendarioDAO implements ICalendarioDAO {
 	private Connection conn;
@@ -53,7 +52,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 	}
 	
 	@Override
-	public ArrayList<SlotCalendarioSingoloDB> selectCalendario1() {
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendarioOncologica() {
 		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
@@ -61,15 +60,12 @@ public class CalendarioDAO implements ICalendarioDAO {
 		
 		try {
 			st1 = conn.createStatement();
-			String query = "SELECT hospitalmanager.CALENDARI.CALENDARIO_DATA, hospitalmanager.CALENDARI.GIORNO_SETTIMANA, hospitalmanager.CALENDARI.NOME_VACANZE, hospitalmanager.CALENDARI.ORARIO, \r\n"
-					+ "hospitalmanager.CALENDARI.VISITA_ONCOLOGICA \r\n"
-					+ "FROM hospitalmanager.CALENDARI WHERE hospitalmanager.CALENDARI.VISITA_ONCOLOGICA IS NULL \r\n"
-					+ "AND NOME_VACANZE IS NULL AND GIORNO_SETTIMANA <> 'Domenica' ORDER BY CALENDARIO_DATA LIMIT 0, 200";;
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_VISITA_ONCOLOGICA";
 			rs1 = st1.executeQuery(query);
 			
 			while(rs1.next()) {
-				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("NOME_VACANZE"),
-						rs1.getString("GIORNO_SETTIMANA"), rs1.getString("ORARIO"), rs1.getInt("VISITA_ONCOLOGICA")); 
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("VISITA_ONCOLOGICA")); 
 				
 				s.add(sc);
 			}
@@ -83,33 +79,23 @@ public class CalendarioDAO implements ICalendarioDAO {
 		return s;
 	}
 	
-	// ricerca slot liberi per prestazione
-
 	@Override
-	public ArrayList<SlotCalendarioSingoloDB> selectSlotSingoli(TipoPrestazione prest){
-		ArrayList<SlotCalendarioSingoloDB> slotLiberi = new ArrayList<>();
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendarioPsicologica() {
+		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
-		PreparedStatement ps1;
+		Statement st1;
 		ResultSet rs1;
 		
 		try {
-			//String query = "SELECT hospitalmanager.CALENDARI.CALENDARIO_DATA, hospitalmanager.CALENDARI.GIORNO_SETTIMANA, hospitalmanager.CALENDARI.NOME_VACANZE, hospitalmanager.CALENDARI.ORARIO, hospitalmanager.CALENDARI.? FROM hospitalmanager.CALENDARI WHERE hospitalmanager.CALENDARI.? IS NULL AND NOME_VACANZE IS NULL AND GIORNO_SETTIMANA <> 'Domenica' ORDER BY CALENDARIO_DATA LIMIT 0, 200";
-			String query = "SELECT hospitalmanager.CALENDARI.CALENDARIO_DATA, hospitalmanager.CALENDARI.GIORNO_SETTIMANA, hospitalmanager.CALENDARI.NOME_VACANZE, hospitalmanager.CALENDARI.ORARIO, \r\n"
-					+ "hospitalmanager.CALENDARI.? \r\n"
-					+ "FROM hospitalmanager.CALENDARI WHERE hospitalmanager.CALENDARI.? IS NULL \r\n"
-					+ "AND NOME_VACANZE IS NULL AND GIORNO_SETTIMANA <> 'Domenica' ORDER BY CALENDARIO_DATA LIMIT 0, 200";
-			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, prest.toString());
-			ps1.setString(2, prest.toString());
-			rs1 = ps1.executeQuery();
+			st1 = conn.createStatement();
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_VISITA_PSICOLOGICA";
+			rs1 = st1.executeQuery(query);
 			
 			while(rs1.next()) {
 				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
-						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt(prest.name()));
-				//test
-				System.out.println(sc.toString());
-				/////////////
-				slotLiberi.add(sc);
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("VISITA_PSICOLOGICA")); 
+				
+				s.add(sc);
 			}
 		}
 		catch(Exception e) {
@@ -118,8 +104,152 @@ public class CalendarioDAO implements ICalendarioDAO {
 		
 		ConnessioneDB.closeConnection(conn);
 				
-		return calendarioSingolo;
+		return s;
 	}
+	
+	@Override
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendarioTac() {
+		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1 = conn.createStatement();
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_TAC";
+			rs1 = st1.executeQuery(query);
+			
+			while(rs1.next()) {
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("TAC")); 
+				
+				s.add(sc);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+				
+		return s;
+	}
+	
+	@Override
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendarioEsamiSangue() {
+		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1 = conn.createStatement();
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_ESAMI_SANGUE";
+			rs1 = st1.executeQuery(query);
+			
+			while(rs1.next()) {
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("ESAMI_SANGUE")); 
+				
+				s.add(sc);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+				
+		return s;
+	}
+	
+	@Override
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendarioRisonanza() {
+		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1 = conn.createStatement();
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_RISONANZA";
+			rs1 = st1.executeQuery(query);
+			
+			while(rs1.next()) {
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("RISONANZA")); 
+				
+				s.add(sc);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+				
+		return s;
+	}
+	
+	@Override
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendarioChemio() {
+		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1 = conn.createStatement();
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_CHEMIOTERAPIA";
+			rs1 = st1.executeQuery(query);
+			
+			while(rs1.next()) {
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("CHEMIOTERAPIA")); 
+				
+				s.add(sc);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+				
+		return s;
+	}
+	
+	@Override
+	public ArrayList<SlotCalendarioSingoloDB> selectCalendarioRadio() {
+		ArrayList<SlotCalendarioSingoloDB> s = new ArrayList<>();
+		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
+		Statement st1;
+		ResultSet rs1;
+		
+		try {
+			st1 = conn.createStatement();
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_RADIOTERAPIA";
+			rs1 = st1.executeQuery(query);
+			
+			while(rs1.next()) {
+				SlotCalendarioSingoloDB sc = new SlotCalendarioSingoloDB(rs1.getString("CALENDARIO_DATA"), rs1.getString("GIORNO_SETTIMANA"),
+						rs1.getString("NOME_VACANZE"), rs1.getString("ORARIO"), rs1.getInt("RADIOTERAPIA")); 
+				
+				s.add(sc);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ConnessioneDB.closeConnection(conn);
+				
+		return s;
+	}
+	
+	
+	
+	
 	
 //	@Override
 //	public ArrayList<SlotCalendarioSingoloDB> selectVoidSlot(TipoPrestazione prest){
