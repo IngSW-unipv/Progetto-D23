@@ -38,11 +38,9 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			String cap = view.getRegistratiPanelPaziente().getCapField().getText();
 			String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
 			
-			TipoAccount tipo = TipoAccount.PA;
-			TipoPrestazione specializzazione = null;
 						
-			Boolean check = model.registrazioneAccount(CF, pw, tipo, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-						indirizzo, cap, email, cellulare, specializzazione);
+			Boolean check = model.registrazioneAccount(CF, pw, TipoAccount.PA, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
+						indirizzo, cap, email, cellulare, TipoPrestazione.NULL);
 				
 			if (check == true) {
 				pulisciTextField();

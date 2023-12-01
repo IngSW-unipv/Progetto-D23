@@ -22,9 +22,9 @@ public class RegistratiPanel extends JPanel{
 	private JTextField emailField, cellulareField;
 	private JPasswordField passwordField;
 	private JButton btnGeneraPass, btnConfermaReg, indietro;
-	private String[] tipoAccount = {"Paziente", "Medico", "OperatoreUfficio", "OperatoreSanitario"};
+	private String[] tipoAccount = {"PA", "ME", "OU", "OS"};
 	private JComboBox<String> scegliTipo;
-	private String[] sessoString = {"Maschio", "Femmina"};
+	private String[] sessoString = {"M", "F"};
 	private JComboBox<String> scegliSesso;
 	private String[] tipoSpecializzazione = {"NULL","VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAME_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
 	private JComboBox<String> scegliSpecializzazione;

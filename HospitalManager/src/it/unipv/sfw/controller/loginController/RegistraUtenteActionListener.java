@@ -14,7 +14,6 @@ public class RegistraUtenteActionListener implements ActionListener {
 
 	private StrutturaSanitaria model;
 	private ViewController view;
-	private TipoAccount tipoAcc;
 	
 	public RegistraUtenteActionListener(StrutturaSanitaria model, ViewController view) {
 		this.model = model;
@@ -43,22 +42,8 @@ public class RegistraUtenteActionListener implements ActionListener {
 		String tipoAccount = view.getRegistratiPanel().getTipoAccountScelto();
 		String specializzazione = view.getRegistratiPanel().getSpecializzazioneScelta();
 		
-		TipoAccount tipo = null;
 		
-		if (tipoAccount == "paziente") {
-			tipo = TipoAccount.PA;
-		}
-		else if(tipoAccount == "medico"){
-			tipo = TipoAccount.ME;
-		}
-		else if(tipoAccount == "OperatoreUfficio"){
-			tipo = TipoAccount.OU;
-		}
-		else {
-			tipo = TipoAccount.OS;
-		}
-		
-		model.registrazioneAccount(CF, pw, tipo, nome, cognome,
+		model.registrazioneAccount(CF, pw, TipoAccount.valueOf(tipoAccount), nome, cognome,
 				Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita,
 				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, TipoPrestazione.valueOf(specializzazione));
 		
@@ -91,13 +76,6 @@ public class RegistraUtenteActionListener implements ActionListener {
 		view.getRegistratiPanel().getCapField().setText(null);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
