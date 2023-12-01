@@ -22,15 +22,8 @@ public class BtnGeneraPassActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String pw = model.generaPwTemp();
 		
-		Account acc = model.getUtenteCorrente();
-		TipoAccount tipoAcc = acc.getTipoAcc();
-		
-		if (tipoAcc == TipoAccount.OU) {
-			view.getRegistratiPanel().getPasswordField().setText(pw);			
-		} else {
-			view.getRegistratiPanelPaziente().getPasswordField().setText(pw);
-		}
-
+		view.getRegistratiPanel().getPasswordField().setText(pw);
+		view.getRegistratiPanelPaziente().getPasswordField().setText(pw);
 		
 		
 	}
