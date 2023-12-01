@@ -30,7 +30,7 @@ public class CancellaPanelPaziente extends JPanel{
 		idPren = new JTextField();
 		
 		cancellaSlot = new JLabel("PRENOTAZIONE DA CANCELLARE:");
-		slot = new JLabel("04-12-2023 15:00");
+		slot = new JLabel();
 
 		cerca = new JButton("CERCA APPUNTAMENTO");
 		conferma = new JButton("CANCELLA APPUNTAMENTO");
