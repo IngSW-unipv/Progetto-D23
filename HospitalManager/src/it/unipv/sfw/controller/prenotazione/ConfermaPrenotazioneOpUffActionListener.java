@@ -51,7 +51,8 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			boolean check = model.inserisciPrenotazione(tipoPrest, paziente, data, orario);
 			
 			if (check == true) {
-				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+				PopUp.infoBox("Prenotazione inserita con successo", "OK");
+				pulisciTextFields();
 				view.getPrenotatiPanelUfficio().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
 			} else {
@@ -63,5 +64,9 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			}catch(Exception e1){
 			e1.printStackTrace();
 		}
+	}
+
+	private void pulisciTextFields() {
+		view.getPrenotatiPanelUfficio().getSlot().setText(null);
 	}
 }	

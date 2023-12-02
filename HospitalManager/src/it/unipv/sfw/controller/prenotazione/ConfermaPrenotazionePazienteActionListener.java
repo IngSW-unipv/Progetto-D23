@@ -53,6 +53,7 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 			
 			if (check == true) {
 				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+				pulisciTextFields();
 				view.getPrenotatiPanelPaziente().setVisible(false);
 				view.getPazientePanel().setVisible(true);
 			} else {
@@ -66,6 +67,10 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 			PopUp.infoBox("Qualcosa è andato storto!","Errore");
 		}
 
+	}
+
+	private void pulisciTextFields() {
+		view.getPrenotatiPanelPaziente().getSlot().setText(null);
 	}
 
 }

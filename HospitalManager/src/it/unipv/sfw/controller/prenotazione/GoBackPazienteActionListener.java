@@ -31,9 +31,16 @@ public class GoBackPazienteActionListener implements ActionListener{
 	}
 
 	private void pulisciTextFields() {
+		//aggiorna cartella clinica
 		view.getAggiornaCartellaClinicaPanel().getAltezza().setText(null);
 		view.getAggiornaCartellaClinicaPanel().getPeso().setText(null);
-		
+				
+		//cancella prenotazione del paziente
+		view.getCancellaPanelPaziente().getIdPrenotazione().setText(null);
+		view.getCancellaPanelPaziente().getSlot().setText(null);
+
+		//prenotazione del paziente
+		view.getPrenotatiPanelPaziente().getSlot().setText(null);
 	}
 
 }

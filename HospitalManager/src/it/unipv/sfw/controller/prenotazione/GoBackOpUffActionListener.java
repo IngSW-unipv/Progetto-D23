@@ -22,11 +22,20 @@ public class GoBackOpUffActionListener implements ActionListener{
 		
 		view.getCancellaPanelUfficio().setVisible(false);
 		view.getPrenotatiPanelUfficio().setVisible(false);
-		
+		pulisciTextFields();
 		view.getOperatoreUfficioPanel().setVisible(true);
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		view.getContentPane().setLayout(null);
 
+	}
+	
+	private void pulisciTextFields() {
+		//cancella prenotazione del OpUff
+		view.getCancellaPanelUfficio().getIdPrenotazione().setText(null);
+		view.getCancellaPanelUfficio().getCf().setText(null);
+		view.getCancellaPanelUfficio().getSlot().setText(null);
+		//prenotazione del OpUff
+		view.getPrenotatiPanelUfficio().getSlot().setText(null);
 	}
 
 }

@@ -7,9 +7,12 @@ import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaCambiaPassActionListener implements ActionListener{
+	private StrutturaSanitaria model;
+	private ViewController view;
 
 	public ConfermaCambiaPassActionListener(StrutturaSanitaria model, ViewController view) {
-		// TODO Auto-generated constructor stub
+		this.model = model;
+		this.view = view;
 	}
 
 	@Override

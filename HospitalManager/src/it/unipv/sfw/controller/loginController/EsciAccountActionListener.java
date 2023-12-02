@@ -27,7 +27,9 @@ public class EsciAccountActionListener implements ActionListener {
 		view.getMedicoPanel().setVisible(false);
 		view.getOperatoreSanitarioPanel().setVisible(false);
 		view.getOperatoreUfficioPanel().setVisible(false);
+		
 		view.getLoginPanel().setVisible(true);
+		
 	}
 
 }
