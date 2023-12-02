@@ -506,7 +506,7 @@ public class RegistratiPanelPaziente extends JPanel{
 	}
 
 	public String getSessoScelto() {
-		return (String) scegliSesso.getSelectedItem();
+		return scegliSesso.getSelectedItem().toString();
 	}
 
 	public void setScegliSesso(JComboBox<String> scegliSesso) {

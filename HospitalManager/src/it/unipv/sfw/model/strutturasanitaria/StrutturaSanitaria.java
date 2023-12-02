@@ -92,8 +92,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				Paziente p = new Paziente(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
-				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(p);
+				FacadeSingletonDB.getIstanzaFacade().inserisciPazienteOpUff(p);
 				pazienti.add(p);
+				this.getCfPersone().put(p.getCf(), p);
 				
 				check = true;			
 				break;
@@ -102,8 +103,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				Medico m = new Medico(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
 				
-				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(m);
+				FacadeSingletonDB.getIstanzaFacade().inserisciPersonaleSanitario(m);
 				medici.add(m);
+				this.getCfPersone().put(m.getCf(), m);
 							
 				check = true;
 				break;
@@ -112,8 +114,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				OperatoreSanitario os = new OperatoreSanitario(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
 				
-				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(os);
+				FacadeSingletonDB.getIstanzaFacade().inserisciPersonaleSanitario(os);
 				operatoriSanitari.add(os);
+				this.getCfPersone().put(os.getCf(), os);
 							
 				check = true;
 				break;
@@ -122,8 +125,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				OperatoreUfficio ou = new OperatoreUfficio(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
-				FacadeSingletonDB.getIstanzaFacade().inserisciProfilo(ou);
+				FacadeSingletonDB.getIstanzaFacade().inserisciPazienteOpUff(ou);
 				operatoriUfficio.add(ou);
+				this.getCfPersone().put(ou.getCf(), ou);
 							
 				check = true;
 				break;

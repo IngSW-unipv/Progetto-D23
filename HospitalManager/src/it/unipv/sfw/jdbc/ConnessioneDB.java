@@ -37,7 +37,7 @@ public class ConnessioneDB {
 	{
 		init();
 		System.out.println(dbURL);
-	
+		
 		
 		
 		if ( isOpen(conn) )
@@ -51,7 +51,7 @@ public class ConnessioneDB {
 			Class.forName(dbDriver);
 			
 			conn = DriverManager.getConnection(dbURL, username, password);// Apertura connessione
-			
+			conn.setAutoCommit(true);
 
 		}
 		catch (Exception e) 

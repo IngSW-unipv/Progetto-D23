@@ -289,8 +289,16 @@ public class FacadeSingletonDB {
 			}	
 		
 		
-	public void inserisciProfilo(Account a) {
+	public void inserisciPersonaleSanitario(Account a) {
 		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), a.getSpecializzazione().toString(), a.getNome(), a.getCognome(), 
+				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
+				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
+		
+		profilo.insertProfilo(accountDB);
+	}
+	
+	public void inserisciPazienteOpUff(Account a) {
+		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), null, a.getNome(), a.getCognome(), 
 				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
 				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
 		

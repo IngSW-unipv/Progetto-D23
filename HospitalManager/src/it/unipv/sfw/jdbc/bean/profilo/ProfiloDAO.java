@@ -247,8 +247,8 @@ public class ProfiloDAO implements IProfiloDAO {
 			ps1.setString(16, a.getCellulare());
 			ps1.setString(17, a.getSpecializzazione());
 			
-			ps1.executeUpdate(query);
-			//ps1.executeUpdate();
+			//ps1.executeUpdate(query);
+			ps1.executeUpdate();
 		}
 		catch(Exception e){
 			e.printStackTrace();

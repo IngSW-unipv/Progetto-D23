@@ -24,7 +24,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 		try{
 			String nome = view.getRegistratiPanelPaziente().getNomeField().getText();
 			String cognome = view.getRegistratiPanelPaziente().getCognomeField().getText();
-			String CF = view.getRegistratiPanelPaziente().getCfField().getText();
+			String cf = view.getRegistratiPanelPaziente().getCfField().getText();
 			String dataNascita = view.getRegistratiPanelPaziente().getDataNascitaField().getText();
 			String luogoNascita = view.getRegistratiPanelPaziente().getLuogoNascitaField().getText();
 			String provinciaNascita = view.getRegistratiPanelPaziente().getProvinciaNascitaField().getText();
@@ -34,15 +34,15 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			String indirizzo = view.getRegistratiPanelPaziente().getIndirizzoField().getText();
 			String email = view.getRegistratiPanelPaziente().getEmailField().getText();
 			String cellulare = view.getRegistratiPanelPaziente().getCellulareField().getText();
-			String pw = view.getRegistratiPanelPaziente().getPasswordField().toString();
+			String pw = String.valueOf(view.getRegistratiPanelPaziente().getPasswordField().getPassword());
 			String cap = view.getRegistratiPanelPaziente().getCapField().getText();
 			String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
 			
 						
-			Boolean check = model.registrazioneAccount(CF, pw, TipoAccount.PA, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
+			Boolean check = model.registrazioneAccount(cf, pw, TipoAccount.PA, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
 						indirizzo, cap, email, cellulare, TipoPrestazione.NULL);
 				
-			if (check == true) {
+			if (check) {
 				pulisciTextField();
 				PopUp.infoBox("Nuovo account creato", "OK");
 				view.getRegistratiPanelPaziente().setVisible(false);
