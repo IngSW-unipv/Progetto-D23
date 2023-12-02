@@ -23,11 +23,19 @@ public class BtnBackRegistrazionePazienteActionListener implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-			view.getRegistratiPanelPaziente().setVisible(false);
-			pulisciTextFields();
-			view.getLoginPanel().setVisible(true);
+		view.getRegistratiPanelPaziente().setVisible(false);
+		pulisciTextFields();
+		view.getLoginPanel().setVisible(true);
+		
+		Account acc = model.getUtenteCorrente();
+		TipoAccount tipoAcc = acc.getTipoAcc();
+		
+		if(tipoAcc == TipoAccount.OU) {
+			view.getLoginPanel().setVisible(false);
+			view.getOperatoreUfficioPanel().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);
+		}
 		
 	}
 

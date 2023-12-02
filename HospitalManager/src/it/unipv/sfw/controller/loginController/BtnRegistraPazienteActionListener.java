@@ -21,6 +21,7 @@ public class BtnRegistraPazienteActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		view.getLoginPanel().setVisible(false);
+		view.getOperatoreUfficioPanel().setVisible(false);
 		view.getRegistratiPanelPaziente().setVisible(true);
 		view.getRegistratiPanelPaziente().getPasswordField().setText(null);
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

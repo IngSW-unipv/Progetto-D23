@@ -239,6 +239,8 @@ public class OperatoreUfficioPanel extends JPanel{
 		this.modelloLista = modelloLista;
 	}
 	
-	
+	public JButton getBtnAggPaz() {
+		return aggiungiPaziente;
+	}
 }
 
