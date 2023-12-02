@@ -29,7 +29,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		try {
-			String s = view.getPrenotatiPanelPaziente().getScegliPrestazione().getSelectedItem().toString();
+			String s = view.getPrenotatiPanelUfficio().getScegliPrestazione().getSelectedItem().toString();
 			tipoPrest = TipoPrestazione.valueOf(s);
 			
 			String cf = view.getPrenotatiPanelUfficio().getCfField().getText();
@@ -56,7 +56,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 				view.getPrenotatiPanelUfficio().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
 			} else {
-				//PopUp.infoBox("ConfermaPrenotazioneOpUFF!","Errore");
+				PopUp.infoBox("C'è stato un errore nella prenotazione!","Errore");
 			}
 			
 

@@ -44,7 +44,7 @@ public class PrecedenteActionListener implements ActionListener{
 		    
 		}catch(Exception e1) {
 			e1.printStackTrace();
-			PopUp.infoBox("Precedente!","Ops!");
+			PopUp.infoBox("C'è stato un errore imprevisto!","Ops!");
 		}
 		
 	}
