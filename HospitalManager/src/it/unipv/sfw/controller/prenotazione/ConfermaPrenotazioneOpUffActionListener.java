@@ -55,7 +55,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 				pulisciTextFields();
 				view.getPrenotatiPanelUfficio().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
-			} else {
+			} if(check == false) {
 				PopUp.infoBox("C'è stato un errore nella prenotazione!","Errore");
 			}
 			

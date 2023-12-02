@@ -54,6 +54,8 @@ public class BtnBackRegistrazionePazienteActionListener implements ActionListene
 		view.getRegistratiPanelPaziente().getCellulareField().setText(null);
 		view.getRegistratiPanelPaziente().getPasswordField().setText(null);
 		view.getRegistratiPanelPaziente().getCapField().setText(null);
+		view.getRegistratiPanelPaziente().getAltezzaField().setText(null);
+		view.getRegistratiPanelPaziente().getPesoField().setText(null);
 	}
 
 }

@@ -3,7 +3,10 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
+import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
@@ -51,6 +54,16 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 				PopUp.infoBox("Nuovo account creato", "OK");
 				view.getRegistratiPanelPaziente().setVisible(false);
 				view.getLoginPanel().setVisible(true);
+				
+				Account acc = model.getUtenteCorrente();
+				TipoAccount tipoAcc = acc.getTipoAcc();
+				
+				if(tipoAcc == TipoAccount.OU) {
+					view.getLoginPanel().setVisible(false);
+					view.getOperatoreUfficioPanel().setVisible(true);
+					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					view.getContentPane().setLayout(null);
+				}
 			} else {
 				PopUp.infoBox("C'è stato un errore", "Errore");
 			}
@@ -78,6 +91,8 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 		view.getRegistratiPanelPaziente().getCellulareField().setText(null);
 		view.getRegistratiPanelPaziente().getPasswordField().setText(null);
 		view.getRegistratiPanelPaziente().getCapField().setText(null);
+		view.getRegistratiPanelPaziente().getAltezzaField().setText(null);
+		view.getRegistratiPanelPaziente().getPesoField().setText(null);
 		
 	}
 
