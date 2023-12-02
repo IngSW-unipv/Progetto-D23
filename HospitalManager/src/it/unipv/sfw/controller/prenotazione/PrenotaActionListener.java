@@ -29,13 +29,14 @@ public class PrenotaActionListener implements ActionListener {
 		if (tipoAcc == TipoAccount.OU) {
 			view.getOperatoreUfficioPanel().setVisible(false);
 			view.getPrenotatiPanelUfficio().setVisible(true);
-			
+			view.getPrenotatiPanelUfficio().getScegliPrestazione().setSelectedIndex(0);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);
 		}
 		else {
 			view.getPazientePanel().setVisible(false);
 			view.getPrenotatiPanelPaziente().setVisible(true);
+			view.getPrenotatiPanelPaziente().getScegliPrestazione().setSelectedIndex(0);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);
 		}

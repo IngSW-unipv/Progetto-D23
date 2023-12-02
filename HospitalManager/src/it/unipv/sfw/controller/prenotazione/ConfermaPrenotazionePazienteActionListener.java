@@ -64,7 +64,7 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			PopUp.infoBox("Qualcosa è andato storto!","Errore");
+			PopUp.infoBox("Conferma Prenotazione!","Errore");
 		}
 
 	}

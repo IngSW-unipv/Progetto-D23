@@ -36,7 +36,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			
 			//TEST
 			//model.impostaSlotLiberiPerPrestazione(tipoPrest);
-			System.out.println(model.getArraySlotLiberi().size());
+			//System.out.println(model.getArraySlotLiberi().size());
 			///////////////
 			
 			// data e ora prenotati per la prestazione
@@ -56,7 +56,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 				view.getPrenotatiPanelUfficio().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
 			} else {
-				PopUp.infoBox("Qualcosa è andato storto!","Errore");
+				//PopUp.infoBox("ConfermaPrenotazioneOpUFF!","Errore");
 			}
 			
 
@@ -68,5 +68,6 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 
 	private void pulisciTextFields() {
 		view.getPrenotatiPanelUfficio().getSlot().setText(null);
+		view.getPrenotatiPanelUfficio().getScegliPrestazione().setSelectedIndex(0);
 	}
 }	
