@@ -12,14 +12,10 @@ import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.jdbc.bean.prenotazione.PrenotazioneDB;
 
 public class CalendarioDAO implements ICalendarioDAO {
-	private Connection conn;
-	ArrayList<SlotCalendarioSingoloDB> calendarioSingolo;
-	ArrayList<SlotCalendarioDB> calendario;
-	
+	private Connection conn;	
 	
 	public CalendarioDAO() {
 		super();
-		this.calendarioSingolo = new ArrayList<>();
 	}
 
 	@Override
@@ -27,7 +23,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
-		
+		ArrayList<SlotCalendarioDB> calendario = new ArrayList<>();
 		try {
 			st1 = conn.createStatement();
 			String query = "SELECT * FROM hospitalmanager.CALENDARI";

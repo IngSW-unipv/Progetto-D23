@@ -6,15 +6,15 @@ import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class ScegliPrestazioneActionListener implements ActionListener{
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private ViewController view;
 
-	public ScegliPrestazioneActionListener(StrutturaSanitaria model, ViewController view) {
+	public ScegliPrestazioneActionListener(IStrutturaSanitaria model, ViewController view) {
 		super();
 		this.model = model;
 		this.view = view;

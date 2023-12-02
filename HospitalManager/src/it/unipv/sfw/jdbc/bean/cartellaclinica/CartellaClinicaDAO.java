@@ -9,13 +9,9 @@ import it.unipv.sfw.jdbc.ConnessioneDB;
 
 public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 	private Connection conn;
-	private ArrayList<CartellaClinicaDB> cartelleCliniche;
-
 	
-	
-	public CartellaClinicaDAO(Connection conn, ArrayList<CartellaClinicaDB> cartelleCliniche) {
+	public CartellaClinicaDAO(Connection conn) {
 		super();
-		this.cartelleCliniche = new ArrayList<>();
 	}
 
 	public CartellaClinicaDAO() {
@@ -27,7 +23,7 @@ public class CartellaClinicaDAO implements ICartellaClinicaDAO {
 		conn= ConnessioneDB.startConnection(conn,"hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
-		
+		ArrayList<CartellaClinicaDB> cartelleCliniche = new ArrayList<>();
 		try {
 			st1= conn.createStatement();
 			String query= "SELECT * from hospitalmanager.CARTELLE_CLINICHE";

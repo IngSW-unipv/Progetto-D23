@@ -3,18 +3,19 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IPaziente;
 import it.unipv.sfw.model.persona.Paziente;
 
 
 public class Prenotazione {
 	private int idPren;
-	private Paziente paziente;
+	private IPaziente paziente;
 	private Account personaleSanitario;
 	private PrestazioneSanitaria prestazione;
 	private LocalDate data;
 	private LocalTime orario;
 	
-	public Prenotazione(int idPren, Paziente paziente, Account personaleSanitario, PrestazioneSanitaria prestazione, 
+	public Prenotazione(int idPren, IPaziente paziente, Account personaleSanitario, PrestazioneSanitaria prestazione, 
 			LocalDate data, LocalTime orario) {
 		super();
 		this.idPren = idPren;
@@ -33,7 +34,7 @@ public class Prenotazione {
 		this.idPren = idPren;
 	}
 
-	public Paziente getPaziente() {
+	public IPaziente getPaziente() {
 		return paziente;
 	}
 

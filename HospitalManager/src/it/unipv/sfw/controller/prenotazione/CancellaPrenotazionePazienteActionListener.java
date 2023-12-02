@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import it.unipv.sfw.model.prenotazione.Prenotazione;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class CancellaPrenotazionePazienteActionListener implements ActionListener{
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private ViewController view;
 
-	public CancellaPrenotazionePazienteActionListener(StrutturaSanitaria model, ViewController view) {
+	public CancellaPrenotazionePazienteActionListener(IStrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}

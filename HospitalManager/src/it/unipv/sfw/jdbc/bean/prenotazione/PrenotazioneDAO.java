@@ -12,13 +12,9 @@ import it.unipv.sfw.jdbc.ConnessioneDB;
 
 public class PrenotazioneDAO implements IPrenotazioneDAO {
 	private Connection conn;
-	private ArrayList<PrenotazioneDB> prenotazioni;
-	
-	
 
 	public PrenotazioneDAO() {
 		super();
-		this.prenotazioni = new ArrayList<>();
 	}
 
 	@Override
@@ -26,7 +22,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
-		
+		ArrayList<PrenotazioneDB> prenotazioni = new ArrayList<>();
 		try {
 			st1= conn.createStatement();
 			String query= "SELECT * FROM hospitalmanager.PRENOTAZIONI";
@@ -230,6 +226,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 
 	@Override
 	public ArrayList<PrenotazioneDB> selectPrenotazioniDaErogare() {
+		ArrayList<PrenotazioneDB> prenotazioni = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;

@@ -3,17 +3,15 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import it.unipv.sfw.model.persona.Account;
-import it.unipv.sfw.model.persona.TipoAccount;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class BtnGeneraPassActionListener implements ActionListener{
 
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private ViewController view;
 	
-	public BtnGeneraPassActionListener(StrutturaSanitaria model, ViewController view) {
+	public BtnGeneraPassActionListener(IStrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}

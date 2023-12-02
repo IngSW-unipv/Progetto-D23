@@ -20,12 +20,13 @@ import it.unipv.sfw.model.persona.Paziente;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 
 public class FacadeSingletonDB {
 		
 	private static FacadeSingletonDB istanzaDB = null;
-	private StrutturaSanitaria struttura1;
+	private IStrutturaSanitaria struttura1;
 	
 	private IProfiloDAO profilo;
 	private ICalendarioDAO calendario;
@@ -55,7 +56,7 @@ public class FacadeSingletonDB {
 	
 	}
 	
-	public StrutturaSanitaria getStruttura1() {
+	public IStrutturaSanitaria getStruttura1() {
 		return struttura1;
 	}
 

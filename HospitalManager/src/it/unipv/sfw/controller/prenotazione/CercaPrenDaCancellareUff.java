@@ -2,24 +2,17 @@ package it.unipv.sfw.controller.prenotazione;
 
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
-import java.beans.XMLDecoder;
-import java.io.ByteArrayInputStream;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
-import javax.swing.JLabel;
-
 import it.unipv.sfw.model.prenotazione.Prenotazione;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class CercaPrenDaCancellareUff implements ActionListener{
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private ViewController view;
 	
-	public CercaPrenDaCancellareUff (StrutturaSanitaria model, ViewController view) {
+	public CercaPrenDaCancellareUff (IStrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}

@@ -4,28 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.swing.JLabel;
-
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
-import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Paziente;
-import it.unipv.sfw.model.prenotazione.Prenotazione;
-import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaPrenotazionePazienteActionListener implements ActionListener {
 
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private ViewController view;
-	private TipoPrestazione tipoPrest;
 
-	public ConfermaPrenotazionePazienteActionListener(StrutturaSanitaria model, ViewController view) {
+	public ConfermaPrenotazionePazienteActionListener(IStrutturaSanitaria model, ViewController view) {
 		super();
 		this.view = view;
 		this.model = model;
@@ -36,7 +27,7 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 
 		try {
 			String s = view.getPrenotatiPanelPaziente().getScegliPrestazione().getSelectedItem().toString();
-			tipoPrest = TipoPrestazione.valueOf(s);
+			TipoPrestazione tipoPrest = TipoPrestazione.valueOf(s);
 			// Personale sanitario che effettua la prestazione
 //			HashMap<TipoPrestazione, Account> mappa = model.getPersonaleSanitario();
 //			Account personaleSanitario = mappa.get(tipoPrest);

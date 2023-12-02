@@ -6,7 +6,7 @@ import it.unipv.sfw.controller.operatoreUffController.OperatoreUffController;
 import it.unipv.sfw.controller.passwordController.PasswordController;
 import it.unipv.sfw.controller.pazienteController.PazienteController;
 import it.unipv.sfw.controller.prenotazione.PrenotazioneController;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class FacadeController {
@@ -18,7 +18,7 @@ public class FacadeController {
 	private PrenotazioneController prenController;
 	private PazienteController pazController;
 	
-	public FacadeController(StrutturaSanitaria model, ViewController view) {
+	public FacadeController(IStrutturaSanitaria model, ViewController view) {
 		
 		loginController = new LoginController(model, view);
 		registrazioneController = new RegistrazioneController(model, view);

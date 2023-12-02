@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
 import it.unipv.sfw.model.persona.*;
 
@@ -17,9 +17,9 @@ import it.unipv.sfw.model.persona.*;
 public class GoBtnActionListener implements ActionListener {
 
 	private ViewController view;
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 
-	public GoBtnActionListener (StrutturaSanitaria model, ViewController view) {
+	public GoBtnActionListener (IStrutturaSanitaria model, ViewController view) {
 		super();
 		this.view = view;
 		this.model = model;
@@ -32,17 +32,7 @@ public class GoBtnActionListener implements ActionListener {
 		boolean isMatching = model.login(cf, pw);  
 
 		if(isMatching) {
-			view.getLoginPanel().setVisible(false);
-//			Toolkit kit = Toolkit.getDefaultToolkit();
-//			Dimension screenSize = kit.getScreenSize();
-//			
-//			int screenHeight= screenSize.height;
-//			int screenWidth = screenSize.width;
-//			
-//			//serve per centrare il frame nello schermo
-//			view.setSize(screenWidth, screenHeight);
-//			view.setLocationRelativeTo(null);
-			
+			view.getLoginPanel().setVisible(false);	
 			Account acc = model.getCfPersone().get(cf);
 			TipoAccount tipoAcc = acc.getTipoAcc();
 			model.aggiornaPrenotazioni();

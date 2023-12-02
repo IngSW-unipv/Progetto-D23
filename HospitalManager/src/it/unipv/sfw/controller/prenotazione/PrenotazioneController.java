@@ -1,12 +1,12 @@
 package it.unipv.sfw.controller.prenotazione;
 
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class PrenotazioneController {
 	
 	private ViewController view;
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private PrenotaActionListener prenota;
 	
 	private CercaPrenDaCancellarePaziente cercaPrenPaz;
@@ -26,7 +26,7 @@ public class PrenotazioneController {
 	private GoBackPazienteActionListener goBackPaz;
 	private GoBackOpUffActionListener goBackOpUff;
 	
-	public PrenotazioneController (StrutturaSanitaria model, ViewController view) {
+	public PrenotazioneController (IStrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 		

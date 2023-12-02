@@ -1,48 +1,23 @@
 package it.unipv.sfw.jdbc.bean.profilo;
 
 import java.sql.Connection;
-import java.sql.DataTruncation;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.model.persona.TipoAccount;
 
 public class ProfiloDAO implements IProfiloDAO {
 	private Connection conn;
-	ArrayList<ProfiloDB> accounts;
-	ArrayList<ProfiloDB> medici;
-	ArrayList<ProfiloDB> operatoriSanitari;
-	ArrayList<ProfiloDB> operatoriUfficio;
-	//ArrayList<ProfiloDB> pazienti;
-	
-	
-
-	public ProfiloDAO(ArrayList<ProfiloDB> accounts, ArrayList<ProfiloDB> medici,
-			ArrayList<ProfiloDB> operatoriSanitari, ArrayList<ProfiloDB> operatoriUfficio,
-			ArrayList<ProfiloDB> pazienti) {
-		super();
-		this.accounts = new ArrayList<>();
-		this.medici = new ArrayList<>();
-		this.operatoriSanitari = new ArrayList<>();
-		this.operatoriUfficio = new ArrayList<>();
-		//this.pazienti = new ArrayList<>();
-	}
 
 	public ProfiloDAO() {
-		this.accounts = new ArrayList<>();
-		this.medici = new ArrayList<>();
-		this.operatoriSanitari = new ArrayList<>();
-		this.operatoriUfficio = new ArrayList<>();
 	}
 
 	@Override
 	public ArrayList<ProfiloDB> selectAllProfili() {
-		// TODO Auto-generated method stub
+		ArrayList<ProfiloDB> accounts = new ArrayList<>();
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
@@ -104,6 +79,8 @@ public class ProfiloDAO implements IProfiloDAO {
 	@Override
 	public ArrayList<ProfiloDB> selectAllMedici() {
 		// TODO Auto-generated method stub
+		ArrayList<ProfiloDB> medici = new ArrayList<>();
+
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
@@ -133,6 +110,8 @@ public class ProfiloDAO implements IProfiloDAO {
 	@Override
 	public ArrayList<ProfiloDB> selectAllOperatoriSanitari() {
 		// TODO Auto-generated method stub
+		ArrayList<ProfiloDB> operatoriSanitari = new ArrayList<>();
+
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;
@@ -162,6 +141,8 @@ public class ProfiloDAO implements IProfiloDAO {
 	@Override
 	public ArrayList<ProfiloDB> selectAlloperatoriUfficio() {
 		// TODO Auto-generated method stub
+		ArrayList<ProfiloDB> operatoriUfficio = new ArrayList<>();
+
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		Statement st1;
 		ResultSet rs1;

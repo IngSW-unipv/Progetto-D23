@@ -3,14 +3,14 @@ package it.unipv.sfw.controller.passwordController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaCambiaPassActionListener implements ActionListener{
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private ViewController view;
 
-	public ConfermaCambiaPassActionListener(StrutturaSanitaria model, ViewController view) {
+	public ConfermaCambiaPassActionListener(IStrutturaSanitaria model, ViewController view) {
 		this.model = model;
 		this.view = view;
 	}

@@ -10,16 +10,15 @@ import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.Paziente;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
-import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
+import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
-	private StrutturaSanitaria model;
+	private IStrutturaSanitaria model;
 	private ViewController view;
-	private TipoPrestazione tipoPrest;
 
-	public ConfermaPrenotazioneOpUffActionListener(StrutturaSanitaria model, ViewController view) {
+	public ConfermaPrenotazioneOpUffActionListener(IStrutturaSanitaria model, ViewController view) {
 		super();
 		this.model = model;
 		this.view = view;
@@ -30,7 +29,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 		
 		try {
 			String s = view.getPrenotatiPanelUfficio().getScegliPrestazione().getSelectedItem().toString();
-			tipoPrest = TipoPrestazione.valueOf(s);
+			TipoPrestazione tipoPrest = TipoPrestazione.valueOf(s);
 			
 			String cf = view.getPrenotatiPanelUfficio().getCfField().getText();
 			

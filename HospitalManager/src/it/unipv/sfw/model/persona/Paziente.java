@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 
-public class Paziente extends Account {
+public class Paziente extends Account implements IPaziente {
 	
 	private ArrayList<Prenotazione> prenotazioni;
 	private CartellaClinica cartellaPersonale;	
