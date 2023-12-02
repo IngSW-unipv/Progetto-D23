@@ -45,7 +45,7 @@ public class RegistraUtenteActionListener implements ActionListener {
 		
 		boolean check = model.registrazioneAccount(cf, pw, TipoAccount.valueOf(tipoAccount), nome, cognome,
 				Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita,
-				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, TipoPrestazione.valueOf(specializzazione));
+				regResidenza, provResidenza, cittaRes, indirizzo, cap, email, cellulare, TipoPrestazione.valueOf(specializzazione), 0, 0, null);
 		
 		if (check) {
 			pulisciTextField();

@@ -3,6 +3,7 @@ package it.unipv.sfw.controller.loginController;
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 
+import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
 import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
@@ -37,14 +38,14 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			String pw = String.valueOf(view.getRegistratiPanelPaziente().getPasswordField().getPassword());
 			String cap = view.getRegistratiPanelPaziente().getCapField().getText();
 			String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
-			String altezza = view.getRegistratiPanelPaziente()
-			String peso = view.getRegistratiPanelPaziente()
-			String gruppoSanguigno = view.getRegistratiPanelPaziente()
+			String altezza = view.getRegistratiPanelPaziente().getAltezzaField().getText();
+			String peso = view.getRegistratiPanelPaziente().getPesoField().getText();
+			String gruppoSanguigno = view.getRegistratiPanelPaziente().getGruppoScelto();
 						
 			Boolean check = model.registrazioneAccount(cf, pw, TipoAccount.PA, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-						indirizzo, cap, email, cellulare, TipoPrestazione.NULL, altezza, peso, gruppoSanguigno);
+						indirizzo, cap, email, cellulare, TipoPrestazione.NULL, Double.parseDouble(altezza), Double.parseDouble(peso), GruppiSanguigni.valueOf(gruppoSanguigno));
 			
-				
+			
 			if (check) {
 				pulisciTextField();
 				PopUp.infoBox("Nuovo account creato", "OK");

@@ -15,7 +15,7 @@ public class PazientePanel extends JPanel{
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList<String> listaPrenotazioni, listaPrenErogate;
-	private JButton prenota, cancella, logout, cambiaPw, modificaCartella;
+	private JButton prenota, cancella, logout, cambiaPw;
 	private DefaultListModel<String> modelloLista, modelloListaDue;
 	private JLabel altezza, peso, gruppoSanguigno;
 	private JLabel pAltezza, pPeso, pGruppoSanguigno;
@@ -33,7 +33,7 @@ public class PazientePanel extends JPanel{
 		JPanel barCentroSx = new JPanel();
 		barCentroSx.setLayout(new BorderLayout());
 		JPanel barCentroDx = new JPanel();
-		barCentroDx.setLayout(new GridLayout(3,1));
+		barCentroDx.setLayout(new GridLayout(2,1));
 		JPanel barSudEst = new JPanel();
 		barSudEst.setLayout(new GridLayout(6,1));
 		JPanel barSudOvest = new JPanel();
@@ -51,7 +51,6 @@ public class PazientePanel extends JPanel{
 		prenota = new JButton("PRENOTA");
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
-		modificaCartella = new JButton("MODIFICA CARTELLA CLINICA");
 		cambiaPw = new JButton("CAMBIA PASSWORD");
 		altezza = new JLabel("ALTEZZA:");
 		pAltezza = new JLabel();
@@ -99,7 +98,6 @@ public class PazientePanel extends JPanel{
 		add(barCentroSx);
 		
 		barCentroDx.add(cambiaPw);
-		barCentroDx.add(modificaCartella);
 		barCentroDx.add(logout);
 		add(barCentroDx);
 		
@@ -199,8 +197,5 @@ public class PazientePanel extends JPanel{
 		return cancella;
 	}
 
-	public JButton getAggiornaCartellaBtn() {
-		return modificaCartella;
-	}
 }
 

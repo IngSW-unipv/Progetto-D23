@@ -25,9 +25,14 @@ public class RegistratiPanelPaziente extends JPanel{
 	private String[] sessoString = {"M", "F"};
 	private JComboBox<String> scegliSesso;
 	
+	private JLabel altezza, peso, gruppoSanguigno;
+	private JTextField altezzaField, pesoField;
+	private String[] gruppo = {"A_POSITIVO", "A_NEGATIVO", "B_POSITIVO", "B_NEGATIVO", "AB_POSITIVO", "AB_NEGATIVO", "ZERO_POSITIVO", "ZERO_NEGATIVO"};
+	private JComboBox<String> scegliGruppo;
+	
 	public RegistratiPanelPaziente() {
 		
-		setLayout(new GridLayout(20,2));
+		setLayout(new GridLayout(23,2));
 		
 		nomeField = new JTextField();
 		cognomeField = new JTextField();
@@ -78,6 +83,15 @@ public class RegistratiPanelPaziente extends JPanel{
 		back = new JLabel("Torna Indietro");
 		indietro = new JButton("INDIETRO");
 		
+		altezza = new JLabel("Altezza");
+		peso = new JLabel("Peso");
+		gruppoSanguigno = new JLabel("Gruppo Sanguigno");
+		
+		altezzaField = new JTextField();
+		pesoField = new JTextField();
+		
+		scegliGruppo = new JComboBox<>(gruppo);
+		
 		add(registrazione);
 		add(nuoviDati);
 		add(tipo);
@@ -90,6 +104,12 @@ public class RegistratiPanelPaziente extends JPanel{
 		add(cfField);
 		add(sesso);
 		add(scegliSesso);
+		add(altezza);
+		add(altezzaField);
+		add(peso);
+		add(pesoField);
+		add(gruppoSanguigno);
+		add(scegliGruppo);
 		add(dataNascita);
 		add(dataNascitaField);
 		add(luogoNascita);
@@ -516,5 +536,39 @@ public class RegistratiPanelPaziente extends JPanel{
 	public JButton getBtnBack() {
 		return indietro;
 	}
+
+
+	public JTextField getAltezzaField() {
+		return altezzaField;
+	}
+
+
+	public void setAltezzaField(JTextField altezzaText) {
+		this.altezzaField = altezzaText;
+	}
+
+
+	public JTextField getPesoField() {
+		return pesoField;
+	}
+
+
+	public void setPesoField(JTextField pesoText) {
+		this.pesoField = pesoText;
+	}
+
+
+	public JComboBox<String> getScegliGruppo() {
+		return scegliGruppo;
+	}
+
+	public String getGruppoScelto() {
+		return scegliGruppo.getSelectedItem().toString();
+	}
+	
+	public void setScegliGruppo(JComboBox<String> scegliGruppo) {
+		this.scegliGruppo = scegliGruppo;
+	}
+	
 	
 }

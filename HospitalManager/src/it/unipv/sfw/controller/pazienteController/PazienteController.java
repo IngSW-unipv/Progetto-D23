@@ -12,8 +12,6 @@ public class PazienteController {
 		this.model = model;
 		this.view = view;
 		
-		BtnCartellaClinica btnCartClin = new BtnCartellaClinica(model, view);
-		view.getPazientePanel().getAggiornaCartellaBtn().addActionListener(btnCartClin);
 
 		AggiornaCartellaClinicaActionListener aggCartClin = new AggiornaCartellaClinicaActionListener(model, view);
 		view.getAggiornaCartellaClinicaPanel().getBtnAggiorna().addActionListener(aggCartClin);

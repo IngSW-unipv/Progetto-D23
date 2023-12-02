@@ -24,7 +24,7 @@ public class OperatoreUfficioPanel extends JPanel{
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList<String> visite, utenti;
-	private JButton prenota, cancella, logout, aggiungiUtente;
+	private JButton prenota, cancella, logout, aggiungiDipendente, aggiungiPaziente;
 	private DefaultListModel<String> modelloLista, modelloListaDue;
 	private JLabel appuntamenti, utente;
 	private JScrollPane scrollVisite, scrollUtenti;
@@ -41,9 +41,9 @@ public class OperatoreUfficioPanel extends JPanel{
 		JPanel barCentroDx = new JPanel();
 		barCentroDx.setLayout(new GridLayout(2,1));
 		JPanel barSudOvest = new JPanel();
-		barSudOvest.setLayout(new GridLayout(4,1));
+		barSudOvest.setLayout(new GridLayout(4,2));
 		JPanel barSudEst = new JPanel();
-		barSudEst.setLayout(new GridLayout(4,1));
+		barSudEst.setLayout(new BorderLayout());
 		
 		nome = new JLabel("NOME:");
 		pNome = new JLabel();
@@ -56,7 +56,8 @@ public class OperatoreUfficioPanel extends JPanel{
 		prenota = new JButton("PRENOTA");
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
-		aggiungiUtente = new JButton("AGGIUNGI UTENTE");
+		aggiungiDipendente = new JButton("AGGIUNGI DIPENDENTE");
+		aggiungiPaziente = new JButton("AGGIUNGI PAZIENTE");
 		appuntamenti = new JLabel("APPUNTAMENTI");
 		utente = new JLabel("UTENTI");
 		
@@ -94,20 +95,21 @@ public class OperatoreUfficioPanel extends JPanel{
 		barCentroSx.add(scrollUtenti, BorderLayout.CENTER);
 		add(barCentroSx);
 		
-		barCentroDx.add(aggiungiUtente);
-		barCentroDx.add(logout);
+		barCentroDx.add(aggiungiDipendente);
+		barCentroDx.add(aggiungiPaziente);
 		add(barCentroDx);
 		
 		barSudOvest.add(nome);
 		barSudOvest.add(pNome);
 		barSudOvest.add(cognome);
 		barSudOvest.add(pCognome);
+		barSudOvest.add(cf);
+		barSudOvest.add(pCf);
+		barSudOvest.add(tipoAccount);
+		barSudOvest.add(pTipoAccount);
 		add(barSudOvest);
 		
-		barSudEst.add(cf);
-		barSudEst.add(pCf);
-		barSudEst.add(tipoAccount);
-		barSudEst.add(pTipoAccount);
+		barSudEst.add(logout, BorderLayout.CENTER);
 		add(barSudEst);
 		
 	}
@@ -222,11 +224,11 @@ public class OperatoreUfficioPanel extends JPanel{
 	}
 
 	public JButton getAggiungiUtenteBtn() {
-		return aggiungiUtente;
+		return aggiungiDipendente;
 	}
 
-	public void setAggiungiUtente(JButton aggiungiUtente) {
-		this.aggiungiUtente = aggiungiUtente;
+	public void setAggiungiDipendente(JButton aggiungiUtente) {
+		this.aggiungiDipendente = aggiungiUtente;
 	}
 
 	public DefaultListModel getModelloLista() {

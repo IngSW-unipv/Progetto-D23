@@ -45,7 +45,7 @@ public class ViewController extends JFrame {
 		frame.setIconImage(icon);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1400, 700);
+		frame.setSize(1400, 750);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setTitle("HOSPITAL MANAGER");
