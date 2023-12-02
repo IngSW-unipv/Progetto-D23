@@ -208,6 +208,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			
 			FacadeSingletonDB.getIstanzaFacade().inserisciPrenotazione(p);
 			paziente.getPrenotazioni().add(p);
+			this.idPrenotazioni.put(idPren, p);
 			
 			if(personale.getTipoAcc() == TipoAccount.ME) {
 				Medico m = (Medico)personale;
@@ -254,6 +255,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 						op.getCalendario().remove(i);
 					}
 				}
+				
+			this.idPrenotazioni.remove(p.getIdPren());
 	
 			check = true;
 			}
@@ -289,6 +292,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			}
 			for(Medico m : this.medici) {
 				m.eliminaPrenotazioniErogate();
+				}
+			for(OperatoreSanitario op : this.operatoriSanitari) {
+				op.eliminaPrenotazioniErogate();
 				}
 			check = true;
 		}catch(Exception e) {

@@ -1,5 +1,6 @@
 package it.unipv.sfw.model.persona;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.prenotazione.Prenotazione;
@@ -30,6 +31,22 @@ public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 		this.calendario = new ArrayList<>();
 	}
 
+	public boolean eliminaPrenotazioniErogate() {
+		boolean check = false;
+		try {
+			LocalDate oggi = LocalDate.now();
+			for(Prenotazione p : this.calendario) {
+				if(p.getData().isBefore(oggi)) {
+					this.calendario.remove(p);
+				}
+			}
+			check = true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
+	
 	@Override
 	public TipoPrestazione getSpecializzazione() {
 		return specializzazione;
@@ -45,12 +62,6 @@ public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 
 	public void setCalendario(ArrayList<Prenotazione> calendario) {
 		this.calendario = calendario;
-	}
-
-	@Override
-	public boolean mostraCalendario() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 }

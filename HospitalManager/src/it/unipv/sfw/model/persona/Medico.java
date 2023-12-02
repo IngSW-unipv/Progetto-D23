@@ -63,12 +63,5 @@ public class Medico extends Account implements IPersonaleSanitario{
 	public void setCalendario(ArrayList<Prenotazione> calendario) {
 		this.calendario = calendario;
 	}
-
-	@Override
-	public boolean mostraCalendario() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	
 }

@@ -38,8 +38,8 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 			String s = view.getPrenotatiPanelPaziente().getScegliPrestazione().getSelectedItem().toString();
 			tipoPrest = TipoPrestazione.valueOf(s);
 			// Personale sanitario che effettua la prestazione
-			HashMap<TipoPrestazione, Account> mappa = model.getPersonaleSanitario();
-			Account personaleSanitario = mappa.get(tipoPrest);
+//			HashMap<TipoPrestazione, Account> mappa = model.getPersonaleSanitario();
+//			Account personaleSanitario = mappa.get(tipoPrest);
 
 			// data e ora prenotati per la prestazione
 			SlotCalendarioSingoli slotCorrente = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());

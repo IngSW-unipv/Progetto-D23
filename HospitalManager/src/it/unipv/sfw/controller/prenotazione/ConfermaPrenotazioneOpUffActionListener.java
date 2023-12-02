@@ -34,11 +34,6 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			
 			String cf = view.getPrenotatiPanelUfficio().getCfField().getText();
 			
-			//TEST
-			//model.impostaSlotLiberiPerPrestazione(tipoPrest);
-			//System.out.println(model.getArraySlotLiberi().size());
-			///////////////
-			
 			// data e ora prenotati per la prestazione
 			SlotCalendarioSingoli slotCorrente = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());
 			LocalDate data = slotCorrente.getData();
@@ -50,16 +45,14 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			
 			boolean check = model.inserisciPrenotazione(tipoPrest, paziente, data, orario);
 			
-			if (check == true) {
+			if (check) {
 				PopUp.infoBox("Prenotazione inserita con successo", "OK");
 				pulisciTextFields();
 				view.getPrenotatiPanelUfficio().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
-			} if(check == false) {
+			} else {
 				PopUp.infoBox("C'è stato un errore nella prenotazione!","Errore");
 			}
-			
-
 			
 			}catch(Exception e1){
 			e1.printStackTrace();

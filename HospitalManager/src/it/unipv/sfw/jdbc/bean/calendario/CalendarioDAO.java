@@ -172,7 +172,7 @@ public class CalendarioDAO implements ICalendarioDAO {
 		
 		try {
 			st1 = conn.createStatement();
-			String query = "SELECT * FROM hospitalmanager.CALENDARIO_RISONANZA";
+			String query = "SELECT * FROM hospitalmanager.CALENDARIO_RISONANZA_MAGNETICA";
 			rs1 = st1.executeQuery(query);
 			
 			while(rs1.next()) {
