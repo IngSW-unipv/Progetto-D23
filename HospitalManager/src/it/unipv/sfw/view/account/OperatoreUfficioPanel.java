@@ -23,11 +23,11 @@ public class OperatoreUfficioPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
-	private JList<String> visite, utenti, calendar;
+	private JList<String> visite, utenti;
 	private JButton prenota, cancella, logout, aggiungiUtente;
-	private DefaultListModel<String> modelloLista, modelloListaDue, modelloListaTre;
-	private JLabel appuntamenti, utente, calendario;
-	private JScrollPane scrollVisite, scrollUtenti, scrollCalendar;
+	private DefaultListModel<String> modelloLista, modelloListaDue;
+	private JLabel appuntamenti, utente;
+	private JScrollPane scrollVisite, scrollUtenti;
 	
 	public OperatoreUfficioPanel() {
 		setLayout(new GridLayout(3,2));
@@ -41,9 +41,9 @@ public class OperatoreUfficioPanel extends JPanel{
 		JPanel barCentroDx = new JPanel();
 		barCentroDx.setLayout(new GridLayout(2,1));
 		JPanel barSudOvest = new JPanel();
-		barSudOvest.setLayout(new BorderLayout());
+		barSudOvest.setLayout(new GridLayout(4,1));
 		JPanel barSudEst = new JPanel();
-		barSudEst.setLayout(new GridLayout(4,2));
+		barSudEst.setLayout(new GridLayout(4,1));
 		
 		nome = new JLabel("NOME:");
 		pNome = new JLabel();
@@ -59,7 +59,6 @@ public class OperatoreUfficioPanel extends JPanel{
 		aggiungiUtente = new JButton("AGGIUNGI UTENTE");
 		appuntamenti = new JLabel("APPUNTAMENTI");
 		utente = new JLabel("UTENTI");
-		calendario = new JLabel("CALENDARIO");
 		
 		visite = new JList<>();
 		visite.setPreferredSize(new Dimension(1000, 1000));
@@ -69,13 +68,8 @@ public class OperatoreUfficioPanel extends JPanel{
 		utenti.setPreferredSize(new Dimension(1500, 1000));
 		modelloListaDue = new DefaultListModel<>();
 		
-		calendar = new JList<>();
-		calendar.setPreferredSize(new Dimension(1000, 1000));
-		modelloListaTre = new DefaultListModel<>();
-		
 		visite.setModel(modelloLista);
 		utenti.setModel(modelloListaDue);
-		//calendar.setModel(modelloListaTre);
 		
 		scrollVisite = new JScrollPane(visite);
 		scrollVisite.setPreferredSize(new Dimension(650,150));
@@ -87,10 +81,6 @@ public class OperatoreUfficioPanel extends JPanel{
         scrollUtenti.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollUtenti.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         
-        scrollCalendar = new JScrollPane(calendar);
-        scrollCalendar.setPreferredSize(new Dimension(650,150));
-        scrollCalendar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollCalendar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
 		barNordOvest.add(appuntamenti, BorderLayout.PAGE_START);
 		barNordOvest.add(scrollVisite, BorderLayout.CENTER);
@@ -108,14 +98,12 @@ public class OperatoreUfficioPanel extends JPanel{
 		barCentroDx.add(logout);
 		add(barCentroDx);
 		
-		barSudOvest.add(calendario, BorderLayout.PAGE_START);
-		barSudOvest.add(scrollCalendar, BorderLayout.CENTER);
+		barSudOvest.add(nome);
+		barSudOvest.add(pNome);
+		barSudOvest.add(cognome);
+		barSudOvest.add(pCognome);
 		add(barSudOvest);
 		
-		barSudEst.add(nome);
-		barSudEst.add(pNome);
-		barSudEst.add(cognome);
-		barSudEst.add(pCognome);
 		barSudEst.add(cf);
 		barSudEst.add(pCf);
 		barSudEst.add(tipoAccount);

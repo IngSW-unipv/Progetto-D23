@@ -12,7 +12,7 @@ public class PrenotaPanelUfficio extends JPanel {
 	private JLabel slot, slotProposto;
 	private JLabel cfPaziente;
 	private JTextField cf;
-	private String[] prestazioneString = {"VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAMI_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
+	private String[] prestazioneString = {" ", "VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAMI_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
 	private JComboBox <String> scegliPrestazione;
 	private JButton conferma, successivo, precedente, indietro;
 	
