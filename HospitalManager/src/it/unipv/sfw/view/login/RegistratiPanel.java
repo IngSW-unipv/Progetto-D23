@@ -137,6 +137,10 @@ public class RegistratiPanel extends JPanel{
 	}
 
 
+	public JButton getBtnMostra() {
+		return mostra;
+	}
+	
 	public JLabel getRegistrazione() {
 		return registrazione;
 	}
@@ -551,5 +555,10 @@ public class RegistratiPanel extends JPanel{
 	public JButton getBtnBack() {
 		return indietro;
 	}
+	
+	public JComboBox<String> getScegliSpecializzazione() {
+		return scegliSpecializzazione;
+	}
+	
 }
 

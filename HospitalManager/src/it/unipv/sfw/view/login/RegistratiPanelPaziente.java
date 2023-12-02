@@ -150,22 +150,26 @@ public class RegistratiPanelPaziente extends JPanel{
 		add(indietro);
 		
 		//PER ALDIN
-		mostra.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            // Ottenere la password temporaneamente
-	            passwordField.setEchoChar((char) 0);
-
-	            Timer timer = new Timer(1000, new ActionListener() {
-	                public void actionPerformed(ActionEvent evt) {
-	                    // Nascondere nuovamente la password dopo un secondo
-	                    passwordField.setEchoChar('*');
-	                }
-	            });
-	            timer.setRepeats(false); // Eseguire solo una volta
-	            timer.start();
-	        }
-	    });
-		
+//		mostra.addActionListener(new ActionListener() {
+//	        public void actionPerformed(ActionEvent e) {
+//	            // Ottenere la password temporaneamente
+//	            passwordField.setEchoChar((char) 0);
+//
+//	            Timer timer = new Timer(1000, new ActionListener() {
+//	                public void actionPerformed(ActionEvent evt) {
+//	                    // Nascondere nuovamente la password dopo un secondo
+//	                    passwordField.setEchoChar('*');
+//	                }
+//	            });
+//	            timer.setRepeats(false); // Eseguire solo una volta
+//	            timer.start();
+//	        }
+//	    });
+//		
+	}
+	
+	public JButton getBtnMostra() {
+		return mostra;
 	}
 
 	public JLabel getRegistrazione() {

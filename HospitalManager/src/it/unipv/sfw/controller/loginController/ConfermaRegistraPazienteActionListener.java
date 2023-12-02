@@ -93,7 +93,8 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 		view.getRegistratiPanelPaziente().getCapField().setText(null);
 		view.getRegistratiPanelPaziente().getAltezzaField().setText(null);
 		view.getRegistratiPanelPaziente().getPesoField().setText(null);
-		
+		view.getRegistratiPanelPaziente().getScegliSesso().setSelectedIndex(0);
+		view.getRegistratiPanelPaziente().getScegliGruppo().setSelectedIndex(0);
 	}
 
 }

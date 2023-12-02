@@ -42,6 +42,9 @@ public class BtnBackRegistrazioneActionListener implements ActionListener{
 		view.getRegistratiPanel().getCellulareField().setText(null);
 		view.getRegistratiPanel().getPasswordField().setText(null);
 		view.getRegistratiPanel().getCapField().setText(null);
+		view.getRegistratiPanel().getScegliSesso().setSelectedIndex(0);
+		view.getRegistratiPanel().getScegliSpecializzazione().setSelectedIndex(0);
+		view.getRegistratiPanel().getScegliSpecializzazione().setSelectedIndex(0);
 	}
 
 }

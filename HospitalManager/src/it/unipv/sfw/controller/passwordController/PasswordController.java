@@ -9,6 +9,7 @@ public class PasswordController {
 	private CambiaPasswordActionListener cambiaPass;
 	private ConfermaCambiaPassActionListener confermaCambioPass;
 	private GoBackCambiaPassActionListener goBackPass;
+	private MostraPasswordGenerata showPass;
 	
 	public PasswordController(IStrutturaSanitaria model, ViewController view) {
 
@@ -25,5 +26,9 @@ public class PasswordController {
 		
 		goBackPass = new GoBackCambiaPassActionListener(model, view);
 		view.getCambiaPwPanel().getBtnBack().addActionListener(goBackPass);
+		
+		showPass = new MostraPasswordGenerata(model, view);
+		view.getRegistratiPanelPaziente().getBtnMostra().addActionListener(showPass);
+		view.getRegistratiPanel().getBtnMostra().addActionListener(showPass);
 		}
 }
