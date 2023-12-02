@@ -229,7 +229,9 @@ public class ProfiloDAO implements IProfiloDAO {
 		
 		boolean check = true;
 		
-		System.out.println(a.getSesso().name());
+		int lunghezzaMassima = 2;
+		String datiTroncati = a.getSesso().name().substring(0, Math.min(a.getSesso().name().length(), lunghezzaMassima));
+
 		
 		try {
 			String query = "INSERT INTO hospitalmanager.PROFILI VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -237,20 +239,21 @@ public class ProfiloDAO implements IProfiloDAO {
 			ps1.setString(1, a.getCf());
 			ps1.setString(2, a.getTipoAcc().name());
 			ps1.setString(3, a.getPw());
-			ps1.setString(4, a.getNome());
-			ps1.setString(5, a.getCognome());
-			ps1.setString(6, a.getSesso().name());
-			ps1.setString(7, a.getDataNascita());
-			ps1.setString(8, a.getLuogoNascita());
-			ps1.setString(9, a.getProvinciaNascita());
-			ps1.setString(10, a.getRegioneRes());
-			ps1.setString(11, a.getProvinciaRes());
-			ps1.setString(12, a.getCittaRes());
-			ps1.setString(13, a.getIndirizzo());
-			ps1.setString(14, a.getCap());
-			ps1.setString(15, a.geteMail());
-			ps1.setString(16, a.getCellulare());
-			ps1.setString(17, a.getSpecializzazione());
+			ps1.setString(4, a.getSpecializzazione());
+			ps1.setString(5, a.getNome());
+			ps1.setString(6, a.getCognome());
+			ps1.setString(7, datiTroncati);
+			ps1.setString(8, a.getDataNascita());
+			ps1.setString(9, a.getLuogoNascita());
+			ps1.setString(10, a.getProvinciaNascita());
+			ps1.setString(11, a.getRegioneRes());
+			ps1.setString(12, a.getProvinciaRes());
+			ps1.setString(13, a.getCittaRes());
+			ps1.setString(14, a.getIndirizzo());
+			ps1.setString(15, a.getCap());
+			ps1.setString(16, a.geteMail());
+			ps1.setString(17, a.getCellulare());
+			
 			
 			//ps1.executeUpdate(query);
 			ps1.executeUpdate();
