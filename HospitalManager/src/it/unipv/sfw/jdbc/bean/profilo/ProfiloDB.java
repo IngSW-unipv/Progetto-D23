@@ -1,5 +1,6 @@
 package it.unipv.sfw.jdbc.bean.profilo;
 
+import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.persona.TipoAccount;
 
 public class ProfiloDB {
@@ -9,7 +10,7 @@ public class ProfiloDB {
 	private String specializzazione;
 	private String nome;
 	private String cognome;
-	private String sesso;
+	private Sesso sesso;
 	private String dataNascita;
 	private String luogoNascita;
 	private String provinciaNascita;
@@ -32,7 +33,7 @@ public class ProfiloDB {
 		this.specializzazione = specializzazione;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.sesso = sesso;
+		this.sesso = Sesso.valueOf(sesso);
 		this.dataNascita = dataNascita;
 		this.luogoNascita = luogoNascita;
 		this.provinciaNascita = provinciaNascita;
@@ -94,11 +95,11 @@ public class ProfiloDB {
 		this.cognome = cognome;
 	}
 
-	public String getSesso() {
+	public Sesso getSesso() {
 		return sesso;
 	}
 
-	public void setSesso(String sesso) {
+	public void setSesso(Sesso sesso) {
 		this.sesso = sesso;
 	}
 

@@ -1,10 +1,13 @@
 package it.unipv.sfw.jdbc.bean.profilo;
 
 import java.sql.Connection;
+import java.sql.DataTruncation;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
 import it.unipv.sfw.jdbc.ConnessioneDB;
 import it.unipv.sfw.model.persona.TipoAccount;
@@ -226,6 +229,8 @@ public class ProfiloDAO implements IProfiloDAO {
 		
 		boolean check = true;
 		
+		System.out.println(a.getSesso().name());
+		
 		try {
 			String query = "INSERT INTO hospitalmanager.PROFILI VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
@@ -234,7 +239,7 @@ public class ProfiloDAO implements IProfiloDAO {
 			ps1.setString(3, a.getPw());
 			ps1.setString(4, a.getNome());
 			ps1.setString(5, a.getCognome());
-			ps1.setString(6, a.getSesso());
+			ps1.setString(6, a.getSesso().name());
 			ps1.setString(7, a.getDataNascita());
 			ps1.setString(8, a.getLuogoNascita());
 			ps1.setString(9, a.getProvinciaNascita());

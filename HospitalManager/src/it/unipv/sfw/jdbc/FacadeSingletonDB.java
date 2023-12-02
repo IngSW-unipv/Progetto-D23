@@ -1,7 +1,6 @@
 package it.unipv.sfw.jdbc;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 import it.unipv.sfw.jdbc.bean.calendario.*;
@@ -18,7 +17,6 @@ import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.persona.OperatoreSanitario;
 import it.unipv.sfw.model.persona.OperatoreUfficio;
 import it.unipv.sfw.model.persona.Paziente;
-import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
@@ -83,7 +81,7 @@ public class FacadeSingletonDB {
 		
 		for (ProfiloDB i: pazienti) {
 			
-			Paziente p = new Paziente(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
+			Paziente p = new Paziente(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getSesso(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare());
 			
@@ -119,7 +117,7 @@ public class FacadeSingletonDB {
 				}
 			}
 				
-			Medico m = new Medico(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
+			Medico m = new Medico(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getSesso(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare(), 
 					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioMedico);
@@ -158,7 +156,7 @@ public class FacadeSingletonDB {
 				}
 			}
 			
-			OperatoreSanitario os = new OperatoreSanitario(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
+			OperatoreSanitario os = new OperatoreSanitario(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getSesso(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare(), 
 					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioOperatore);
@@ -176,7 +174,7 @@ public class FacadeSingletonDB {
 		
 		for (ProfiloDB i: operatoriUfficio) {
 			
-			OperatoreUfficio ou = new OperatoreUfficio(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), Sesso.valueOf(i.getSesso()), i.getDataNascita(), 
+			OperatoreUfficio ou = new OperatoreUfficio(i.getCf(), i.getPw(), i.getTipoAcc(), i.getNome(), i.getCognome(), i.getSesso(), i.getDataNascita(), 
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare());
 			
@@ -297,7 +295,18 @@ public class FacadeSingletonDB {
 		profilo.insertProfilo(accountDB);
 	}
 	
-	public void inserisciPazienteOpUff(Account a) {
+	public void inserisciPaziente(Paziente a, CartellaClinica c) {
+		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), null, a.getNome(), a.getCognome(), 
+				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
+				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
+		
+		CartellaClinicaDB cartellaDB = new CartellaClinicaDB(a.getCf(), c.getAltezza(), c.getPeso(), c.getGruppoSanguigno().toString());
+
+		profilo.insertProfilo(accountDB);
+		cartellaClinica.insertCartelle(cartellaDB);
+	
+	}
+	public void inserisciOperatoreUfficio(OperatoreUfficio a) {
 		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), null, a.getNome(), a.getCognome(), 
 				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
 				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());

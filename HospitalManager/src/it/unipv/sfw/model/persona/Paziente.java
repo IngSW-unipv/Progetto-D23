@@ -14,24 +14,23 @@ public class Paziente extends Account {
 	//costruttore 1
 	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
-			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
-			ArrayList<Prenotazione> prenotazioni, CartellaClinica cartellaPersonale) {
-		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
-				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-		this.prenotazioni = prenotazioni;
-		this.cartellaPersonale = cartellaPersonale;
-	}
-
-	//costruttore 2
-	public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
-			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
-			String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
+			String cittaRes, String indirizzo, String cap, String eMail, String cellulare, CartellaClinica cartellaPersonale) {
 		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
 				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 		this.prenotazioni = new ArrayList<>();
-		this.cartellaPersonale = new CartellaClinica();
+		this.cartellaPersonale = cartellaPersonale;
 	}
 	
+	//costruttore 2
+		public Paziente(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
+				String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
+				String cittaRes, String indirizzo, String cap, String eMail, String cellulare) {
+			super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
+					provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+			this.prenotazioni = new ArrayList<>();
+			this.cartellaPersonale = new CartellaClinica();
+		}
+		
 	public boolean spostaPrenotazioniErogate() {
 		boolean check = false;
 		try {

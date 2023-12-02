@@ -1,4 +1,4 @@
-DBDRIVER = com.mysql.cj.jdbc.Driver
-DBURL = jdbc:mysql://localhost:3306/
+DBDRIVER=com.mysql.cj.jdbc.Driver
+DBURL=jdbc:mysql://localhost:3306/
 db_usn=utente
 db_psw=UtenteHospitalManager

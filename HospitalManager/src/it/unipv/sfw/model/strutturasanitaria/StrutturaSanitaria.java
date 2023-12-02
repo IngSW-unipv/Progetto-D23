@@ -84,15 +84,16 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
 			Sesso sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
 			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, 
-			TipoPrestazione specializzazione) {
+			TipoPrestazione specializzazione, double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
 		boolean check = false;
 		try {
 			switch(tipo) {
 			case PA:
+				CartellaClinica c = new CartellaClinica(altezza, peso, gruppoSanguigno);
 				Paziente p = new Paziente(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
-						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
+						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, c);
 				
-				FacadeSingletonDB.getIstanzaFacade().inserisciPazienteOpUff(p);
+				FacadeSingletonDB.getIstanzaFacade().inserisciPaziente(p, c);
 				pazienti.add(p);
 				this.getCfPersone().put(p.getCf(), p);
 				
@@ -125,7 +126,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				OperatoreUfficio ou = new OperatoreUfficio(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 				
-				FacadeSingletonDB.getIstanzaFacade().inserisciPazienteOpUff(ou);
+				FacadeSingletonDB.getIstanzaFacade().inserisciOperatoreUfficio(ou);
 				operatoriUfficio.add(ou);
 				this.getCfPersone().put(ou.getCf(), ou);
 							

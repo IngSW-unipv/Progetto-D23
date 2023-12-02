@@ -37,10 +37,13 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			String pw = String.valueOf(view.getRegistratiPanelPaziente().getPasswordField().getPassword());
 			String cap = view.getRegistratiPanelPaziente().getCapField().getText();
 			String sesso = view.getRegistratiPanelPaziente().getSessoScelto();
-			
+			String altezza = view.getRegistratiPanelPaziente()
+			String peso = view.getRegistratiPanelPaziente()
+			String gruppoSanguigno = view.getRegistratiPanelPaziente()
 						
 			Boolean check = model.registrazioneAccount(cf, pw, TipoAccount.PA, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-						indirizzo, cap, email, cellulare, TipoPrestazione.NULL);
+						indirizzo, cap, email, cellulare, TipoPrestazione.NULL, altezza, peso, gruppoSanguigno);
+			
 				
 			if (check) {
 				pulisciTextField();

@@ -21,5 +21,5 @@ public interface IStrutturaSanitaria {
 	boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
-			TipoPrestazione specializzazione);
+			TipoPrestazione specializzazione, double altezza, double peso, GruppiSanguigni gruppoSanguigno);
 }
