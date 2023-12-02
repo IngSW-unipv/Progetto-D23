@@ -23,36 +23,27 @@ public class ScegliPrestazioneActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			String s = view.getPrenotatiPanelPaziente().getScegliPrestazione().getSelectedItem().toString();
-			TipoPrestazione tipoPrest = TipoPrestazione.valueOf(s);		
-			model.impostaSlotLiberiPerPrestazione(tipoPrest);
-			//TEST
-			System.out.println(model.getArraySlotLiberi().size());
-			///////////////
-			SlotCalendarioSingoli slot = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());
-			String data = slot.getData().toString();
-			String orario = slot.getOrario().toString();
 			
-//			DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//			String dataString = data.format(formatterData);
-//			
-//			DateTimeFormatter formatterOrario = DateTimeFormatter.ofPattern("hh:mm");
-//			String orarioString = orario.format(formatterOrario);
-			
-//			String slot = dataString + orarioString;
-			
-//			XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(slot.getBytes()));
-//		    JLabel slotDaInserire = (JLabel) d.readObject();
-//		    d.close();
-			
-		    Account acc = model.getUtenteCorrente();
+			Account acc = model.getUtenteCorrente();
 			TipoAccount tipoAcc = acc.getTipoAcc();
-		    
-		    if(tipoAcc == TipoAccount.PA) {
+			
+			if(tipoAcc == TipoAccount.PA) {
+				String s = view.getPrenotatiPanelPaziente().getScegliPrestazione().getSelectedItem().toString();
+				TipoPrestazione tipoPrest = TipoPrestazione.valueOf(s);		
+				model.impostaSlotLiberiPerPrestazione(tipoPrest);
+				SlotCalendarioSingoli slot = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());
+				String data = slot.getData().toString();
+				String orario = slot.getOrario().toString();
 		    	view.getPrenotatiPanelPaziente().setSlot(data+" | "+orario);
 		    }
-		    
-		    else {
+			
+		    if(tipoAcc == TipoAccount.OU) {
+		    	String s = view.getPrenotatiPanelUfficio().getScegliPrestazione().getSelectedItem().toString();
+				TipoPrestazione tipoPrest = TipoPrestazione.valueOf(s);		
+				model.impostaSlotLiberiPerPrestazione(tipoPrest);
+				SlotCalendarioSingoli slot = model.getArraySlotLiberi().get(model.getIndexArraySlotLiberi());
+				String data = slot.getData().toString();
+				String orario = slot.getOrario().toString();
 		    	view.getPrenotatiPanelUfficio().setSlot(data+" | "+orario);
 		    }
 		}catch(Exception e1) {

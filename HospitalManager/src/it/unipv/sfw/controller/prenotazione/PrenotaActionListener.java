@@ -29,6 +29,7 @@ public class PrenotaActionListener implements ActionListener {
 		if (tipoAcc == TipoAccount.OU) {
 			view.getOperatoreUfficioPanel().setVisible(false);
 			view.getPrenotatiPanelUfficio().setVisible(true);
+			
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			view.getContentPane().setLayout(null);
 		}
