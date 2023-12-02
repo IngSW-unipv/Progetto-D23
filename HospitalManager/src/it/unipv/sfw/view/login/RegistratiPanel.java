@@ -28,11 +28,13 @@ public class RegistratiPanel extends JPanel{
 	private JComboBox<String> scegliSesso;
 	private String[] tipoSpecializzazione = {"NULL", "VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAME_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
 	private JComboBox<String> scegliSpecializzazione;
+	private JButton mostra;
+	private JLabel mostraPw;
 	
 	
 	public RegistratiPanel() {
 		
-		setLayout(new GridLayout(21,2));
+		setLayout(new GridLayout(22,2));
 		
 		nomeField = new JTextField();
 		cognomeField = new JTextField();
@@ -85,6 +87,9 @@ public class RegistratiPanel extends JPanel{
 		specializzazione = new JLabel("Scegli Specializzazione");
 		scegliSpecializzazione = new JComboBox<>(tipoSpecializzazione);
 		
+		mostraPw = new JLabel("Mostra Password");
+		mostra = new JButton("MOSTRA");
+		
 		add(registrazione);
 		add(nuoviDati);
 		add(tipo);
@@ -123,6 +128,8 @@ public class RegistratiPanel extends JPanel{
 		add(passwordField);
 		add(generaPassword);
 		add(btnGeneraPass);
+		add(mostraPw);
+		add(mostra);
 		add(conferma);
 		add(btnConfermaReg);
 		add(back);

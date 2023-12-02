@@ -1,6 +1,7 @@
 package it.unipv.sfw.view.login;
 
 import java.awt.GridLayout;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -30,9 +31,12 @@ public class RegistratiPanelPaziente extends JPanel{
 	private String[] gruppo = {"A_POSITIVO", "A_NEGATIVO", "B_POSITIVO", "B_NEGATIVO", "AB_POSITIVO", "AB_NEGATIVO", "ZERO_POSITIVO", "ZERO_NEGATIVO"};
 	private JComboBox<String> scegliGruppo;
 	
+	private JButton mostra;
+	private JLabel mostraPw;
+	
 	public RegistratiPanelPaziente() {
 		
-		setLayout(new GridLayout(23,2));
+		setLayout(new GridLayout(24,2));
 		
 		nomeField = new JTextField();
 		cognomeField = new JTextField();
@@ -92,6 +96,10 @@ public class RegistratiPanelPaziente extends JPanel{
 		
 		scegliGruppo = new JComboBox<>(gruppo);
 		
+		mostraPw = new JLabel("Mostra Password");
+		mostra = new JButton("MOSTRA");
+		
+		
 		add(registrazione);
 		add(nuoviDati);
 		add(tipo);
@@ -134,12 +142,31 @@ public class RegistratiPanelPaziente extends JPanel{
 		add(passwordField);
 		add(generaPassword);
 		add(btnGeneraPass);
+		add(mostraPw);
+		add(mostra);
 		add(conferma);
 		add(btnConfermaReg);
 		add(back);
 		add(indietro);
-	}
+		
+		//PER ALDIN
+		mostra.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            // Ottenere la password temporaneamente
+	            passwordField.setEchoChar((char) 0);
 
+	            Timer timer = new Timer(1000, new ActionListener() {
+	                public void actionPerformed(ActionEvent evt) {
+	                    // Nascondere nuovamente la password dopo un secondo
+	                    passwordField.setEchoChar('*');
+	                }
+	            });
+	            timer.setRepeats(false); // Eseguire solo una volta
+	            timer.start();
+	        }
+	    });
+		
+	}
 
 	public JLabel getRegistrazione() {
 		return registrazione;
