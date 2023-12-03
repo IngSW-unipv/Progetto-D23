@@ -29,7 +29,7 @@ import it.unipv.sfw.model.strutturasanitaria.StrutturaSanitaria;
 public class FacadeSingletonDB {
 		
 	private static FacadeSingletonDB istanzaDB = null;
-	private IStrutturaSanitaria struttura1;
+	private IStrutturaSanitaria struttura;
 	
 	private IProfiloDAO profilo;
 	private ICalendarioDAO calendario;
@@ -39,7 +39,7 @@ public class FacadeSingletonDB {
 	
 	private FacadeSingletonDB() {
 		super();
-		this.struttura1 = new StrutturaSanitaria();
+		this.struttura = new StrutturaSanitaria();
 		
 		this.profilo = new ProfiloDAO();
 		this.calendario = new CalendarioDAO();
@@ -52,19 +52,19 @@ public class FacadeSingletonDB {
 		popolaMedici();
 		popolaOperatoriSanitari();
 		popolaOperatoriUfficio();
-		popolaCartellaClinica(struttura1.getPazienti());
-		popolaPrenotazioni(struttura1.getPazienti());
+		popolaCartellaClinica(struttura.getPazienti());
+		popolaPrenotazioni(struttura.getPazienti());
 		recuperoIdUltimaPrenotazione();
 		
 	
 	}
 	
-	public IStrutturaSanitaria getStruttura1() {
-		return struttura1;
+	public IStrutturaSanitaria getStruttura() {
+		return struttura;
 	}
 
-	public void setStruttura1(StrutturaSanitaria struttura1) {
-		this.struttura1 = struttura1;
+	public void setStruttura(StrutturaSanitaria struttura) {
+		this.struttura = struttura;
 	}
 
 	public static FacadeSingletonDB getIstanzaFacade() {
@@ -85,8 +85,8 @@ public class FacadeSingletonDB {
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare());
 			
-			struttura1.getPazienti().add(p);
-			struttura1.getCfPersone().put(i.getCf(), p);
+			struttura.getPazienti().add(p);
+			struttura.getCfPersone().put(i.getCf(), p);
 		}
 	}
 	
@@ -105,9 +105,9 @@ public class FacadeSingletonDB {
 			
 			
 			for(PrenotazioneDB k : calendarioDB) {
-				IPaziente paziente = (Paziente)struttura1.getCfPersone().get(k.getPaziente());
-				IAccount personaleSanitario = struttura1.getCfPersone().get(k.getPersonaleSanitario());
-				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(k.getTipo());
+				IPaziente paziente = (Paziente)struttura.getCfPersone().get(k.getPaziente());
+				IAccount personaleSanitario = struttura.getCfPersone().get(k.getPersonaleSanitario());
+				PrestazioneSanitaria prestazione = struttura.getTipoPrestazioni().get(k.getTipo());
 				
 				IPrenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
 						prestazione, k.getDataPren(), k.getOraPren());
@@ -122,9 +122,9 @@ public class FacadeSingletonDB {
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare(), 
 					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioMedico);
 			
-			struttura1.getMedici().add((IPersonaleSanitario) m);
-			struttura1.getCfPersone().put(i.getCf(), m);
-			struttura1.getPersonaleSanitario().put(TipoPrestazione.valueOf(i.getSpecializzazione()), m);
+			struttura.getMedici().add((IPersonaleSanitario) m);
+			struttura.getCfPersone().put(i.getCf(), m);
+			struttura.getPersonaleSanitario().put(TipoPrestazione.valueOf(i.getSpecializzazione()), m);
 		}
 	}
 	
@@ -144,9 +144,9 @@ public class FacadeSingletonDB {
 			
 			
 			for(PrenotazioneDB k : calendarioDB) {
-				IPaziente paziente = (Paziente)struttura1.getCfPersone().get(k.getPaziente());
-				IAccount personaleSanitario = struttura1.getCfPersone().get(k.getPersonaleSanitario());
-				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(k.getTipo());
+				IPaziente paziente = (Paziente)struttura.getCfPersone().get(k.getPaziente());
+				IAccount personaleSanitario = struttura.getCfPersone().get(k.getPersonaleSanitario());
+				PrestazioneSanitaria prestazione = struttura.getTipoPrestazioni().get(k.getTipo());
 				
 				IPrenotazione prenotazione = new Prenotazione(k.getIdPren(), paziente, personaleSanitario, 
 						prestazione, k.getDataPren(), k.getOraPren());
@@ -161,9 +161,9 @@ public class FacadeSingletonDB {
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare(), 
 					TipoPrestazione.valueOf(i.getSpecializzazione()), calendarioOperatore);
 			
-			struttura1.getOperatoriSanitari().add((IPersonaleSanitario) os);
-			struttura1.getCfPersone().put(i.getCf(), os);
-			struttura1.getPersonaleSanitario().put(TipoPrestazione.valueOf(i.getSpecializzazione()), os);
+			struttura.getOperatoriSanitari().add((IPersonaleSanitario) os);
+			struttura.getCfPersone().put(i.getCf(), os);
+			struttura.getPersonaleSanitario().put(TipoPrestazione.valueOf(i.getSpecializzazione()), os);
 		}
 	}
 	
@@ -178,8 +178,8 @@ public class FacadeSingletonDB {
 					i.getLuogoNascita(), i.getProvinciaNascita(), i.getRegioneRes(), i.getProvinciaRes(), i.getCittaRes(), 
 					i.getIndirizzo(), i.getCap(), i.geteMail(), i.getCellulare());
 			
-			struttura1.getOperatoriUfficio().add((OperatoreUfficio) ou);
-			struttura1.getCfPersone().put(i.getCf(), ou);
+			struttura.getOperatoriUfficio().add((OperatoreUfficio) ou);
+			struttura.getCfPersone().put(i.getCf(), ou);
 		}
 	}		
 		
@@ -192,8 +192,8 @@ public class FacadeSingletonDB {
 			
 			PrestazioneSanitaria ps = new PrestazioneSanitaria(p.getTipo(), p.getDurata());
 			
-			struttura1.getPrestazioni().add(ps);
-			struttura1.getTipoPrestazioni().put(p.getTipo(), ps);
+			struttura.getPrestazioni().add(ps);
+			struttura.getTipoPrestazioni().put(p.getTipo(), ps);
 		}
 		
 	}
@@ -207,8 +207,8 @@ public class FacadeSingletonDB {
 		ArrayList<IPrenotazione> prModello = new ArrayList<>();
 		
 		for(PrenotazioneDB i : prDB) {
-			IAccount personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
-			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
+			IAccount personaleSanitario = struttura.getCfPersone().get(i.getPersonaleSanitario());
+			PrestazioneSanitaria prestazione = struttura.getTipoPrestazioni().get(i.getTipo());
 			
 			IPrenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
 			if(a.getData().isBefore(oggi)) {
@@ -232,14 +232,14 @@ public class FacadeSingletonDB {
 			
 			
 			for(PrenotazioneDB i : prDB) {
-				IAccount personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
-				PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
+				IAccount personaleSanitario = struttura.getCfPersone().get(i.getPersonaleSanitario());
+				PrestazioneSanitaria prestazione = struttura.getTipoPrestazioni().get(i.getTipo());
 				
 				IPrenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
 				if(a.getData().isAfter(oggi) || a.getData().equals(oggi)) {
 					paziente.getPrenotazioni().add(a);
 				}
-				struttura1.getIdPrenotazioni().put(a.getIdPren(), a);
+				struttura.getIdPrenotazioni().put(a.getIdPren(), a);
 			}
 			
 			}
@@ -280,7 +280,7 @@ public class FacadeSingletonDB {
 				SlotCalendarioSingoli slot = new SlotCalendarioSingoli(i.getData(), i.getGiorno(), i.getOrario());
 				
 				if(slot.getData().isAfter(oggi)) {
-					struttura1.getArraySlotLiberi().add(slot);
+					struttura.getArraySlotLiberi().add(slot);
 				}
 			}
 			
@@ -323,7 +323,7 @@ public class FacadeSingletonDB {
 	
 	public void recuperoIdUltimaPrenotazione() {
 		int n = prenotazione.selectNumeroPrenotazione();
-		struttura1.setUltimaPrenotazione(n);
+		struttura.setUltimaPrenotazione(n);
 		
 	}
 	

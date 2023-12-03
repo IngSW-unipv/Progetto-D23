@@ -67,7 +67,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	public static void main(String[] args) {
 		FacadeSingletonDB db = FacadeSingletonDB.getIstanzaFacade();
-		IStrutturaSanitaria model = db.getStruttura1();
+		IStrutturaSanitaria model = db.getStruttura();
 		ViewController view = new ViewController();
 		new FacadeController(model, view);		
 	}
