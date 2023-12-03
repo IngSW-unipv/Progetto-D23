@@ -6,6 +6,6 @@ Gruppo forza4
 
 Il software nasce con il desiderio di fornire ad una struttura sanitaria la possibilità di rendere più semplici e veloci alcune delle azioni più frequenti,
 come ad esempio le prenotazioni delle prestazioni sanitarie offerte dalla struttura, cercando di facilitare la gestione degli appuntamenti ottimizzando le tempistiche. 
-I pazienti hanno così l’opportunità di gestire i loro appuntamenti e eventuali esiti tramite piattaforma, così facendo si va ad alleggerire il carico degli Operatori Ufficio,
+I pazienti hanno così l’opportunità di gestire le loro prenotazioni, mentre il personale sanitario di visionare i propri appuntamenti, così facendo si va ad alleggerire il carico degli Operatori Ufficio,
 che però si occuperanno di offrire un servizio ausiliario ai pazienti che non riescono ad usufruire in maniera completa della piattaforma.
 
