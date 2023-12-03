@@ -6,11 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
-import it.unipv.sfw.model.persona.Account;
 import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.persona.TipoAccount;
-import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
@@ -47,7 +45,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			String gruppoSanguigno = view.getRegistratiPanelPaziente().getGruppoScelto();
 						
 			Boolean check = model.registrazioneAccount(cf, pw, TipoAccount.PA, nome, cognome, Sesso.valueOf(sesso), dataNascita, luogoNascita, provinciaNascita, regResidenza, provResidenza, cittaRes,
-						indirizzo, cap, email, cellulare, TipoPrestazione.NULL, Double.parseDouble(altezza), Double.parseDouble(peso), GruppiSanguigni.valueOf(gruppoSanguigno));
+						indirizzo, cap, email, cellulare, Double.parseDouble(altezza), Double.parseDouble(peso), GruppiSanguigni.valueOf(gruppoSanguigno));
 			
 			
 			if (check) {

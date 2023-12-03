@@ -17,7 +17,7 @@ public class ConnessioneDB {
 	private static String password;
 	private static String dbDriver;
 	private static String dbURL;
-	private static ConnessioneDB conn;
+	//private static ConnessioneDB conn;
 	
 	private static void init() {
 		Properties p = new Properties(System.getProperties());

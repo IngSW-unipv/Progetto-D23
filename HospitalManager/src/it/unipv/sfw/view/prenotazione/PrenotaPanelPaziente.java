@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class PrenotaPanelPaziente extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel tipoPrestazione;
 	private JLabel slot, slotProposto;
 	private String[] prestazioneString = {"VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAMI_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};

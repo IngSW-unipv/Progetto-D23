@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class CambiaPwPanel extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel vecchiaPw, nuovaPw;
 	private JPasswordField oldPw, newPw;
 	private JButton conferma, indietro;

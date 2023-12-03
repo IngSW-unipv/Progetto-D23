@@ -63,13 +63,9 @@ public class FacadeSingletonDB {
 		return struttura1;
 	}
 
-
-
 	public void setStruttura1(StrutturaSanitaria struttura1) {
 		this.struttura1 = struttura1;
 	}
-
-
 
 	public static FacadeSingletonDB getIstanzaFacade() {
 		if(istanzaDB == null) {
@@ -289,15 +285,6 @@ public class FacadeSingletonDB {
 			}
 			
 			}	
-		
-		
-	public void inserisciPersonaleSanitario(IAccount a) {
-		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), a.getSpecializzazione().toString(), a.getNome(), a.getCognome(), 
-				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
-				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
-		
-		profilo.insertProfilo(accountDB);
-	}
 	
 	public void inserisciPaziente(IPaziente a, CartellaClinica c) {
 		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), null, a.getNome(), a.getCognome(), 
@@ -308,14 +295,6 @@ public class FacadeSingletonDB {
 
 		profilo.insertProfilo(accountDB);
 		cartellaClinica.insertCartelle(cartellaDB);
-	
-	}
-	public void inserisciOperatoreUfficio(OperatoreUfficio a) {
-		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), null, a.getNome(), a.getCognome(), 
-				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
-				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
-		
-		profilo.insertProfilo(accountDB);
 	}
 	
 	public void inserisciCartellaClinica(IPaziente p) {
@@ -330,8 +309,7 @@ public class FacadeSingletonDB {
 				p.getPrestazione().getTipo().name(), p.getData().toString(), p.getOrario().toString());
 		
 		prenotazione.insertPrenotazione(prenotazioneDB);
-		calendario.updateCalendarioNewPren(prenotazioneDB);
-		
+		calendario.updateCalendarioNewPren(prenotazioneDB);	
 	}
 	
 	public void cancellaPrenotazione(IPrenotazione p) {
@@ -349,53 +327,8 @@ public class FacadeSingletonDB {
 		
 	}
 	
-	public void aggiornaPw(IAccount a) {
-		ProfiloDB accountDB = new ProfiloDB(a.getCf(), a.getTipoAcc().toString(), a.getPw(), null, a.getNome(), a.getCognome(), 
-				a.getSesso().toString(), a.getDataNascita(), a.getLuogoNascita(), a.getProvinciaNascita(), a.getRegioneRes(), a.getProvinciaRes(),
-				a.getCittaRes(), a.getIndirizzo(), a.getCap(), a.geteMail(), a.getCellulare());
-		
+	public void aggiornaPw(IAccount a) {		
 		profilo.updatePw(a.getCf(), a.getTipoAcc(), a.getPw());
 	}
-	
-//	public void popolaPrenotazioniTutte() {
-//		
-//		ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniDaErogare();
-//		
-//		
-//		for(PrenotazioneDB i : prDB) {
-//			Paziente paziente = (Paziente) struttura1.getCfPersone().get(i.getPaziente());
-//			Account personaleSanitario = struttura1.getCfPersone().get(i.getPersonaleSanitario());
-//			PrestazioneSanitaria prestazione = struttura1.getTipoPrestazioni().get(i.getTipo());
-//			
-//			Prenotazione a = new Prenotazione(i.getIdPren(), paziente, personaleSanitario, prestazione, i.getDataPren(), i.getOraPren());
-//			
-//			struttura1.getPrenotazioni().add(a);
-//			struttura1.getIdPrenotazioni().put(i.getIdPren(), a);
-//		
-//		}
-//	}
-	
-//	public void popolaCalendario() {
-//		ArrayList<SlotCalendarioDB> c = calendario.selectCalendario();
-//		
-//		for(SlotCalendarioDB i : c) {
-//			Prenotazione prenPrest1 = struttura1.getIdPrenotazioni().get(i.getIdPren1());
-//			Prenotazione prenPrest2 = struttura1.getIdPrenotazioni().get(i.getIdPren2());
-//			Prenotazione prenPrest3 = struttura1.getIdPrenotazioni().get(i.getIdPren3());
-//			Prenotazione prenPrest4 = struttura1.getIdPrenotazioni().get(i.getIdPren4());
-//			Prenotazione prenPrest5 = struttura1.getIdPrenotazioni().get(i.getIdPren5());
-//			Prenotazione prenPrest6 = struttura1.getIdPrenotazioni().get(i.getIdPren6());
-//			Prenotazione prenPrest7 = struttura1.getIdPrenotazioni().get(i.getIdPren7());
-//
-//			SlotCalendario slot = new SlotCalendario(i.getData(), i.getGiorno(), i.getVacanza(), i.getOrario(),
-//					prenPrest1, prenPrest2, prenPrest3, prenPrest4, prenPrest5, prenPrest6, prenPrest7);
-//			
-//			struttura1.getCalendario().add(slot);
-//			
-//		}
-//	}
-	
-	
-	
 	
 }

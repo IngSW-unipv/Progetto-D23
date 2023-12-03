@@ -19,16 +19,20 @@ import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public interface IStrutturaSanitaria {
+//	boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
+//			Sesso sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
+//			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, 
+//			TipoPrestazione specializzazione, double altezza, double peso, GruppiSanguigni gruppoSanguigno);
 	boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
 			Sesso sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
 			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, 
-			TipoPrestazione specializzazione, double altezza, double peso, GruppiSanguigni gruppoSanguigno);	
+			double altezza, double peso, GruppiSanguigni gruppoSanguigno);
 	int generaIdPren();
 	String generaPwTemp();
 	boolean login(String cf, String pw);
 	boolean cambioPw(String cf, String vecchiaPw, String nuovaPw);
 	boolean inserisciPrenotazione(TipoPrestazione prest, Paziente paziente, LocalDate data, LocalTime orario);
-	boolean aggiornaDatiSanitariPaziente(Paziente p, double altezza, double peso, GruppiSanguigni gruppoSanguigno);
+//	boolean aggiornaDatiSanitariPaziente(Paziente p, double altezza, double peso, GruppiSanguigni gruppoSanguigno);
 	boolean aggiornaPrenotazioni();
 	void incIndexArraySlotLiberi();
 	void decIndexArraySlotLiberi();

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import it.unipv.sfw.controller.facadecontroller.FacadeController;
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
@@ -14,6 +15,7 @@ import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
+import it.unipv.sfw.view.ViewController;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
@@ -40,8 +42,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	
 	private int ultimaPrenotazione;
 	
-	
-	//costruttore 1
 	public StrutturaSanitaria() {
 		super();
 		
@@ -63,20 +63,23 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.personaleSanitario = new HashMap<>();
 		
 		this.indiceArraySlotLiberi = 0;
-
+	}
+	
+	public static void main(String[] args) {
+		FacadeSingletonDB db = FacadeSingletonDB.getIstanzaFacade();
+		IStrutturaSanitaria model = db.getStruttura1();
+		ViewController view = new ViewController();
+		FacadeController facadeController = new FacadeController(model, view);
 		
-
 	}
 	
 	@Override
 	public boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
 			Sesso sesso, String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes,
 			String provinciaRes, String cittaRes, String indirizzo, String cap, String eMail, String cellulare, 
-			TipoPrestazione specializzazione, double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
+			double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
 		boolean check = false;
 		try {
-			switch(tipo) {
-			case PA:
 				CartellaClinica c = new CartellaClinica(altezza, peso, gruppoSanguigno);
 				Paziente p = new Paziente(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
 						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, c);
@@ -86,45 +89,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 				this.getCfPersone().put(p.getCf(), p);
 				
 				check = true;			
-				break;
-				
-			case ME:
-				Medico m = new Medico(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
-						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
-				
-				FacadeSingletonDB.getIstanzaFacade().inserisciPersonaleSanitario(m);
-				medici.add(m);
-				this.getCfPersone().put(m.getCf(), m);
-							
-				check = true;
-				break;
-				
-			case OS:
-				OperatoreSanitario os = new OperatoreSanitario(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
-						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare, specializzazione);
-				
-				FacadeSingletonDB.getIstanzaFacade().inserisciPersonaleSanitario(os);
-				operatoriSanitari.add(os);
-				this.getCfPersone().put(os.getCf(), os);
-							
-				check = true;
-				break;
-				
-			case OU:
-				OperatoreUfficio ou = new OperatoreUfficio(cf, pw, tipo, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita,
-						regioneRes, provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
-				
-				FacadeSingletonDB.getIstanzaFacade().inserisciOperatoreUfficio(ou);
-				operatoriUfficio.add(ou);
-				this.getCfPersone().put(ou.getCf(), ou);
-							
-				check = true;
-				break;
-				
-			default:
-				check = false;
-				break;
-			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -241,7 +205,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		        	if(iterator2.next().equals(p)) {
 		        		iterator2.remove();
 		        	}	            
-				
 				}
 			}else {
 				OperatoreSanitario op = (OperatoreSanitario)p.getPersonaleSanitario();
@@ -252,7 +215,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		        	if(iterator3.next().equals(p)) {
 		        		iterator3.remove();
 		        	}
-				
 				}
 				
 			this.idPrenotazioni.remove(p.getIdPren());
@@ -265,22 +227,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		}
 		
 		return check;
-	}
-
-	@Override
-	public boolean aggiornaDatiSanitariPaziente(Paziente p, double altezza, double peso, GruppiSanguigni gruppoSanguigno) {
-		boolean check = false;
-		try {
-			CartellaClinica cc = new CartellaClinica(altezza, peso, gruppoSanguigno);
-			p.setCartellaPersonale(cc);
-			FacadeSingletonDB.getIstanzaFacade().inserisciCartellaClinica(p);
-			check = true;
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return check;
-		
 	}
 	
 	public boolean aggiornaPrenotazioni() {

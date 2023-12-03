@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import it.unipv.sfw.model.prenotazione.IPrenotazione;
-import it.unipv.sfw.model.prenotazione.Prenotazione;
 
 public class PazientePanel extends JPanel{
 	

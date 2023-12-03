@@ -1,12 +1,11 @@
 package it.unipv.sfw.view.login;
 
 import java.awt.GridLayout;
-import java.awt.event.*;
-
 import javax.swing.*;
 
 public class RegistratiPanelPaziente extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel registrazione, nuoviDati;
 	private JLabel nome, cognome, cf, sesso;
 	private JLabel dataNascita, luogoNascita, provinciaNascita; 

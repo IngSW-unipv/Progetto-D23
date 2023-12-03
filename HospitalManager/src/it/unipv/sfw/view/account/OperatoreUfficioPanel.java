@@ -155,9 +155,6 @@ public class OperatoreUfficioPanel extends JPanel{
 	        		u.add((OperatoreSanitario)os.next());
 	        	}
 		
-//		u.addAll(pazienti);
-//		u.addAll(medici);
-//		u.addAll(operatoriSanitari);
 		modelloListaDue.clear();
 		for(Account a : u) {
 			String tipo = a.getTipoAcc().name();
@@ -212,7 +209,7 @@ public class OperatoreUfficioPanel extends JPanel{
 		this.tipoAccount = tipoAccount;
 	}
 
-	public JList getVisite() {
+	public JList<String> getVisite() {
 		return visite;
 	}
 
@@ -240,11 +237,11 @@ public class OperatoreUfficioPanel extends JPanel{
 		this.logout = logout;
 	}
 
-	public DefaultListModel getModelloLista() {
+	public DefaultListModel<String> getModelloLista() {
 		return modelloLista;
 	}
 
-	public void setModelloLista(DefaultListModel modelloLista) {
+	public void setModelloLista(DefaultListModel<String> modelloLista) {
 		this.modelloLista = modelloLista;
 	}
 	

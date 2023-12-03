@@ -24,6 +24,7 @@ public class PrenotaOpUffActionListener implements ActionListener {
 		
 		view.getOperatoreUfficioPanel().setVisible(false);
 		view.getPrenotatiPanelUfficio().setVisible(true);
+		view.getPrenotatiPanelUfficio().getScegliPrestazione().setSelectedIndex(-1);
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		
 	}

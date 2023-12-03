@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class AggiornaCartellaClinicaPanel extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel altezza, peso, gruppoSanguigno;
 	private JTextField altezzaText, pesoText;
 	private String[] gruppo = {"A_POSITIVO", "A_NEGATIVO", "B_POSITIVO", "B_NEGATIVO", "AB_POSITIVO", "AB_NEGATIVO", "ZERO_POSITIVO", "ZERO_NEGATIVO"};

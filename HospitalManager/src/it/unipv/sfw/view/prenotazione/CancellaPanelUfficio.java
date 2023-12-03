@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class CancellaPanelUfficio extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel idPrenotazione;
 	private JLabel slot, cancellaSlot;
 	private JLabel cfPaziente;

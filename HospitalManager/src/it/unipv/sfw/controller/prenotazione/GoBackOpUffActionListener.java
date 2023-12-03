@@ -37,7 +37,7 @@ public class GoBackOpUffActionListener implements ActionListener{
 		//prenotazione del OpUff
 		view.getPrenotatiPanelUfficio().getSlot().setText(null);
 		view.getPrenotatiPanelUfficio().getCfField().setText(null);
-		view.getPrenotatiPanelUfficio().getScegliPrestazione().setSelectedIndex(0);
+		view.getPrenotatiPanelUfficio().getScegliPrestazione().setSelectedIndex(-1);
 
 	}
 
