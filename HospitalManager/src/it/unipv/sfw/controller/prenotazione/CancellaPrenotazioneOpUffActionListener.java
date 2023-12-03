@@ -29,13 +29,18 @@ public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 			HashMap<Integer, Prenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
 			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
-			boolean check = model.cancellaPrenotazione(prenSelezionata);
+			boolean check = prenSelezionata.getPaziente().getCf() == cfPaziente;
 			
-			if (check == true) {
+			if(check) {
+			
+				check = model.cancellaPrenotazione(prenSelezionata);
+			}
+			
+			if (check) {
 				PulisciTextField();
 				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
 			} else {
-				PopUp.infoBox("Inserite un Id prenotazione valido", "Errore");
+				PopUp.infoBox("Inserire un Id prenotazione valido", "Errore");
 			}
 			
 		

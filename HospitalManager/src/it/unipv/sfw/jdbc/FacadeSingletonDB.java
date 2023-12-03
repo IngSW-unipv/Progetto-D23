@@ -328,7 +328,6 @@ public class FacadeSingletonDB {
 		
 		prenotazione.insertPrenotazione(prenotazioneDB);
 		calendario.updateCalendarioNewPren(prenotazioneDB);
-		// INSERISCI PRENOTAZIONE IN TABLE PRENOTAZIONI E AGGIORNA TABLE CALENDARIO
 		
 	}
 	

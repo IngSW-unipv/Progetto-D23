@@ -24,12 +24,12 @@ public class MostraPasswordGenerata implements ActionListener{
 	    view.getRegistratiPanelPaziente().getPasswordField().setEchoChar((char) 0);
 	    view.getRegistratiPanel().getPasswordField().setEchoChar((char)0);
 
-	    Timer timer = new Timer(1000, new ActionListener() {
+	    Timer timer = new Timer(2000, new ActionListener() {
 	    	
 	    	public void actionPerformed(ActionEvent evt) {
 	    		// Nascondere nuovamente la password dopo un secondo
-	    		view.getRegistratiPanel().getPasswordField().setEchoChar('*');
-	    		view.getRegistratiPanelPaziente().getPasswordField().setEchoChar('*');
+	    		view.getRegistratiPanel().getPasswordField().setEchoChar('•');
+	    		view.getRegistratiPanelPaziente().getPasswordField().setEchoChar('•');
 	                }
 	            });
 	            timer.setRepeats(false); // Eseguire solo una volta

@@ -292,12 +292,12 @@ public class CalendarioDAO implements ICalendarioDAO {
 		boolean check = true;
 		
 		try {
-			String query = "UPDATE hospitalmanager.CALENDARI SET ? = ? WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
+			String query = "UPDATE hospitalmanager.CALENDARI SET " + p.getTipo().name() + " = ? WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, p.getTipo().name());	//identifica la colonna della table CALENDARI
-			ps1.setInt(2, p.getIdPren());		//identificatore prenotazione da inserire a calendario
-			ps1.setDate(3, Date.valueOf(p.getDataPren()));
-			ps1.setTime(4, Time.valueOf(p.getOraPren()));
+			//ps1.setString(1, p.getTipo().name());	//identifica la colonna della table CALENDARI
+			ps1.setInt(1, p.getIdPren());		//identificatore prenotazione da inserire a calendario
+			ps1.setDate(2, Date.valueOf(p.getDataPren()));
+			ps1.setTime(3, Time.valueOf(p.getOraPren()));
 			ps1.executeUpdate();
 			//ps1.executeUpdate();
 			
@@ -320,11 +320,11 @@ public class CalendarioDAO implements ICalendarioDAO {
 		boolean check = true;
 		
 		try {
-			String query = "UPDATE hospitalmanager.CALENDARI SET ? = NULL WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
+			String query = "UPDATE hospitalmanager.CALENDARI SET " + p.getTipo().name() + " = NULL WHERE CALENDARIO_DATA = ? AND ORARIO = ?";
 			ps1 = conn.prepareStatement(query);
-			ps1.setString(1, p.getTipo().name());	//identifica la colonna della table CALENDARI
-			ps1.setDate(2, Date.valueOf(p.getDataPren()));
-			ps1.setTime(3, Time.valueOf(p.getOraPren()));
+			//ps1.setString(1, p.getTipo().name());	//identifica la colonna della table CALENDARI
+			ps1.setDate(1, Date.valueOf(p.getDataPren()));
+			ps1.setTime(2, Time.valueOf(p.getOraPren()));
 			ps1.executeUpdate();
 			//ps1.executeUpdate();
 			

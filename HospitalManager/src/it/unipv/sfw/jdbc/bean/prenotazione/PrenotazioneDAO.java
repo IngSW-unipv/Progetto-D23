@@ -51,7 +51,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		boolean check;
 		
 		try {
-			String query = "INSERT INTO hospitalmanager.PRENOTAZIONE VALUES (?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO hospitalmanager.PRENOTAZIONI VALUES (?,?,?,?,?,?)";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, p.getIdPren());
 			ps1.setString(2, p.getPaziente());
@@ -79,7 +79,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		boolean check;
 		
 		try {
-			String query = "DELETE FROM hospitalmanager.PRENOTAZIONE WHERE ID_PREN = ?";
+			String query = "DELETE FROM hospitalmanager.PRENOTAZIONI WHERE ID_PREN = ?";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, p.getIdPren());
 			ps1.executeUpdate();

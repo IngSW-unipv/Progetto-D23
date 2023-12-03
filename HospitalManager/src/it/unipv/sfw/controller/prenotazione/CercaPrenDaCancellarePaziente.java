@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
+import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
 
 public class CercaPrenDaCancellarePaziente implements ActionListener{
@@ -23,26 +24,24 @@ public class CercaPrenDaCancellarePaziente implements ActionListener{
 		try {
 			String s = view.getCancellaPanelPaziente().getIdPrenotazione().getText();
 			int idPren = Integer.valueOf(s);
-		
-			HashMap<Integer, Prenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
-			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
+			//TEST
+			System.out.println(s + "\n" + idPren);
+			//
+			Prenotazione prenSelezionata = model.getIdPrenotazioni().get(idPren);
+			
+			//TEST
+			System.out.println(prenSelezionata);
+			//
+			
+			if(prenSelezionata.getPaziente().getCf() == model.getUtenteCorrente().getCf()) {
 			
 			String data = prenSelezionata.getData().toString();
 			String orario = prenSelezionata.getOrario().toString();
-			
-//			DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//			String dataString = data.format(formatterData);
-//			
-//			DateTimeFormatter formatterOrario = DateTimeFormatter.ofPattern("hh:mm");
-//			String orarioString = orario.format(formatterOrario);
-//			
-//			String slot = dataString + orarioString;
-//			
-//			XMLDecoder d = new XMLDecoder(new ByteArrayInputStream(slot.getBytes()));
-//		    JLabel slotDaCancellare = (JLabel) d.readObject();
-//		    d.close();
 		    
 		    view.getCancellaPanelPaziente().setSlot(data+" | "+orario);
+			}else {
+				PopUp.infoBox("Id prenotazione non valido!","Errore");
+			}
 			
 		} catch(Exception e1) {
 			e1.printStackTrace();

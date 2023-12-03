@@ -15,11 +15,6 @@ import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 
 public class StrutturaSanitaria implements IStrutturaSanitaria {
-	
-	//private static StrutturaSanitaria struttura1 = null;
-	//private static FacadeSingletonDB istanzaDB = null;
-	//private static FacadeSingletonDB istanzaDB = FacadeSingletonDB.getIstanzaFacade();
-
 	private String nome;
 	private String indirizzo;
 	private String telefono;
@@ -30,7 +25,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private ArrayList<OperatoreSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
-	//private ArrayList<SlotCalendario> calendario;	//DA ELIMINARE??? INFORMAZIONI RIDONDANTI
 	
 	private ArrayList<SlotCalendarioSingoli> slotLiberi;
 	private int indiceArraySlotLiberi;
@@ -69,16 +63,8 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.indiceArraySlotLiberi = 0;
 
 		
-		//this.istanzaDB = FacadeSingletonDB.getIstanzaFacade();
 
 	}
-
-//	public static StrutturaSanitaria getIstanzaStruttura() {
-//		if(struttura1 == null) {
-//			struttura1 = new StrutturaSanitaria();
-//		}
-//		return struttura1;
-//	}
 	
 	@Override
 	public boolean registrazioneAccount(String cf, String pw, TipoAccount tipo, String nome, String cognome,
@@ -420,14 +406,6 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public void setIdPrenotazioni(HashMap<Integer, Prenotazione> idPrenotazioni) {
 		this.idPrenotazioni = idPrenotazioni;
 	}
-
-//	public ArrayList<SlotCalendario> getCalendario() {
-//		return calendario;
-//	}
-//
-//	public void setCalendario(ArrayList<SlotCalendario> calendario) {
-//		this.calendario = calendario;
-//	}
 	
 	public void setUtenteCorrente(String cf) {
 		this.utenteCorrente = this.cfPersone.get(cf);

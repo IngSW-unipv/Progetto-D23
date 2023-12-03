@@ -42,8 +42,8 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 
 			boolean check = model.inserisciPrenotazione(tipoPrest, paz, data, orario);
 			
-			if (check == true) {
-				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+			if (check) {
+				PopUp.infoBox("Prenotazione effettuata con successo", "OK");
 				pulisciTextFields();
 				view.getPrenotatiPanelPaziente().setVisible(false);
 				view.getPazientePanel().setVisible(true);
