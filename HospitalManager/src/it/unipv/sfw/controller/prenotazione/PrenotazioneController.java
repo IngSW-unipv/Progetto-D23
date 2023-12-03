@@ -7,7 +7,9 @@ public class PrenotazioneController {
 	
 	private ViewController view;
 	private IStrutturaSanitaria model;
-	private PrenotaActionListener prenota;
+	
+	private PrenotaOpUffActionListener prenotaOpUff;
+	private PrenotaPazActionListener prenotaPaz;
 	
 	private CercaPrenDaCancellarePaziente cercaPrenPaz;
 	private CercaPrenDaCancellareUff cercaPrenUff;
@@ -18,7 +20,9 @@ public class PrenotazioneController {
 	private CancellaPrenotazionePazienteActionListener confermaCancellaPaz;
 	private CancellaPrenotazioneOpUffActionListener confermaCancellaOpUff;
 	
-	private CancellaActionListener cancella;
+	private CancellaOpUffActionListener cancellaOpUff;
+	private CancellaPazActionListener cancellaPaz;
+	
 	private ScegliPrestazioneActionListener scegliPrest;
 	private SuccessivoActionListener successivo;
 	private PrecedenteActionListener precedente;
@@ -30,8 +34,11 @@ public class PrenotazioneController {
 		this.model = model;
 		this.view = view;
 		
-		prenota = new PrenotaActionListener(model, view);
-		cancella = new CancellaActionListener(model, view);
+		prenotaOpUff = new PrenotaOpUffActionListener(model, view);
+		prenotaPaz = new PrenotaPazActionListener(model, view);
+		
+		cancellaOpUff = new CancellaOpUffActionListener(model, view);
+		cancellaPaz = new CancellaPazActionListener(model, view);
 		
 		goBackPaz = new GoBackPazienteActionListener(model, view);
 		goBackOpUff = new GoBackOpUffActionListener(model, view);
@@ -58,11 +65,11 @@ public class PrenotazioneController {
 		view.getPrenotatiPanelUfficio().getBtnBack().addActionListener(goBackOpUff);
 		
 		
-		view.getOperatoreUfficioPanel().getPrenotaBtn().addActionListener(prenota);
-		view.getPazientePanel().getPrenotaBtn().addActionListener(prenota);
+		view.getOperatoreUfficioPanel().getPrenotaBtn().addActionListener(prenotaOpUff);
+		view.getPazientePanel().getPrenotaBtn().addActionListener(prenotaPaz);
 		
-		view.getPazientePanel().getCancellaBtn().addActionListener(cancella);
-		view.getOperatoreUfficioPanel().getCancellaBtn().addActionListener(cancella);
+		view.getPazientePanel().getCancellaBtn().addActionListener(cancellaOpUff);
+		view.getOperatoreUfficioPanel().getCancellaBtn().addActionListener(cancellaPaz);
 		
 		view.getPrenotatiPanelPaziente().getConfermaBtn().addActionListener(confermaPaziente);
 		view.getPrenotatiPanelUfficio().getConfermaBtn().addActionListener(confermaUfficio);
