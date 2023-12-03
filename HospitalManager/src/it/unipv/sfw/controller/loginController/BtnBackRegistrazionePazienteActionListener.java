@@ -34,6 +34,7 @@ public class BtnBackRegistrazionePazienteActionListener implements ActionListene
 
 			if(tipoAcc == TipoAccount.OU) {
 				view.getLoginPanel().setVisible(false);
+				view.getRegistratiPanelPaziente().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.getContentPane().setLayout(null);
