@@ -20,6 +20,7 @@ public class PasswordController {
 		view.getMedicoPanel().getCambiaPw().addActionListener(cambiaPass);
 		view.getOperatoreSanitarioPanel().getCambiaPw().addActionListener(cambiaPass);
 		view.getPazientePanel().getCambiaPw().addActionListener(cambiaPass);
+		view.getOperatoreUfficioPanel().getBtnCambiaPw().addActionListener(cambiaPass);
 		
 		confermaCambioPass = new ConfermaCambiaPassActionListener(model, view);
 		view.getCambiaPwPanel().getConfermaBtn().addActionListener(confermaCambioPass);

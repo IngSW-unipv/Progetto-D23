@@ -47,6 +47,8 @@ public class ConfermaPrenotazionePazienteActionListener implements ActionListene
 				pulisciTextFields();
 				view.getPrenotatiPanelPaziente().setVisible(false);
 				view.getPazientePanel().setVisible(true);
+				view.getPazientePanel().setListaPrenotazioni(paz.getPrenotazioni());
+				view.getPazientePanel().setListaPrenotazioniErogate(paz.getCartellaPersonale().getPrenotazioni());
 			} else {
 				PopUp.infoBox("Qualcosa è andato storto!","Errore");
 			}

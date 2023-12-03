@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+import it.unipv.sfw.model.persona.IPaziente;
 import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
@@ -29,6 +30,8 @@ public class CancellaPrenotazionePazienteActionListener implements ActionListene
 			HashMap<Integer, IPrenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
 			IPrenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
+			IPaziente paz = prenSelezionata.getPaziente();
+			
 			boolean check = prenSelezionata.getPaziente().getCf() == model.getUtenteCorrente().getCf();
 			if(check) {
 			
@@ -38,6 +41,10 @@ public class CancellaPrenotazionePazienteActionListener implements ActionListene
 			if(check) {
 				PulisciTextField();
 				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+				view.getCancellaPanelPaziente().setVisible(false);
+				view.getPazientePanel().setVisible(true);
+				view.getPazientePanel().setListaPrenotazioni(paz.getPrenotazioni());
+				view.getPazientePanel().setListaPrenotazioniErogate(paz.getCartellaPersonale().getPrenotazioni());
 			}else {
 				PopUp.infoBox("Inserire un Id prenotazione valido", "Errore");
 			}

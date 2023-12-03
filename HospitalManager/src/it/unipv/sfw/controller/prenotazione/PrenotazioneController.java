@@ -81,7 +81,7 @@ public class PrenotazioneController {
 		view.getCancellaPanelUfficio().getCerca().addActionListener(cercaPrenUff);
 		
 		view.getPrenotatiPanelPaziente().getScegliPrestazione().addActionListener(scegliPrest);
-		view.getPrenotatiPanelUfficio().getScegliPrestazione().addActionListener(scegliPrest);
+		view.getPrenotatiPanelUfficio().getCerca().addActionListener(scegliPrest);
 	
 		view.getPrenotatiPanelPaziente().getSuccessivo().addActionListener(successivo);
 		view.getPrenotatiPanelUfficio().getSuccessivo().addActionListener(successivo);

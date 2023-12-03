@@ -40,6 +40,10 @@ public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 			if (check) {
 				PulisciTextField();
 				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
+				view.getCancellaPanelUfficio().setVisible(false);
+				view.getOperatoreUfficioPanel().setVisible(true);
+				view.getOperatoreUfficioPanel().setListaPrenotazioni(model.getPazienti());
+				view.getOperatoreUfficioPanel().setListaUtenti(model.getPazienti(), model.getMedici(), model.getOperatoriSanitari());
 			} else {
 				PopUp.infoBox("Inserire un Id prenotazione valido", "Errore");
 			}

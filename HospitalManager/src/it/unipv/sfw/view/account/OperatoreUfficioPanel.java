@@ -248,5 +248,9 @@ public class OperatoreUfficioPanel extends JPanel{
 	public JButton getBtnAggPaz() {
 		return aggiungiPaziente;
 	}
+	
+	public JButton getBtnCambiaPw() {
+		return cambiaPw;
+	}
 }
 

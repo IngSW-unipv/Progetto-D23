@@ -58,6 +58,12 @@ public class ConfermaCambiaPassActionListener implements ActionListener{
 					view.getOperatoreSanitarioPanel().setVisible(true);
 					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					break;
+					
+					case OU:
+					view.getCambiaPwPanel().setVisible(false);
+					view.getOperatoreUfficioPanel().setVisible(true);
+					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					break;
 				}
 			} else {
 				PopUp.infoBox("C'è stato un errore nel cambio password", "Errore");

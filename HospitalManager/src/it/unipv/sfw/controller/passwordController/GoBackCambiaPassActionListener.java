@@ -33,25 +33,21 @@ public class GoBackCambiaPassActionListener implements ActionListener{
 		case PA:
 			view.getPazientePanel().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			view.getContentPane().setLayout(null);
 			break;
 			
 		case ME:
 			view.getMedicoPanel().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			view.getContentPane().setLayout(null);
 			break;
 			
 		case OU:
 			view.getOperatoreUfficioPanel().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			view.getContentPane().setLayout(null);
 			break;
 			
 		case OS:
 			view.getOperatoreSanitarioPanel().setVisible(true);
 			view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			view.getContentPane().setLayout(null);
 			break;
 		}
 	}

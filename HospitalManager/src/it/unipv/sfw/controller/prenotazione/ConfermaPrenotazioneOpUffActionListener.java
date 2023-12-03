@@ -49,6 +49,8 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 				pulisciTextFields();
 				view.getPrenotatiPanelUfficio().setVisible(false);
 				view.getOperatoreUfficioPanel().setVisible(true);
+				view.getOperatoreUfficioPanel().setListaPrenotazioni(model.getPazienti());
+				view.getOperatoreUfficioPanel().setListaUtenti(model.getPazienti(), model.getMedici(), model.getOperatoriSanitari());
 			} else {
 				PopUp.infoBox("C'è stato un errore nella prenotazione!","Errore");
 			}
@@ -61,5 +63,6 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 	private void pulisciTextFields() {
 		view.getPrenotatiPanelUfficio().getSlot().setText(null);
 		view.getPrenotatiPanelUfficio().getScegliPrestazione().setSelectedIndex(0);
+		view.getPrenotatiPanelUfficio().getCfField().setText(null);
 	}
 }	
