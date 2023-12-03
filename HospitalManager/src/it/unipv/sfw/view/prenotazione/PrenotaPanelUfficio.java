@@ -14,14 +14,14 @@ public class PrenotaPanelUfficio extends JPanel {
 	private JTextField cf;
 	private String[] prestazioneString = {"VISITA_ONCOLOGICA", "VISITA_PSICOLOGICA", "ESAMI_SANGUE", "TAC", "RISONANZA_MAGNETICA", "CHEMIOTERAPIA", "RADIOTERAPIA"};
 	private JComboBox <String> scegliPrestazione;
-	private JButton conferma, successivo, precedente, indietro;
+	private JButton conferma, successivo, precedente, indietro, cerca;
 	
 	public PrenotaPanelUfficio() {
 		
 		setLayout(new BorderLayout(40,40));
 		
 		JPanel barNord = new JPanel();
-		barNord.setLayout(new GridLayout(4,1));
+		barNord.setLayout(new GridLayout(5,1));
 		
 		JPanel barCentro = new JPanel();
 		barCentro.setLayout(new GridLayout(2,1));
@@ -43,10 +43,13 @@ public class PrenotaPanelUfficio extends JPanel {
 		successivo = new JButton("SLOT SUCCESSIVO");
 		precedente = new JButton("SLOT PRECEDENTE");
 		
+		cerca = new JButton("CERCA");
+		
 		barNord.add(tipoPrestazione);
 		barNord.add(scegliPrestazione);
 		barNord.add(cfPaziente);
 		barNord.add(cf);
+		barNord.add(cerca);
 		add(barNord, BorderLayout.PAGE_START);
 		
 		barCentro.add(slotProposto);
@@ -142,4 +145,14 @@ public class PrenotaPanelUfficio extends JPanel {
 	public JButton getBtnBack() {
 		return indietro;
 	}
+
+	public JButton getCerca() {
+		return cerca;
+	}
+
+	public void setCerca(JButton cerca) {
+		this.cerca = cerca;
+	}
+	
+	
 }
