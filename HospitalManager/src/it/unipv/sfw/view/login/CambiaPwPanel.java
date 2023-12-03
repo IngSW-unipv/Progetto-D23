@@ -45,4 +45,12 @@ public class CambiaPwPanel extends JPanel{
 	public void setOldPass(String pass) {
 		this.oldPw.setText(pass);
 	}
+	
+	public JPasswordField getOldPw() {
+		return oldPw;
+	}
+
+	public JPasswordField getNewPw(){
+		return newPw;
+	}
 }
