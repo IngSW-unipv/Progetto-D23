@@ -51,19 +51,22 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 			
 			
 			if (check) {
-				pulisciTextField();
-				PopUp.infoBox("Nuovo account creato", "OK");
-				view.getRegistratiPanelPaziente().setVisible(false);
-				view.getLoginPanel().setVisible(true);
 				
 				IAccount acc = model.getUtenteCorrente();
-				TipoAccount tipoAcc = acc.getTipoAcc();
-				
-				if(tipoAcc == TipoAccount.OU) {
-					view.getLoginPanel().setVisible(false);
+				if(acc == null) {
+					pulisciTextField();
+					PopUp.infoBox("Nuovo account creato", "OK");
+					view.getRegistratiPanelPaziente().setVisible(false);
+					view.getLoginPanel().setVisible(true);
+					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					
+				}else if(acc.getTipoAcc() == TipoAccount.OU){
+					
+					pulisciTextField();
+					PopUp.infoBox("Nuovo account creato", "OK");
+					view.getRegistratiPanelPaziente().setVisible(false);
 					view.getOperatoreUfficioPanel().setVisible(true);
 					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					view.getContentPane().setLayout(null);
 				}
 			} else {
 				PopUp.infoBox("C'è stato un errore", "Errore");

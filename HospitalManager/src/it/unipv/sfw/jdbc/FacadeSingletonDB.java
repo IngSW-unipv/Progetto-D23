@@ -228,9 +228,9 @@ public class FacadeSingletonDB {
 	}
 	
 	//passando l'arraylist del  modello si popola, per ogni paziente, la lista delle sue prenotazioni ancora da erogare
-		public void popolaPrenotazioni(ArrayList<IPaziente> arrayList) {
+		public void popolaPrenotazioni(ArrayList<IPaziente> pazienti) {
 			LocalDate oggi = LocalDate.now();
-			for(IPaziente paziente : arrayList) {
+			for(IPaziente paziente : pazienti) {
 			
 			ArrayList<PrenotazioneDB> prDB = prenotazione.selectPrenotazioniByPaziente(paziente.getCf());
 			
@@ -243,7 +243,7 @@ public class FacadeSingletonDB {
 				if(a.getData().isAfter(oggi) || a.getData().equals(oggi)) {
 					paziente.getPrenotazioni().add(a);
 				}
-				
+				struttura1.getIdPrenotazioni().put(a.getIdPren(), a);
 			}
 			
 			}
