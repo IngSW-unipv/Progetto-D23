@@ -4,7 +4,7 @@ import javax.security.auth.login.LoginException;
 
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
-public abstract class Account {
+public abstract class Account implements IAccount {
 	private String cf;
 	private String pw;
 	private TipoAccount tipoAcc;

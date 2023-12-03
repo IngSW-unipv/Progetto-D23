@@ -33,7 +33,7 @@ public class GoBtnActionListener implements ActionListener {
 
 		if(isMatching) {
 			view.getLoginPanel().setVisible(false);	
-			Account acc = model.getCfPersone().get(cf);
+			IAccount acc = model.getCfPersone().get(cf);
 			TipoAccount tipoAcc = acc.getTipoAcc();
 			model.aggiornaPrenotazioni();
 			model.setUtenteCorrente(cf);

@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
@@ -26,20 +26,19 @@ public class CancellaPrenotazionePazienteActionListener implements ActionListene
 			String s = view.getCancellaPanelPaziente().getIdPrenotazione().getText();
 			int idPren = Integer.valueOf(s);
 		
-			HashMap<Integer, Prenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
-			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
+			HashMap<Integer, IPrenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
+			IPrenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
 			boolean check = prenSelezionata.getPaziente().getCf() == model.getUtenteCorrente().getCf();
-			
 			if(check) {
 			
 				check = model.cancellaPrenotazione(prenSelezionata);
 			}
 			
-			if (check) {
+			if(check) {
 				PulisciTextField();
 				PopUp.infoBox("Prenotazione cancellata con successo", "OK");
-			} else {
+			}else {
 				PopUp.infoBox("Inserire un Id prenotazione valido", "Errore");
 			}
 		

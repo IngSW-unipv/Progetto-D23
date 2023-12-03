@@ -2,15 +2,15 @@ package it.unipv.sfw.model.cartellaclinica;
 
 import java.util.ArrayList;
 
-import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 
 public class CartellaClinica {
 	private double altezza;
 	private double peso;
 	private GruppiSanguigni gruppoSanguigno;
-	private ArrayList<Prenotazione> prenotazioni;
+	private ArrayList<IPrenotazione> prenotazioni;
 	
-	public CartellaClinica(double altezza, double peso, GruppiSanguigni gruppoSanguigno, ArrayList<Prenotazione> prenotazioni) {
+	public CartellaClinica(double altezza, double peso, GruppiSanguigni gruppoSanguigno, ArrayList<IPrenotazione> prenotazioni) {
 		super();
 		this.altezza = altezza;
 		this.peso = peso;
@@ -55,11 +55,11 @@ public class CartellaClinica {
 		this.gruppoSanguigno = gruppoSanguigno;
 	}
 
-	public ArrayList<Prenotazione> getPrenotazioni() {
+	public ArrayList<IPrenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
 
-	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
+	public void setPrenotazioni(ArrayList<IPrenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
 	}
 	

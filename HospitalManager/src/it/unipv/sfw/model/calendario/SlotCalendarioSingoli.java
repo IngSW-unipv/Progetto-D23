@@ -7,16 +7,12 @@ public class SlotCalendarioSingoli {
 	private LocalDate data;
 	private String giornoSettimana;
 	private LocalTime orario;
-	//private Prenotazione pren;
 	
-	public SlotCalendarioSingoli(LocalDate data, String giornoSettimana,/* String nomeVacanze,*/ LocalTime orario
-			/*Prenotazione pren*/) {
+	public SlotCalendarioSingoli(LocalDate data, String giornoSettimana, LocalTime orario) {
 		super();
 		this.data = data;
 		this.giornoSettimana = giornoSettimana;
-		//this.nomeVacanze = nomeVacanze;
 		this.orario = orario;
-		//this.pren = pren;
 	}
 
 	public LocalDate getData() {

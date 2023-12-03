@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
@@ -26,7 +26,7 @@ public class ConfermaCambiaPassActionListener implements ActionListener{
 
 			String oldPass = new String(view.getCambiaPwPanel().getOldPw().getPassword());
 			String newPass = new String(view.getCambiaPwPanel().getNewPw().getPassword());
-			Account acc = model.getUtenteCorrente();
+			IAccount acc = model.getUtenteCorrente();
 			String cf = acc.getCf();
 			TipoAccount tipoAcc = acc.getTipoAcc();
 

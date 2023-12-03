@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
@@ -22,7 +22,7 @@ public class GoBackCambiaPassActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		Account acc = model.getUtenteCorrente();
+		IAccount acc = model.getUtenteCorrente();
 		TipoAccount tipoAcc = acc.getTipoAcc();
 		view.getCambiaPwPanel().setNewPass(null);
 		view.getCambiaPwPanel().setOldPass(null);

@@ -4,7 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
+import it.unipv.sfw.model.persona.IPaziente;
 import it.unipv.sfw.model.persona.Paziente;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
@@ -31,8 +32,8 @@ public class AggiornaCartellaClinicaActionListener implements ActionListener{
             double altezza = Double.parseDouble(altezzaString);
             double peso = Double.parseDouble(pesoString);
 
-            Account acc = model.getUtenteCorrente();
-            Paziente paz = (Paziente) acc;
+            IPaziente paz = (IPaziente) model.getUtenteCorrente();
+           
 
             paz.getCartellaPersonale().setAltezza(altezza);
             paz.getCartellaPersonale().setPeso(peso);

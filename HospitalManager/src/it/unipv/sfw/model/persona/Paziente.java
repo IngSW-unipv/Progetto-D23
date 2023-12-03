@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
-import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 
 public class Paziente extends Account implements IPaziente {
 	
-	private ArrayList<Prenotazione> prenotazioni;
+	private ArrayList<IPrenotazione> prenotazioni;
 	private CartellaClinica cartellaPersonale;	
 
 	//costruttore 1
@@ -35,7 +35,7 @@ public class Paziente extends Account implements IPaziente {
 		boolean check = false;
 		try {
 			LocalDate oggi = LocalDate.now();
-			for(Prenotazione p : this.prenotazioni) {
+			for(IPrenotazione p : this.prenotazioni) {
 				if(p.getData().isBefore(oggi)) {
 					this.prenotazioni.remove(p);
 					this.cartellaPersonale.getPrenotazioni().add(p);
@@ -52,11 +52,11 @@ public class Paziente extends Account implements IPaziente {
 		return cartellaPersonale;
 	}
 
-	public ArrayList<Prenotazione> getPrenotazioni() {
+	public ArrayList<IPrenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
 
-	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
+	public void setPrenotazioni(ArrayList<IPrenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
 	}
 

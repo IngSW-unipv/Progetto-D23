@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
@@ -23,7 +23,7 @@ public class BtnBackRegistrazionePazienteActionListener implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		Account acc = model.getUtenteCorrente();
+		IAccount acc = model.getUtenteCorrente();
 		if(acc == null) {
 			view.getRegistratiPanelPaziente().setVisible(false);
 		pulisciTextFields();

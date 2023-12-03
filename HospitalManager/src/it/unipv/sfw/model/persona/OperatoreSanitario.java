@@ -3,18 +3,18 @@ package it.unipv.sfw.model.persona;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 
 public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 	
 	private TipoPrestazione specializzazione;
-	private ArrayList<Prenotazione> calendario;
+	private ArrayList<IPrenotazione> calendario;
 
 	public OperatoreSanitario(String cf, String pw, TipoAccount tipoAcc, String nome, String cognome, Sesso sesso,
 			String dataNascita, String luogoNascita, String provinciaNascita, String regioneRes, String provinciaRes,
 			String cittaRes, String indirizzo, String cap, String eMail, String cellulare,
-			TipoPrestazione specializzazione, ArrayList<Prenotazione> calendario) {
+			TipoPrestazione specializzazione, ArrayList<IPrenotazione> calendario) {
 		super(cf, pw, tipoAcc, nome, cognome, sesso, dataNascita, luogoNascita, provinciaNascita, regioneRes,
 				provinciaRes, cittaRes, indirizzo, cap, eMail, cellulare);
 		this.specializzazione = specializzazione;
@@ -35,7 +35,7 @@ public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 		boolean check = false;
 		try {
 			LocalDate oggi = LocalDate.now();
-			for(Prenotazione p : this.calendario) {
+			for(IPrenotazione p : this.calendario) {
 				if(p.getData().isBefore(oggi)) {
 					this.calendario.remove(p);
 				}
@@ -56,11 +56,11 @@ public class OperatoreSanitario extends Account implements IPersonaleSanitario{
 		this.specializzazione = specializzazione;
 	}
 	
-	public ArrayList<Prenotazione> getCalendario() {
+	public ArrayList<IPrenotazione> getCalendario() {
 		return calendario;
 	}
 
-	public void setCalendario(ArrayList<Prenotazione> calendario) {
+	public void setCalendario(ArrayList<IPrenotazione> calendario) {
 		this.calendario = calendario;
 	}
 	

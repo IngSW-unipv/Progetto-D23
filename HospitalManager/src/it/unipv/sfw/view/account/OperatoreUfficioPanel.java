@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -13,10 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IPaziente;
+import it.unipv.sfw.model.persona.IPersonaleSanitario;
 import it.unipv.sfw.model.persona.Medico;
 import it.unipv.sfw.model.persona.OperatoreSanitario;
 import it.unipv.sfw.model.persona.Paziente;
-import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 
 public class OperatoreUfficioPanel extends JPanel{
 	
@@ -114,10 +117,10 @@ public class OperatoreUfficioPanel extends JPanel{
 		
 	}
 	
-	public void setListaPrenotazioni (ArrayList<Paziente> pazienti) {
+	public void setListaPrenotazioni (ArrayList<IPaziente> pazienti) {
 		modelloLista.clear();
-		for(Paziente a : pazienti) {
-			for(Prenotazione p : a.getPrenotazioni()) {
+		for(IPaziente a : pazienti) {
+			for(IPrenotazione p : a.getPrenotazioni()) {
 				
 				String idPren = String.valueOf(p.getIdPren());
 				String cf = p.getPaziente().getCf();
@@ -136,11 +139,24 @@ public class OperatoreUfficioPanel extends JPanel{
 		visite.setModel(modelloLista);
 	}
 	
-	public void setListaUtenti (ArrayList<Paziente> pazienti, ArrayList<Medico> medici, ArrayList<OperatoreSanitario> operatoriSanitari) {
+	public void setListaUtenti (ArrayList<IPaziente> pazienti, ArrayList<IPersonaleSanitario> medici, ArrayList<IPersonaleSanitario> operatoriSanitari) {
 		ArrayList<Account> u= new ArrayList<>();
-		u.addAll(pazienti);
-		u.addAll(medici);
-		u.addAll(operatoriSanitari);
+		Iterator<IPaziente> p = pazienti.iterator();
+		 while (p.hasNext()) {
+	        		u.add((Paziente)p);
+	        	}
+		 Iterator<IPersonaleSanitario> m = medici.iterator();
+		 while (m.hasNext()) {
+	        		u.add((Medico)m);
+	        	}
+		 Iterator<IPersonaleSanitario> os = operatoriSanitari.iterator();
+		 while (os.hasNext()) {
+	        		u.add((OperatoreSanitario)os);
+	        	}
+		
+//		u.addAll(pazienti);
+//		u.addAll(medici);
+//		u.addAll(operatoriSanitari);
 		modelloListaDue.clear();
 		for(Account a : u) {
 			String tipo = a.getTipoAcc().name();

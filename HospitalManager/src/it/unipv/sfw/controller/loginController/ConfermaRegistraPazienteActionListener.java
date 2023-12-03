@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
 import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.Sesso;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
@@ -55,7 +56,7 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 				view.getRegistratiPanelPaziente().setVisible(false);
 				view.getLoginPanel().setVisible(true);
 				
-				Account acc = model.getUtenteCorrente();
+				IAccount acc = model.getUtenteCorrente();
 				TipoAccount tipoAcc = acc.getTipoAcc();
 				
 				if(tipoAcc == TipoAccount.OU) {

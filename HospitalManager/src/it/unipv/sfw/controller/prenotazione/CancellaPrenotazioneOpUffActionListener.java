@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
@@ -26,8 +27,8 @@ public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 			String s = view.getCancellaPanelUfficio().getIdPrenotazione().getText();
 			int idPren = Integer.valueOf(s);
 		
-			HashMap<Integer, Prenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
-			Prenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
+			HashMap<Integer, IPrenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
+			IPrenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
 			boolean check = prenSelezionata.getPaziente().getCf() == cfPaziente;
 			

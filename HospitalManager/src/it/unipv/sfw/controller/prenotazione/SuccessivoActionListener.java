@@ -3,7 +3,7 @@ package it.unipv.sfw.controller.prenotazione;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
@@ -30,7 +30,7 @@ public class SuccessivoActionListener implements ActionListener{
 			String data = slot.getData().toString();
 			String orario = slot.getOrario().toString();
 			
-		    Account acc = model.getUtenteCorrente();
+		    IAccount acc = model.getUtenteCorrente();
 			TipoAccount tipoAcc = acc.getTipoAcc();
 		    
 		    if(tipoAcc == TipoAccount.PA) {

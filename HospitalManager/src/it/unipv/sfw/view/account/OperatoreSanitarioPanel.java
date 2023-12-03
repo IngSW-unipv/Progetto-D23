@@ -12,7 +12,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import it.unipv.sfw.model.prenotazione.Prenotazione;
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 
 public class OperatoreSanitarioPanel extends JPanel{
 	
@@ -79,9 +79,9 @@ public class OperatoreSanitarioPanel extends JPanel{
 		
 	}
 	
-	public void setListaVisite (ArrayList<Prenotazione> prenotazioni) {
+	public void setListaVisite (ArrayList<IPrenotazione> arrayList) {
 		modelloLista.clear();
-		for(Prenotazione p : prenotazioni) {
+		for(IPrenotazione p : arrayList) {
 			
 			String idPren = String.valueOf(p.getIdPren());
 			String cf = p.getPaziente().getCf();

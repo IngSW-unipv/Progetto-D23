@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
@@ -27,7 +28,7 @@ public class CercaPrenDaCancellarePaziente implements ActionListener{
 			//TEST
 			System.out.println(s + "\n" + idPren);
 			//
-			Prenotazione prenSelezionata = model.getIdPrenotazioni().get(idPren);
+			IPrenotazione prenSelezionata = model.getIdPrenotazioni().get(idPren);
 			
 			//TEST
 			System.out.println(prenSelezionata);

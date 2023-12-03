@@ -3,7 +3,7 @@ package it.unipv.sfw.controller.prenotazione;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.TipoAccount;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
@@ -24,7 +24,7 @@ public class ScegliPrestazioneActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		try {
 			
-			Account acc = model.getUtenteCorrente();
+			IAccount acc = model.getUtenteCorrente();
 			TipoAccount tipoAcc = acc.getTipoAcc();
 			
 			if(tipoAcc == TipoAccount.PA) {

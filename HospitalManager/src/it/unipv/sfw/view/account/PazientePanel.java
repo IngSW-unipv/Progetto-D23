@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 
 public class PazientePanel extends JPanel{
@@ -121,9 +122,9 @@ public class PazientePanel extends JPanel{
 		
 	}
 	
-	public void setListaPrenotazioni (ArrayList<Prenotazione> prenotazioni) {
+	public void setListaPrenotazioni (ArrayList<IPrenotazione> arrayList) {
 		modelloLista.clear();
-		for(Prenotazione p : prenotazioni) {
+		for(IPrenotazione p : arrayList) {
 			
 			String idPren = String.valueOf(p.getIdPren());
 			String pSanitarioNome = p.getPersonaleSanitario().getNome();
@@ -139,9 +140,9 @@ public class PazientePanel extends JPanel{
 		listaPrenotazioni.setModel(modelloLista);
 	}
 	
-	public void setListaPrenotazioniErogate (ArrayList<Prenotazione> prenotazioni) {
+	public void setListaPrenotazioniErogate (ArrayList<IPrenotazione> arrayList) {
 		modelloListaDue.clear();
-		for(Prenotazione p : prenotazioni) {
+		for(IPrenotazione p : arrayList) {
 			
 			String idPren = String.valueOf(p.getIdPren());
 			String pSanitarioNome = p.getPersonaleSanitario().getNome();

@@ -10,6 +10,7 @@ import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
 import it.unipv.sfw.model.cartellaclinica.CartellaClinica;
 import it.unipv.sfw.model.cartellaclinica.GruppiSanguigni;
 import it.unipv.sfw.model.persona.*;
+import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.prenotazione.PrestazioneSanitaria;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
@@ -21,21 +22,21 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	private String telefono;
 	private String email;
 	
-	private ArrayList<Paziente> pazienti;
-	private ArrayList<Medico> medici;
-	private ArrayList<OperatoreSanitario> operatoriSanitari;
+	private ArrayList<IPaziente> pazienti;
+	private ArrayList<IPersonaleSanitario> medici;
+	private ArrayList<IPersonaleSanitario> operatoriSanitari;
 	private ArrayList<OperatoreUfficio> operatoriUfficio;
 	private ArrayList<PrestazioneSanitaria> prestazioni;
 	
 	private ArrayList<SlotCalendarioSingoli> slotLiberi;
 	private int indiceArraySlotLiberi;
 	
-	HashMap<String,Account> cfPersone;
+	HashMap<String,IAccount> cfPersone;
 	HashMap<TipoPrestazione,PrestazioneSanitaria> tipoPrestazioni;
-	HashMap<Integer, Prenotazione> idPrenotazioni;
-	HashMap<TipoPrestazione, Account> personaleSanitario;
+	HashMap<Integer, IPrenotazione> idPrenotazioni;
+	HashMap<TipoPrestazione, IAccount> personaleSanitario;
 	
-	private Account utenteCorrente = null;
+	private IAccount utenteCorrente = null;
 	
 	private int ultimaPrenotazione;
 	
@@ -156,7 +157,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public boolean login(String cf, String pw) {
 		boolean check = false;
 		try {
-			Account a = this.getCfPersone().get(cf);
+			IAccount a = this.getCfPersone().get(cf);
 			check = a.controllaPw(pw);
 			if(check) {
 				setUtenteCorrente(cf);
@@ -173,7 +174,7 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public boolean cambioPw(String cf, String vecchiaPw, String nuovaPw) {
 		boolean check = false;
 		try {
-			Account a = this.getCfPersone().get(cf);
+			IAccount a = this.getCfPersone().get(cf);
 			if(a.controllaPw(vecchiaPw) == true) {
 				a.setPw(vecchiaPw, nuovaPw);
 			}
@@ -189,19 +190,19 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		boolean check = false;
 		try {
 			int idPren = this.generaIdPren();
-			Account personale = this.getPersonaleSanitario().get(prest);
+			IAccount personale = this.getPersonaleSanitario().get(prest);
 			PrestazioneSanitaria prestazione = this.getTipoPrestazioni().get(prest);
-			Prenotazione p = new Prenotazione(idPren, paziente, personale, prestazione, data, orario);
+			IPrenotazione p = new Prenotazione(idPren, paziente, personale, prestazione, data, orario);
 			
 			FacadeSingletonDB.getIstanzaFacade().inserisciPrenotazione(p);
 			paziente.getPrenotazioni().add(p);
 			this.idPrenotazioni.put(idPren, p);
 			
 			if(personale.getTipoAcc() == TipoAccount.ME) {
-				Medico m = (Medico)personale;
+				IPersonaleSanitario m = (Medico)personale;
 				m.getCalendario().add(p);
 			}else {
-				OperatoreSanitario op = (OperatoreSanitario)personale;
+				IPersonaleSanitario op = (OperatoreSanitario)personale;
 				op.getCalendario().add(p);
 			}
 			
@@ -215,60 +216,48 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	}
 
 	@Override
-	public boolean cancellaPrenotazione(Prenotazione p) {
+	public boolean cancellaPrenotazione(IPrenotazione p) {
 		boolean check = false;
 		try {
 			FacadeSingletonDB.getIstanzaFacade().cancellaPrenotazione(p);
 			
-			Iterator<Prenotazione> iterator1 = p.getPaziente().getPrenotazioni().iterator();
+			Iterator<IPrenotazione> iterator1 = p.getPaziente().getPrenotazioni().iterator();
 
 	        while (iterator1.hasNext()) {
 	        	if(iterator1.next().equals(p)) {
 	        		iterator1.remove();
 	        	}	            
 			
-//			for(Prenotazione i : p.getPaziente().getPrenotazioni()) {
-//				if(p.getIdPren() == i.getIdPren()) {
-//					p.getPaziente().getPrenotazioni().remove(i);
-//				}
 			}
 			
 			if(p.getPersonaleSanitario().getTipoAcc() == TipoAccount.ME) {
 				Medico m = (Medico)p.getPersonaleSanitario();
 				
-				Iterator<Prenotazione> iterator2 = m.getCalendario().iterator();
+				Iterator<IPrenotazione> iterator2 = m.getCalendario().iterator();
 
 		        while (iterator2.hasNext()) {
 		        	if(iterator2.next().equals(p)) {
 		        		iterator2.remove();
 		        	}	            
 				
-//				for(Prenotazione i : m.getCalendario()) {
-//					if(p.getIdPren() == i.getIdPren()) {
-//						m.getCalendario().remove(i);
-//					}
 				}
 			}else {
 				OperatoreSanitario op = (OperatoreSanitario)p.getPersonaleSanitario();
 				
-				Iterator<Prenotazione> iterator3 = op.getCalendario().iterator();
+				Iterator<IPrenotazione> iterator3 = op.getCalendario().iterator();
 
 		        while (iterator3.hasNext()) {
 		        	if(iterator3.next().equals(p)) {
 		        		iterator3.remove();
 		        	}
 				
-//				for(Prenotazione i : op.getCalendario()) {
-//					if(p.getIdPren() == i.getIdPren()) {
-//						op.getCalendario().remove(i);
-//					}
 				}
 				
 			this.idPrenotazioni.remove(p.getIdPren());
 	
-			check = true;
 			}
 			
+			check = true;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -295,13 +284,13 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 	public boolean aggiornaPrenotazioni() {
 		boolean check = false;
 		try {
-			for(Paziente p : this.pazienti) {
+			for(IPaziente p : this.pazienti) {
 				p.spostaPrenotazioniErogate();
 			}
-			for(Medico m : this.medici) {
+			for(IPersonaleSanitario m : this.medici) {
 				m.eliminaPrenotazioniErogate();
 				}
-			for(OperatoreSanitario op : this.operatoriSanitari) {
+			for(IPersonaleSanitario op : this.operatoriSanitari) {
 				op.eliminaPrenotazioniErogate();
 				}
 			check = true;
@@ -357,27 +346,27 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.email = email;
 	}
 
-	public ArrayList<Paziente> getPazienti() {
+	public ArrayList<IPaziente> getPazienti() {
 		return pazienti;
 	}
 
-	public void setPazienti(ArrayList<Paziente> pazienti) {
+	public void setPazienti(ArrayList<IPaziente> pazienti) {
 		this.pazienti = pazienti;
 	}
 
-	public ArrayList<Medico> getMedici() {
+	public ArrayList<IPersonaleSanitario> getMedici() {
 		return medici;
 	}
 
-	public void setMedici(ArrayList<Medico> medici) {
+	public void setMedici(ArrayList<IPersonaleSanitario> medici) {
 		this.medici = medici;
 	}
 
-	public ArrayList<OperatoreSanitario> getOperatoriSanitari() {
+	public ArrayList<IPersonaleSanitario> getOperatoriSanitari() {
 		return operatoriSanitari;
 	}
 
-	public void setOperatoriSanitari(ArrayList<OperatoreSanitario> operatoriSanitari) {
+	public void setOperatoriSanitari(ArrayList<IPersonaleSanitario> operatoriSanitari) {
 		this.operatoriSanitari = operatoriSanitari;
 	}
 
@@ -405,11 +394,11 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.ultimaPrenotazione = ultimaPrenotazione;
 	}
 
-	public HashMap<String, Account> getCfPersone() {
+	public HashMap<String, IAccount> getCfPersone() {
 		return cfPersone;
 	}
 
-	public void setCfPersone(HashMap<String, Account> cfPersone) {
+	public void setCfPersone(HashMap<String, IAccount> cfPersone) {
 		this.cfPersone = cfPersone;
 	}
 
@@ -421,11 +410,11 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.tipoPrestazioni = tipoPrestazioni;
 	}
 
-	public HashMap<Integer, Prenotazione> getIdPrenotazioni() {
+	public HashMap<Integer, IPrenotazione> getIdPrenotazioni() {
 		return idPrenotazioni;
 	}
 
-	public void setIdPrenotazioni(HashMap<Integer, Prenotazione> idPrenotazioni) {
+	public void setIdPrenotazioni(HashMap<Integer, IPrenotazione> idPrenotazioni) {
 		this.idPrenotazioni = idPrenotazioni;
 	}
 	
@@ -433,15 +422,15 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		this.utenteCorrente = this.cfPersone.get(cf);
 	}
 	
-	public Account getUtenteCorrente() {
+	public IAccount getUtenteCorrente() {
 		return utenteCorrente;
 	}
 	
-	public HashMap<TipoPrestazione, Account> getPersonaleSanitario() {
+	public HashMap<TipoPrestazione, IAccount> getPersonaleSanitario() {
 		return personaleSanitario;
 	}
 
-	public void setPersonaleSanitario(HashMap<TipoPrestazione, Account> personaleSanitario) {
+	public void setPersonaleSanitario(HashMap<TipoPrestazione, IAccount> personaleSanitario) {
 		this.personaleSanitario = personaleSanitario;
 	}
 	

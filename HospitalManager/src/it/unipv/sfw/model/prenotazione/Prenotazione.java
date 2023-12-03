@@ -2,20 +2,19 @@ package it.unipv.sfw.model.prenotazione;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.IPaziente;
-import it.unipv.sfw.model.persona.Paziente;
 
 
-public class Prenotazione {
+public class Prenotazione implements IPrenotazione {
 	private int idPren;
 	private IPaziente paziente;
-	private Account personaleSanitario;
+	private IAccount personaleSanitario;
 	private PrestazioneSanitaria prestazione;
 	private LocalDate data;
 	private LocalTime orario;
 	
-	public Prenotazione(int idPren, IPaziente paziente, Account personaleSanitario, PrestazioneSanitaria prestazione, 
+	public Prenotazione(int idPren, IPaziente paziente, IAccount personaleSanitario, PrestazioneSanitaria prestazione, 
 			LocalDate data, LocalTime orario) {
 		super();
 		this.idPren = idPren;
@@ -38,7 +37,7 @@ public class Prenotazione {
 		return paziente;
 	}
 
-	public void setPaziente(Paziente paziente) {
+	public void setPaziente(IPaziente paziente) {
 		this.paziente = paziente;
 	}
 
@@ -50,11 +49,11 @@ public class Prenotazione {
 		this.prestazione = prestazione;
 	}
 
-	public Account getPersonaleSanitario() {
+	public IAccount getPersonaleSanitario() {
 		return personaleSanitario;
 	}
 
-	public void setPersonaleSanitario(Account personaleSanitario) {
+	public void setPersonaleSanitario(IAccount personaleSanitario) {
 		this.personaleSanitario = personaleSanitario;
 	}
 
@@ -73,5 +72,6 @@ public class Prenotazione {
 	public void setOrario(LocalTime orario) {
 		this.orario = orario;
 	}
+
 
 }

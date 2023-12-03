@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.util.HashMap;
 
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
-import it.unipv.sfw.model.persona.Account;
+import it.unipv.sfw.model.persona.IAccount;
 import it.unipv.sfw.model.persona.Paziente;
 import it.unipv.sfw.model.prenotazione.TipoPrestazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
@@ -39,7 +39,7 @@ public class ConfermaPrenotazioneOpUffActionListener implements ActionListener {
 			LocalTime orario = slotCorrente.getOrario();
 			
 			//Paziente
-			HashMap<String, Account> listaUtenti = model.getCfPersone();
+			HashMap<String, IAccount> listaUtenti = model.getCfPersone();
 			Paziente paziente = (Paziente) listaUtenti.get(cf);
 			
 			boolean check = model.inserisciPrenotazione(tipoPrest, paziente, data, orario);
