@@ -16,27 +16,12 @@ public class RegistrazioneController {
 		addActionListenerBottoneRegistraPaziente();
 		addActionListenerConfermaRegistrazione();
 		addActionListenerGeneraPassword();
-		addActionListenerRegistraUtente();
 		addActionListenerGoBack();
-		addActionListenerGeneraPass();
 	}
-
-
-	private void addActionListenerGeneraPass() {
-		BtnGeneraPassActionListener genPass = new BtnGeneraPassActionListener(model, view);
-		view.getRegistratiPanel().getBtnGeneraPass().addActionListener(genPass);
-	}
-
 
 	private void addActionListenerGeneraPassword() {
 		BtnGeneraPassActionListener generaPass = new BtnGeneraPassActionListener (model, view);
 		view.getRegistratiPanelPaziente().getBtnGeneraPass().addActionListener(generaPass);
-	}
-
-
-	private void addActionListenerRegistraUtente() {
-		RegistraUtenteActionListener regUtente = new RegistraUtenteActionListener(model, view);
-		view.getRegistratiPanel().getBtnConfermaReg().addActionListener(regUtente);
 	}
 
 
@@ -57,8 +42,6 @@ public class RegistrazioneController {
 	private void addActionListenerGoBack() {
 		BtnBackRegistrazionePazienteActionListener goBack = new BtnBackRegistrazionePazienteActionListener(model, view);
 		view.getRegistratiPanelPaziente().getBtnBack().addActionListener(goBack);
-		BtnBackRegistrazioneActionListener goBackOpUff = new BtnBackRegistrazioneActionListener(model, view);
-		view.getRegistratiPanel().getBtnBack().addActionListener(goBackOpUff);
 	}
 
 }

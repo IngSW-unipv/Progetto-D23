@@ -27,7 +27,7 @@ public class OperatoreUfficioPanel extends JPanel{
 	private JLabel nome, cognome, cf, tipoAccount;
 	private JLabel pNome, pCognome, pCf, pTipoAccount;
 	private JList<String> visite, utenti;
-	private JButton prenota, cancella, logout, aggiungiDipendente, aggiungiPaziente;
+	private JButton prenota, cancella, logout, aggiungiPaziente, cambiaPw;
 	private DefaultListModel<String> modelloLista, modelloListaDue;
 	private JLabel appuntamenti, utente;
 	private JScrollPane scrollVisite, scrollUtenti;
@@ -42,11 +42,11 @@ public class OperatoreUfficioPanel extends JPanel{
 		JPanel barCentroSx = new JPanel();
 		barCentroSx.setLayout(new BorderLayout());
 		JPanel barCentroDx = new JPanel();
-		barCentroDx.setLayout(new GridLayout(2,1));
+		barCentroDx.setLayout(new BorderLayout());
 		JPanel barSudOvest = new JPanel();
 		barSudOvest.setLayout(new GridLayout(4,2));
 		JPanel barSudEst = new JPanel();
-		barSudEst.setLayout(new BorderLayout());
+		barSudEst.setLayout(new GridLayout(2,1));
 		
 		nome = new JLabel("NOME:");
 		pNome = new JLabel();
@@ -59,10 +59,10 @@ public class OperatoreUfficioPanel extends JPanel{
 		prenota = new JButton("PRENOTA");
 		cancella = new JButton("CANCELLA");
 		logout = new JButton("LOGOUT");
-		aggiungiDipendente = new JButton("AGGIUNGI DIPENDENTE");
 		aggiungiPaziente = new JButton("AGGIUNGI PAZIENTE");
 		appuntamenti = new JLabel("APPUNTAMENTI");
 		utente = new JLabel("UTENTI");
+		cambiaPw = new JButton("CAMBIA PASSWORD");
 		
 		visite = new JList<>();
 		visite.setPreferredSize(new Dimension(1000, 1000));
@@ -98,8 +98,8 @@ public class OperatoreUfficioPanel extends JPanel{
 		barCentroSx.add(scrollUtenti, BorderLayout.CENTER);
 		add(barCentroSx);
 		
-		barCentroDx.add(aggiungiDipendente);
-		barCentroDx.add(aggiungiPaziente);
+		
+		barCentroDx.add(aggiungiPaziente, BorderLayout.CENTER);
 		add(barCentroDx);
 		
 		barSudOvest.add(nome);
@@ -112,7 +112,8 @@ public class OperatoreUfficioPanel extends JPanel{
 		barSudOvest.add(pTipoAccount);
 		add(barSudOvest);
 		
-		barSudEst.add(logout, BorderLayout.CENTER);
+		barSudEst.add(cambiaPw);
+		barSudEst.add(logout);
 		add(barSudEst);
 		
 	}
@@ -237,14 +238,6 @@ public class OperatoreUfficioPanel extends JPanel{
 
 	public void setLogoutBtn(JButton logout) {
 		this.logout = logout;
-	}
-
-	public JButton getAggiungiUtenteBtn() {
-		return aggiungiDipendente;
-	}
-
-	public void setAggiungiDipendente(JButton aggiungiUtente) {
-		this.aggiungiDipendente = aggiungiUtente;
 	}
 
 	public DefaultListModel getModelloLista() {

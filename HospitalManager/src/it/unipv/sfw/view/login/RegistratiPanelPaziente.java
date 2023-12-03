@@ -87,8 +87,8 @@ public class RegistratiPanelPaziente extends JPanel{
 		back = new JLabel("Torna Indietro");
 		indietro = new JButton("INDIETRO");
 		
-		altezza = new JLabel("Altezza");
-		peso = new JLabel("Peso");
+		altezza = new JLabel("Altezza (cm)");
+		peso = new JLabel("Peso (kg)");
 		gruppoSanguigno = new JLabel("Gruppo Sanguigno");
 		
 		altezzaField = new JTextField();

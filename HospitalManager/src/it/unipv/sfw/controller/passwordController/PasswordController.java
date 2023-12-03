@@ -29,6 +29,5 @@ public class PasswordController {
 		
 		showPass = new MostraPasswordGenerata(model, view);
 		view.getRegistratiPanelPaziente().getBtnMostra().addActionListener(showPass);
-		view.getRegistratiPanel().getBtnMostra().addActionListener(showPass);
 		}
 }

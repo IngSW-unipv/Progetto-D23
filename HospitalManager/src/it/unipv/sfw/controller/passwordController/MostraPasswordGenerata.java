@@ -22,13 +22,11 @@ public class MostraPasswordGenerata implements ActionListener{
 		
 	    // Ottenere la password temporaneamente
 	    view.getRegistratiPanelPaziente().getPasswordField().setEchoChar((char) 0);
-	    view.getRegistratiPanel().getPasswordField().setEchoChar((char)0);
 
 	    Timer timer = new Timer(2000, new ActionListener() {
 	    	
 	    	public void actionPerformed(ActionEvent evt) {
 	    		// Nascondere nuovamente la password dopo un secondo
-	    		view.getRegistratiPanel().getPasswordField().setEchoChar('•');
 	    		view.getRegistratiPanelPaziente().getPasswordField().setEchoChar('•');
 	                }
 	            });

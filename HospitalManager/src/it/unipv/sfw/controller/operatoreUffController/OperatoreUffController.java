@@ -22,11 +22,7 @@ public class OperatoreUffController {
 		view.getOperatoreUfficioPanel().getPrenotaBtn().addActionListener(addPren);
 		
 		CancellaPrenotazioneOpUffActionListener cancPren = new CancellaPrenotazioneOpUffActionListener(model, view);
-		view.getOperatoreUfficioPanel().getCancellaBtn().addActionListener(cancPren);
-		
-		AddUtenteActionListener addUtente = new AddUtenteActionListener(model, view);
-		view.getOperatoreUfficioPanel().getAggiungiUtenteBtn().addActionListener(addUtente);
-		
+		view.getOperatoreUfficioPanel().getCancellaBtn().addActionListener(cancPren);		
 		
 	}
 }
