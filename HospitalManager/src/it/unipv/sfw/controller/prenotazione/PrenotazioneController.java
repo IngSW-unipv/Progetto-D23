@@ -68,8 +68,8 @@ public class PrenotazioneController {
 		view.getOperatoreUfficioPanel().getPrenotaBtn().addActionListener(prenotaOpUff);
 		view.getPazientePanel().getPrenotaBtn().addActionListener(prenotaPaz);
 		
-		view.getPazientePanel().getCancellaBtn().addActionListener(cancellaOpUff);
-		view.getOperatoreUfficioPanel().getCancellaBtn().addActionListener(cancellaPaz);
+		view.getPazientePanel().getCancellaBtn().addActionListener(cancellaPaz);
+		view.getOperatoreUfficioPanel().getCancellaBtn().addActionListener(cancellaOpUff);
 		
 		view.getPrenotatiPanelPaziente().getConfermaBtn().addActionListener(confermaPaziente);
 		view.getPrenotatiPanelUfficio().getConfermaBtn().addActionListener(confermaUfficio);
