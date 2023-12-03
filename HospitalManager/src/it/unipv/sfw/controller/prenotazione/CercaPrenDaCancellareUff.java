@@ -36,7 +36,7 @@ public class CercaPrenDaCancellareUff implements ActionListener{
 			//TEST
 			System.out.println(prenSelezionata);
 			
-			boolean check = prenSelezionata.getPaziente().getCf() == cfPaziente;
+			boolean check = prenSelezionata.getPaziente().getCf().equals(cfPaziente);
 			
 			String data = prenSelezionata.getData().toString();
 			String orario = prenSelezionata.getOrario().toString();
@@ -44,7 +44,7 @@ public class CercaPrenDaCancellareUff implements ActionListener{
 			if(check) {
 				view.getCancellaPanelUfficio().setSlot(data+" | "+orario);
 			} else {
-				PopUp.infoBox("Controlla Cf del paziente", "Errore");
+				PopUp.infoBox("Controlla dati inseriti", "Errore");
 			}
 		    
 			
