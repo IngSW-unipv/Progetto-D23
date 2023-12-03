@@ -75,14 +75,23 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	public boolean deletePrenotazione(PrenotazioneDB p) {
 		conn = ConnessioneDB.startConnection(conn, "hospitalmanager");
 		PreparedStatement ps1;
-		
+		Statement st1, st2;
+
 		boolean check;
 		
 		try {
+			st1= conn.createStatement();
+			String query1 = "SET FOREIGN_KEY_CHECKS = 0";
+			st1.executeQuery(query1);
+			
 			String query = "DELETE FROM hospitalmanager.PRENOTAZIONI WHERE ID_PREN = ?";
 			ps1 = conn.prepareStatement(query);
 			ps1.setInt(1, p.getIdPren());
 			ps1.executeUpdate();
+			
+			st2= conn.createStatement();
+			String query2 = "SET FOREIGN_KEY_CHECKS = 1";
+			st2.executeQuery(query2);
 			
 			check = true;
 		}

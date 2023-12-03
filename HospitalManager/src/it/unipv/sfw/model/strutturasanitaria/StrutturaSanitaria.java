@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList; 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import it.unipv.sfw.jdbc.FacadeSingletonDB;
 import it.unipv.sfw.model.calendario.SlotCalendarioSingoli;
@@ -219,27 +220,48 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 		try {
 			FacadeSingletonDB.getIstanzaFacade().cancellaPrenotazione(p);
 			
-			for(Prenotazione i : p.getPaziente().getPrenotazioni()) {
-				if(p.getIdPren() == i.getIdPren()) {
-					p.getPaziente().getPrenotazioni().remove(i);
-				}
+			Iterator<Prenotazione> iterator1 = p.getPaziente().getPrenotazioni().iterator();
+
+	        while (iterator1.hasNext()) {
+	        	if(iterator1.next().equals(p)) {
+	        		iterator1.remove();
+	        	}	            
+			
+//			for(Prenotazione i : p.getPaziente().getPrenotazioni()) {
+//				if(p.getIdPren() == i.getIdPren()) {
+//					p.getPaziente().getPrenotazioni().remove(i);
+//				}
 			}
 			
 			if(p.getPersonaleSanitario().getTipoAcc() == TipoAccount.ME) {
 				Medico m = (Medico)p.getPersonaleSanitario();
 				
-				for(Prenotazione i : m.getCalendario()) {
-					if(p.getIdPren() == i.getIdPren()) {
-						m.getCalendario().remove(i);
-					}
+				Iterator<Prenotazione> iterator2 = m.getCalendario().iterator();
+
+		        while (iterator2.hasNext()) {
+		        	if(iterator2.next().equals(p)) {
+		        		iterator2.remove();
+		        	}	            
+				
+//				for(Prenotazione i : m.getCalendario()) {
+//					if(p.getIdPren() == i.getIdPren()) {
+//						m.getCalendario().remove(i);
+//					}
 				}
 			}else {
 				OperatoreSanitario op = (OperatoreSanitario)p.getPersonaleSanitario();
 				
-				for(Prenotazione i : op.getCalendario()) {
-					if(p.getIdPren() == i.getIdPren()) {
-						op.getCalendario().remove(i);
-					}
+				Iterator<Prenotazione> iterator3 = op.getCalendario().iterator();
+
+		        while (iterator3.hasNext()) {
+		        	if(iterator3.next().equals(p)) {
+		        		iterator3.remove();
+		        	}
+				
+//				for(Prenotazione i : op.getCalendario()) {
+//					if(p.getIdPren() == i.getIdPren()) {
+//						op.getCalendario().remove(i);
+//					}
 				}
 				
 			this.idPrenotazioni.remove(p.getIdPren());
