@@ -261,8 +261,8 @@ public class ProfiloDAO implements IProfiloDAO {
 			ps1 = conn.prepareStatement(query);
 			ps1.setString(1, pw);	
 			ps1.setString(2, cf);
-			ps1.executeUpdate(query);
-			//ps1.executeUpdate();
+			//ps1.executeUpdate(query);
+			ps1.executeUpdate();
 			
 		}
 		catch(Exception e){

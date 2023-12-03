@@ -143,15 +143,15 @@ public class OperatoreUfficioPanel extends JPanel{
 		ArrayList<Account> u= new ArrayList<>();
 		Iterator<IPaziente> p = pazienti.iterator();
 		 while (p.hasNext()) {
-	        		u.add((Paziente)p);
+	        		u.add((Paziente) p.next());
 	        	}
 		 Iterator<IPersonaleSanitario> m = medici.iterator();
 		 while (m.hasNext()) {
-	        		u.add((Medico)m);
+	        		u.add((Medico)m.next());
 	        	}
 		 Iterator<IPersonaleSanitario> os = operatoriSanitari.iterator();
 		 while (os.hasNext()) {
-	        		u.add((OperatoreSanitario)os);
+	        		u.add((OperatoreSanitario)os.next());
 	        	}
 		
 //		u.addAll(pazienti);

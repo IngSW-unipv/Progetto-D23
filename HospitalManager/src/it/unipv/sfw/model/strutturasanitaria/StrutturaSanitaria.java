@@ -177,7 +177,9 @@ public class StrutturaSanitaria implements IStrutturaSanitaria {
 			IAccount a = this.getCfPersone().get(cf);
 			if(a.controllaPw(vecchiaPw) == true) {
 				a.setPw(vecchiaPw, nuovaPw);
+				FacadeSingletonDB.getIstanzaFacade().aggiornaPw(a);
 			}
+			check = true;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
