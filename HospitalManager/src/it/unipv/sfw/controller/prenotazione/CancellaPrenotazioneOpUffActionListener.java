@@ -30,7 +30,7 @@ public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 			HashMap<Integer, IPrenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
 			IPrenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
 			
-			boolean check = prenSelezionata.getPaziente().getCf() == cfPaziente;
+			boolean check = prenSelezionata.getPaziente().getCf().equals(cfPaziente);		
 			
 			if(check) {
 			
