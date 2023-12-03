@@ -5,18 +5,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class PrenotaOpUffActionListener implements ActionListener {
 	
-	private IStrutturaSanitaria model;
 	private ViewController view;
 
-	public PrenotaOpUffActionListener(IStrutturaSanitaria model, ViewController view) {
+	public PrenotaOpUffActionListener(ViewController view) {
 		super();
 		this.view = view;
-		this.model = model;
 	}
 
 	@Override

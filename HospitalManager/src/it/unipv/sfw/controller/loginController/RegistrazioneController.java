@@ -33,7 +33,7 @@ public class RegistrazioneController {
 
 
 	private void addActionListenerBottoneRegistraPaziente() {
-		BtnRegistraPazienteActionListener addPaz = new BtnRegistraPazienteActionListener(model, view);
+		BtnRegistraPazienteActionListener addPaz = new BtnRegistraPazienteActionListener(view);
 		view.getLoginPanel().getBtnRegistraPaziente().addActionListener(addPaz);
 		view.getOperatoreUfficioPanel().getBtnAggPaz().addActionListener(addPaz);
 		

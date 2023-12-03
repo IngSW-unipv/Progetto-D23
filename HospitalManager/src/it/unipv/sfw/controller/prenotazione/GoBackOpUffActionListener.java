@@ -5,15 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class GoBackOpUffActionListener implements ActionListener{
-	private IStrutturaSanitaria model;
 	private ViewController view;
 
-	public GoBackOpUffActionListener(IStrutturaSanitaria model, ViewController view) {
-		this.model = model;
+	public GoBackOpUffActionListener(ViewController view) {
 		this.view = view;
 	}
 

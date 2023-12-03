@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import it.unipv.sfw.model.prenotazione.IPrenotazione;
-import it.unipv.sfw.model.prenotazione.Prenotazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
 import it.unipv.sfw.view.ViewController;
@@ -45,7 +44,7 @@ public class CancellaPrenotazioneOpUffActionListener implements ActionListener {
 				view.getOperatoreUfficioPanel().setListaPrenotazioni(model.getPazienti());
 				view.getOperatoreUfficioPanel().setListaUtenti(model.getPazienti(), model.getMedici(), model.getOperatoriSanitari());
 			} else {
-				PopUp.infoBox("Inserire un Id prenotazione valido", "Errore");
+				PopUp.infoBox("Dati inseriti non validi", "Errore");
 			}
 			
 		

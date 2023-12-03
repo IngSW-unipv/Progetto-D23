@@ -5,15 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class MostraPasswordGenerata implements ActionListener{
-	private static IStrutturaSanitaria model;
 	private ViewController view;
 	
-	public MostraPasswordGenerata(IStrutturaSanitaria model, ViewController view) {
-		this.model = model;
+	public MostraPasswordGenerata(ViewController view) {
 		this.view = view;
 	}
 

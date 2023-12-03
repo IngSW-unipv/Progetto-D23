@@ -5,16 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class CancellaOpUffActionListener implements ActionListener{
-	private IStrutturaSanitaria model;
 	private ViewController view;
 
-	public CancellaOpUffActionListener(IStrutturaSanitaria model, ViewController view) {
+	public CancellaOpUffActionListener(ViewController view) {
 		super();
-		this.model = model;
 		this.view = view;
 		
 	}

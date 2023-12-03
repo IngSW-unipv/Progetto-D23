@@ -64,6 +64,8 @@ public class ConfermaRegistraPazienteActionListener implements ActionListener{
 					PopUp.infoBox("Nuovo account creato", "OK");
 					view.getRegistratiPanelPaziente().setVisible(false);
 					view.getOperatoreUfficioPanel().setVisible(true);
+					view.getOperatoreUfficioPanel().setListaPrenotazioni(model.getPazienti());
+					view.getOperatoreUfficioPanel().setListaUtenti(model.getPazienti(), model.getMedici(), model.getOperatoriSanitari());
 					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			} else {

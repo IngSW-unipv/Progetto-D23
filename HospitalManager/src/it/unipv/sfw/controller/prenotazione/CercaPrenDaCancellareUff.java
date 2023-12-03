@@ -2,8 +2,6 @@ package it.unipv.sfw.controller.prenotazione;
 
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-
 import it.unipv.sfw.model.prenotazione.IPrenotazione;
 import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.PopUp;
@@ -26,15 +24,7 @@ public class CercaPrenDaCancellareUff implements ActionListener{
 			String s = view.getCancellaPanelUfficio().getIdPrenotazione().getText();
 			int idPren = Integer.valueOf(s);
 		
-//			HashMap<Integer, IPrenotazione> mappaPrenotazioni = model.getIdPrenotazioni();
-//			IPrenotazione prenSelezionata = mappaPrenotazioni.get(idPren);
-			//TEST
-			System.out.println(s + "\n" + idPren);
-			//
 			IPrenotazione prenSelezionata = model.getIdPrenotazioni().get(idPren);
-			
-			//TEST
-			System.out.println(prenSelezionata);
 			
 			boolean check = prenSelezionata.getPaziente().getCf().equals(cfPaziente);
 			

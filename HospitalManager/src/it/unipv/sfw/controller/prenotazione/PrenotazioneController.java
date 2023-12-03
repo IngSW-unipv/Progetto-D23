@@ -5,9 +5,6 @@ import it.unipv.sfw.view.ViewController;
 
 public class PrenotazioneController {
 	
-	private ViewController view;
-	private IStrutturaSanitaria model;
-	
 	private PrenotaOpUffActionListener prenotaOpUff;
 	private PrenotaPazActionListener prenotaPaz;
 	
@@ -31,17 +28,15 @@ public class PrenotazioneController {
 	private GoBackOpUffActionListener goBackOpUff;
 	
 	public PrenotazioneController (IStrutturaSanitaria model, ViewController view) {
-		this.model = model;
-		this.view = view;
 		
-		prenotaOpUff = new PrenotaOpUffActionListener(model, view);
-		prenotaPaz = new PrenotaPazActionListener(model, view);
+		prenotaOpUff = new PrenotaOpUffActionListener(view);
+		prenotaPaz = new PrenotaPazActionListener(view);
 		
-		cancellaOpUff = new CancellaOpUffActionListener(model, view);
-		cancellaPaz = new CancellaPazActionListener(model, view);
+		cancellaOpUff = new CancellaOpUffActionListener(view);
+		cancellaPaz = new CancellaPazActionListener(view);
 		
-		goBackPaz = new GoBackPazienteActionListener(model, view);
-		goBackOpUff = new GoBackOpUffActionListener(model, view);
+		goBackPaz = new GoBackPazienteActionListener(view);
+		goBackOpUff = new GoBackOpUffActionListener(view);
 		
 		cercaPrenPaz = new CercaPrenDaCancellarePaziente(model, view);
 		cercaPrenUff = new CercaPrenDaCancellareUff(model, view);

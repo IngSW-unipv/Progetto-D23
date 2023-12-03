@@ -4,8 +4,7 @@ import it.unipv.sfw.model.strutturasanitaria.IStrutturaSanitaria;
 import it.unipv.sfw.view.ViewController;
 
 public class PasswordController {
-	private ViewController view;
-	private static IStrutturaSanitaria model;
+
 	private CambiaPasswordActionListener cambiaPass;
 	private ConfermaCambiaPassActionListener confermaCambioPass;
 	private GoBackCambiaPassActionListener goBackPass;
@@ -13,10 +12,7 @@ public class PasswordController {
 	
 	public PasswordController(IStrutturaSanitaria model, ViewController view) {
 
-		this.view = view; 
-		this.model = model;
-
-		cambiaPass = new CambiaPasswordActionListener(model, view);
+		cambiaPass = new CambiaPasswordActionListener(view);
 		view.getMedicoPanel().getCambiaPw().addActionListener(cambiaPass);
 		view.getOperatoreSanitarioPanel().getCambiaPw().addActionListener(cambiaPass);
 		view.getPazientePanel().getCambiaPw().addActionListener(cambiaPass);
@@ -28,7 +24,7 @@ public class PasswordController {
 		goBackPass = new GoBackCambiaPassActionListener(model, view);
 		view.getCambiaPwPanel().getBtnBack().addActionListener(goBackPass);
 		
-		showPass = new MostraPasswordGenerata(model, view);
+		showPass = new MostraPasswordGenerata(view);
 		view.getRegistratiPanelPaziente().getBtnMostra().addActionListener(showPass);
 		}
 }
