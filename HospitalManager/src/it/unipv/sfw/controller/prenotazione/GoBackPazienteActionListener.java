@@ -17,7 +17,6 @@ public class GoBackPazienteActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		view.getAggiornaCartellaClinicaPanel().setVisible(false);
 		view.getPrenotatiPanelPaziente().setVisible(false);
 		view.getCancellaPanelPaziente().setVisible(false);
 		pulisciTextFields();
@@ -28,10 +27,7 @@ public class GoBackPazienteActionListener implements ActionListener{
 	}
 
 	private void pulisciTextFields() {
-		//aggiorna cartella clinica
-		view.getAggiornaCartellaClinicaPanel().getAltezza().setText(null);
-		view.getAggiornaCartellaClinicaPanel().getPeso().setText(null);
-				
+
 		//cancella prenotazione del paziente
 		view.getCancellaPanelPaziente().getIdPrenotazione().setText(null);
 		view.getCancellaPanelPaziente().getSlot().setText(null);
